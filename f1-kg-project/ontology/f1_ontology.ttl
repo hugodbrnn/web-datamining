@@ -1,0 +1,32 @@
+########################
+# REASONING CLASSES
+########################
+
+ex:RaceWinner a owl:Class ;
+    rdfs:subClassOf ex:Driver .
+
+########################
+# LOGICAL RULE (OWL)
+########################
+
+# Un RaceWinner = Driver qui a au moins une position 1
+
+ex:RaceWinner owl:equivalentClass [
+    a owl:Class ;
+    owl:intersectionOf (
+        ex:Driver
+        [ a owl:Restriction ;
+          owl:onProperty ex:hasResult ;
+          owl:someValuesFrom [
+              a owl:Class ;
+              owl:intersectionOf (
+                  ex:RaceResult
+                  [ a owl:Restriction ;
+                    owl:onProperty ex:finishPosition ;
+                    owl:hasValue 1
+                  ]
+              )
+          ]
+        ]
+    )
+] . je le met dans quelle dossier .
