@@ -1,7 +1,0 @@
-PREFIX ex: <http://example.org/supermarket#>
-
-SELECT ?product ?name
-WHERE {
-  ?product a ex:Product .
-  ?product ex:name ?name .
-}

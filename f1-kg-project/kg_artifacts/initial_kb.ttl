@@ -1,0 +1,85 @@
+@prefix ex: <http://example.org/f1#> .
+
+########################
+# TEAMS
+########################
+
+ex:Mercedes a ex:Team .
+ex:RedBullRacing a ex:Team .
+ex:Ferrari a ex:Team .
+
+########################
+# DRIVERS
+########################
+
+ex:LewisHamilton a ex:Driver .
+ex:MaxVerstappen a ex:Driver .
+ex:CharlesLeclerc a ex:Driver .
+
+########################
+# SEASON
+########################
+
+ex:Season2023 a ex:Season .
+
+########################
+# RELATIONS
+########################
+
+# Drivers -> Teams
+ex:LewisHamilton ex:drivesFor ex:Mercedes .
+ex:MaxVerstappen ex:drivesFor ex:RedBullRacing .
+ex:CharlesLeclerc ex:drivesFor ex:Ferrari .
+
+# Drivers -> Season
+ex:LewisHamilton ex:competesInSeason ex:Season2023 .
+ex:MaxVerstappen ex:competesInSeason ex:Season2023 .
+ex:CharlesLeclerc ex:competesInSeason ex:Season2023 .
+
+
+
+########################
+# GRAND PRIX
+########################
+
+ex:BahrainGP2023 a ex:GrandPrix .
+ex:MonacoGP2023 a ex:GrandPrix .
+
+########################
+# RESULTS
+########################
+
+ex:Result_Bahrain_1 a ex:RaceResult .
+ex:Result_Bahrain_2 a ex:RaceResult .
+ex:Result_Monaco_1 a ex:RaceResult .
+
+########################
+# SEASON -> RACES
+########################
+
+ex:Season2023 ex:hasRace ex:BahrainGP2023 .
+ex:Season2023 ex:hasRace ex:MonacoGP2023 .
+
+########################
+# RACE -> RESULT
+########################
+
+ex:BahrainGP2023 ex:hasResult ex:Result_Bahrain_1 .
+ex:BahrainGP2023 ex:hasResult ex:Result_Bahrain_2 .
+ex:MonacoGP2023 ex:hasResult ex:Result_Monaco_1 .
+
+########################
+# RESULT DETAILS
+########################
+
+ex:Result_Bahrain_1 ex:forDriver ex:MaxVerstappen .
+ex:Result_Bahrain_1 ex:finishPosition 1 .
+ex:Result_Bahrain_1 ex:points 25 .
+
+ex:Result_Bahrain_2 ex:forDriver ex:LewisHamilton .
+ex:Result_Bahrain_2 ex:finishPosition 2 .
+ex:Result_Bahrain_2 ex:points 18 .
+
+ex:Result_Monaco_1 ex:forDriver ex:CharlesLeclerc .
+ex:Result_Monaco_1 ex:finishPosition 1 .
+ex:Result_Monaco_1 ex:points 25 .
