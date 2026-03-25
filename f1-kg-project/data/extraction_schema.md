@@ -1,32 +1,36 @@
-# Extraction Schema - Formula 1
+# Extraction Plan - Formula 1
 
-## Entities
-- Driver
-- Team
-- Season
-- GrandPrix
-- Circuit
-- RaceResult
+## Driver Pages
+Extract:
+- name
+- nationality
+- team
+- seasons
 
-## Relationships
-
-### Driver & Team
+Triples:
+- Driver — name — value
+- Driver — nationality — value
 - Driver — drivesFor — Team
-- Driver — teammateOf — Driver
+- Driver — competesInSeason — Season
 
-### Driver & Season
-- Driver — competesIn — Season
+## Team Pages
+Extract:
+- team name
+- drivers
 
-### Races
-- GrandPrix — heldAt — Circuit
-- Season — hasRace — GrandPrix
+Triples:
+- Team — name — value
+- Driver — drivesFor — Team
 
-### Results
-- Driver — wonRace — GrandPrix
+## Race Results Pages
+Extract:
+- Grand Prix name
+- drivers
+- positions
+- points
+
+Triples:
+- GrandPrix — hasResult — RaceResult
 - RaceResult — forDriver — Driver
-- RaceResult — position — value
+- RaceResult — finishPosition — value
 - RaceResult — points — value
-
-### Team
-- Team — scoredPoints — value
-- Team — competesIn — Season

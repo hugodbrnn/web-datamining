@@ -1,0 +1,112 @@
+local_entity	local_name	season	candidate_wikidata_id	candidate_label	confidence	status
+MaxVerstappen	Max Verstappen	2022	Q2239218	Max Verstappen	1.0	auto
+CharlesLeclerc	Charles Leclerc	2022	Q17541912	Charles Leclerc	1.0	auto
+SergioPerez	Sergio Perez	2022	Q82805	Sergio Pérez	0.8	auto
+GeorgeRussell	George Russell	2022	Q17319645	George Russell	1.0	auto
+CarlosSainz	Carlos Sainz	2022	Q544856	Carlos Sainz Jr.	0.8	auto
+LewisHamilton	Lewis Hamilton	2022	Q9673	Lewis Hamilton	1.0	auto
+LandoNorris	Lando Norris	2022	Q22007193	Lando Norris	1.0	auto
+EstebanOcon	Esteban Ocon	2022	Q15074165	Esteban Ocon	1.0	auto
+FernandoAlonso	Fernando Alonso	2022	Q10514	Fernando Alonso	1.0	auto
+ValtteriBottas	Valtteri Bottas	2022	Q138745	Valtteri Bottas	1.0	auto
+DanielRicciardo	Daniel Ricciardo	2022	Q82816	Daniel Ricciardo	1.0	auto
+SebastianVettel	Sebastian Vettel	2022	Q42311	Sebastian Vettel	1.0	auto
+KevinMagnussen	Kevin Magnussen	2022	Q1740212	Kevin Magnussen	1.0	auto
+PierreGasly	Pierre Gasly	2022	Q11816647	Pierre Gasly	1.0	auto
+LanceStroll	Lance Stroll	2022	Q16238921	Lance Stroll	1.0	auto
+MickSchumacher	Mick Schumacher	2022	Q18119599	Mick Schumacher	1.0	auto
+YukiTsunoda	Yuki Tsunoda	2022	Q59209579	Yuki Tsunoda	1.0	auto
+ZhouGuanyu	Zhou Guanyu	2022	Q17327107	Zhou Guanyu	1.0	auto
+AlexanderAlbon	Alexander Albon	2022	Q16149172	Alexander Albon	1.0	auto
+NicholasLatifi	Nicholas Latifi	2022	Q8898994	Nicholas Latifi	1.0	auto
+NyckDeVries	Nyck De Vries	2022	Q771382	Nyck de Vries	1.0	auto
+NicoHulkenberg	Nico Hulkenberg	2022	Q76547	Nico Hülkenberg	0.8	auto
+MaxVerstappen	Max Verstappen	2023	Q2239218	Max Verstappen	1.0	auto
+SergioPerez	Sergio Perez	2023	Q82805	Sergio Pérez	0.8	auto
+LewisHamilton	Lewis Hamilton	2023	Q9673	Lewis Hamilton	1.0	auto
+FernandoAlonso	Fernando Alonso	2023	Q10514	Fernando Alonso	1.0	auto
+CharlesLeclerc	Charles Leclerc	2023	Q17541912	Charles Leclerc	1.0	auto
+LandoNorris	Lando Norris	2023	Q22007193	Lando Norris	1.0	auto
+CarlosSainz	Carlos Sainz	2023	Q544856	Carlos Sainz Jr.	0.8	auto
+GeorgeRussell	George Russell	2023	Q17319645	George Russell	1.0	auto
+OscarPiastri	Oscar Piastri	2023	Q28741262	Oscar Piastri	1.0	auto
+LanceStroll	Lance Stroll	2023	Q16238921	Lance Stroll	1.0	auto
+PierreGasly	Pierre Gasly	2023	Q11816647	Pierre Gasly	1.0	auto
+EstebanOcon	Esteban Ocon	2023	Q15074165	Esteban Ocon	1.0	auto
+AlexanderAlbon	Alexander Albon	2023	Q16149172	Alexander Albon	1.0	auto
+YukiTsunoda	Yuki Tsunoda	2023	Q59209579	Yuki Tsunoda	1.0	auto
+ValtteriBottas	Valtteri Bottas	2023	Q138745	Valtteri Bottas	1.0	auto
+NicoHulkenberg	Nico Hulkenberg	2023	Q76547	Nico Hülkenberg	0.8	auto
+DanielRicciardo	Daniel Ricciardo	2023	Q82816	Daniel Ricciardo	1.0	auto
+ZhouGuanyu	Zhou Guanyu	2023	Q17327107	Zhou Guanyu	1.0	auto
+KevinMagnussen	Kevin Magnussen	2023	Q1740212	Kevin Magnussen	1.0	auto
+LiamLawson	Liam Lawson	2023	Q59180330	Liam Lawson	1.0	auto
+LoganSargeant	Logan Sargeant	2023	Q28037494	Logan Sargeant	1.0	auto
+NyckDeVries	Nyck De Vries	2023	Q771382	Nyck de Vries	1.0	auto
+MaxVerstappen	Max Verstappen	2024	Q2239218	Max Verstappen	1.0	auto
+LandoNorris	Lando Norris	2024	Q22007193	Lando Norris	1.0	auto
+CharlesLeclerc	Charles Leclerc	2024	Q17541912	Charles Leclerc	1.0	auto
+OscarPiastri	Oscar Piastri	2024	Q28741262	Oscar Piastri	1.0	auto
+CarlosSainz	Carlos Sainz	2024	Q544856	Carlos Sainz Jr.	0.8	auto
+GeorgeRussell	George Russell	2024	Q17319645	George Russell	1.0	auto
+LewisHamilton	Lewis Hamilton	2024	Q9673	Lewis Hamilton	1.0	auto
+SergioPerez	Sergio Perez	2024	Q82805	Sergio Pérez	0.8	auto
+FernandoAlonso	Fernando Alonso	2024	Q10514	Fernando Alonso	1.0	auto
+PierreGasly	Pierre Gasly	2024	Q11816647	Pierre Gasly	1.0	auto
+NicoHulkenberg	Nico Hulkenberg	2024	Q76547	Nico Hülkenberg	0.8	auto
+YukiTsunoda	Yuki Tsunoda	2024	Q59209579	Yuki Tsunoda	1.0	auto
+LanceStroll	Lance Stroll	2024	Q16238921	Lance Stroll	1.0	auto
+EstebanOcon	Esteban Ocon	2024	Q15074165	Esteban Ocon	1.0	auto
+KevinMagnussen	Kevin Magnussen	2024	Q1740212	Kevin Magnussen	1.0	auto
+AlexanderAlbon	Alexander Albon	2024	Q16149172	Alexander Albon	1.0	auto
+DanielRicciardo	Daniel Ricciardo	2024	Q82816	Daniel Ricciardo	1.0	auto
+OliverBearman	Oliver Bearman	2024	Q107023292	Oliver Bearman	1.0	auto
+FrancoColapinto	Franco Colapinto	2024	Q88463514	Franco Colapinto	1.0	auto
+ZhouGuanyu	Zhou Guanyu	2024	Q17327107	Zhou Guanyu	1.0	auto
+LiamLawson	Liam Lawson	2024	Q59180330	Liam Lawson	1.0	auto
+ValtteriBottas	Valtteri Bottas	2024	Q138745	Valtteri Bottas	1.0	auto
+LoganSargeant	Logan Sargeant	2024	Q28037494	Logan Sargeant	1.0	auto
+JackDoohan	Jack Doohan	2024	Q81453998	Jack Doohan	1.0	auto
+LandoNorris	Lando Norris	2025	Q22007193	Lando Norris	1.0	auto
+MaxVerstappen	Max Verstappen	2025	Q2239218	Max Verstappen	1.0	auto
+OscarPiastri	Oscar Piastri	2025	Q28741262	Oscar Piastri	1.0	auto
+GeorgeRussell	George Russell	2025	Q17319645	George Russell	1.0	auto
+CharlesLeclerc	Charles Leclerc	2025	Q17541912	Charles Leclerc	1.0	auto
+LewisHamilton	Lewis Hamilton	2025	Q9673	Lewis Hamilton	1.0	auto
+KimiAntonelli	Kimi Antonelli	2025	Q112073790	Andrea Kimi Antonelli	0.8	auto
+AlexanderAlbon	Alexander Albon	2025	Q16149172	Alexander Albon	1.0	auto
+CarlosSainz	Carlos Sainz	2025	Q544856	Carlos Sainz Jr.	0.8	auto
+FernandoAlonso	Fernando Alonso	2025	Q10514	Fernando Alonso	1.0	auto
+NicoHulkenberg	Nico Hulkenberg	2025	Q76547	Nico Hülkenberg	0.8	auto
+IsackHadjar	Isack Hadjar	2025	Q105071364	Isack Hadjar	1.0	auto
+OliverBearman	Oliver Bearman	2025	Q107023292	Oliver Bearman	1.0	auto
+LiamLawson	Liam Lawson	2025	Q59180330	Liam Lawson	1.0	auto
+EstebanOcon	Esteban Ocon	2025	Q15074165	Esteban Ocon	1.0	auto
+LanceStroll	Lance Stroll	2025	Q16238921	Lance Stroll	1.0	auto
+YukiTsunoda	Yuki Tsunoda	2025	Q59209579	Yuki Tsunoda	1.0	auto
+PierreGasly	Pierre Gasly	2025	Q11816647	Pierre Gasly	1.0	auto
+GabrielBortoleto	Gabriel Bortoleto	2025	Q106641273	Gabriel Bortoleto	1.0	auto
+FrancoColapinto	Franco Colapinto	2025	Q88463514	Franco Colapinto	1.0	auto
+JackDoohan	Jack Doohan	2025	Q81453998	Jack Doohan	1.0	auto
+GeorgeRussell	George Russell	2026	Q17319645	George Russell	1.0	auto
+KimiAntonelli	Kimi Antonelli	2026	Q112073790	Andrea Kimi Antonelli	0.8	auto
+CharlesLeclerc	Charles Leclerc	2026	Q17541912	Charles Leclerc	1.0	auto
+LewisHamilton	Lewis Hamilton	2026	Q9673	Lewis Hamilton	1.0	auto
+OliverBearman	Oliver Bearman	2026	Q107023292	Oliver Bearman	1.0	auto
+LandoNorris	Lando Norris	2026	Q22007193	Lando Norris	1.0	auto
+PierreGasly	Pierre Gasly	2026	Q11816647	Pierre Gasly	1.0	auto
+MaxVerstappen	Max Verstappen	2026	Q2239218	Max Verstappen	1.0	auto
+LiamLawson	Liam Lawson	2026	Q59180330	Liam Lawson	1.0	auto
+ArvidLindblad	Arvid Lindblad	2026	Q117035650	Arvid Lindblad	1.0	auto
+IsackHadjar	Isack Hadjar	2026	Q105071364	Isack Hadjar	1.0	auto
+OscarPiastri	Oscar Piastri	2026	Q28741262	Oscar Piastri	1.0	auto
+CarlosSainz	Carlos Sainz	2026	Q544856	Carlos Sainz Jr.	0.8	auto
+GabrielBortoleto	Gabriel Bortoleto	2026	Q106641273	Gabriel Bortoleto	1.0	auto
+FrancoColapinto	Franco Colapinto	2026	Q88463514	Franco Colapinto	1.0	auto
+EstebanOcon	Esteban Ocon	2026	Q15074165	Esteban Ocon	1.0	auto
+NicoHulkenberg	Nico Hulkenberg	2026	Q76547	Nico Hülkenberg	0.8	auto
+AlexanderAlbon	Alexander Albon	2026	Q16149172	Alexander Albon	1.0	auto
+ValtteriBottas	Valtteri Bottas	2026	Q138745	Valtteri Bottas	1.0	auto
+SergioPerez	Sergio Perez	2026	Q82805	Sergio Pérez	0.8	auto
+FernandoAlonso	Fernando Alonso	2026	Q10514	Fernando Alonso	1.0	auto
+LanceStroll	Lance Stroll	2026	Q16238921	Lance Stroll	1.0	auto

@@ -1,0 +1,156 @@
+[
+  {
+    "position": 1,
+    "name": "Max Verstappen",
+    "nationality_code": "NED",
+    "team": "Red Bull Racing",
+    "points": 575
+  },
+  {
+    "position": 2,
+    "name": "Sergio Perez",
+    "nationality_code": "MEX",
+    "team": "Red Bull Racing",
+    "points": 285
+  },
+  {
+    "position": 3,
+    "name": "Lewis Hamilton",
+    "nationality_code": "GBR",
+    "team": "Mercedes",
+    "points": 234
+  },
+  {
+    "position": 4,
+    "name": "Fernando Alonso",
+    "nationality_code": "ESP",
+    "team": "Aston Martin",
+    "points": 206
+  },
+  {
+    "position": 5,
+    "name": "Charles Leclerc",
+    "nationality_code": "MON",
+    "team": "Ferrari",
+    "points": 206
+  },
+  {
+    "position": 6,
+    "name": "Lando Norris",
+    "nationality_code": "GBR",
+    "team": "McLaren",
+    "points": 205
+  },
+  {
+    "position": 7,
+    "name": "Carlos Sainz",
+    "nationality_code": "ESP",
+    "team": "Ferrari",
+    "points": 200
+  },
+  {
+    "position": 8,
+    "name": "George Russell",
+    "nationality_code": "GBR",
+    "team": "Mercedes",
+    "points": 175
+  },
+  {
+    "position": 9,
+    "name": "Oscar Piastri",
+    "nationality_code": "AUS",
+    "team": "McLaren",
+    "points": 97
+  },
+  {
+    "position": 10,
+    "name": "Lance Stroll",
+    "nationality_code": "CAN",
+    "team": "Aston Martin",
+    "points": 74
+  },
+  {
+    "position": 11,
+    "name": "Pierre Gasly",
+    "nationality_code": "FRA",
+    "team": "Alpine",
+    "points": 62
+  },
+  {
+    "position": 12,
+    "name": "Esteban Ocon",
+    "nationality_code": "FRA",
+    "team": "Alpine",
+    "points": 58
+  },
+  {
+    "position": 13,
+    "name": "Alexander Albon",
+    "nationality_code": "THA",
+    "team": "Williams",
+    "points": 27
+  },
+  {
+    "position": 14,
+    "name": "Yuki Tsunoda",
+    "nationality_code": "JPN",
+    "team": "AlphaTauri",
+    "points": 17
+  },
+  {
+    "position": 15,
+    "name": "Valtteri Bottas",
+    "nationality_code": "FIN",
+    "team": "Alfa Romeo",
+    "points": 10
+  },
+  {
+    "position": 16,
+    "name": "Nico Hulkenberg",
+    "nationality_code": "GER",
+    "team": "Haas",
+    "points": 9
+  },
+  {
+    "position": 17,
+    "name": "Daniel Ricciardo",
+    "nationality_code": "AUS",
+    "team": "AlphaTauri",
+    "points": 6
+  },
+  {
+    "position": 18,
+    "name": "Zhou Guanyu",
+    "nationality_code": "CHN",
+    "team": "Alfa Romeo",
+    "points": 6
+  },
+  {
+    "position": 19,
+    "name": "Kevin Magnussen",
+    "nationality_code": "DEN",
+    "team": "Haas",
+    "points": 3
+  },
+  {
+    "position": 20,
+    "name": "Liam Lawson",
+    "nationality_code": "NZL",
+    "team": "AlphaTauri",
+    "points": 2
+  },
+  {
+    "position": 21,
+    "name": "Logan Sargeant",
+    "nationality_code": "USA",
+    "team": "Williams",
+    "points": 1
+  },
+  {
+    "position": 22,
+    "name": "Nyck De Vries",
+    "nationality_code": "NED",
+    "team": "AlphaTauri",
+    "points": 0
+  }
+]

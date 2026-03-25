@@ -1,32 +1,51 @@
-########################
-# REASONING CLASSES
-########################
+@prefix ex:   <http://example.org/f1#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
 
-ex:RaceWinner a owl:Class ;
-    rdfs:subClassOf ex:Driver .
+ex:F1Ontology a owl:Ontology ;
+    rdfs:label "Formula 1 Knowledge Graph Ontology"@en .
 
-########################
-# LOGICAL RULE (OWL)
-########################
+ex:Driver a owl:Class .
+ex:Team a owl:Class .
+ex:Season a owl:Class .
+ex:GrandPrix a owl:Class .
+ex:RaceResult a owl:Class .
+ex:DriverStanding a owl:Class .
 
-# Un RaceWinner = Driver qui a au moins une position 1
+ex:drivesFor a owl:ObjectProperty ;
+    rdfs:domain ex:Driver ;
+    rdfs:range ex:Team .
 
-ex:RaceWinner owl:equivalentClass [
-    a owl:Class ;
-    owl:intersectionOf (
-        ex:Driver
-        [ a owl:Restriction ;
-          owl:onProperty ex:hasResult ;
-          owl:someValuesFrom [
-              a owl:Class ;
-              owl:intersectionOf (
-                  ex:RaceResult
-                  [ a owl:Restriction ;
-                    owl:onProperty ex:finishPosition ;
-                    owl:hasValue 1
-                  ]
-              )
-          ]
-        ]
-    )
-] . 
+ex:competesInSeason a owl:ObjectProperty ;
+    rdfs:domain ex:Driver ;
+    rdfs:range ex:Season .
+
+ex:hasStanding a owl:ObjectProperty ;
+    rdfs:domain ex:Driver ;
+    rdfs:range ex:DriverStanding .
+
+ex:forDriver a owl:ObjectProperty ;
+    rdfs:domain ex:DriverStanding ;
+    rdfs:range ex:Driver .
+
+ex:forSeason a owl:ObjectProperty ;
+    rdfs:domain ex:DriverStanding ;
+    rdfs:range ex:Season .
+
+ex:name a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+ex:nationality a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+ex:seasonYear a owl:DatatypeProperty ;
+    rdfs:range xsd:int .
+
+ex:standingPosition a owl:DatatypeProperty ;
+    rdfs:range xsd:int .
+
+ex:standingPoints a owl:DatatypeProperty ;
+    rdfs:range xsd:decimal .
