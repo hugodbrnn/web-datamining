@@ -1,388 +1,137 @@
 @prefix ex: <http://example.org/f1#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix wd: <http://www.wikidata.org/entity/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 ex:F1Ontology a owl:Ontology ;
-    rdfs:label "Formula 1 Knowledge Graph Ontology"@en .
-
-ex:GrandPrix a owl:Class .
-
-ex:RaceResult a owl:Class .
-
-ex:TeamStanding_2022_AlfaRomeo a ex:TeamStanding ;
-    ex:forSeason ex:Season2022 ;
-    ex:forTeam ex:AlfaRomeo ;
-    ex:standingPoints 55.0 ;
-    ex:standingPosition "6"^^xsd:int .
-
-ex:TeamStanding_2022_AlphaTauri a ex:TeamStanding ;
-    ex:forSeason ex:Season2022 ;
-    ex:forTeam ex:AlphaTauri ;
-    ex:standingPoints 35.0 ;
-    ex:standingPosition "9"^^xsd:int .
-
-ex:TeamStanding_2022_Alpine a ex:TeamStanding ;
-    ex:forSeason ex:Season2022 ;
-    ex:forTeam ex:Alpine ;
-    ex:standingPoints 173.0 ;
-    ex:standingPosition "4"^^xsd:int .
-
-ex:TeamStanding_2022_AstonMartin a ex:TeamStanding ;
-    ex:forSeason ex:Season2022 ;
-    ex:forTeam ex:AstonMartin ;
-    ex:standingPoints 55.0 ;
-    ex:standingPosition "7"^^xsd:int .
-
-ex:TeamStanding_2022_Ferrari a ex:TeamStanding ;
-    ex:forSeason ex:Season2022 ;
-    ex:forTeam ex:Ferrari ;
-    ex:standingPoints 554.0 ;
-    ex:standingPosition "2"^^xsd:int .
-
-ex:TeamStanding_2022_Haas a ex:TeamStanding ;
-    ex:forSeason ex:Season2022 ;
-    ex:forTeam ex:Haas ;
-    ex:standingPoints 37.0 ;
-    ex:standingPosition "8"^^xsd:int .
-
-ex:TeamStanding_2022_McLaren a ex:TeamStanding ;
-    ex:forSeason ex:Season2022 ;
-    ex:forTeam ex:McLaren ;
-    ex:standingPoints 159.0 ;
-    ex:standingPosition "5"^^xsd:int .
-
-ex:TeamStanding_2022_Mercedes a ex:TeamStanding ;
-    ex:forSeason ex:Season2022 ;
-    ex:forTeam ex:Mercedes ;
-    ex:standingPoints 515.0 ;
-    ex:standingPosition "3"^^xsd:int .
-
-ex:TeamStanding_2022_RedBullRacing a ex:TeamStanding ;
-    ex:forSeason ex:Season2022 ;
-    ex:forTeam ex:RedBullRacing ;
-    ex:standingPoints 759.0 ;
-    ex:standingPosition "1"^^xsd:int .
-
-ex:TeamStanding_2022_Williams a ex:TeamStanding ;
-    ex:forSeason ex:Season2022 ;
-    ex:forTeam ex:Williams ;
-    ex:standingPoints 8.0 ;
-    ex:standingPosition "10"^^xsd:int .
-
-ex:TeamStanding_2023_AlfaRomeo a ex:TeamStanding ;
-    ex:forSeason ex:Season2023 ;
-    ex:forTeam ex:AlfaRomeo ;
-    ex:standingPoints 16.0 ;
-    ex:standingPosition "9"^^xsd:int .
-
-ex:TeamStanding_2023_AlphaTauri a ex:TeamStanding ;
-    ex:forSeason ex:Season2023 ;
-    ex:forTeam ex:AlphaTauri ;
-    ex:standingPoints 25.0 ;
-    ex:standingPosition "8"^^xsd:int .
-
-ex:TeamStanding_2023_Alpine a ex:TeamStanding ;
-    ex:forSeason ex:Season2023 ;
-    ex:forTeam ex:Alpine ;
-    ex:standingPoints 120.0 ;
-    ex:standingPosition "6"^^xsd:int .
-
-ex:TeamStanding_2023_AstonMartin a ex:TeamStanding ;
-    ex:forSeason ex:Season2023 ;
-    ex:forTeam ex:AstonMartin ;
-    ex:standingPoints 280.0 ;
-    ex:standingPosition "5"^^xsd:int .
-
-ex:TeamStanding_2023_Ferrari a ex:TeamStanding ;
-    ex:forSeason ex:Season2023 ;
-    ex:forTeam ex:Ferrari ;
-    ex:standingPoints 406.0 ;
-    ex:standingPosition "3"^^xsd:int .
-
-ex:TeamStanding_2023_Haas a ex:TeamStanding ;
-    ex:forSeason ex:Season2023 ;
-    ex:forTeam ex:Haas ;
-    ex:standingPoints 12.0 ;
-    ex:standingPosition "10"^^xsd:int .
-
-ex:TeamStanding_2023_McLaren a ex:TeamStanding ;
-    ex:forSeason ex:Season2023 ;
-    ex:forTeam ex:McLaren ;
-    ex:standingPoints 302.0 ;
-    ex:standingPosition "4"^^xsd:int .
-
-ex:TeamStanding_2023_Mercedes a ex:TeamStanding ;
-    ex:forSeason ex:Season2023 ;
-    ex:forTeam ex:Mercedes ;
-    ex:standingPoints 409.0 ;
-    ex:standingPosition "2"^^xsd:int .
-
-ex:TeamStanding_2023_RedBullRacing a ex:TeamStanding ;
-    ex:forSeason ex:Season2023 ;
-    ex:forTeam ex:RedBullRacing ;
-    ex:standingPoints 860.0 ;
-    ex:standingPosition "1"^^xsd:int .
-
-ex:TeamStanding_2023_Williams a ex:TeamStanding ;
-    ex:forSeason ex:Season2023 ;
-    ex:forTeam ex:Williams ;
-    ex:standingPoints 28.0 ;
-    ex:standingPosition "7"^^xsd:int .
-
-ex:TeamStanding_2024_Alpine a ex:TeamStanding ;
-    ex:forSeason ex:Season2024 ;
-    ex:forTeam ex:Alpine ;
-    ex:standingPoints 65.0 ;
-    ex:standingPosition "6"^^xsd:int .
-
-ex:TeamStanding_2024_AstonMartin a ex:TeamStanding ;
-    ex:forSeason ex:Season2024 ;
-    ex:forTeam ex:AstonMartin ;
-    ex:standingPoints 94.0 ;
-    ex:standingPosition "5"^^xsd:int .
-
-ex:TeamStanding_2024_Ferrari a ex:TeamStanding ;
-    ex:forSeason ex:Season2024 ;
-    ex:forTeam ex:Ferrari ;
-    ex:standingPoints 652.0 ;
-    ex:standingPosition "2"^^xsd:int .
-
-ex:TeamStanding_2024_Haas a ex:TeamStanding ;
-    ex:forSeason ex:Season2024 ;
-    ex:forTeam ex:Haas ;
-    ex:standingPoints 58.0 ;
-    ex:standingPosition "7"^^xsd:int .
-
-ex:TeamStanding_2024_KickSauber a ex:TeamStanding ;
-    ex:forSeason ex:Season2024 ;
-    ex:forTeam ex:KickSauber ;
-    ex:standingPoints 4.0 ;
-    ex:standingPosition "10"^^xsd:int .
-
-ex:TeamStanding_2024_McLaren a ex:TeamStanding ;
-    ex:forSeason ex:Season2024 ;
-    ex:forTeam ex:McLaren ;
-    ex:standingPoints 666.0 ;
-    ex:standingPosition "1"^^xsd:int .
-
-ex:TeamStanding_2024_Mercedes a ex:TeamStanding ;
-    ex:forSeason ex:Season2024 ;
-    ex:forTeam ex:Mercedes ;
-    ex:standingPoints 468.0 ;
-    ex:standingPosition "4"^^xsd:int .
-
-ex:TeamStanding_2024_RB a ex:TeamStanding ;
-    ex:forSeason ex:Season2024 ;
-    ex:forTeam ex:RB ;
-    ex:standingPoints 46.0 ;
-    ex:standingPosition "8"^^xsd:int .
-
-ex:TeamStanding_2024_RedBullRacing a ex:TeamStanding ;
-    ex:forSeason ex:Season2024 ;
-    ex:forTeam ex:RedBullRacing ;
-    ex:standingPoints 589.0 ;
-    ex:standingPosition "3"^^xsd:int .
-
-ex:TeamStanding_2024_Williams a ex:TeamStanding ;
-    ex:forSeason ex:Season2024 ;
-    ex:forTeam ex:Williams ;
-    ex:standingPoints 17.0 ;
-    ex:standingPosition "9"^^xsd:int .
-
-ex:TeamStanding_2025_Alpine a ex:TeamStanding ;
-    ex:forSeason ex:Season2025 ;
-    ex:forTeam ex:Alpine ;
-    ex:standingPoints 22.0 ;
-    ex:standingPosition "10"^^xsd:int .
-
-ex:TeamStanding_2025_AstonMartin a ex:TeamStanding ;
-    ex:forSeason ex:Season2025 ;
-    ex:forTeam ex:AstonMartin ;
-    ex:standingPoints 89.0 ;
-    ex:standingPosition "7"^^xsd:int .
-
-ex:TeamStanding_2025_Ferrari a ex:TeamStanding ;
-    ex:forSeason ex:Season2025 ;
-    ex:forTeam ex:Ferrari ;
-    ex:standingPoints 398.0 ;
-    ex:standingPosition "4"^^xsd:int .
-
-ex:TeamStanding_2025_HaasF1Team a ex:TeamStanding ;
-    ex:forSeason ex:Season2025 ;
-    ex:forTeam ex:HaasF1Team ;
-    ex:standingPoints 79.0 ;
-    ex:standingPosition "8"^^xsd:int .
-
-ex:TeamStanding_2025_KickSauber a ex:TeamStanding ;
-    ex:forSeason ex:Season2025 ;
-    ex:forTeam ex:KickSauber ;
-    ex:standingPoints 70.0 ;
-    ex:standingPosition "9"^^xsd:int .
-
-ex:TeamStanding_2025_McLaren a ex:TeamStanding ;
-    ex:forSeason ex:Season2025 ;
-    ex:forTeam ex:McLaren ;
-    ex:standingPoints 833.0 ;
-    ex:standingPosition "1"^^xsd:int .
-
-ex:TeamStanding_2025_Mercedes a ex:TeamStanding ;
-    ex:forSeason ex:Season2025 ;
-    ex:forTeam ex:Mercedes ;
-    ex:standingPoints 469.0 ;
-    ex:standingPosition "2"^^xsd:int .
-
-ex:TeamStanding_2025_RacingBulls a ex:TeamStanding ;
-    ex:forSeason ex:Season2025 ;
-    ex:forTeam ex:RacingBulls ;
-    ex:standingPoints 92.0 ;
-    ex:standingPosition "6"^^xsd:int .
-
-ex:TeamStanding_2025_RedBullRacing a ex:TeamStanding ;
-    ex:forSeason ex:Season2025 ;
-    ex:forTeam ex:RedBullRacing ;
-    ex:standingPoints 451.0 ;
-    ex:standingPosition "3"^^xsd:int .
-
-ex:TeamStanding_2025_Williams a ex:TeamStanding ;
-    ex:forSeason ex:Season2025 ;
-    ex:forTeam ex:Williams ;
-    ex:standingPoints 137.0 ;
-    ex:standingPosition "5"^^xsd:int .
-
-ex:TeamStanding_2026_Alpine a ex:TeamStanding ;
-    ex:forSeason ex:Season2026 ;
-    ex:forTeam ex:Alpine ;
-    ex:standingPoints 10.0 ;
-    ex:standingPosition "7"^^xsd:int .
-
-ex:TeamStanding_2026_AstonMartin a ex:TeamStanding ;
-    ex:forSeason ex:Season2026 ;
-    ex:forTeam ex:AstonMartin ;
-    ex:standingPoints 0.0 ;
-    ex:standingPosition "11"^^xsd:int .
-
-ex:TeamStanding_2026_Audi a ex:TeamStanding ;
-    ex:forSeason ex:Season2026 ;
-    ex:forTeam ex:Audi ;
-    ex:standingPoints 2.0 ;
-    ex:standingPosition "8"^^xsd:int .
-
-ex:TeamStanding_2026_Cadillac a ex:TeamStanding ;
-    ex:forSeason ex:Season2026 ;
-    ex:forTeam ex:Cadillac ;
-    ex:standingPoints 0.0 ;
-    ex:standingPosition "10"^^xsd:int .
-
-ex:TeamStanding_2026_Ferrari a ex:TeamStanding ;
-    ex:forSeason ex:Season2026 ;
-    ex:forTeam ex:Ferrari ;
-    ex:standingPoints 67.0 ;
-    ex:standingPosition "2"^^xsd:int .
-
-ex:TeamStanding_2026_HaasF1Team a ex:TeamStanding ;
-    ex:forSeason ex:Season2026 ;
-    ex:forTeam ex:HaasF1Team ;
-    ex:standingPoints 17.0 ;
-    ex:standingPosition "4"^^xsd:int .
-
-ex:TeamStanding_2026_McLaren a ex:TeamStanding ;
-    ex:forSeason ex:Season2026 ;
-    ex:forTeam ex:McLaren ;
-    ex:standingPoints 18.0 ;
-    ex:standingPosition "3"^^xsd:int .
-
-ex:TeamStanding_2026_Mercedes a ex:TeamStanding ;
-    ex:forSeason ex:Season2026 ;
-    ex:forTeam ex:Mercedes ;
-    ex:standingPoints 98.0 ;
-    ex:standingPosition "1"^^xsd:int .
-
-ex:TeamStanding_2026_RacingBulls a ex:TeamStanding ;
-    ex:forSeason ex:Season2026 ;
-    ex:forTeam ex:RacingBulls ;
-    ex:standingPoints 12.0 ;
-    ex:standingPosition "6"^^xsd:int .
-
-ex:TeamStanding_2026_RedBullRacing a ex:TeamStanding ;
-    ex:forSeason ex:Season2026 ;
-    ex:forTeam ex:RedBullRacing ;
-    ex:standingPoints 12.0 ;
-    ex:standingPosition "5"^^xsd:int .
-
-ex:TeamStanding_2026_Williams a ex:TeamStanding ;
-    ex:forSeason ex:Season2026 ;
-    ex:forTeam ex:Williams ;
-    ex:standingPoints 2.0 ;
-    ex:standingPosition "9"^^xsd:int .
+    rdfs:label "Formula 1 Knowledge Graph Ontology"@en ;
+    rdfs:comment "Operational schema for the F1 KG project. Covers drivers, teams, seasons, races, circuits, results and standings. Rolling 5-season window (current + 4 previous)."@en .
 
 ex:competesInSeason a owl:ObjectProperty ;
+    rdfs:label "competes in season"@en ;
     rdfs:domain ex:Driver ;
     rdfs:range ex:Season .
 
 ex:drivesFor a owl:ObjectProperty ;
+    rdfs:label "drives for"@en ;
+    rdfs:comment "Links a driver to their current or most recent team."@en ;
     rdfs:domain ex:Driver ;
     rdfs:range ex:Team .
 
+ex:finishPosition a owl:DatatypeProperty ;
+    rdfs:label "finish position"@en ;
+    rdfs:domain ex:RaceResult ;
+    rdfs:range xsd:int .
+
 ex:forDriver a owl:ObjectProperty ;
-    rdfs:domain ex:DriverStanding ;
+    rdfs:label "for driver"@en ;
+    rdfs:domain [ owl:unionOf ( ex:DriverStanding ex:RaceResult ) ] ;
     rdfs:range ex:Driver .
 
+ex:forGrandPrix a owl:ObjectProperty ;
+    rdfs:label "for Grand Prix"@en ;
+    rdfs:domain ex:RaceResult ;
+    rdfs:range ex:GrandPrix .
+
 ex:forSeason a owl:ObjectProperty ;
-    rdfs:domain ex:DriverStanding ;
+    rdfs:label "for season"@en ;
+    rdfs:domain [ owl:unionOf ( ex:DriverStanding ex:TeamStanding ) ] ;
     rdfs:range ex:Season .
 
+ex:forTeam a owl:ObjectProperty ;
+    rdfs:label "for team"@en ;
+    rdfs:domain ex:TeamStanding ;
+    rdfs:range ex:Team .
+
+ex:hasRace a owl:ObjectProperty ;
+    rdfs:label "has race"@en ;
+    rdfs:domain ex:Season ;
+    rdfs:range ex:GrandPrix .
+
+ex:hasResult a owl:ObjectProperty ;
+    rdfs:label "has result"@en ;
+    rdfs:domain ex:GrandPrix ;
+    rdfs:range ex:RaceResult .
+
 ex:hasStanding a owl:ObjectProperty ;
+    rdfs:label "has standing"@en ;
     rdfs:domain ex:Driver ;
     rdfs:range ex:DriverStanding .
 
-ex:name a owl:DatatypeProperty ;
+ex:heldAtCircuit a owl:ObjectProperty ;
+    rdfs:label "held at circuit"@en ;
+    rdfs:domain ex:GrandPrix ;
+    rdfs:range ex:Circuit .
+
+ex:name a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "name"@en ;
     rdfs:range xsd:string .
 
 ex:nationality a owl:DatatypeProperty ;
+    rdfs:label "nationality"@en ;
+    rdfs:comment "ISO 3166-1 alpha-3 nationality code (e.g. GBR, NED, FRA)."@en ;
     rdfs:range xsd:string .
 
-ex:seasonYear a owl:DatatypeProperty ;
+ex:points a owl:DatatypeProperty ;
+    rdfs:label "points"@en ;
+    rdfs:domain ex:RaceResult ;
+    rdfs:range xsd:decimal .
+
+ex:seasonYear a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "season year"@en ;
+    rdfs:domain ex:Season ;
     rdfs:range xsd:int .
 
 ex:standingPoints a owl:DatatypeProperty ;
+    rdfs:label "standing points"@en ;
+    rdfs:domain [ owl:unionOf ( ex:DriverStanding ex:TeamStanding ) ] ;
     rdfs:range xsd:decimal .
 
 ex:standingPosition a owl:DatatypeProperty ;
+    rdfs:label "standing position"@en ;
+    rdfs:domain [ owl:unionOf ( ex:DriverStanding ex:TeamStanding ) ] ;
     rdfs:range xsd:int .
+
+ex:teammateOf a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "teammate of"@en ;
+    rdfs:domain ex:Driver ;
+    rdfs:range ex:Driver .
 
 ex:ArvidLindblad a ex:Driver ;
     ex:competesInSeason ex:Season2026 ;
     ex:drivesFor ex:RacingBulls ;
     ex:hasStanding ex:Standing_2026_ArvidLindblad ;
     ex:name "Arvid Lindblad" ;
-    ex:nationality "GBR" ;
-    owl:sameAs wd:Q117035650 .
+    ex:nationality "GBR" .
+
+ex:Circuit a owl:Class ;
+    rdfs:label "Circuit"@en ;
+    rdfs:comment "A racing circuit that hosts a Grand Prix."@en .
 
 ex:MickSchumacher a ex:Driver ;
     ex:competesInSeason ex:Season2022 ;
     ex:drivesFor ex:Haas ;
     ex:hasStanding ex:Standing_2022_MickSchumacher ;
     ex:name "Mick Schumacher" ;
-    ex:nationality "GER" ;
-    owl:sameAs wd:Q18119599 .
+    ex:nationality "GER" .
 
 ex:NicholasLatifi a ex:Driver ;
     ex:competesInSeason ex:Season2022 ;
     ex:drivesFor ex:Williams ;
     ex:hasStanding ex:Standing_2022_NicholasLatifi ;
     ex:name "Nicholas Latifi" ;
-    ex:nationality "CAN" ;
-    owl:sameAs wd:Q8898994 .
+    ex:nationality "CAN" .
 
 ex:SebastianVettel a ex:Driver ;
     ex:competesInSeason ex:Season2022 ;
     ex:drivesFor ex:AstonMartin ;
     ex:hasStanding ex:Standing_2022_SebastianVettel ;
     ex:name "Sebastian Vettel" ;
-    ex:nationality "GER" ;
-    owl:sameAs wd:Q42311 .
+    ex:nationality "GER" .
 
 ex:Standing_2022_AlexanderAlbon a ex:DriverStanding ;
     ex:forDriver ex:AlexanderAlbon ;
@@ -1050,6 +799,15 @@ ex:Standing_2026_ValtteriBottas a ex:DriverStanding ;
     ex:standingPoints 0.0 ;
     ex:standingPosition "19"^^xsd:int .
 
+ex:AlfaRomeo a ex:Team ;
+    ex:name "Alfa Romeo" .
+
+ex:Audi a ex:Team ;
+    ex:name "Audi" .
+
+ex:Cadillac a ex:Team ;
+    ex:name "Cadillac" .
+
 ex:GabrielBortoleto a ex:Driver ;
     ex:competesInSeason ex:Season2025,
         ex:Season2026 ;
@@ -1058,8 +816,10 @@ ex:GabrielBortoleto a ex:Driver ;
     ex:hasStanding ex:Standing_2025_GabrielBortoleto,
         ex:Standing_2026_GabrielBortoleto ;
     ex:name "Gabriel Bortoleto" ;
-    ex:nationality "BRA" ;
-    owl:sameAs wd:Q106641273 .
+    ex:nationality "BRA" .
+
+ex:HaasF1Team a ex:Team ;
+    ex:name "Haas F1 Team" .
 
 ex:IsackHadjar a ex:Driver ;
     ex:competesInSeason ex:Season2025,
@@ -1069,8 +829,7 @@ ex:IsackHadjar a ex:Driver ;
     ex:hasStanding ex:Standing_2025_IsackHadjar,
         ex:Standing_2026_IsackHadjar ;
     ex:name "Isack Hadjar" ;
-    ex:nationality "FRA" ;
-    owl:sameAs wd:Q105071364 .
+    ex:nationality "FRA" .
 
 ex:JackDoohan a ex:Driver ;
     ex:competesInSeason ex:Season2024,
@@ -1079,8 +838,7 @@ ex:JackDoohan a ex:Driver ;
     ex:hasStanding ex:Standing_2024_JackDoohan,
         ex:Standing_2025_JackDoohan ;
     ex:name "Jack Doohan" ;
-    ex:nationality "AUS" ;
-    owl:sameAs wd:Q81453998 .
+    ex:nationality "AUS" .
 
 ex:KimiAntonelli a ex:Driver ;
     ex:competesInSeason ex:Season2025,
@@ -1089,8 +847,7 @@ ex:KimiAntonelli a ex:Driver ;
     ex:hasStanding ex:Standing_2025_KimiAntonelli,
         ex:Standing_2026_KimiAntonelli ;
     ex:name "Kimi Antonelli" ;
-    ex:nationality "ITA" ;
-    owl:sameAs wd:Q112073790 .
+    ex:nationality "ITA" .
 
 ex:LoganSargeant a ex:Driver ;
     ex:competesInSeason ex:Season2023,
@@ -1099,8 +856,7 @@ ex:LoganSargeant a ex:Driver ;
     ex:hasStanding ex:Standing_2023_LoganSargeant,
         ex:Standing_2024_LoganSargeant ;
     ex:name "Logan Sargeant" ;
-    ex:nationality "USA" ;
-    owl:sameAs wd:Q28037494 .
+    ex:nationality "USA" .
 
 ex:NyckDeVries a ex:Driver ;
     ex:competesInSeason ex:Season2022,
@@ -1110,16 +866,7 @@ ex:NyckDeVries a ex:Driver ;
     ex:hasStanding ex:Standing_2022_NyckDeVries,
         ex:Standing_2023_NyckDeVries ;
     ex:name "Nyck De Vries" ;
-    ex:nationality "NED" ;
-    owl:sameAs wd:Q771382 .
-
-ex:Audi a ex:Team ;
-    ex:name "Audi" ;
-    owl:sameAs wd:Q482994 .
-
-ex:Cadillac a ex:Team ;
-    ex:name "Cadillac" ;
-    owl:sameAs wd:Q27436 .
+    ex:nationality "NED" .
 
 ex:DanielRicciardo a ex:Driver ;
     ex:competesInSeason ex:Season2022,
@@ -1132,8 +879,10 @@ ex:DanielRicciardo a ex:Driver ;
         ex:Standing_2023_DanielRicciardo,
         ex:Standing_2024_DanielRicciardo ;
     ex:name "Daniel Ricciardo" ;
-    ex:nationality "AUS" ;
-    owl:sameAs wd:Q82816 .
+    ex:nationality "AUS" .
+
+ex:Ferrari a ex:Team ;
+    ex:name "Ferrari" .
 
 ex:FrancoColapinto a ex:Driver ;
     ex:competesInSeason ex:Season2024,
@@ -1145,8 +894,7 @@ ex:FrancoColapinto a ex:Driver ;
         ex:Standing_2025_FrancoColapinto,
         ex:Standing_2026_FrancoColapinto ;
     ex:name "Franco Colapinto" ;
-    ex:nationality "ARG" ;
-    owl:sameAs wd:Q88463514 .
+    ex:nationality "ARG" .
 
 ex:KevinMagnussen a ex:Driver ;
     ex:competesInSeason ex:Season2022,
@@ -1157,8 +905,13 @@ ex:KevinMagnussen a ex:Driver ;
         ex:Standing_2023_KevinMagnussen,
         ex:Standing_2024_KevinMagnussen ;
     ex:name "Kevin Magnussen" ;
-    ex:nationality "DEN" ;
-    owl:sameAs wd:Q1740212 .
+    ex:nationality "DEN" .
+
+ex:McLaren a ex:Team ;
+    ex:name "McLaren" .
+
+ex:Mercedes a ex:Team ;
+    ex:name "Mercedes" .
 
 ex:OliverBearman a ex:Driver ;
     ex:competesInSeason ex:Season2024,
@@ -1170,8 +923,13 @@ ex:OliverBearman a ex:Driver ;
         ex:Standing_2025_OliverBearman,
         ex:Standing_2026_OliverBearman ;
     ex:name "Oliver Bearman" ;
-    ex:nationality "GBR" ;
-    owl:sameAs wd:Q107023292 .
+    ex:nationality "GBR" .
+
+ex:RB a ex:Team ;
+    ex:name "RB" .
+
+ex:RacingBulls a ex:Team ;
+    ex:name "Racing Bulls" .
 
 ex:ZhouGuanyu a ex:Driver ;
     ex:competesInSeason ex:Season2022,
@@ -1183,16 +941,20 @@ ex:ZhouGuanyu a ex:Driver ;
         ex:Standing_2023_ZhouGuanyu,
         ex:Standing_2024_ZhouGuanyu ;
     ex:name "Zhou Guanyu" ;
-    ex:nationality "CHN" ;
-    owl:sameAs wd:Q17327107 .
+    ex:nationality "CHN" .
 
-ex:AlfaRomeo a ex:Team ;
-    ex:name "Alfa Romeo" ;
-    owl:sameAs wd:Q26921 .
+ex:AstonMartin a ex:Team ;
+    ex:name "Aston Martin" .
 
-ex:HaasF1Team a ex:Team ;
-    ex:name "Haas F1 Team" ;
-    owl:sameAs wd:Q16300222 .
+ex:GrandPrix a owl:Class ;
+    rdfs:label "Grand Prix"@en ;
+    rdfs:comment "A single Formula 1 race weekend."@en .
+
+ex:Haas a ex:Team ;
+    ex:name "Haas" .
+
+ex:KickSauber a ex:Team ;
+    ex:name "Kick Sauber" .
 
 ex:LiamLawson a ex:Driver ;
     ex:competesInSeason ex:Season2023,
@@ -1207,8 +969,7 @@ ex:LiamLawson a ex:Driver ;
         ex:Standing_2025_LiamLawson,
         ex:Standing_2026_LiamLawson ;
     ex:name "Liam Lawson" ;
-    ex:nationality "NZL" ;
-    owl:sameAs wd:Q59180330 .
+    ex:nationality "NZL" .
 
 ex:OscarPiastri a ex:Driver ;
     ex:competesInSeason ex:Season2023,
@@ -1221,12 +982,10 @@ ex:OscarPiastri a ex:Driver ;
         ex:Standing_2025_OscarPiastri,
         ex:Standing_2026_OscarPiastri ;
     ex:name "Oscar Piastri" ;
-    ex:nationality "AUS" ;
-    owl:sameAs wd:Q28741262 .
+    ex:nationality "AUS" .
 
-ex:RB a ex:Team ;
-    ex:name "RB" ;
-    owl:sameAs wd:Q895 .
+ex:RedBullRacing a ex:Team ;
+    ex:name "Red Bull Racing" .
 
 ex:SergioPerez a ex:Driver ;
     ex:competesInSeason ex:Season2022,
@@ -1240,8 +999,11 @@ ex:SergioPerez a ex:Driver ;
         ex:Standing_2024_SergioPerez,
         ex:Standing_2026_SergioPerez ;
     ex:name "Sergio Perez" ;
-    ex:nationality "MEX" ;
-    owl:sameAs wd:Q82805 .
+    ex:nationality "MEX" .
+
+ex:TeamStanding a owl:Class ;
+    rdfs:label "Team Standing"@en ;
+    rdfs:comment "A team's (constructor) championship standing at the end of a season."@en .
 
 ex:ValtteriBottas a ex:Driver ;
     ex:competesInSeason ex:Season2022,
@@ -1256,8 +1018,7 @@ ex:ValtteriBottas a ex:Driver ;
         ex:Standing_2024_ValtteriBottas,
         ex:Standing_2026_ValtteriBottas ;
     ex:name "Valtteri Bottas" ;
-    ex:nationality "FIN" ;
-    owl:sameAs wd:Q138745 .
+    ex:nationality "FIN" .
 
 ex:YukiTsunoda a ex:Driver ;
     ex:competesInSeason ex:Season2022,
@@ -1272,8 +1033,7 @@ ex:YukiTsunoda a ex:Driver ;
         ex:Standing_2024_YukiTsunoda,
         ex:Standing_2025_YukiTsunoda ;
     ex:name "Yuki Tsunoda" ;
-    ex:nationality "JPN" ;
-    owl:sameAs wd:Q59209579 .
+    ex:nationality "JPN" .
 
 ex:AlexanderAlbon a ex:Driver ;
     ex:competesInSeason ex:Season2022,
@@ -1288,8 +1048,13 @@ ex:AlexanderAlbon a ex:Driver ;
         ex:Standing_2025_AlexanderAlbon,
         ex:Standing_2026_AlexanderAlbon ;
     ex:name "Alexander Albon" ;
-    ex:nationality "THA" ;
-    owl:sameAs wd:Q16149172 .
+    ex:nationality "THA" .
+
+ex:AlphaTauri a ex:Team ;
+    ex:name "AlphaTauri" .
+
+ex:Alpine a ex:Team ;
+    ex:name "Alpine" .
 
 ex:CarlosSainz a ex:Driver ;
     ex:competesInSeason ex:Season2022,
@@ -1305,8 +1070,7 @@ ex:CarlosSainz a ex:Driver ;
         ex:Standing_2025_CarlosSainz,
         ex:Standing_2026_CarlosSainz ;
     ex:name "Carlos Sainz" ;
-    ex:nationality "ESP" ;
-    owl:sameAs wd:Q544856 .
+    ex:nationality "ESP" .
 
 ex:CharlesLeclerc a ex:Driver ;
     ex:competesInSeason ex:Season2022,
@@ -1321,8 +1085,7 @@ ex:CharlesLeclerc a ex:Driver ;
         ex:Standing_2025_CharlesLeclerc,
         ex:Standing_2026_CharlesLeclerc ;
     ex:name "Charles Leclerc" ;
-    ex:nationality "MON" ;
-    owl:sameAs wd:Q17541912 .
+    ex:nationality "MON" .
 
 ex:EstebanOcon a ex:Driver ;
     ex:competesInSeason ex:Season2022,
@@ -1338,8 +1101,7 @@ ex:EstebanOcon a ex:Driver ;
         ex:Standing_2025_EstebanOcon,
         ex:Standing_2026_EstebanOcon ;
     ex:name "Esteban Ocon" ;
-    ex:nationality "FRA" ;
-    owl:sameAs wd:Q15074165 .
+    ex:nationality "FRA" .
 
 ex:FernandoAlonso a ex:Driver ;
     ex:competesInSeason ex:Season2022,
@@ -1355,8 +1117,7 @@ ex:FernandoAlonso a ex:Driver ;
         ex:Standing_2025_FernandoAlonso,
         ex:Standing_2026_FernandoAlonso ;
     ex:name "Fernando Alonso" ;
-    ex:nationality "ESP" ;
-    owl:sameAs wd:Q10514 .
+    ex:nationality "ESP" .
 
 ex:GeorgeRussell a ex:Driver ;
     ex:competesInSeason ex:Season2022,
@@ -1371,8 +1132,7 @@ ex:GeorgeRussell a ex:Driver ;
         ex:Standing_2025_GeorgeRussell,
         ex:Standing_2026_GeorgeRussell ;
     ex:name "George Russell" ;
-    ex:nationality "GBR" ;
-    owl:sameAs wd:Q17319645 .
+    ex:nationality "GBR" .
 
 ex:LanceStroll a ex:Driver ;
     ex:competesInSeason ex:Season2022,
@@ -1387,8 +1147,7 @@ ex:LanceStroll a ex:Driver ;
         ex:Standing_2025_LanceStroll,
         ex:Standing_2026_LanceStroll ;
     ex:name "Lance Stroll" ;
-    ex:nationality "CAN" ;
-    owl:sameAs wd:Q16238921 .
+    ex:nationality "CAN" .
 
 ex:LandoNorris a ex:Driver ;
     ex:competesInSeason ex:Season2022,
@@ -1403,8 +1162,7 @@ ex:LandoNorris a ex:Driver ;
         ex:Standing_2025_LandoNorris,
         ex:Standing_2026_LandoNorris ;
     ex:name "Lando Norris" ;
-    ex:nationality "GBR" ;
-    owl:sameAs wd:Q22007193 .
+    ex:nationality "GBR" .
 
 ex:LewisHamilton a ex:Driver ;
     ex:competesInSeason ex:Season2022,
@@ -1420,8 +1178,7 @@ ex:LewisHamilton a ex:Driver ;
         ex:Standing_2025_LewisHamilton,
         ex:Standing_2026_LewisHamilton ;
     ex:name "Lewis Hamilton" ;
-    ex:nationality "GBR" ;
-    owl:sameAs wd:Q9673 .
+    ex:nationality "GBR" .
 
 ex:MaxVerstappen a ex:Driver ;
     ex:competesInSeason ex:Season2022,
@@ -1436,8 +1193,7 @@ ex:MaxVerstappen a ex:Driver ;
         ex:Standing_2025_MaxVerstappen,
         ex:Standing_2026_MaxVerstappen ;
     ex:name "Max Verstappen" ;
-    ex:nationality "NED" ;
-    owl:sameAs wd:Q2239218 .
+    ex:nationality "NED" .
 
 ex:NicoHulkenberg a ex:Driver ;
     ex:competesInSeason ex:Season2022,
@@ -1455,8 +1211,7 @@ ex:NicoHulkenberg a ex:Driver ;
         ex:Standing_2025_NicoHulkenberg,
         ex:Standing_2026_NicoHulkenberg ;
     ex:name "Nico Hulkenberg" ;
-    ex:nationality "GER" ;
-    owl:sameAs wd:Q76547 .
+    ex:nationality "GER" .
 
 ex:PierreGasly a ex:Driver ;
     ex:competesInSeason ex:Season2022,
@@ -1472,58 +1227,26 @@ ex:PierreGasly a ex:Driver ;
         ex:Standing_2025_PierreGasly,
         ex:Standing_2026_PierreGasly ;
     ex:name "Pierre Gasly" ;
-    ex:nationality "FRA" ;
-    owl:sameAs wd:Q11816647 .
+    ex:nationality "FRA" .
 
-ex:RacingBulls a ex:Team ;
-    ex:name "Racing Bulls" ;
-    owl:sameAs wd:Q124350606 .
-
-ex:KickSauber a ex:Team ;
-    ex:name "Kick Sauber" ;
-    owl:sameAs wd:Q171335 .
-
-ex:AlphaTauri a ex:Team ;
-    ex:name "AlphaTauri" ;
-    owl:sameAs wd:Q60752400 .
-
-ex:Haas a ex:Team ;
-    ex:name "Haas" ;
-    owl:sameAs wd:Q368894 .
-
-ex:Season a owl:Class .
-
-ex:Ferrari a ex:Team ;
-    ex:name "Ferrari" ;
-    owl:sameAs wd:Q1407594 .
-
-ex:McLaren a ex:Team ;
-    ex:name "McLaren" ;
-    owl:sameAs wd:Q21484852 .
-
-ex:Mercedes a ex:Team ;
-    ex:name "Mercedes" ;
-    owl:sameAs wd:Q255209 .
-
-ex:AstonMartin a ex:Team ;
-    ex:name "Aston Martin" ;
-    owl:sameAs wd:Q63049904 .
-
-ex:RedBullRacing a ex:Team ;
-    ex:name "Red Bull Racing" ;
-    owl:sameAs wd:Q173663 .
-
-ex:Alpine a ex:Team ;
-    ex:name "Alpine" ;
-    owl:sameAs wd:Q661540 .
+ex:RaceResult a owl:Class ;
+    rdfs:label "Race Result"@en ;
+    rdfs:comment "The result of one driver in one Grand Prix."@en .
 
 ex:Williams a ex:Team ;
-    ex:name "Williams" ;
-    owl:sameAs wd:Q1688722 .
+    ex:name "Williams" .
 
-ex:Team a owl:Class .
+ex:Season a owl:Class ;
+    rdfs:label "Season"@en ;
+    rdfs:comment "A Formula 1 championship season."@en .
 
-ex:Driver a owl:Class .
+ex:Team a owl:Class ;
+    rdfs:label "Team"@en ;
+    rdfs:comment "A Formula 1 constructor / team."@en .
+
+ex:Driver a owl:Class ;
+    rdfs:label "Driver"@en ;
+    rdfs:comment "A Formula 1 racing driver."@en .
 
 ex:Season2025 a ex:Season ;
     ex:seasonYear "2025"^^xsd:int .
@@ -1540,5 +1263,8 @@ ex:Season2026 a ex:Season ;
 ex:Season2024 a ex:Season ;
     ex:seasonYear "2024"^^xsd:int .
 
-ex:DriverStanding a owl:Class .
+ex:DriverStanding a owl:Class ;
+    rdfs:label "Driver Standing"@en ;
+    rdfs:comment "A driver's championship standing at the end of a season."@en .
 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         

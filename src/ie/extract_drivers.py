@@ -1,0 +1,171 @@
+import json
+import re
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+RAW_DIR = PROJECT_ROOT / "data" / "raw" / "formula1"
+OUTPUT_DIR = PROJECT_ROOT / "data" / "extracted"
+
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+NATIONALITY_CODES = {
+    "NED", "GBR", "MON", "AUS", "ESP", "MEX", "FRA", "GER",
+    "JPN", "CAN", "DEN", "THA", "ARG", "CHN", "NZL", "FIN",
+    "USA", "ITA", "BRA"
+}
+
+ENGINE_WORDS = {
+    "Honda", "RBPT", "Mercedes", "Ferrari", "Renault", "Aramco"
+}
+
+STOP_MARKERS = {
+    "OUR PARTNERS",
+    "View all",
+    "DOWNLOAD THE OFFICIAL F1 APP"
+}
+
+def normalize_lines(text: str) -> list[str]:
+    lines = []
+    for line in text.split("\n"):
+        line = re.sub(r"\s+", " ", line).strip()
+        if line:
+            lines.append(line)
+    return lines
+
+def clean_team(raw_team: str) -> str:
+    raw_team = raw_team.strip()
+
+    # Cas à préserver en priorité
+    exact_teams = [
+        "Mercedes",
+        "Ferrari",
+        "McLaren",
+        "Williams",
+        "Alpine",
+        "Audi",
+        "Cadillac",
+        "Kick Sauber",
+        "Sauber",
+        "RB",
+        "Racing Bulls",
+        "Haas F1 Team",
+        "Red Bull Racing",
+        "Aston Martin",
+    ]
+
+    for team in sorted(exact_teams, key=len, reverse=True):
+        if raw_team.startswith(team):
+            return team
+
+    # Fallback général
+    tokens = raw_team.split()
+    cleaned = []
+
+    for tok in tokens:
+        if tok in ENGINE_WORDS:
+            break
+        cleaned.append(tok)
+
+    return " ".join(cleaned).strip()
+
+def parse_driver_standings(lines: list[str]) -> list[dict]:
+    drivers = []
+    seen = set()
+    i = 0
+
+    while i < len(lines) - 2:
+        if lines[i] in STOP_MARKERS:
+            break
+
+        # ---------- FORMAT A ----------
+        # position
+        # name
+        # "NED Red Bull Racing Honda RBPT 437"
+        if i + 2 < len(lines) and lines[i].isdigit():
+            pos_line = lines[i]
+            name_line = lines[i + 1]
+            details_line = lines[i + 2]
+
+            m = re.match(r"^([A-Z]{3})\s+(.+?)\s+(\d+)$", details_line)
+            if m:
+                nat = m.group(1)
+                raw_team = m.group(2).strip()
+                pts = int(m.group(3))
+
+                if nat in NATIONALITY_CODES:
+                    team = clean_team(raw_team)
+                    if name_line not in seen:
+                        drivers.append({
+                            "position": int(pos_line),
+                            "name": name_line,
+                            "nationality_code": nat,
+                            "team": team,
+                            "points": pts
+                        })
+                        seen.add(name_line)
+                    i += 3
+                    continue
+
+        # ---------- FORMAT B ----------
+        # position
+        # name
+        # "GBR"
+        # "McLaren 423"
+        if i + 3 < len(lines) and lines[i].isdigit():
+            pos_line = lines[i]
+            name_line = lines[i + 1]
+            nat_line = lines[i + 2]
+            team_pts_line = lines[i + 3]
+
+            m = re.match(r"^(.+?)\s+(\d+)$", team_pts_line)
+            if nat_line in NATIONALITY_CODES and m:
+                raw_team = m.group(1).strip()
+                pts = int(m.group(2))
+                team = clean_team(raw_team)
+
+                if name_line not in seen:
+                    drivers.append({
+                        "position": int(pos_line),
+                        "name": name_line,
+                        "nationality_code": nat_line,
+                        "team": team,
+                        "points": pts
+                    })
+                    seen.add(name_line)
+
+                i += 4
+                continue
+
+        i += 1
+
+    return drivers
+
+def main():
+    total = 0
+
+    for year_dir in sorted(RAW_DIR.iterdir()):
+        if not year_dir.is_dir():
+            continue
+
+        drivers_file = year_dir / "drivers.json"
+        if not drivers_file.exists():
+            continue
+
+        data = json.loads(drivers_file.read_text(encoding="utf-8"))
+        raw_text = data.get("raw_text", "")
+        lines = normalize_lines(raw_text)
+        drivers = parse_driver_standings(lines)
+
+        out_file = OUTPUT_DIR / f"drivers_{year_dir.name}.json"
+        out_file.write_text(
+            json.dumps(drivers, ensure_ascii=False, indent=2),
+            encoding="utf-8"
+        )
+
+        print(f"{year_dir.name} → {len(drivers)} drivers extraits")
+        total += len(drivers)
+
+    print(f"Total extraits : {total}")
+
+if __name__ == "__main__":
+    main()

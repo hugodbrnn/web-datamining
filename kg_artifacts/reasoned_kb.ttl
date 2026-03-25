@@ -3800,6 +3800,7 @@ ex:GeorgeRussell a ex:Driver ;
         ex:GP_2024_Austria,
         ex:GP_2026_Australia,
         ex:GP_2026_China ;
+    ex:isChampionOf ex:Season2026 ;
     ex:name "George Russell" ;
     ex:nationality "GBR" ;
     ex:participatedIn ex:GP_2022_AbuDhabi,
@@ -3919,6 +3920,7 @@ ex:LandoNorris a ex:Driver ;
         ex:GP_2024_Miami,
         ex:GP_2024_Netherlands,
         ex:GP_2024_Singapore ;
+    ex:isChampionOf ex:Season2025 ;
     ex:name "Lando Norris" ;
     ex:nationality "GBR" ;
     ex:participatedIn ex:GP_2022_AbuDhabi,
@@ -5336,6 +5338,9 @@ ex:MaxVerstappen a ex:Driver ;
         ex:GP_2024_Qatar,
         ex:GP_2024_SaudiArabia,
         ex:GP_2024_Spain ;
+    ex:isChampionOf ex:Season2022,
+        ex:Season2023,
+        ex:Season2024 ;
     ex:name "Max Verstappen" ;
     ex:nationality "NED" ;
     ex:participatedIn ex:GP_2022_AbuDhabi,

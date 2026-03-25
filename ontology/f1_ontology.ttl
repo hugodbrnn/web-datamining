@@ -3,49 +3,147 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
-@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix wd:   <http://www.wikidata.org/entity/> .
+@prefix wdt:  <http://www.wikidata.org/prop/direct/> .
+
+# ─────────────────────────────────────────────
+# ONTOLOGY
+# ─────────────────────────────────────────────
 
 ex:F1Ontology a owl:Ontology ;
-    rdfs:label "Formula 1 Knowledge Graph Ontology"@en .
+    rdfs:label "Formula 1 Knowledge Graph Ontology"@en ;
+    rdfs:comment "Operational schema for the F1 KG project. Covers drivers, teams, seasons, races, circuits, results and standings. Rolling 5-season window (current + 4 previous)."@en .
 
-ex:Driver a owl:Class .
-ex:Team a owl:Class .
-ex:Season a owl:Class .
-ex:GrandPrix a owl:Class .
-ex:RaceResult a owl:Class .
-ex:DriverStanding a owl:Class .
+# ─────────────────────────────────────────────
+# CLASSES
+# ─────────────────────────────────────────────
+
+ex:Driver a owl:Class ;
+    rdfs:label "Driver"@en ;
+    rdfs:comment "A Formula 1 racing driver."@en .
+
+ex:Team a owl:Class ;
+    rdfs:label "Team"@en ;
+    rdfs:comment "A Formula 1 constructor / team."@en .
+
+ex:Season a owl:Class ;
+    rdfs:label "Season"@en ;
+    rdfs:comment "A Formula 1 championship season."@en .
+
+ex:GrandPrix a owl:Class ;
+    rdfs:label "Grand Prix"@en ;
+    rdfs:comment "A single Formula 1 race weekend."@en .
+
+ex:Circuit a owl:Class ;
+    rdfs:label "Circuit"@en ;
+    rdfs:comment "A racing circuit that hosts a Grand Prix."@en .
+
+ex:RaceResult a owl:Class ;
+    rdfs:label "Race Result"@en ;
+    rdfs:comment "The result of one driver in one Grand Prix."@en .
+
+ex:DriverStanding a owl:Class ;
+    rdfs:label "Driver Standing"@en ;
+    rdfs:comment "A driver's championship standing at the end of a season."@en .
+
+ex:TeamStanding a owl:Class ;
+    rdfs:label "Team Standing"@en ;
+    rdfs:comment "A team's (constructor) championship standing at the end of a season."@en .
+
+# ─────────────────────────────────────────────
+# OBJECT PROPERTIES
+# ─────────────────────────────────────────────
 
 ex:drivesFor a owl:ObjectProperty ;
     rdfs:domain ex:Driver ;
-    rdfs:range ex:Team .
+    rdfs:range  ex:Team ;
+    rdfs:label  "drives for"@en ;
+    rdfs:comment "Links a driver to their current or most recent team."@en .
+
+ex:teammateOf a owl:ObjectProperty , owl:SymmetricProperty ;
+    rdfs:domain ex:Driver ;
+    rdfs:range  ex:Driver ;
+    rdfs:label  "teammate of"@en .
 
 ex:competesInSeason a owl:ObjectProperty ;
     rdfs:domain ex:Driver ;
-    rdfs:range ex:Season .
+    rdfs:range  ex:Season ;
+    rdfs:label  "competes in season"@en .
+
+ex:hasRace a owl:ObjectProperty ;
+    rdfs:domain ex:Season ;
+    rdfs:range  ex:GrandPrix ;
+    rdfs:label  "has race"@en .
+
+ex:heldAtCircuit a owl:ObjectProperty ;
+    rdfs:domain ex:GrandPrix ;
+    rdfs:range  ex:Circuit ;
+    rdfs:label  "held at circuit"@en .
+
+ex:hasResult a owl:ObjectProperty ;
+    rdfs:domain ex:GrandPrix ;
+    rdfs:range  ex:RaceResult ;
+    rdfs:label  "has result"@en .
+
+ex:forDriver a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( ex:DriverStanding ex:RaceResult ) ] ;
+    rdfs:range  ex:Driver ;
+    rdfs:label  "for driver"@en .
+
+ex:forTeam a owl:ObjectProperty ;
+    rdfs:domain ex:TeamStanding ;
+    rdfs:range  ex:Team ;
+    rdfs:label  "for team"@en .
+
+ex:forSeason a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( ex:DriverStanding ex:TeamStanding ) ] ;
+    rdfs:range  ex:Season ;
+    rdfs:label  "for season"@en .
+
+ex:forGrandPrix a owl:ObjectProperty ;
+    rdfs:domain ex:RaceResult ;
+    rdfs:range  ex:GrandPrix ;
+    rdfs:label  "for Grand Prix"@en .
 
 ex:hasStanding a owl:ObjectProperty ;
     rdfs:domain ex:Driver ;
-    rdfs:range ex:DriverStanding .
+    rdfs:range  ex:DriverStanding ;
+    rdfs:label  "has standing"@en .
 
-ex:forDriver a owl:ObjectProperty ;
-    rdfs:domain ex:DriverStanding ;
-    rdfs:range ex:Driver .
+# ─────────────────────────────────────────────
+# DATATYPE PROPERTIES
+# ─────────────────────────────────────────────
 
-ex:forSeason a owl:ObjectProperty ;
-    rdfs:domain ex:DriverStanding ;
-    rdfs:range ex:Season .
-
-ex:name a owl:DatatypeProperty ;
-    rdfs:range xsd:string .
+ex:name a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:range  xsd:string ;
+    rdfs:label  "name"@en .
 
 ex:nationality a owl:DatatypeProperty ;
-    rdfs:range xsd:string .
+    rdfs:range  xsd:string ;
+    rdfs:label  "nationality"@en ;
+    rdfs:comment "ISO 3166-1 alpha-3 nationality code (e.g. GBR, NED, FRA)."@en .
 
-ex:seasonYear a owl:DatatypeProperty ;
-    rdfs:range xsd:int .
+ex:seasonYear a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain ex:Season ;
+    rdfs:range  xsd:int ;
+    rdfs:label  "season year"@en .
 
 ex:standingPosition a owl:DatatypeProperty ;
-    rdfs:range xsd:int .
+    rdfs:domain [ owl:unionOf ( ex:DriverStanding ex:TeamStanding ) ] ;
+    rdfs:range  xsd:int ;
+    rdfs:label  "standing position"@en .
 
 ex:standingPoints a owl:DatatypeProperty ;
-    rdfs:range xsd:decimal .
+    rdfs:domain [ owl:unionOf ( ex:DriverStanding ex:TeamStanding ) ] ;
+    rdfs:range  xsd:decimal ;
+    rdfs:label  "standing points"@en .
+
+ex:finishPosition a owl:DatatypeProperty ;
+    rdfs:domain ex:RaceResult ;
+    rdfs:range  xsd:int ;
+    rdfs:label  "finish position"@en .
+
+ex:points a owl:DatatypeProperty ;
+    rdfs:domain ex:RaceResult ;
+    rdfs:range  xsd:decimal ;
+    rdfs:label  "points"@en .

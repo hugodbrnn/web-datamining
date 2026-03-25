@@ -6,7 +6,7 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 EXTRACTED_DIR = PROJECT_ROOT / "data" / "extracted"
-OUTPUT_FILE = PROJECT_ROOT / "kg_artifacts" / "alignment_drivers.tsv"
+OUTPUT_FILE = PROJECT_ROOT / "kg_artifacts" / "alignment_teams.tsv"
 
 WIKIDATA_API = "https://www.wikidata.org/w/api.php"
 
@@ -14,10 +14,8 @@ HEADERS = {
     "User-Agent": "f1-kg-project/1.0 (student project)"
 }
 
-
 def normalize_name(name: str) -> str:
     return re.sub(r"\s+", " ", name).strip()
-
 
 def clean_local_entity(name: str) -> str:
     name = normalize_name(name)
@@ -28,7 +26,6 @@ def clean_local_entity(name: str) -> str:
         .replace("'", "")
         .replace("/", "")
     )
-
 
 def search_wikidata(name: str):
     params = {
@@ -59,27 +56,22 @@ def search_wikidata(name: str):
             result = data["search"][0]
             return result.get("id"), result.get("label")
 
-    except requests.RequestException as e:
-        print(f"[ERROR] Requête échouée pour {name}: {e}")
-    except json.JSONDecodeError:
-        print(f"[ERROR] JSON invalide pour {name}")
     except Exception as e:
-        print(f"[ERROR] Problème inattendu pour {name}: {e}")
+        print(f"[ERROR] {name}: {e}")
 
     return None, None
-
 
 def main():
     seen = set()
     cache = {}
     rows_to_write = []
 
-    for file in sorted(EXTRACTED_DIR.glob("drivers_*.json")):
+    for file in sorted(EXTRACTED_DIR.glob("teams_*.json")):
         season = file.stem.split("_")[-1].strip()
         data = json.loads(file.read_text(encoding="utf-8"))
 
         for row in data:
-            raw_name = row.get("name", "")
+            raw_name = row.get("team", "")
             name = normalize_name(raw_name)
 
             if not name:
@@ -92,7 +84,6 @@ def main():
 
             local_entity = clean_local_entity(name)
 
-            # 🔥 cache + rate limiting
             if name in cache:
                 wikidata_id, wikidata_label = cache[name]
             else:
@@ -128,7 +119,5 @@ def main():
     print(f"\nNombre total de lignes alignées : {len(rows_to_write)}")
     print(f"Fichier écrit : {OUTPUT_FILE}")
 
-
 if __name__ == "__main__":
     main()
-    

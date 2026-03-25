@@ -4,16 +4,17 @@
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 
-#################################################################
+# ─────────────────────────────────────────────
 # ONTOLOGY
-#################################################################
+# ─────────────────────────────────────────────
 
 ex:F1Ontology a owl:Ontology ;
-    rdfs:label "Formula 1 Knowledge Graph Ontology"@en .
+    rdfs:label "Formula 1 Knowledge Graph Ontology"@en ;
+    rdfs:comment "Protégé-compatible version of the F1 ontology. Schema is identical to f1_ontology.ttl. Individuals are illustrative examples only (not exhaustive)."@en .
 
-#################################################################
+# ─────────────────────────────────────────────
 # CLASSES
-#################################################################
+# ─────────────────────────────────────────────
 
 ex:Driver a owl:Class ;
     rdfs:label "Driver"@en .
@@ -33,53 +34,72 @@ ex:Circuit a owl:Class ;
 ex:RaceResult a owl:Class ;
     rdfs:label "Race Result"@en .
 
-#################################################################
+ex:DriverStanding a owl:Class ;
+    rdfs:label "Driver Standing"@en .
+
+ex:TeamStanding a owl:Class ;
+    rdfs:label "Team Standing"@en .
+
+# ─────────────────────────────────────────────
 # OBJECT PROPERTIES
-#################################################################
+# ─────────────────────────────────────────────
 
 ex:drivesFor a owl:ObjectProperty ;
     rdfs:domain ex:Driver ;
-    rdfs:range ex:Team ;
-    rdfs:label "drives for"@en .
+    rdfs:range  ex:Team ;
+    rdfs:label  "drives for"@en .
 
 ex:teammateOf a owl:ObjectProperty , owl:SymmetricProperty ;
     rdfs:domain ex:Driver ;
-    rdfs:range ex:Driver ;
-    rdfs:label "teammate of"@en .
+    rdfs:range  ex:Driver ;
+    rdfs:label  "teammate of"@en .
 
 ex:competesInSeason a owl:ObjectProperty ;
     rdfs:domain ex:Driver ;
-    rdfs:range ex:Season ;
-    rdfs:label "competes in season"@en .
+    rdfs:range  ex:Season ;
+    rdfs:label  "competes in season"@en .
 
 ex:hasRace a owl:ObjectProperty ;
     rdfs:domain ex:Season ;
-    rdfs:range ex:GrandPrix ;
-    rdfs:label "has race"@en .
+    rdfs:range  ex:GrandPrix ;
+    rdfs:label  "has race"@en .
 
 ex:heldAtCircuit a owl:ObjectProperty ;
     rdfs:domain ex:GrandPrix ;
-    rdfs:range ex:Circuit ;
-    rdfs:label "held at circuit"@en .
+    rdfs:range  ex:Circuit ;
+    rdfs:label  "held at circuit"@en .
 
 ex:hasResult a owl:ObjectProperty ;
     rdfs:domain ex:GrandPrix ;
-    rdfs:range ex:RaceResult ;
-    rdfs:label "has result"@en .
+    rdfs:range  ex:RaceResult ;
+    rdfs:label  "has result"@en .
 
 ex:forDriver a owl:ObjectProperty ;
-    rdfs:domain ex:RaceResult ;
-    rdfs:range ex:Driver ;
-    rdfs:label "for driver"@en .
+    rdfs:range  ex:Driver ;
+    rdfs:label  "for driver"@en .
+
+ex:forTeam a owl:ObjectProperty ;
+    rdfs:domain ex:TeamStanding ;
+    rdfs:range  ex:Team ;
+    rdfs:label  "for team"@en .
+
+ex:forSeason a owl:ObjectProperty ;
+    rdfs:range  ex:Season ;
+    rdfs:label  "for season"@en .
 
 ex:forGrandPrix a owl:ObjectProperty ;
     rdfs:domain ex:RaceResult ;
-    rdfs:range ex:GrandPrix ;
-    rdfs:label "for Grand Prix"@en .
+    rdfs:range  ex:GrandPrix ;
+    rdfs:label  "for Grand Prix"@en .
 
-#################################################################
-# DATA PROPERTIES
-#################################################################
+ex:hasStanding a owl:ObjectProperty ;
+    rdfs:domain ex:Driver ;
+    rdfs:range  ex:DriverStanding ;
+    rdfs:label  "has standing"@en .
+
+# ─────────────────────────────────────────────
+# DATATYPE PROPERTIES
+# ─────────────────────────────────────────────
 
 ex:name a owl:DatatypeProperty , owl:FunctionalProperty ;
     rdfs:range xsd:string ;
@@ -90,36 +110,55 @@ ex:nationality a owl:DatatypeProperty ;
     rdfs:label "nationality"@en .
 
 ex:seasonYear a owl:DatatypeProperty , owl:FunctionalProperty ;
-    rdfs:range xsd:gYear ;
-    rdfs:label "season year"@en .
+    rdfs:domain ex:Season ;
+    rdfs:range  xsd:int ;
+    rdfs:label  "season year"@en .
+
+ex:standingPosition a owl:DatatypeProperty ;
+    rdfs:range xsd:int ;
+    rdfs:label "standing position"@en .
+
+ex:standingPoints a owl:DatatypeProperty ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "standing points"@en .
 
 ex:finishPosition a owl:DatatypeProperty ;
-    rdfs:range xsd:int ;
-    rdfs:label "finish position"@en .
+    rdfs:domain ex:RaceResult ;
+    rdfs:range  xsd:int ;
+    rdfs:label  "finish position"@en .
 
 ex:points a owl:DatatypeProperty ;
-    rdfs:range xsd:decimal ;
-    rdfs:label "points"@en .
+    rdfs:domain ex:RaceResult ;
+    rdfs:range  xsd:decimal ;
+    rdfs:label  "points"@en .
 
-#################################################################
-# INDIVIDUALS - SEASONS
-#################################################################
-
-ex:Season2021 a ex:Season ;
-    ex:name "Formula 1 Season 2021" ;
-    ex:seasonYear "2021"^^xsd:gYear .
+# ─────────────────────────────────────────────
+# INDIVIDUALS — SEASONS (rolling 5-season window)
+# ─────────────────────────────────────────────
 
 ex:Season2022 a ex:Season ;
-    ex:name "Formula 1 Season 2022" ;
-    ex:seasonYear "2022"^^xsd:gYear .
+    ex:name       "Formula 1 Season 2022" ;
+    ex:seasonYear 2022 .
 
 ex:Season2023 a ex:Season ;
-    ex:name "Formula 1 Season 2023" ;
-    ex:seasonYear "2023"^^xsd:gYear .
+    ex:name       "Formula 1 Season 2023" ;
+    ex:seasonYear 2023 .
 
-#################################################################
-# INDIVIDUALS - TEAMS
-#################################################################
+ex:Season2024 a ex:Season ;
+    ex:name       "Formula 1 Season 2024" ;
+    ex:seasonYear 2024 .
+
+ex:Season2025 a ex:Season ;
+    ex:name       "Formula 1 Season 2025" ;
+    ex:seasonYear 2025 .
+
+ex:Season2026 a ex:Season ;
+    ex:name       "Formula 1 Season 2026" ;
+    ex:seasonYear 2026 .
+
+# ─────────────────────────────────────────────
+# INDIVIDUALS — TEAMS (illustrative)
+# ─────────────────────────────────────────────
 
 ex:Mercedes a ex:Team ;
     ex:name "Mercedes" .
@@ -130,47 +169,40 @@ ex:RedBullRacing a ex:Team ;
 ex:Ferrari a ex:Team ;
     ex:name "Ferrari" .
 
-#################################################################
-# INDIVIDUALS - DRIVERS
-#################################################################
+ex:McLaren a ex:Team ;
+    ex:name "McLaren" .
 
-ex:LewisHamilton a ex:Driver ;
-    ex:name "Lewis Hamilton" ;
-    ex:nationality "British" ;
-    ex:drivesFor ex:Mercedes ;
-    ex:competesInSeason ex:Season2021, ex:Season2022, ex:Season2023 ;
-    ex:teammateOf ex:GeorgeRussell .
+ex:AstonMartin a ex:Team ;
+    ex:name "Aston Martin" .
 
-ex:GeorgeRussell a ex:Driver ;
-    ex:name "George Russell" ;
-    ex:nationality "British" ;
-    ex:drivesFor ex:Mercedes ;
-    ex:competesInSeason ex:Season2022, ex:Season2023 ;
-    ex:teammateOf ex:LewisHamilton .
+# ─────────────────────────────────────────────
+# INDIVIDUALS — DRIVERS (illustrative)
+# ─────────────────────────────────────────────
 
 ex:MaxVerstappen a ex:Driver ;
-    ex:name "Max Verstappen" ;
-    ex:nationality "Dutch" ;
-    ex:drivesFor ex:RedBullRacing ;
-    ex:competesInSeason ex:Season2021, ex:Season2022, ex:Season2023 ;
-    ex:teammateOf ex:SergioPerez .
+    ex:name        "Max Verstappen" ;
+    ex:nationality "NED" ;
+    ex:drivesFor   ex:RedBullRacing ;
+    ex:competesInSeason
+        ex:Season2022, ex:Season2023, ex:Season2024, ex:Season2025 .
 
-ex:SergioPerez a ex:Driver ;
-    ex:name "Sergio Perez" ;
-    ex:nationality "Mexican" ;
-    ex:drivesFor ex:RedBullRacing ;
-    ex:competesInSeason ex:Season2021, ex:Season2022, ex:Season2023 ;
-    ex:teammateOf ex:MaxVerstappen .
+ex:LewisHamilton a ex:Driver ;
+    ex:name        "Lewis Hamilton" ;
+    ex:nationality "GBR" ;
+    ex:drivesFor   ex:Ferrari ;
+    ex:competesInSeason
+        ex:Season2022, ex:Season2023, ex:Season2024, ex:Season2025, ex:Season2026 .
 
-ex:CharlesLeclerc a ex:Driver ;
-    ex:name "Charles Leclerc" ;
-    ex:nationality "Monegasque" ;
-    ex:drivesFor ex:Ferrari ;
-    ex:competesInSeason ex:Season2021, ex:Season2022, ex:Season2023 .
+ex:LandoNorris a ex:Driver ;
+    ex:name        "Lando Norris" ;
+    ex:nationality "GBR" ;
+    ex:drivesFor   ex:McLaren ;
+    ex:competesInSeason
+        ex:Season2022, ex:Season2023, ex:Season2024, ex:Season2025, ex:Season2026 .
 
-#################################################################
-# INDIVIDUALS - CIRCUITS
-#################################################################
+# ─────────────────────────────────────────────
+# INDIVIDUALS — CIRCUITS (illustrative)
+# ─────────────────────────────────────────────
 
 ex:SilverstoneCircuit a ex:Circuit ;
     ex:name "Silverstone Circuit" .
@@ -178,54 +210,5 @@ ex:SilverstoneCircuit a ex:Circuit ;
 ex:MonzaCircuit a ex:Circuit ;
     ex:name "Autodromo Nazionale Monza" .
 
-ex:YasMarinaCircuit a ex:Circuit ;
-    ex:name "Yas Marina Circuit" .
-
-#################################################################
-# INDIVIDUALS - GRAND PRIX
-#################################################################
-
-ex:BritishGP2021 a ex:GrandPrix ;
-    ex:name "2021 British Grand Prix" ;
-    ex:heldAtCircuit ex:SilverstoneCircuit .
-
-ex:ItalianGP2021 a ex:GrandPrix ;
-    ex:name "2021 Italian Grand Prix" ;
-    ex:heldAtCircuit ex:MonzaCircuit .
-
-ex:AbuDhabiGP2021 a ex:GrandPrix ;
-    ex:name "2021 Abu Dhabi Grand Prix" ;
-    ex:heldAtCircuit ex:YasMarinaCircuit .
-
-ex:Season2021 ex:hasRace ex:BritishGP2021, ex:ItalianGP2021, ex:AbuDhabiGP2021 .
-
-#################################################################
-# INDIVIDUALS - RESULTS
-#################################################################
-
-ex:Result_BritishGP2021_Hamilton a ex:RaceResult ;
-    ex:forDriver ex:LewisHamilton ;
-    ex:forGrandPrix ex:BritishGP2021 ;
-    ex:finishPosition 1 ;
-    ex:points 25 .
-
-ex:Result_BritishGP2021_Leclerc a ex:RaceResult ;
-    ex:forDriver ex:CharlesLeclerc ;
-    ex:forGrandPrix ex:BritishGP2021 ;
-    ex:finishPosition 2 ;
-    ex:points 18 .
-
-ex:Result_AbuDhabiGP2021_Verstappen a ex:RaceResult ;
-    ex:forDriver ex:MaxVerstappen ;
-    ex:forGrandPrix ex:AbuDhabiGP2021 ;
-    ex:finishPosition 1 ;
-    ex:points 26 .
-
-ex:Result_AbuDhabiGP2021_Hamilton a ex:RaceResult ;
-    ex:forDriver ex:LewisHamilton ;
-    ex:forGrandPrix ex:AbuDhabiGP2021 ;
-    ex:finishPosition 2 ;
-    ex:points 18 .
-
-ex:BritishGP2021 ex:hasResult ex:Result_BritishGP2021_Hamilton, ex:Result_BritishGP2021_Leclerc .
-ex:AbuDhabiGP2021 ex:hasResult ex:Result_AbuDhabiGP2021_Verstappen, ex:Result_AbuDhabiGP2021_Hamilton .
+ex:InterlagosCircuit a ex:Circuit ;
+    ex:name "Autodromo Jose Carlos Pace" .

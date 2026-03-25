@@ -1,1 +1,47 @@
-_pycache_
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Environment variables
+.env
+.env.*
+
+# Raw crawled data (large, not versioned — see data/data_sources.md)
+data/raw/
+
+# IDE / editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Playwright
+playwright/.auth/
+
+# Ollama / model weights (too large for Git)
+models/
+*.bin
+*.gguf
+
+# Logs
+*.log
+logs/

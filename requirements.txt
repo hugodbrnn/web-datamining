@@ -1,0 +1,39 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Core dependencies
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Web crawling
+playwright>=1.40.0
+
+# Information extraction / data handling
+requests>=2.31.0
+
+# Knowledge Graph — RDF/OWL
+rdflib>=7.0.0
+
+# OWL reasoning (optional — enables Pellet in apply_rules.py)
+owlready2>=0.46
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Knowledge Graph Embeddings
+# ─────────────────────────────────────────────────────────────────────────────
+
+# PyTorch (CPU build — for machines without a GPU)
+# Install separately:
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+torch>=2.1.0
+
+# PyKEEN (TransE, ComplEx, RotatE …)
+pykeen>=1.10.0
+
+# ─────────────────────────────────────────────────────────────────────────────
+# RAG pipeline
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Ollama Python client (optional — main_rag.py uses urllib directly)
+# ollama>=0.1.0
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Development / utilities
+# ─────────────────────────────────────────────────────────────────────────────
+tqdm>=4.66.0
