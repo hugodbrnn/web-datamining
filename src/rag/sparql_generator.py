@@ -125,14 +125,30 @@ class SPARQLGenerator:
             return None
 
     @staticmethod
+    def _sanitize_sparql(sparql: str) -> str:
+        """Fix common LLM hallucinations so rdflib can parse the query."""
+        # STRINGS(?x) CONTAINS("y") → CONTAINS(LCASE(?x), "y")
+        sparql = re.sub(
+            r'FILTER\s*\(\s*STRINGS?\s*\(\s*(\?\w+)\s*\)\s*CONTAINS\s*\(\s*(["\'][^"\']*["\'])[^)]*\)\s*\)',
+            lambda m: f'FILTER(CONTAINS(LCASE({m.group(1)}), {m.group(2)}))',
+            sparql, flags=re.IGNORECASE
+        )
+        # STR(?x) CONTAINS("y") → CONTAINS(LCASE(STR(?x)), "y")
+        sparql = re.sub(
+            r'FILTER\s*\(\s*(STR\s*\(\s*\?\w+\s*\))\s*CONTAINS\s*\(\s*(["\'][^"\']*["\'])[^)]*\)\s*\)',
+            lambda m: f'FILTER(CONTAINS(LCASE({m.group(1)}), {m.group(2)}))',
+            sparql, flags=re.IGNORECASE
+        )
+        # Remaining STRINGS( → STR(
+        sparql = re.sub(r'\bSTRINGS\s*\(', 'STR(', sparql, flags=re.IGNORECASE)
+        return sparql
+
+    @staticmethod
     def _extract_sparql(raw: str) -> str:
-        """Extract the SPARQL query from LLM output (strip markdown fences)."""
-        # Remove ```sparql ... ``` or ``` ... ``` blocks
+        """Extract the SPARQL query from LLM output, strip fences, sanitize."""
         fenced = re.search(r"```(?:sparql)?\s*(.*?)```", raw, re.DOTALL | re.IGNORECASE)
-        if fenced:
-            return fenced.group(1).strip()
-        # If no fences, assume the whole output is SPARQL
-        return raw.strip()
+        sparql = fenced.group(1).strip() if fenced else raw.strip()
+        return SPARQLGenerator._sanitize_sparql(sparql)
 
     def generate(self, question: str) -> str:
         """
