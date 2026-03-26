@@ -14,24 +14,24 @@
 |---|---|
 | `participatedIn` | 2,114 |
 | `type` | 426 |
-| `forDriver` | 205 |
 | `forTeam` | 205 |
+| `forDriver` | 205 |
 | `name` | 186 |
-| `hasStanding` | 111 |
-| `competesInSeason` | 111 |
-| `standingPoints` | 111 |
 | `standingPosition` | 111 |
 | `forSeason` | 111 |
-| `hasRace` | 95 |
-| `raceDate` | 95 |
+| `competesInSeason` | 111 |
+| `standingPoints` | 111 |
+| `hasStanding` | 111 |
 | `partOfSeason` | 95 |
+| `raceDate` | 95 |
+| `hasRace` | 95 |
 | `heldAtCircuit` | 95 |
-| `forGrandPrix` | 94 |
+| `points` | 94 |
 | `hasWon` | 94 |
 | `finishPosition` | 94 |
-| `points` | 94 |
-| `winner` | 94 |
 | `winningTeam` | 94 |
+| `forGrandPrix` | 94 |
+| `winner` | 94 |
 
 ## Expansion strategy (local)
 

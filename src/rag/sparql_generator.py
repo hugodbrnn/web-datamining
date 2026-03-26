@@ -42,33 +42,72 @@ Rules:
 - Use only PREFIX ex: <http://example.org/f1#>
 - Use only classes and properties defined in the schema below
 - Return ONLY the SPARQL query, starting with PREFIX — no explanation, no markdown fences
-- Entity names in the KB use CamelCase with no spaces (e.g. ex:MaxVerstappen, ex:Season2024)
-- Use OPTIONAL for properties that may not be present
+- Entity names use CamelCase with no spaces (ex:MaxVerstappen, ex:Season2024, ex:LewisHamilton)
+- End every triple pattern group with a period (.) before starting a new subject
+- ALWAYS use the EXACT driver/team name from the question — NEVER substitute another name
 
-CRITICAL — triple pattern syntax (SPARQL does NOT use AND/OR between triples):
-  WRONG: ?driver ex:name ?n AND ex:drivesFor ?team
-  WRONG: ?driver ex:name ?n OR ex:drivesFor ?team
-  RIGHT: ?driver ex:name ?n ; ex:drivesFor ?team .
-  Use semicolons (;) to chain properties of the same subject, periods (.) between different subjects.
+══════════════════════════════════════════════════
+DECISION TREE — read before writing any query:
+══════════════════════════════════════════════════
 
-CRITICAL — to find who won a race:
-  WRONG: SELECT ?winner WHERE {{ ?gp ex:name ?gpName . FILTER ... }}
-  RIGHT: SELECT ?driverName WHERE {{
-             ?gp ex:partOfSeason ex:SeasonYYYY ;
-                 ex:name ?gpName ;
-                 ex:winner ?driver .
-             ?driver ex:name ?driverName .
-             FILTER(CONTAINS(LCASE(?gpName), "keyword")) }}
+① "Who won the [YEAR] championship/title?" → USE ex:isChampionOf
+  SELECT ?driverName WHERE {{
+      ?driver ex:isChampionOf ex:SeasonYYYY ;
+              ex:name ?driverName . }}
 
-CRITICAL — to find which team a driver drives for, use drivesFor DIRECTLY:
-  WRONG: ?x ex:teammateOf ex:LandoNorris ; ex:drivesFor ?team .  ← finds teammates' teams, not the driver's team
-  RIGHT: SELECT DISTINCT ?teamName WHERE {{ ex:LandoNorris ex:drivesFor ?team . ?team ex:name ?teamName . }}
-  Use SELECT DISTINCT when drivesFor may have multiple triples across seasons.
+② "Who won the [RACE NAME] Grand Prix in [YEAR]?" → USE ex:winner + FILTER on GP name
+  SELECT ?driverName WHERE {{
+      ?gp ex:partOfSeason ex:SeasonYYYY ;
+          ex:name ?gpName ;
+          ex:winner ?driver .
+      ?driver ex:name ?driverName .
+      FILTER(CONTAINS(LCASE(?gpName), "keyword")) }}
 
-CRITICAL — string matching: use FILTER(CONTAINS(LCASE(?var), "text"))
-  WRONG: FILTER REGEX(STR(?x), "text")
-  WRONG: FILTER(STRINGS(?x) CONTAINS("text"))
-  RIGHT: FILTER(CONTAINS(LCASE(?x), "text"))
+③ "How many races did [DRIVER] win in [YEAR]?" → USE ex:hasWon + COUNT
+  SELECT (COUNT(?gp) AS ?wins) WHERE {{
+      ex:DriverName ex:hasWon ?gp .
+      ?gp ex:partOfSeason ex:SeasonYYYY . }}
+
+④ "Did [DRIVER] win a race in [YEAR]? / Which races did [DRIVER] win?" → USE ex:hasWon
+  SELECT ?gpName WHERE {{
+      ex:DriverName ex:hasWon ?gp .
+      ?gp ex:partOfSeason ex:SeasonYYYY ;
+          ex:name ?gpName . }}
+
+⑤ "Who were [DRIVER]'s teammates in [YEAR]?" → USE DriverStanding with forTeam
+  SELECT DISTINCT ?mateName WHERE {{
+      ?s1 a ex:DriverStanding ; ex:forSeason ex:SeasonYYYY ;
+          ex:forDriver ex:DriverName ; ex:forTeam ?team .
+      ?s2 a ex:DriverStanding ; ex:forSeason ex:SeasonYYYY ;
+          ex:forDriver ?mate ; ex:forTeam ?team .
+      ?mate ex:name ?mateName .
+      FILTER(ex:DriverName != ?mate) }}
+
+⑥ "Which team does [DRIVER] drive for?" → USE ex:drivesFor with SELECT DISTINCT
+  SELECT DISTINCT ?teamName WHERE {{
+      ?driver ex:name "First Last" ;
+              ex:drivesFor ?team .
+      ?team ex:name ?teamName . }}
+
+⑦ "What are the standings in [YEAR]?" → USE DriverStanding (NO FILTER unless asked)
+  SELECT ?driverName ?position ?points WHERE {{
+      ?standing a ex:DriverStanding ;
+                ex:forSeason ex:SeasonYYYY ;
+                ex:forDriver ?driver ;
+                ex:standingPosition ?position ;
+                ex:standingPoints ?points .
+      ?driver ex:name ?driverName .
+  }} ORDER BY ?position
+
+══════════════════════════════════════════════════
+CRITICAL RULES:
+══════════════════════════════════════════════════
+- GP names include the year: "2023 Italian Grand Prix" → FILTER keyword: "italian"
+- NEVER apply FILTER(CONTAINS()) to resource variables (?driver, ?gp, ?team, ?circuit)
+- NEVER use ex:teammateOf to find a team — use DriverStanding pattern (⑤)
+- NEVER confuse ex:isChampionOf (season title) with ex:winner (single race) with ex:hasWon (driver→GP)
+- NEVER substitute a driver name: if question says "Gasly", write "Pierre Gasly", not "Max Verstappen"
+- Triple patterns: use semicolons (;) to chain same subject, period (.) between different subjects
 
 {schema}
 """
@@ -112,7 +151,7 @@ class SPARQLGenerator:
         system = SYSTEM_PROMPT_TEMPLATE.format(schema=self.schema)
 
         messages = [{"role": "system", "content": system}]
-        for ex in EXAMPLE_QUERIES[:3]:
+        for ex in EXAMPLE_QUERIES[:6]:
             messages.append({"role": "user",      "content": ex["question"]})
             messages.append({"role": "assistant", "content": ex["sparql"]})
 
@@ -181,6 +220,49 @@ class SPARQLGenerator:
             lambda m: f'FILTER(CONTAINS(LCASE({m.group(1)}), {m.group(2).lower()}))',
             sparql, flags=re.IGNORECASE
         )
+        # Fix wrong property names (common LLM hallucinations)
+        sparql = re.sub(r'\bex:standingPos\b',   'ex:standingPosition', sparql)
+        sparql = re.sub(r'\bex:position\b',      'ex:standingPosition', sparql)
+        sparql = re.sub(r'\bex:rank\b',          'ex:standingPosition', sparql)
+        sparql = re.sub(r'\bex:pts\b',           'ex:standingPoints',   sparql)
+        sparql = re.sub(r'\bex:totalPoints\b',   'ex:standingPoints',   sparql)
+        sparql = re.sub(r'\bex:hasWins\b',       'ex:hasWon',           sparql)
+        sparql = re.sub(r'\bex:wins\b',          'ex:hasWon',           sparql)
+        # Fix bare year URI: ex:2023 → ex:Season2023
+        sparql = re.sub(r'\bex:(\d{4})\b', r'ex:Season\1', sparql)
+        # Fix CamelCase driver/team names inside string literals: "LandoNorris" → "Lando Norris"
+        sparql = re.sub(
+            r'"([A-Z][a-z]+[A-Z][a-zA-Z]*)"',
+            lambda m: '"' + re.sub(r'([a-z])([A-Z])', r'\1 \2', m.group(1)) + '"',
+            sparql
+        )
+        # Fix SELECT ?winner when WHERE binds ?driverName via ex:name — replace in SELECT only
+        if re.search(r'SELECT[^{]*\?winner', sparql, re.IGNORECASE):
+            where_block = sparql[sparql.lower().find('where'):]
+            if re.search(r'\?driver\w*\s+ex:name\s+\?driverName', where_block, re.IGNORECASE) \
+               or re.search(r'ex:name\s+\?driverName', where_block, re.IGNORECASE):
+                sparql = re.sub(r'(?i)(SELECT\b.*?)\?winner\b', r'\1?driverName', sparql,
+                                count=1, flags=re.DOTALL)
+        # Remove FILTER(CONTAINS()) on *Name variables when the keyword looks like a person's name
+        # (i.e. no space, title-cased, not a known race/location keyword)
+        def _is_person_keyword(m: re.Match) -> str:
+            var, keyword = m.group(1), m.group(2).strip('"\'').lower()
+            location_words = {'italian','monaco','british','belgian','dutch','japanese',
+                              'bahrain','spanish','canadian','austrian','hungarian','singapore',
+                              'brazil','mexico','abu','vegas','qatar','saudi','china','miami',
+                              'monza','silverstone','spa','suzuka','imola','baku','austin'}
+            if keyword in location_words:
+                return m.group(0)   # keep it — it's a valid race filter
+            if 'name' in var.lower() and keyword not in location_words:
+                return ''           # remove — likely a wrong person-name filter
+            return m.group(0)
+        sparql = re.sub(
+            r'\s*FILTER\s*\(\s*CONTAINS\s*\(\s*LCASE\s*\(\s*(\?\w+Name)\s*\)\s*,\s*(["\'][^"\']+["\'])\s*\)\s*\)',
+            _is_person_keyword, sparql, flags=re.IGNORECASE
+        )
+        # Add missing period between triple-pattern groups:
+        # detects a line ending without . ; { } followed by a new ?var line
+        sparql = re.sub(r'([^\s.;{}])([ \t]*)\n([ \t]+\?)', r'\1 .\n\3', sparql)
         # AND/OR between triple patterns → semicolon (SPARQL uses ; not AND)
         sparql = re.sub(r'\s+AND\s+', ' ;\n    ', sparql, flags=re.IGNORECASE)
         sparql = re.sub(r'\s+OR\s+(?=\?)', ' UNION { ', sparql, flags=re.IGNORECASE)
@@ -197,6 +279,13 @@ class SPARQLGenerator:
         # Ensure PREFIX ex: is present
         if 'ex:' in sparql and 'PREFIX ex:' not in sparql:
             sparql = 'PREFIX ex: <http://example.org/f1#>\n' + sparql
+        # If the query has no SELECT/ASK/CONSTRUCT keyword at all, it's bare triple
+        # patterns — wrap in SELECT * WHERE { } so rdflib returns a parse error that
+        # the repair loop can catch, rather than a cryptic "found '?'" message.
+        if not re.search(r'\b(SELECT|ASK|CONSTRUCT|DESCRIBE)\b', sparql, re.IGNORECASE):
+            sparql = re.sub(r'^(PREFIX[^\n]*\n)', r'\1SELECT * WHERE {\n', sparql,
+                            flags=re.IGNORECASE)
+            sparql = sparql.rstrip() + '\n}'
         return sparql
 
     @staticmethod

@@ -48,6 +48,8 @@ MAX_ATTEMPTS = 3
 REPAIR_PROMPT_TEMPLATE = """The following SPARQL query for the F1 Knowledge Graph failed with a syntax error.
 
 Common mistakes:
+- Missing SELECT keyword: the query MUST have the form: PREFIX ex: ... SELECT ?vars WHERE {{ ... }}
+  Do NOT output bare triple patterns — always wrap them in SELECT ?vars WHERE {{ ... }}
 - Using AND between triple patterns: ?d ex:name ?n AND ex:drivesFor ?t  →  use semicolon: ?d ex:name ?n ; ex:drivesFor ?t .
 - Missing PREFIX: always start with PREFIX ex: <http://example.org/f1#>
 - Using STRINGS() or FILTER REGEX: use FILTER(CONTAINS(LCASE(?var), "text")) instead
@@ -115,9 +117,14 @@ class RepairLoop:
         logger.debug(f"[attempt 1] Generated SPARQL:\n{query}")
 
         for attempt in range(1, self.max_attempts + 1):
-            # Pre-check: detect SELECT variables never bound in WHERE
-            unbound = _unbound_select_vars(query)
-            if unbound:
+            # Pre-check 1: detect missing SELECT/ASK keyword — bare triple patterns
+            if not re.search(r'\b(SELECT|ASK|CONSTRUCT|DESCRIBE)\b', query, re.IGNORECASE):
+                logger.info(f"[attempt {attempt}] Missing SELECT keyword — forcing repair")
+                error = "Missing SELECT keyword. The query must start with PREFIX then SELECT. Do not output bare triple patterns."
+                rows  = []
+            # Pre-check 2: detect SELECT variables never bound in WHERE
+            elif _unbound_select_vars(query):
+                unbound = _unbound_select_vars(query)
                 logger.info(f"[attempt {attempt}] Unbound SELECT vars {unbound} — forcing repair")
                 error = f"Unbound SELECT variables: {unbound}. Every variable in SELECT must appear in WHERE."
                 rows  = []

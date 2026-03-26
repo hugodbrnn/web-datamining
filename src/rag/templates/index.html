@@ -97,6 +97,53 @@
                     onclick="setQ('Who were the teammates of Lewis Hamilton in 2024?')">Hamilton teammates</button>
           </div>
 
+          <!-- Supported question types (collapsible) -->
+          <div class="mb-3">
+            <a class="text-decoration-none text-muted small d-flex align-items-center gap-1"
+               data-bs-toggle="collapse" href="#question-types-collapse" role="button"
+               aria-expanded="false" aria-controls="question-types-collapse">
+              <i class="bi bi-lightbulb text-warning"></i>
+              <span>Types of questions you can ask</span>
+              <i class="bi bi-chevron-down ms-1" id="qtypes-chevron" style="transition:.2s"></i>
+            </a>
+            <div class="collapse mt-2" id="question-types-collapse">
+              <div class="card border-0 bg-light">
+                <div class="card-body py-3 px-4">
+                  <div class="row g-2">
+                    <div class="col-md-6">
+                      <ul class="list-unstyled mb-0 small">
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Championship winners</strong><br>
+                          <span class="text-muted ms-4">"Who won the 2023 F1 championship?"</span></li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Race winners</strong><br>
+                          <span class="text-muted ms-4">"Who won the Monaco Grand Prix in 2024?"</span></li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Driver wins check</strong><br>
+                          <span class="text-muted ms-4">"Did Hamilton win a race in 2024?"</span></li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Driver's team</strong><br>
+                          <span class="text-muted ms-4">"Which team does Oscar Piastri drive for?"</span></li>
+                      </ul>
+                    </div>
+                    <div class="col-md-6">
+                      <ul class="list-unstyled mb-0 small">
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Season standings</strong><br>
+                          <span class="text-muted ms-4">"What are the driver standings in 2022?"</span></li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Win counts</strong><br>
+                          <span class="text-muted ms-4">"How many races did Verstappen win in 2023?"</span></li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Teammates &amp; Circuits</strong><br>
+                          <span class="text-muted ms-4">"Who were Hamilton's teammates in 2024?"</span></li>
+                        <li class="mb-2"><i class="bi bi-hourglass-split text-warning me-2"></i><strong>Other queries</strong>
+                          <span class="badge bg-warning text-dark ms-1" style="font-size:.65em">In development</span><br>
+                          <span class="text-muted ms-4">Lap times, qualifying, tyre strategies, historical comparisons…</span></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <p class="text-muted small mb-0 mt-2 border-top pt-2">
+                    <i class="bi bi-info-circle me-1"></i>Coverage: seasons <strong>2022–2026</strong> · Sources: Formula1.com, curated race data · ~5,400 triples
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- Loading spinner -->
           <div id="loading" class="text-center py-4" style="display:none">
             <div class="spinner-border text-danger" role="status"></div>
@@ -330,6 +377,14 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+
+// Chevron animation for question types collapse
+document.getElementById('question-types-collapse').addEventListener('show.bs.collapse', () => {
+  document.getElementById('qtypes-chevron').style.transform = 'rotate(180deg)';
+});
+document.getElementById('question-types-collapse').addEventListener('hide.bs.collapse', () => {
+  document.getElementById('qtypes-chevron').style.transform = 'rotate(0deg)';
+});
 
 // Helpers
 

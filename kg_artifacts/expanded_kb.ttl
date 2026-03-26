@@ -228,9 +228,9 @@ ex:Result_GP_2023_GreatBritain_Winner a ex:RaceResult ;
 
 ex:Result_GP_2023_Hungary_Winner a ex:RaceResult ;
     ex:finishPosition "1"^^xsd:int ;
-    ex:forDriver ex:LewisHamilton ;
+    ex:forDriver ex:MaxVerstappen ;
     ex:forGrandPrix ex:GP_2023_Hungary ;
-    ex:forTeam ex:Mercedes ;
+    ex:forTeam ex:RedBullRacing ;
     ex:points 25.0 .
 
 ex:Result_GP_2023_Italy_Winner a ex:RaceResult ;
@@ -3812,13 +3812,6 @@ ex:NicoHulkenberg a ex:Driver ;
     ex:wikidataId "Q76547" ;
     owl:sameAs wd:Q76547 .
 
-ex:AlphaTauri a ex:Team ;
-    ex:name "AlphaTauri" ;
-    ex:participatedInSeason ex:Season2022,
-        ex:Season2023 ;
-    ex:wikidataId "Q60752400" ;
-    owl:sameAs wd:Q60752400 .
-
 ex:LewisHamilton a ex:Driver ;
     ex:competesInSeason ex:Season2022,
         ex:Season2023,
@@ -3833,8 +3826,7 @@ ex:LewisHamilton a ex:Driver ;
         ex:Standing_2024_LewisHamilton,
         ex:Standing_2025_LewisHamilton,
         ex:Standing_2026_LewisHamilton ;
-    ex:hasWon ex:GP_2023_Hungary,
-        ex:GP_2024_Belgium,
+    ex:hasWon ex:GP_2024_Belgium,
         ex:GP_2024_GreatBritain ;
     ex:name "Lewis Hamilton" ;
     ex:nationality "GBR" ;
@@ -3937,6 +3929,13 @@ ex:LewisHamilton a ex:Driver ;
         ex:GeorgeRussell ;
     ex:wikidataId "Q9673" ;
     owl:sameAs wd:Q9673 .
+
+ex:AlphaTauri a ex:Team ;
+    ex:name "AlphaTauri" ;
+    ex:participatedInSeason ex:Season2022,
+        ex:Season2023 ;
+    ex:wikidataId "Q60752400" ;
+    owl:sameAs wd:Q60752400 .
 
 ex:Haas a ex:Team ;
     ex:name "Haas" ;
@@ -4762,8 +4761,8 @@ ex:GP_2023_Hungary a ex:GrandPrix ;
     ex:name "2023 Hungarian Grand Prix" ;
     ex:partOfSeason ex:Season2023 ;
     ex:raceDate "2023-07-23"^^xsd:date ;
-    ex:winner ex:LewisHamilton ;
-    ex:winningTeam ex:Mercedes .
+    ex:winner ex:MaxVerstappen ;
+    ex:winningTeam ex:RedBullRacing .
 
 ex:GP_2023_Italy a ex:GrandPrix ;
     ex:heldAtCircuit ex:AutodromoNazionaleDiMonza ;
@@ -5677,6 +5676,7 @@ ex:MaxVerstappen a ex:Driver ;
         ex:GP_2023_Brazil,
         ex:GP_2023_Canada,
         ex:GP_2023_GreatBritain,
+        ex:GP_2023_Hungary,
         ex:GP_2023_Italy,
         ex:GP_2023_Japan,
         ex:GP_2023_LasVegas,

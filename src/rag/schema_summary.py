@@ -108,59 +108,55 @@ PREFIX ex: <http://example.org/f1#>
 
 EXAMPLE_QUERIES = [
     {
-        "question": "Who won the 2023 Italian Grand Prix at Monza?",
-        "sparql": """PREFIX ex: <http://example.org/f1#>
-SELECT ?driverName ?teamName WHERE {
-    ?gp ex:partOfSeason ex:Season2023 ;
-        ex:name ?gpName ;
-        ex:winner ?driver ;
-        ex:winningTeam ?team .
-    ?driver ex:name ?driverName .
-    ?team   ex:name ?teamName .
-    FILTER(CONTAINS(LCASE(?gpName), "italian"))
-}""",
-    },
-    {
-        "question": "Who won the 2024 F1 championship?",
+        "question": "Who won the 2023 F1 championship?",
         "sparql": """PREFIX ex: <http://example.org/f1#>
 SELECT ?driverName WHERE {
-    ?driver ex:isChampionOf ex:Season2024 ;
+    ?driver ex:isChampionOf ex:Season2023 ;
             ex:name ?driverName .
 }""",
     },
     {
-        "question": "Which team does Lando Norris drive for?",
+        "question": "Who won the Monaco Grand Prix in 2024?",
         "sparql": """PREFIX ex: <http://example.org/f1#>
-SELECT DISTINCT ?teamName WHERE {
-    ?driver ex:name "Lando Norris" ;
-            ex:drivesFor ?team .
-    ?team ex:name ?teamName .
-}""",
-    },
-    {
-        "question": "Who were the teammates of Lewis Hamilton in 2024?",
-        "sparql": """PREFIX ex: <http://example.org/f1#>
-SELECT DISTINCT ?mateName WHERE {
-    ?hamilton ex:name "Lewis Hamilton" .
-    ?s1 a ex:DriverStanding ; ex:forSeason ex:Season2024 ;
-        ex:forDriver ?hamilton ; ex:forTeam ?team .
-    ?s2 a ex:DriverStanding ; ex:forSeason ex:Season2024 ;
-        ex:forDriver ?mate   ; ex:forTeam ?team .
-    ?mate ex:name ?mateName .
-    FILTER(?hamilton != ?mate)
+SELECT ?driverName WHERE {
+    ?gp ex:partOfSeason ex:Season2024 ;
+        ex:name ?gpName ;
+        ex:winner ?driver .
+    ?driver ex:name ?driverName .
+    FILTER(CONTAINS(LCASE(?gpName), "monaco"))
 }""",
     },
     {
         "question": "How many races did Max Verstappen win in 2023?",
         "sparql": """PREFIX ex: <http://example.org/f1#>
 SELECT (COUNT(?gp) AS ?wins) WHERE {
-    ?driver ex:name "Max Verstappen" ;
-            ex:hasWon ?gp .
+    ex:MaxVerstappen ex:hasWon ?gp .
     ?gp ex:partOfSeason ex:Season2023 .
 }""",
     },
     {
-        "question": "What are the standings for the 2022 season?",
+        "question": "Who were the teammates of Lewis Hamilton in 2024?",
+        "sparql": """PREFIX ex: <http://example.org/f1#>
+SELECT DISTINCT ?mateName WHERE {
+    ?s1 a ex:DriverStanding ; ex:forSeason ex:Season2024 ;
+        ex:forDriver ex:LewisHamilton ; ex:forTeam ?team .
+    ?s2 a ex:DriverStanding ; ex:forSeason ex:Season2024 ;
+        ex:forDriver ?mate ; ex:forTeam ?team .
+    ?mate ex:name ?mateName .
+    FILTER(ex:LewisHamilton != ?mate)
+}""",
+    },
+    {
+        "question": "Which team does Pierre Gasly drive for?",
+        "sparql": """PREFIX ex: <http://example.org/f1#>
+SELECT DISTINCT ?teamName WHERE {
+    ?driver ex:name "Pierre Gasly" ;
+            ex:drivesFor ?team .
+    ?team ex:name ?teamName .
+}""",
+    },
+    {
+        "question": "What are the driver standings in 2022?",
         "sparql": """PREFIX ex: <http://example.org/f1#>
 SELECT ?driverName ?position ?points WHERE {
     ?standing a ex:DriverStanding ;
@@ -171,6 +167,15 @@ SELECT ?driverName ?position ?points WHERE {
     ?driver ex:name ?driverName .
 }
 ORDER BY ?position""",
+    },
+    {
+        "question": "Did Lewis Hamilton win a race in 2024?",
+        "sparql": """PREFIX ex: <http://example.org/f1#>
+SELECT ?gpName WHERE {
+    ex:LewisHamilton ex:hasWon ?gp .
+    ?gp ex:partOfSeason ex:Season2024 ;
+        ex:name ?gpName .
+}""",
     },
 ]
 
