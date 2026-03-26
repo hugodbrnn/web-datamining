@@ -60,6 +60,11 @@ CRITICAL — to find who won a race:
              ?driver ex:name ?driverName .
              FILTER(CONTAINS(LCASE(?gpName), "keyword")) }}
 
+CRITICAL — to find which team a driver drives for, use drivesFor DIRECTLY:
+  WRONG: ?x ex:teammateOf ex:LandoNorris ; ex:drivesFor ?team .  ← finds teammates' teams, not the driver's team
+  RIGHT: SELECT DISTINCT ?teamName WHERE {{ ex:LandoNorris ex:drivesFor ?team . ?team ex:name ?teamName . }}
+  Use SELECT DISTINCT when drivesFor may have multiple triples across seasons.
+
 CRITICAL — string matching: use FILTER(CONTAINS(LCASE(?var), "text"))
   WRONG: FILTER REGEX(STR(?x), "text")
   WRONG: FILTER(STRINGS(?x) CONTAINS("text"))
@@ -83,7 +88,7 @@ class SPARQLGenerator:
         ollama_url: str = OLLAMA_URL,
         kb_path: Path = DEFAULT_KB,
         temperature: float = 0.0,
-        timeout: int = 60,
+        timeout: int = 300,
     ):
         self.model       = model
         self.ollama_url  = ollama_url.rstrip("/")
@@ -140,6 +145,9 @@ class SPARQLGenerator:
         except urllib.error.URLError as e:
             logger.warning(f"Ollama unavailable ({e})")
             return None
+        except TimeoutError as e:
+            logger.warning(f"Ollama timed out ({e})")
+            return None
         except (KeyError, json.JSONDecodeError) as e:
             logger.warning(f"Ollama response parse error: {e}")
             return None
@@ -176,6 +184,16 @@ class SPARQLGenerator:
         # AND/OR between triple patterns → semicolon (SPARQL uses ; not AND)
         sparql = re.sub(r'\s+AND\s+', ' ;\n    ', sparql, flags=re.IGNORECASE)
         sparql = re.sub(r'\s+OR\s+(?=\?)', ' UNION { ', sparql, flags=re.IGNORECASE)
+        # Remove Turtle-style semicolons after PREFIX declarations (LLM hallucination)
+        sparql = re.sub(r'(PREFIX\s+\w+:\s+<[^>]+>)\s*;', r'\1', sparql)
+        # Remove FILTER(CONTAINS(...)) applied to resource variables (URIs, not strings)
+        # e.g. FILTER(CONTAINS(LCASE(?driver), "italian")) makes no sense on a URI
+        sparql = re.sub(
+            r'\s*FILTER\s*\(\s*CONTAINS\s*\(\s*LCASE\s*\(\s*'
+            r'\?(driver|gp|circuit|team|season|result|standing|country)\s*\)'
+            r'\s*,\s*[^)]+\)\s*\)',
+            '', sparql, flags=re.IGNORECASE
+        )
         # Ensure PREFIX ex: is present
         if 'ex:' in sparql and 'PREFIX ex:' not in sparql:
             sparql = 'PREFIX ex: <http://example.org/f1#>\n' + sparql

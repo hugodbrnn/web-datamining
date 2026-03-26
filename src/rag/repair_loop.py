@@ -20,10 +20,28 @@ Usage
     rows, final_query, error = loop.run("Who won the 2023 championship?")
 """
 
+import re
 import logging
 from typing import Optional
 
 logger = logging.getLogger(__name__)
+
+
+def _unbound_select_vars(sparql: str) -> list[str]:
+    """Return SELECT variables that are never bound in the WHERE clause."""
+    select_match = re.search(r'SELECT\b(.*?)WHERE\b', sparql, re.IGNORECASE | re.DOTALL)
+    if not select_match:
+        return []
+    select_clause = select_match.group(1)
+    # Skip COUNT/aggregates
+    select_vars = re.findall(r'\?(\w+)', select_clause)
+    where_block  = sparql[select_match.end():]
+    unbound = []
+    for var in select_vars:
+        # A variable is "bound" if it appears in the WHERE block
+        if not re.search(r'\?' + var + r'\b', where_block):
+            unbound.append(var)
+    return unbound
 
 MAX_ATTEMPTS = 3
 
@@ -53,9 +71,20 @@ Question: {question}
 SPARQL query that returned empty results:
 {bad_query}
 
-The KB uses CamelCase URIs (e.g. ex:MaxVerstappen, ex:Season2024, ex:BahrainGP2023).
-Please try a more flexible version using FILTER, REGEX, or OPTIONAL.
-Return ONLY the corrected SPARQL query.
+IMPORTANT RULES:
+- The KB uses CamelCase URIs (e.g. ex:MaxVerstappen, ex:Season2024)
+- Every variable in SELECT must be bound in the WHERE clause
+- OPTIONAL must appear as a standalone clause, NOT inside a semicolon chain
+- To find who won a specific race, you MUST use this exact pattern:
+    ?gp ex:partOfSeason ex:SeasonYYYY ;
+        ex:name ?gpName ;
+        ex:winner ?driver .
+    ?driver ex:name ?driverName .
+    FILTER(CONTAINS(LCASE(?gpName), "keyword"))
+- NEVER use FILTER on the driver name to find a GP — filter on ex:name of the GP
+- NEVER write ?driver ex:name ?driver (variable bound to itself)
+
+Return ONLY the corrected SPARQL query starting with PREFIX ex: <http://example.org/f1#>
 """
 
 
@@ -86,7 +115,14 @@ class RepairLoop:
         logger.debug(f"[attempt 1] Generated SPARQL:\n{query}")
 
         for attempt in range(1, self.max_attempts + 1):
-            rows, error = self.executor.run(query)
+            # Pre-check: detect SELECT variables never bound in WHERE
+            unbound = _unbound_select_vars(query)
+            if unbound:
+                logger.info(f"[attempt {attempt}] Unbound SELECT vars {unbound} — forcing repair")
+                error = f"Unbound SELECT variables: {unbound}. Every variable in SELECT must appear in WHERE."
+                rows  = []
+            else:
+                rows, error = self.executor.run(query)
 
             if error is None and rows:
                 logger.info(f"[attempt {attempt}] Success — {len(rows)} rows")
@@ -110,10 +146,12 @@ class RepairLoop:
                     question=question, bad_query=query, error=error
                 )
 
-            # Ask the LLM to fix the query
+            # Ask the LLM to fix the query (use full system prompt with CRITICAL rules)
+            from src.rag.sparql_generator import SYSTEM_PROMPT_TEMPLATE
+            full_system = SYSTEM_PROMPT_TEMPLATE.format(schema=self.generator.schema)
             messages = [
-                {"role": "system",    "content": self.generator.schema},
-                {"role": "user",      "content": repair_prompt},
+                {"role": "system", "content": full_system},
+                {"role": "user",   "content": repair_prompt},
             ]
             raw = self.generator._call_ollama(messages)
             if raw is None:

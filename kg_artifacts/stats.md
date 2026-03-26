@@ -4,8 +4,8 @@
 
 | Metric | Value |
 |---|---|
-| Total triples | 5,032 |
-| Unique subjects (entities) | 445 |
+| Total triples | 5,368 |
+| Unique subjects (entities) | 470 |
 | Unique predicates (relations) | 46 |
 
 ## Top-20 predicates by frequency
@@ -13,25 +13,25 @@
 | Predicate | Count |
 |---|---|
 | `participatedIn` | 2,114 |
-| `type` | 401 |
-| `name` | 185 |
-| `forDriver` | 181 |
-| `standingPosition` | 111 |
-| `standingPoints` | 111 |
+| `type` | 426 |
+| `forDriver` | 205 |
+| `forTeam` | 205 |
+| `name` | 186 |
 | `hasStanding` | 111 |
 | `competesInSeason` | 111 |
+| `standingPoints` | 111 |
+| `standingPosition` | 111 |
 | `forSeason` | 111 |
 | `hasRace` | 95 |
-| `partOfSeason` | 95 |
 | `raceDate` | 95 |
+| `partOfSeason` | 95 |
 | `heldAtCircuit` | 95 |
-| `teammateOf` | 86 |
-| `label` | 75 |
-| `forGrandPrix` | 70 |
-| `hasWon` | 70 |
-| `finishPosition` | 70 |
-| `forTeam` | 70 |
-| `winningTeam` | 70 |
+| `forGrandPrix` | 94 |
+| `hasWon` | 94 |
+| `finishPosition` | 94 |
+| `points` | 94 |
+| `winner` | 94 |
+| `winningTeam` | 94 |
 
 ## Expansion strategy (local)
 
@@ -61,4 +61,5 @@ python src/kg/expand_kb.py
 |---|---|
 | `auto_kg.ttl` | Private KB (Formula1.com) + ontology + Wikidata alignments |
 | `expanded_kb.ttl` | This expanded KB (local expansion) |
-| `alignment_drivers.tsv` | Driver alignment to Wikid
+| `alignment_drivers.tsv` | Driver alignment to Wikidata |
+| `alignment_teams.tsv` | Team alignment to Wikidata |

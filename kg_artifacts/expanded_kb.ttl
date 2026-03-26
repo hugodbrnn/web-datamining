@@ -485,6 +485,174 @@ ex:Result_GP_2024_UnitedStates_Winner a ex:RaceResult ;
     ex:forTeam ex:Ferrari ;
     ex:points 25.0 .
 
+ex:Result_GP_2025_AbuDhabi_Winner a ex:RaceResult ;
+    ex:finishPosition "1"^^xsd:int ;
+    ex:forDriver ex:OscarPiastri ;
+    ex:forGrandPrix ex:GP_2025_AbuDhabi ;
+    ex:forTeam ex:McLaren ;
+    ex:points 25.0 .
+
+ex:Result_GP_2025_Australia_Winner a ex:RaceResult ;
+    ex:finishPosition "1"^^xsd:int ;
+    ex:forDriver ex:LandoNorris ;
+    ex:forGrandPrix ex:GP_2025_Australia ;
+    ex:forTeam ex:McLaren ;
+    ex:points 25.0 .
+
+ex:Result_GP_2025_Austria_Winner a ex:RaceResult ;
+    ex:finishPosition "1"^^xsd:int ;
+    ex:forDriver ex:OscarPiastri ;
+    ex:forGrandPrix ex:GP_2025_Austria ;
+    ex:forTeam ex:McLaren ;
+    ex:points 25.0 .
+
+ex:Result_GP_2025_Azerbaijan_Winner a ex:RaceResult ;
+    ex:finishPosition "1"^^xsd:int ;
+    ex:forDriver ex:OscarPiastri ;
+    ex:forGrandPrix ex:GP_2025_Azerbaijan ;
+    ex:forTeam ex:McLaren ;
+    ex:points 25.0 .
+
+ex:Result_GP_2025_Bahrain_Winner a ex:RaceResult ;
+    ex:finishPosition "1"^^xsd:int ;
+    ex:forDriver ex:MaxVerstappen ;
+    ex:forGrandPrix ex:GP_2025_Bahrain ;
+    ex:forTeam ex:RedBullRacing ;
+    ex:points 25.0 .
+
+ex:Result_GP_2025_Belgium_Winner a ex:RaceResult ;
+    ex:finishPosition "1"^^xsd:int ;
+    ex:forDriver ex:LandoNorris ;
+    ex:forGrandPrix ex:GP_2025_Belgium ;
+    ex:forTeam ex:McLaren ;
+    ex:points 25.0 .
+
+ex:Result_GP_2025_Brazil_Winner a ex:RaceResult ;
+    ex:finishPosition "1"^^xsd:int ;
+    ex:forDriver ex:MaxVerstappen ;
+    ex:forGrandPrix ex:GP_2025_Brazil ;
+    ex:forTeam ex:RedBullRacing ;
+    ex:points 25.0 .
+
+ex:Result_GP_2025_Canada_Winner a ex:RaceResult ;
+    ex:finishPosition "1"^^xsd:int ;
+    ex:forDriver ex:MaxVerstappen ;
+    ex:forGrandPrix ex:GP_2025_Canada ;
+    ex:forTeam ex:RedBullRacing ;
+    ex:points 25.0 .
+
+ex:Result_GP_2025_China_Winner a ex:RaceResult ;
+    ex:finishPosition "1"^^xsd:int ;
+    ex:forDriver ex:OscarPiastri ;
+    ex:forGrandPrix ex:GP_2025_China ;
+    ex:forTeam ex:McLaren ;
+    ex:points 25.0 .
+
+ex:Result_GP_2025_EmiliaRomagna_Winner a ex:RaceResult ;
+    ex:finishPosition "1"^^xsd:int ;
+    ex:forDriver ex:MaxVerstappen ;
+    ex:forGrandPrix ex:GP_2025_EmiliaRomagna ;
+    ex:forTeam ex:RedBullRacing ;
+    ex:points 25.0 .
+
+ex:Result_GP_2025_GreatBritain_Winner a ex:RaceResult ;
+    ex:finishPosition "1"^^xsd:int ;
+    ex:forDriver ex:LandoNorris ;
+    ex:forGrandPrix ex:GP_2025_GreatBritain ;
+    ex:forTeam ex:McLaren ;
+    ex:points 25.0 .
+
+ex:Result_GP_2025_Hungary_Winner a ex:RaceResult ;
+    ex:finishPosition "1"^^xsd:int ;
+    ex:forDriver ex:OscarPiastri ;
+    ex:forGrandPrix ex:GP_2025_Hungary ;
+    ex:forTeam ex:McLaren ;
+    ex:points 25.0 .
+
+ex:Result_GP_2025_Italy_Winner a ex:RaceResult ;
+    ex:finishPosition "1"^^xsd:int ;
+    ex:forDriver ex:CharlesLeclerc ;
+    ex:forGrandPrix ex:GP_2025_Italy ;
+    ex:forTeam ex:Ferrari ;
+    ex:points 25.0 .
+
+ex:Result_GP_2025_Japan_Winner a ex:RaceResult ;
+    ex:finishPosition "1"^^xsd:int ;
+    ex:forDriver ex:MaxVerstappen ;
+    ex:forGrandPrix ex:GP_2025_Japan ;
+    ex:forTeam ex:RedBullRacing ;
+    ex:points 25.0 .
+
+ex:Result_GP_2025_LasVegas_Winner a ex:RaceResult ;
+    ex:finishPosition "1"^^xsd:int ;
+    ex:forDriver ex:CarlosSainz ;
+    ex:forGrandPrix ex:GP_2025_LasVegas ;
+    ex:forTeam ex:Williams ;
+    ex:points 25.0 .
+
+ex:Result_GP_2025_Mexico_Winner a ex:RaceResult ;
+    ex:finishPosition "1"^^xsd:int ;
+    ex:forDriver ex:CarlosSainz ;
+    ex:forGrandPrix ex:GP_2025_Mexico ;
+    ex:forTeam ex:Williams ;
+    ex:points 25.0 .
+
+ex:Result_GP_2025_Miami_Winner a ex:RaceResult ;
+    ex:finishPosition "1"^^xsd:int ;
+    ex:forDriver ex:MaxVerstappen ;
+    ex:forGrandPrix ex:GP_2025_Miami ;
+    ex:forTeam ex:RedBullRacing ;
+    ex:points 25.0 .
+
+ex:Result_GP_2025_Monaco_Winner a ex:RaceResult ;
+    ex:finishPosition "1"^^xsd:int ;
+    ex:forDriver ex:CharlesLeclerc ;
+    ex:forGrandPrix ex:GP_2025_Monaco ;
+    ex:forTeam ex:Ferrari ;
+    ex:points 25.0 .
+
+ex:Result_GP_2025_Netherlands_Winner a ex:RaceResult ;
+    ex:finishPosition "1"^^xsd:int ;
+    ex:forDriver ex:LandoNorris ;
+    ex:forGrandPrix ex:GP_2025_Netherlands ;
+    ex:forTeam ex:McLaren ;
+    ex:points 25.0 .
+
+ex:Result_GP_2025_Qatar_Winner a ex:RaceResult ;
+    ex:finishPosition "1"^^xsd:int ;
+    ex:forDriver ex:OscarPiastri ;
+    ex:forGrandPrix ex:GP_2025_Qatar ;
+    ex:forTeam ex:McLaren ;
+    ex:points 25.0 .
+
+ex:Result_GP_2025_SaudiArabia_Winner a ex:RaceResult ;
+    ex:finishPosition "1"^^xsd:int ;
+    ex:forDriver ex:OscarPiastri ;
+    ex:forGrandPrix ex:GP_2025_SaudiArabia ;
+    ex:forTeam ex:McLaren ;
+    ex:points 25.0 .
+
+ex:Result_GP_2025_Singapore_Winner a ex:RaceResult ;
+    ex:finishPosition "1"^^xsd:int ;
+    ex:forDriver ex:LandoNorris ;
+    ex:forGrandPrix ex:GP_2025_Singapore ;
+    ex:forTeam ex:McLaren ;
+    ex:points 25.0 .
+
+ex:Result_GP_2025_Spain_Winner a ex:RaceResult ;
+    ex:finishPosition "1"^^xsd:int ;
+    ex:forDriver ex:OscarPiastri ;
+    ex:forGrandPrix ex:GP_2025_Spain ;
+    ex:forTeam ex:McLaren ;
+    ex:points 25.0 .
+
+ex:Result_GP_2025_UnitedStates_Winner a ex:RaceResult ;
+    ex:finishPosition "1"^^xsd:int ;
+    ex:forDriver ex:LandoNorris ;
+    ex:forGrandPrix ex:GP_2025_UnitedStates ;
+    ex:forTeam ex:McLaren ;
+    ex:points 25.0 .
+
 ex:Result_GP_2026_Australia_Winner a ex:RaceResult ;
     ex:finishPosition "1"^^xsd:int ;
     ex:forDriver ex:GeorgeRussell ;
@@ -615,666 +783,777 @@ ex:NewZealand a ex:Country ;
 ex:Standing_2022_AlexanderAlbon a ex:DriverStanding ;
     ex:forDriver ex:AlexanderAlbon ;
     ex:forSeason ex:Season2022 ;
+    ex:forTeam ex:Williams ;
     ex:standingPoints 4.0 ;
     ex:standingPosition "19"^^xsd:int .
 
 ex:Standing_2022_CarlosSainz a ex:DriverStanding ;
     ex:forDriver ex:CarlosSainz ;
     ex:forSeason ex:Season2022 ;
+    ex:forTeam ex:Ferrari ;
     ex:standingPoints 246.0 ;
     ex:standingPosition "5"^^xsd:int .
 
 ex:Standing_2022_CharlesLeclerc a ex:DriverStanding ;
     ex:forDriver ex:CharlesLeclerc ;
     ex:forSeason ex:Season2022 ;
+    ex:forTeam ex:Ferrari ;
     ex:standingPoints 308.0 ;
     ex:standingPosition "2"^^xsd:int .
 
 ex:Standing_2022_DanielRicciardo a ex:DriverStanding ;
     ex:forDriver ex:DanielRicciardo ;
     ex:forSeason ex:Season2022 ;
+    ex:forTeam ex:McLaren ;
     ex:standingPoints 37.0 ;
     ex:standingPosition "11"^^xsd:int .
 
 ex:Standing_2022_EstebanOcon a ex:DriverStanding ;
     ex:forDriver ex:EstebanOcon ;
     ex:forSeason ex:Season2022 ;
+    ex:forTeam ex:Alpine ;
     ex:standingPoints 92.0 ;
     ex:standingPosition "8"^^xsd:int .
 
 ex:Standing_2022_FernandoAlonso a ex:DriverStanding ;
     ex:forDriver ex:FernandoAlonso ;
     ex:forSeason ex:Season2022 ;
+    ex:forTeam ex:Alpine ;
     ex:standingPoints 81.0 ;
     ex:standingPosition "9"^^xsd:int .
 
 ex:Standing_2022_GeorgeRussell a ex:DriverStanding ;
     ex:forDriver ex:GeorgeRussell ;
     ex:forSeason ex:Season2022 ;
+    ex:forTeam ex:Mercedes ;
     ex:standingPoints 275.0 ;
     ex:standingPosition "4"^^xsd:int .
 
 ex:Standing_2022_KevinMagnussen a ex:DriverStanding ;
     ex:forDriver ex:KevinMagnussen ;
     ex:forSeason ex:Season2022 ;
+    ex:forTeam ex:Haas ;
     ex:standingPoints 25.0 ;
     ex:standingPosition "13"^^xsd:int .
 
 ex:Standing_2022_LanceStroll a ex:DriverStanding ;
     ex:forDriver ex:LanceStroll ;
     ex:forSeason ex:Season2022 ;
+    ex:forTeam ex:AstonMartin ;
     ex:standingPoints 18.0 ;
     ex:standingPosition "15"^^xsd:int .
 
 ex:Standing_2022_LandoNorris a ex:DriverStanding ;
     ex:forDriver ex:LandoNorris ;
     ex:forSeason ex:Season2022 ;
+    ex:forTeam ex:McLaren ;
     ex:standingPoints 122.0 ;
     ex:standingPosition "7"^^xsd:int .
 
 ex:Standing_2022_LewisHamilton a ex:DriverStanding ;
     ex:forDriver ex:LewisHamilton ;
     ex:forSeason ex:Season2022 ;
+    ex:forTeam ex:Mercedes ;
     ex:standingPoints 240.0 ;
     ex:standingPosition "6"^^xsd:int .
 
 ex:Standing_2022_MaxVerstappen a ex:DriverStanding ;
     ex:forDriver ex:MaxVerstappen ;
     ex:forSeason ex:Season2022 ;
+    ex:forTeam ex:RedBullRacing ;
     ex:standingPoints 454.0 ;
     ex:standingPosition "1"^^xsd:int .
 
 ex:Standing_2022_MickSchumacher a ex:DriverStanding ;
     ex:forDriver ex:MickSchumacher ;
     ex:forSeason ex:Season2022 ;
+    ex:forTeam ex:Haas ;
     ex:standingPoints 12.0 ;
     ex:standingPosition "16"^^xsd:int .
 
 ex:Standing_2022_NicholasLatifi a ex:DriverStanding ;
     ex:forDriver ex:NicholasLatifi ;
     ex:forSeason ex:Season2022 ;
+    ex:forTeam ex:Williams ;
     ex:standingPoints 2.0 ;
     ex:standingPosition "20"^^xsd:int .
 
 ex:Standing_2022_NicoHulkenberg a ex:DriverStanding ;
     ex:forDriver ex:NicoHulkenberg ;
     ex:forSeason ex:Season2022 ;
+    ex:forTeam ex:AstonMartin ;
     ex:standingPoints 0.0 ;
     ex:standingPosition "22"^^xsd:int .
 
 ex:Standing_2022_NyckDeVries a ex:DriverStanding ;
     ex:forDriver ex:NyckDeVries ;
     ex:forSeason ex:Season2022 ;
+    ex:forTeam ex:Williams ;
     ex:standingPoints 2.0 ;
     ex:standingPosition "21"^^xsd:int .
 
 ex:Standing_2022_PierreGasly a ex:DriverStanding ;
     ex:forDriver ex:PierreGasly ;
     ex:forSeason ex:Season2022 ;
+    ex:forTeam ex:AlphaTauri ;
     ex:standingPoints 23.0 ;
     ex:standingPosition "14"^^xsd:int .
 
 ex:Standing_2022_SebastianVettel a ex:DriverStanding ;
     ex:forDriver ex:SebastianVettel ;
     ex:forSeason ex:Season2022 ;
+    ex:forTeam ex:AstonMartin ;
     ex:standingPoints 37.0 ;
     ex:standingPosition "12"^^xsd:int .
 
 ex:Standing_2022_SergioPerez a ex:DriverStanding ;
     ex:forDriver ex:SergioPerez ;
     ex:forSeason ex:Season2022 ;
+    ex:forTeam ex:RedBullRacing ;
     ex:standingPoints 305.0 ;
     ex:standingPosition "3"^^xsd:int .
 
 ex:Standing_2022_ValtteriBottas a ex:DriverStanding ;
     ex:forDriver ex:ValtteriBottas ;
     ex:forSeason ex:Season2022 ;
+    ex:forTeam ex:AlfaRomeo ;
     ex:standingPoints 49.0 ;
     ex:standingPosition "10"^^xsd:int .
 
 ex:Standing_2022_YukiTsunoda a ex:DriverStanding ;
     ex:forDriver ex:YukiTsunoda ;
     ex:forSeason ex:Season2022 ;
+    ex:forTeam ex:AlphaTauri ;
     ex:standingPoints 12.0 ;
     ex:standingPosition "17"^^xsd:int .
 
 ex:Standing_2022_ZhouGuanyu a ex:DriverStanding ;
     ex:forDriver ex:ZhouGuanyu ;
     ex:forSeason ex:Season2022 ;
+    ex:forTeam ex:AlfaRomeo ;
     ex:standingPoints 6.0 ;
     ex:standingPosition "18"^^xsd:int .
 
 ex:Standing_2023_AlexanderAlbon a ex:DriverStanding ;
     ex:forDriver ex:AlexanderAlbon ;
     ex:forSeason ex:Season2023 ;
+    ex:forTeam ex:Williams ;
     ex:standingPoints 27.0 ;
     ex:standingPosition "13"^^xsd:int .
 
 ex:Standing_2023_CarlosSainz a ex:DriverStanding ;
     ex:forDriver ex:CarlosSainz ;
     ex:forSeason ex:Season2023 ;
+    ex:forTeam ex:Ferrari ;
     ex:standingPoints 200.0 ;
     ex:standingPosition "7"^^xsd:int .
 
 ex:Standing_2023_CharlesLeclerc a ex:DriverStanding ;
     ex:forDriver ex:CharlesLeclerc ;
     ex:forSeason ex:Season2023 ;
+    ex:forTeam ex:Ferrari ;
     ex:standingPoints 206.0 ;
     ex:standingPosition "5"^^xsd:int .
 
 ex:Standing_2023_DanielRicciardo a ex:DriverStanding ;
     ex:forDriver ex:DanielRicciardo ;
     ex:forSeason ex:Season2023 ;
+    ex:forTeam ex:AlphaTauri ;
     ex:standingPoints 6.0 ;
     ex:standingPosition "17"^^xsd:int .
 
 ex:Standing_2023_EstebanOcon a ex:DriverStanding ;
     ex:forDriver ex:EstebanOcon ;
     ex:forSeason ex:Season2023 ;
+    ex:forTeam ex:Alpine ;
     ex:standingPoints 58.0 ;
     ex:standingPosition "12"^^xsd:int .
 
 ex:Standing_2023_FernandoAlonso a ex:DriverStanding ;
     ex:forDriver ex:FernandoAlonso ;
     ex:forSeason ex:Season2023 ;
+    ex:forTeam ex:AstonMartin ;
     ex:standingPoints 206.0 ;
     ex:standingPosition "4"^^xsd:int .
 
 ex:Standing_2023_GeorgeRussell a ex:DriverStanding ;
     ex:forDriver ex:GeorgeRussell ;
     ex:forSeason ex:Season2023 ;
+    ex:forTeam ex:Mercedes ;
     ex:standingPoints 175.0 ;
     ex:standingPosition "8"^^xsd:int .
 
 ex:Standing_2023_KevinMagnussen a ex:DriverStanding ;
     ex:forDriver ex:KevinMagnussen ;
     ex:forSeason ex:Season2023 ;
+    ex:forTeam ex:Haas ;
     ex:standingPoints 3.0 ;
     ex:standingPosition "19"^^xsd:int .
 
 ex:Standing_2023_LanceStroll a ex:DriverStanding ;
     ex:forDriver ex:LanceStroll ;
     ex:forSeason ex:Season2023 ;
+    ex:forTeam ex:AstonMartin ;
     ex:standingPoints 74.0 ;
     ex:standingPosition "10"^^xsd:int .
 
 ex:Standing_2023_LandoNorris a ex:DriverStanding ;
     ex:forDriver ex:LandoNorris ;
     ex:forSeason ex:Season2023 ;
+    ex:forTeam ex:McLaren ;
     ex:standingPoints 205.0 ;
     ex:standingPosition "6"^^xsd:int .
 
 ex:Standing_2023_LewisHamilton a ex:DriverStanding ;
     ex:forDriver ex:LewisHamilton ;
     ex:forSeason ex:Season2023 ;
+    ex:forTeam ex:Mercedes ;
     ex:standingPoints 234.0 ;
     ex:standingPosition "3"^^xsd:int .
 
 ex:Standing_2023_LiamLawson a ex:DriverStanding ;
     ex:forDriver ex:LiamLawson ;
     ex:forSeason ex:Season2023 ;
+    ex:forTeam ex:AlphaTauri ;
     ex:standingPoints 2.0 ;
     ex:standingPosition "20"^^xsd:int .
 
 ex:Standing_2023_LoganSargeant a ex:DriverStanding ;
     ex:forDriver ex:LoganSargeant ;
     ex:forSeason ex:Season2023 ;
+    ex:forTeam ex:Williams ;
     ex:standingPoints 1.0 ;
     ex:standingPosition "21"^^xsd:int .
 
 ex:Standing_2023_MaxVerstappen a ex:DriverStanding ;
     ex:forDriver ex:MaxVerstappen ;
     ex:forSeason ex:Season2023 ;
+    ex:forTeam ex:RedBullRacing ;
     ex:standingPoints 575.0 ;
     ex:standingPosition "1"^^xsd:int .
 
 ex:Standing_2023_NicoHulkenberg a ex:DriverStanding ;
     ex:forDriver ex:NicoHulkenberg ;
     ex:forSeason ex:Season2023 ;
+    ex:forTeam ex:Haas ;
     ex:standingPoints 9.0 ;
     ex:standingPosition "16"^^xsd:int .
 
 ex:Standing_2023_NyckDeVries a ex:DriverStanding ;
     ex:forDriver ex:NyckDeVries ;
     ex:forSeason ex:Season2023 ;
+    ex:forTeam ex:AlphaTauri ;
     ex:standingPoints 0.0 ;
     ex:standingPosition "22"^^xsd:int .
 
 ex:Standing_2023_OscarPiastri a ex:DriverStanding ;
     ex:forDriver ex:OscarPiastri ;
     ex:forSeason ex:Season2023 ;
+    ex:forTeam ex:McLaren ;
     ex:standingPoints 97.0 ;
     ex:standingPosition "9"^^xsd:int .
 
 ex:Standing_2023_PierreGasly a ex:DriverStanding ;
     ex:forDriver ex:PierreGasly ;
     ex:forSeason ex:Season2023 ;
+    ex:forTeam ex:Alpine ;
     ex:standingPoints 62.0 ;
     ex:standingPosition "11"^^xsd:int .
 
 ex:Standing_2023_SergioPerez a ex:DriverStanding ;
     ex:forDriver ex:SergioPerez ;
     ex:forSeason ex:Season2023 ;
+    ex:forTeam ex:RedBullRacing ;
     ex:standingPoints 285.0 ;
     ex:standingPosition "2"^^xsd:int .
 
 ex:Standing_2023_ValtteriBottas a ex:DriverStanding ;
     ex:forDriver ex:ValtteriBottas ;
     ex:forSeason ex:Season2023 ;
+    ex:forTeam ex:AlfaRomeo ;
     ex:standingPoints 10.0 ;
     ex:standingPosition "15"^^xsd:int .
 
 ex:Standing_2023_YukiTsunoda a ex:DriverStanding ;
     ex:forDriver ex:YukiTsunoda ;
     ex:forSeason ex:Season2023 ;
+    ex:forTeam ex:AlphaTauri ;
     ex:standingPoints 17.0 ;
     ex:standingPosition "14"^^xsd:int .
 
 ex:Standing_2023_ZhouGuanyu a ex:DriverStanding ;
     ex:forDriver ex:ZhouGuanyu ;
     ex:forSeason ex:Season2023 ;
+    ex:forTeam ex:AlfaRomeo ;
     ex:standingPoints 6.0 ;
     ex:standingPosition "18"^^xsd:int .
 
 ex:Standing_2024_AlexanderAlbon a ex:DriverStanding ;
     ex:forDriver ex:AlexanderAlbon ;
     ex:forSeason ex:Season2024 ;
+    ex:forTeam ex:Williams ;
     ex:standingPoints 12.0 ;
     ex:standingPosition "16"^^xsd:int .
 
 ex:Standing_2024_CarlosSainz a ex:DriverStanding ;
     ex:forDriver ex:CarlosSainz ;
     ex:forSeason ex:Season2024 ;
+    ex:forTeam ex:Ferrari ;
     ex:standingPoints 290.0 ;
     ex:standingPosition "5"^^xsd:int .
 
 ex:Standing_2024_CharlesLeclerc a ex:DriverStanding ;
     ex:forDriver ex:CharlesLeclerc ;
     ex:forSeason ex:Season2024 ;
+    ex:forTeam ex:Ferrari ;
     ex:standingPoints 356.0 ;
     ex:standingPosition "3"^^xsd:int .
 
 ex:Standing_2024_DanielRicciardo a ex:DriverStanding ;
     ex:forDriver ex:DanielRicciardo ;
     ex:forSeason ex:Season2024 ;
+    ex:forTeam ex:RB ;
     ex:standingPoints 12.0 ;
     ex:standingPosition "17"^^xsd:int .
 
 ex:Standing_2024_EstebanOcon a ex:DriverStanding ;
     ex:forDriver ex:EstebanOcon ;
     ex:forSeason ex:Season2024 ;
+    ex:forTeam ex:Alpine ;
     ex:standingPoints 23.0 ;
     ex:standingPosition "14"^^xsd:int .
 
 ex:Standing_2024_FernandoAlonso a ex:DriverStanding ;
     ex:forDriver ex:FernandoAlonso ;
     ex:forSeason ex:Season2024 ;
+    ex:forTeam ex:AstonMartin ;
     ex:standingPoints 70.0 ;
     ex:standingPosition "9"^^xsd:int .
 
 ex:Standing_2024_FrancoColapinto a ex:DriverStanding ;
     ex:forDriver ex:FrancoColapinto ;
     ex:forSeason ex:Season2024 ;
+    ex:forTeam ex:Williams ;
     ex:standingPoints 5.0 ;
     ex:standingPosition "19"^^xsd:int .
 
 ex:Standing_2024_GeorgeRussell a ex:DriverStanding ;
     ex:forDriver ex:GeorgeRussell ;
     ex:forSeason ex:Season2024 ;
+    ex:forTeam ex:Mercedes ;
     ex:standingPoints 245.0 ;
     ex:standingPosition "6"^^xsd:int .
 
 ex:Standing_2024_JackDoohan a ex:DriverStanding ;
     ex:forDriver ex:JackDoohan ;
     ex:forSeason ex:Season2024 ;
+    ex:forTeam ex:Alpine ;
     ex:standingPoints 0.0 ;
     ex:standingPosition "24"^^xsd:int .
 
 ex:Standing_2024_KevinMagnussen a ex:DriverStanding ;
     ex:forDriver ex:KevinMagnussen ;
     ex:forSeason ex:Season2024 ;
+    ex:forTeam ex:Haas ;
     ex:standingPoints 16.0 ;
     ex:standingPosition "15"^^xsd:int .
 
 ex:Standing_2024_LanceStroll a ex:DriverStanding ;
     ex:forDriver ex:LanceStroll ;
     ex:forSeason ex:Season2024 ;
+    ex:forTeam ex:AstonMartin ;
     ex:standingPoints 24.0 ;
     ex:standingPosition "13"^^xsd:int .
 
 ex:Standing_2024_LandoNorris a ex:DriverStanding ;
     ex:forDriver ex:LandoNorris ;
     ex:forSeason ex:Season2024 ;
+    ex:forTeam ex:McLaren ;
     ex:standingPoints 374.0 ;
     ex:standingPosition "2"^^xsd:int .
 
 ex:Standing_2024_LewisHamilton a ex:DriverStanding ;
     ex:forDriver ex:LewisHamilton ;
     ex:forSeason ex:Season2024 ;
+    ex:forTeam ex:Mercedes ;
     ex:standingPoints 223.0 ;
     ex:standingPosition "7"^^xsd:int .
 
 ex:Standing_2024_LiamLawson a ex:DriverStanding ;
     ex:forDriver ex:LiamLawson ;
     ex:forSeason ex:Season2024 ;
+    ex:forTeam ex:RB ;
     ex:standingPoints 4.0 ;
     ex:standingPosition "21"^^xsd:int .
 
 ex:Standing_2024_LoganSargeant a ex:DriverStanding ;
     ex:forDriver ex:LoganSargeant ;
     ex:forSeason ex:Season2024 ;
+    ex:forTeam ex:Williams ;
     ex:standingPoints 0.0 ;
     ex:standingPosition "23"^^xsd:int .
 
 ex:Standing_2024_MaxVerstappen a ex:DriverStanding ;
     ex:forDriver ex:MaxVerstappen ;
     ex:forSeason ex:Season2024 ;
+    ex:forTeam ex:RedBullRacing ;
     ex:standingPoints 437.0 ;
     ex:standingPosition "1"^^xsd:int .
 
 ex:Standing_2024_NicoHulkenberg a ex:DriverStanding ;
     ex:forDriver ex:NicoHulkenberg ;
     ex:forSeason ex:Season2024 ;
+    ex:forTeam ex:Haas ;
     ex:standingPoints 41.0 ;
     ex:standingPosition "11"^^xsd:int .
 
 ex:Standing_2024_OliverBearman a ex:DriverStanding ;
     ex:forDriver ex:OliverBearman ;
     ex:forSeason ex:Season2024 ;
+    ex:forTeam ex:Haas ;
     ex:standingPoints 7.0 ;
     ex:standingPosition "18"^^xsd:int .
 
 ex:Standing_2024_OscarPiastri a ex:DriverStanding ;
     ex:forDriver ex:OscarPiastri ;
     ex:forSeason ex:Season2024 ;
+    ex:forTeam ex:McLaren ;
     ex:standingPoints 292.0 ;
     ex:standingPosition "4"^^xsd:int .
 
 ex:Standing_2024_PierreGasly a ex:DriverStanding ;
     ex:forDriver ex:PierreGasly ;
     ex:forSeason ex:Season2024 ;
+    ex:forTeam ex:Alpine ;
     ex:standingPoints 42.0 ;
     ex:standingPosition "10"^^xsd:int .
 
 ex:Standing_2024_SergioPerez a ex:DriverStanding ;
     ex:forDriver ex:SergioPerez ;
     ex:forSeason ex:Season2024 ;
+    ex:forTeam ex:RedBullRacing ;
     ex:standingPoints 152.0 ;
     ex:standingPosition "8"^^xsd:int .
 
 ex:Standing_2024_ValtteriBottas a ex:DriverStanding ;
     ex:forDriver ex:ValtteriBottas ;
     ex:forSeason ex:Season2024 ;
+    ex:forTeam ex:KickSauber ;
     ex:standingPoints 0.0 ;
     ex:standingPosition "22"^^xsd:int .
 
 ex:Standing_2024_YukiTsunoda a ex:DriverStanding ;
     ex:forDriver ex:YukiTsunoda ;
     ex:forSeason ex:Season2024 ;
+    ex:forTeam ex:RB ;
     ex:standingPoints 30.0 ;
     ex:standingPosition "12"^^xsd:int .
 
 ex:Standing_2024_ZhouGuanyu a ex:DriverStanding ;
     ex:forDriver ex:ZhouGuanyu ;
     ex:forSeason ex:Season2024 ;
+    ex:forTeam ex:KickSauber ;
     ex:standingPoints 4.0 ;
     ex:standingPosition "20"^^xsd:int .
 
 ex:Standing_2025_AlexanderAlbon a ex:DriverStanding ;
     ex:forDriver ex:AlexanderAlbon ;
     ex:forSeason ex:Season2025 ;
+    ex:forTeam ex:Williams ;
     ex:standingPoints 73.0 ;
     ex:standingPosition "8"^^xsd:int .
 
 ex:Standing_2025_CarlosSainz a ex:DriverStanding ;
     ex:forDriver ex:CarlosSainz ;
     ex:forSeason ex:Season2025 ;
+    ex:forTeam ex:Williams ;
     ex:standingPoints 64.0 ;
     ex:standingPosition "9"^^xsd:int .
 
 ex:Standing_2025_CharlesLeclerc a ex:DriverStanding ;
     ex:forDriver ex:CharlesLeclerc ;
     ex:forSeason ex:Season2025 ;
+    ex:forTeam ex:Ferrari ;
     ex:standingPoints 242.0 ;
     ex:standingPosition "5"^^xsd:int .
 
 ex:Standing_2025_EstebanOcon a ex:DriverStanding ;
     ex:forDriver ex:EstebanOcon ;
     ex:forSeason ex:Season2025 ;
+    ex:forTeam ex:HaasF1Team ;
     ex:standingPoints 38.0 ;
     ex:standingPosition "15"^^xsd:int .
 
 ex:Standing_2025_FernandoAlonso a ex:DriverStanding ;
     ex:forDriver ex:FernandoAlonso ;
     ex:forSeason ex:Season2025 ;
+    ex:forTeam ex:AstonMartin ;
     ex:standingPoints 56.0 ;
     ex:standingPosition "10"^^xsd:int .
 
 ex:Standing_2025_FrancoColapinto a ex:DriverStanding ;
     ex:forDriver ex:FrancoColapinto ;
     ex:forSeason ex:Season2025 ;
+    ex:forTeam ex:Alpine ;
     ex:standingPoints 0.0 ;
     ex:standingPosition "20"^^xsd:int .
 
 ex:Standing_2025_GabrielBortoleto a ex:DriverStanding ;
     ex:forDriver ex:GabrielBortoleto ;
     ex:forSeason ex:Season2025 ;
+    ex:forTeam ex:KickSauber ;
     ex:standingPoints 19.0 ;
     ex:standingPosition "19"^^xsd:int .
 
 ex:Standing_2025_GeorgeRussell a ex:DriverStanding ;
     ex:forDriver ex:GeorgeRussell ;
     ex:forSeason ex:Season2025 ;
+    ex:forTeam ex:Mercedes ;
     ex:standingPoints 319.0 ;
     ex:standingPosition "4"^^xsd:int .
 
 ex:Standing_2025_IsackHadjar a ex:DriverStanding ;
     ex:forDriver ex:IsackHadjar ;
     ex:forSeason ex:Season2025 ;
+    ex:forTeam ex:RacingBulls ;
     ex:standingPoints 51.0 ;
     ex:standingPosition "12"^^xsd:int .
 
 ex:Standing_2025_JackDoohan a ex:DriverStanding ;
     ex:forDriver ex:JackDoohan ;
     ex:forSeason ex:Season2025 ;
+    ex:forTeam ex:Alpine ;
     ex:standingPoints 0.0 ;
     ex:standingPosition "21"^^xsd:int .
 
 ex:Standing_2025_KimiAntonelli a ex:DriverStanding ;
     ex:forDriver ex:KimiAntonelli ;
     ex:forSeason ex:Season2025 ;
+    ex:forTeam ex:Mercedes ;
     ex:standingPoints 150.0 ;
     ex:standingPosition "7"^^xsd:int .
 
 ex:Standing_2025_LanceStroll a ex:DriverStanding ;
     ex:forDriver ex:LanceStroll ;
     ex:forSeason ex:Season2025 ;
+    ex:forTeam ex:AstonMartin ;
     ex:standingPoints 33.0 ;
     ex:standingPosition "16"^^xsd:int .
 
 ex:Standing_2025_LandoNorris a ex:DriverStanding ;
     ex:forDriver ex:LandoNorris ;
     ex:forSeason ex:Season2025 ;
+    ex:forTeam ex:McLaren ;
     ex:standingPoints 423.0 ;
     ex:standingPosition "1"^^xsd:int .
 
 ex:Standing_2025_LewisHamilton a ex:DriverStanding ;
     ex:forDriver ex:LewisHamilton ;
     ex:forSeason ex:Season2025 ;
+    ex:forTeam ex:Ferrari ;
     ex:standingPoints 156.0 ;
     ex:standingPosition "6"^^xsd:int .
 
 ex:Standing_2025_LiamLawson a ex:DriverStanding ;
     ex:forDriver ex:LiamLawson ;
     ex:forSeason ex:Season2025 ;
+    ex:forTeam ex:RacingBulls ;
     ex:standingPoints 38.0 ;
     ex:standingPosition "14"^^xsd:int .
 
 ex:Standing_2025_MaxVerstappen a ex:DriverStanding ;
     ex:forDriver ex:MaxVerstappen ;
     ex:forSeason ex:Season2025 ;
+    ex:forTeam ex:RedBullRacing ;
     ex:standingPoints 421.0 ;
     ex:standingPosition "2"^^xsd:int .
 
 ex:Standing_2025_NicoHulkenberg a ex:DriverStanding ;
     ex:forDriver ex:NicoHulkenberg ;
     ex:forSeason ex:Season2025 ;
+    ex:forTeam ex:KickSauber ;
     ex:standingPoints 51.0 ;
     ex:standingPosition "11"^^xsd:int .
 
 ex:Standing_2025_OliverBearman a ex:DriverStanding ;
     ex:forDriver ex:OliverBearman ;
     ex:forSeason ex:Season2025 ;
+    ex:forTeam ex:HaasF1Team ;
     ex:standingPoints 41.0 ;
     ex:standingPosition "13"^^xsd:int .
 
 ex:Standing_2025_OscarPiastri a ex:DriverStanding ;
     ex:forDriver ex:OscarPiastri ;
     ex:forSeason ex:Season2025 ;
+    ex:forTeam ex:McLaren ;
     ex:standingPoints 410.0 ;
     ex:standingPosition "3"^^xsd:int .
 
 ex:Standing_2025_PierreGasly a ex:DriverStanding ;
     ex:forDriver ex:PierreGasly ;
     ex:forSeason ex:Season2025 ;
+    ex:forTeam ex:Alpine ;
     ex:standingPoints 22.0 ;
     ex:standingPosition "18"^^xsd:int .
 
 ex:Standing_2025_YukiTsunoda a ex:DriverStanding ;
     ex:forDriver ex:YukiTsunoda ;
     ex:forSeason ex:Season2025 ;
+    ex:forTeam ex:RedBullRacing ;
     ex:standingPoints 33.0 ;
     ex:standingPosition "17"^^xsd:int .
 
 ex:Standing_2026_AlexanderAlbon a ex:DriverStanding ;
     ex:forDriver ex:AlexanderAlbon ;
     ex:forSeason ex:Season2026 ;
+    ex:forTeam ex:Williams ;
     ex:standingPoints 0.0 ;
     ex:standingPosition "18"^^xsd:int .
 
 ex:Standing_2026_ArvidLindblad a ex:DriverStanding ;
     ex:forDriver ex:ArvidLindblad ;
     ex:forSeason ex:Season2026 ;
+    ex:forTeam ex:RacingBulls ;
     ex:standingPoints 4.0 ;
     ex:standingPosition "10"^^xsd:int .
 
 ex:Standing_2026_CarlosSainz a ex:DriverStanding ;
     ex:forDriver ex:CarlosSainz ;
     ex:forSeason ex:Season2026 ;
+    ex:forTeam ex:Williams ;
     ex:standingPoints 2.0 ;
     ex:standingPosition "13"^^xsd:int .
 
 ex:Standing_2026_CharlesLeclerc a ex:DriverStanding ;
     ex:forDriver ex:CharlesLeclerc ;
     ex:forSeason ex:Season2026 ;
+    ex:forTeam ex:Ferrari ;
     ex:standingPoints 34.0 ;
     ex:standingPosition "3"^^xsd:int .
 
 ex:Standing_2026_EstebanOcon a ex:DriverStanding ;
     ex:forDriver ex:EstebanOcon ;
     ex:forSeason ex:Season2026 ;
+    ex:forTeam ex:HaasF1Team ;
     ex:standingPoints 0.0 ;
     ex:standingPosition "16"^^xsd:int .
 
 ex:Standing_2026_FernandoAlonso a ex:DriverStanding ;
     ex:forDriver ex:FernandoAlonso ;
     ex:forSeason ex:Season2026 ;
+    ex:forTeam ex:AstonMartin ;
     ex:standingPoints 0.0 ;
     ex:standingPosition "21"^^xsd:int .
 
 ex:Standing_2026_FrancoColapinto a ex:DriverStanding ;
     ex:forDriver ex:FrancoColapinto ;
     ex:forSeason ex:Season2026 ;
+    ex:forTeam ex:Alpine ;
     ex:standingPoints 1.0 ;
     ex:standingPosition "15"^^xsd:int .
 
 ex:Standing_2026_GabrielBortoleto a ex:DriverStanding ;
     ex:forDriver ex:GabrielBortoleto ;
     ex:forSeason ex:Season2026 ;
+    ex:forTeam ex:Audi ;
     ex:standingPoints 2.0 ;
     ex:standingPosition "14"^^xsd:int .
 
 ex:Standing_2026_GeorgeRussell a ex:DriverStanding ;
     ex:forDriver ex:GeorgeRussell ;
     ex:forSeason ex:Season2026 ;
+    ex:forTeam ex:Mercedes ;
     ex:standingPoints 51.0 ;
     ex:standingPosition "1"^^xsd:int .
 
 ex:Standing_2026_IsackHadjar a ex:DriverStanding ;
     ex:forDriver ex:IsackHadjar ;
     ex:forSeason ex:Season2026 ;
+    ex:forTeam ex:RedBullRacing ;
     ex:standingPoints 4.0 ;
     ex:standingPosition "11"^^xsd:int .
 
 ex:Standing_2026_KimiAntonelli a ex:DriverStanding ;
     ex:forDriver ex:KimiAntonelli ;
     ex:forSeason ex:Season2026 ;
+    ex:forTeam ex:Mercedes ;
     ex:standingPoints 47.0 ;
     ex:standingPosition "2"^^xsd:int .
 
 ex:Standing_2026_LanceStroll a ex:DriverStanding ;
     ex:forDriver ex:LanceStroll ;
     ex:forSeason ex:Season2026 ;
+    ex:forTeam ex:AstonMartin ;
     ex:standingPoints 0.0 ;
     ex:standingPosition "22"^^xsd:int .
 
 ex:Standing_2026_LandoNorris a ex:DriverStanding ;
     ex:forDriver ex:LandoNorris ;
     ex:forSeason ex:Season2026 ;
+    ex:forTeam ex:McLaren ;
     ex:standingPoints 15.0 ;
     ex:standingPosition "6"^^xsd:int .
 
 ex:Standing_2026_LewisHamilton a ex:DriverStanding ;
     ex:forDriver ex:LewisHamilton ;
     ex:forSeason ex:Season2026 ;
+    ex:forTeam ex:Ferrari ;
     ex:standingPoints 33.0 ;
     ex:standingPosition "4"^^xsd:int .
 
 ex:Standing_2026_LiamLawson a ex:DriverStanding ;
     ex:forDriver ex:LiamLawson ;
     ex:forSeason ex:Season2026 ;
+    ex:forTeam ex:RacingBulls ;
     ex:standingPoints 8.0 ;
     ex:standingPosition "9"^^xsd:int .
 
 ex:Standing_2026_MaxVerstappen a ex:DriverStanding ;
     ex:forDriver ex:MaxVerstappen ;
     ex:forSeason ex:Season2026 ;
+    ex:forTeam ex:RedBullRacing ;
     ex:standingPoints 8.0 ;
     ex:standingPosition "8"^^xsd:int .
 
 ex:Standing_2026_NicoHulkenberg a ex:DriverStanding ;
     ex:forDriver ex:NicoHulkenberg ;
     ex:forSeason ex:Season2026 ;
+    ex:forTeam ex:Audi ;
     ex:standingPoints 0.0 ;
     ex:standingPosition "17"^^xsd:int .
 
 ex:Standing_2026_OliverBearman a ex:DriverStanding ;
     ex:forDriver ex:OliverBearman ;
     ex:forSeason ex:Season2026 ;
+    ex:forTeam ex:HaasF1Team ;
     ex:standingPoints 17.0 ;
     ex:standingPosition "5"^^xsd:int .
 
 ex:Standing_2026_OscarPiastri a ex:DriverStanding ;
     ex:forDriver ex:OscarPiastri ;
     ex:forSeason ex:Season2026 ;
+    ex:forTeam ex:McLaren ;
     ex:standingPoints 3.0 ;
     ex:standingPosition "12"^^xsd:int .
 
 ex:Standing_2026_PierreGasly a ex:DriverStanding ;
     ex:forDriver ex:PierreGasly ;
     ex:forSeason ex:Season2026 ;
+    ex:forTeam ex:Alpine ;
     ex:standingPoints 9.0 ;
     ex:standingPosition "7"^^xsd:int .
 
 ex:Standing_2026_SergioPerez a ex:DriverStanding ;
     ex:forDriver ex:SergioPerez ;
     ex:forSeason ex:Season2026 ;
+    ex:forTeam ex:Cadillac ;
     ex:standingPoints 0.0 ;
     ex:standingPosition "20"^^xsd:int .
 
 ex:Standing_2026_ValtteriBottas a ex:DriverStanding ;
     ex:forDriver ex:ValtteriBottas ;
     ex:forSeason ex:Season2026 ;
+    ex:forTeam ex:Cadillac ;
     ex:standingPoints 0.0 ;
     ex:standingPosition "19"^^xsd:int .
 
@@ -1503,24 +1782,12 @@ wd:Q60752400 rdfs:label "AlphaTauri"@en,
     ex:alignmentConfidence 0.8,
         1.0 .
 
-ex:Audi a ex:Team ;
-    ex:name "Audi" ;
-    ex:participatedInSeason ex:Season2026 ;
-    ex:wikidataId "Q23317" ;
-    owl:sameAs wd:Q23317 .
-
 ex:AutodromoEnzoDinoFerrari a ex:Circuit ;
     ex:circuitCity "Imola" ;
     ex:circuitCountry "Italy" ;
     ex:locatedIn ex:Italy ;
     ex:name "Autodromo Enzo e Dino Ferrari" ;
     ex:trackLength 4.909 .
-
-ex:Cadillac a ex:Team ;
-    ex:name "Cadillac" ;
-    ex:participatedInSeason ex:Season2026 ;
-    ex:wikidataId "Q27436" ;
-    owl:sameAs wd:Q27436 .
 
 ex:Canada a ex:Country ;
     ex:continent "NorthAmerica" ;
@@ -1720,13 +1987,6 @@ ex:Spain a ex:Country ;
     ex:name "Kingdom of Spain" ;
     owl:sameAs wd:Q29 .
 
-ex:AlfaRomeo a ex:Team ;
-    ex:name "Alfa Romeo" ;
-    ex:participatedInSeason ex:Season2022,
-        ex:Season2023 ;
-    ex:wikidataId "Q26921" ;
-    owl:sameAs wd:Q26921 .
-
 ex:Australia a ex:Country ;
     ex:continent "Oceania" ;
     ex:name "Australia" ;
@@ -1752,6 +2012,18 @@ ex:AutodromoNazionaleDiMonza a ex:Circuit ;
     ex:locatedIn ex:Italy ;
     ex:name "Autodromo Nazionale di Monza" ;
     ex:trackLength 5.793 .
+
+ex:BahrainInternationalCircuit a ex:Circuit ;
+    ex:circuitCity "Sakhir" ;
+    ex:circuitCountry "Bahrain" ;
+    ex:name "Bahrain International Circuit" ;
+    ex:trackLength 5.412 .
+
+ex:BakuCityCircuit a ex:Circuit ;
+    ex:circuitCity "Baku" ;
+    ex:circuitCountry "Azerbaijan" ;
+    ex:name "Baku City Circuit" ;
+    ex:trackLength 6.003 .
 
 ex:CircuitDeMonaco a ex:Circuit ;
     ex:circuitCity "Monte Carlo" ;
@@ -1785,13 +2057,6 @@ ex:CircuitParkZandvoort a ex:Circuit ;
     ex:locatedIn ex:Netherlands ;
     ex:name "Circuit Zandvoort" ;
     ex:trackLength 4.259 .
-
-ex:HaasF1Team a ex:Team ;
-    ex:name "Haas F1 Team" ;
-    ex:participatedInSeason ex:Season2025,
-        ex:Season2026 ;
-    ex:wikidataId "Q16300222" ;
-    owl:sameAs wd:Q16300222 .
 
 ex:Hungaroring a ex:Circuit ;
     ex:circuitCity "Budapest" ;
@@ -1840,6 +2105,12 @@ ex:IsackHadjar a ex:Driver ;
         ex:MaxVerstappen ;
     ex:wikidataId "Q105071364" ;
     owl:sameAs wd:Q105071364 .
+
+ex:JeddahCornicheCircuit a ex:Circuit ;
+    ex:circuitCity "Jeddah" ;
+    ex:circuitCountry "Saudi Arabia" ;
+    ex:name "Jeddah Corniche Circuit" ;
+    ex:trackLength 6.174 .
 
 ex:LoganSargeant a ex:Driver ;
     ex:competesInSeason ex:Season2023,
@@ -1912,12 +2183,6 @@ ex:MiamiInternationalAutodrome a ex:Circuit ;
     ex:circuitCountry "USA" ;
     ex:name "Miami International Autodrome" ;
     ex:trackLength 5.412 .
-
-ex:RB a ex:Team ;
-    ex:name "RB" ;
-    ex:participatedInSeason ex:Season2024 ;
-    ex:wikidataId "Q60752400" ;
-    owl:sameAs wd:Q60752400 .
 
 ex:RedBullRingCircuit a ex:Circuit ;
     ex:circuitCity "Spielberg" ;
@@ -2032,11 +2297,17 @@ ex:AlbertParkCircuit a ex:Circuit ;
     ex:name "Albert Park Circuit" ;
     ex:trackLength 5.278 .
 
-ex:BahrainInternationalCircuit a ex:Circuit ;
-    ex:circuitCity "Sakhir" ;
-    ex:circuitCountry "Bahrain" ;
-    ex:name "Bahrain International Circuit" ;
-    ex:trackLength 5.412 .
+ex:Audi a ex:Team ;
+    ex:name "Audi" ;
+    ex:participatedInSeason ex:Season2026 ;
+    ex:wikidataId "Q23317" ;
+    owl:sameAs wd:Q23317 .
+
+ex:Cadillac a ex:Team ;
+    ex:name "Cadillac" ;
+    ex:participatedInSeason ex:Season2026 ;
+    ex:wikidataId "Q27436" ;
+    owl:sameAs wd:Q27436 .
 
 ex:CircuitDeCatalunya a ex:Circuit ;
     ex:circuitCity "Barcelona" ;
@@ -2107,13 +2378,6 @@ ex:JackDoohan a ex:Driver ;
         ex:PierreGasly ;
     ex:wikidataId "Q81453998" ;
     owl:sameAs wd:Q81453998 .
-
-ex:RacingBulls a ex:Team ;
-    ex:name "Racing Bulls" ;
-    ex:participatedInSeason ex:Season2025,
-        ex:Season2026 ;
-    ex:wikidataId "Q124350606" ;
-    owl:sameAs wd:Q124350606 .
 
 ex:SuzukaInternationalRacingCourse a ex:Circuit ;
     ex:circuitCity "Suzuka" ;
@@ -2211,13 +2475,6 @@ ex:KevinMagnussen a ex:Driver ;
         ex:OliverBearman ;
     ex:wikidataId "Q1740212" ;
     owl:sameAs wd:Q1740212 .
-
-ex:KickSauber a ex:Team ;
-    ex:name "Kick Sauber" ;
-    ex:participatedInSeason ex:Season2024,
-        ex:Season2025 ;
-    ex:wikidataId "Q171335" ;
-    owl:sameAs wd:Q171335 .
 
 ex:OliverBearman a ex:Driver ;
     ex:competesInSeason ex:Season2024,
@@ -2378,13 +2635,6 @@ ex:ValtteriBottas a ex:Driver ;
         ex:ZhouGuanyu ;
     ex:wikidataId "Q138745" ;
     owl:sameAs wd:Q138745 .
-
-ex:AlphaTauri a ex:Team ;
-    ex:name "AlphaTauri" ;
-    ex:participatedInSeason ex:Season2022,
-        ex:Season2023 ;
-    ex:wikidataId "Q60752400" ;
-    owl:sameAs wd:Q60752400 .
 
 ex:DanielRicciardo a ex:Driver ;
     ex:competesInSeason ex:Season2022,
@@ -2660,20 +2910,6 @@ ex:FrancoColapinto a ex:Driver ;
     ex:wikidataId "Q88463514" ;
     owl:sameAs wd:Q88463514 .
 
-ex:Haas a ex:Team ;
-    ex:name "Haas" ;
-    ex:participatedInSeason ex:Season2022,
-        ex:Season2023,
-        ex:Season2024 ;
-    ex:wikidataId "Q368894" ;
-    owl:sameAs wd:Q368894 .
-
-ex:JeddahCornicheCircuit a ex:Circuit ;
-    ex:circuitCity "Jeddah" ;
-    ex:circuitCountry "Saudi Arabia" ;
-    ex:name "Jeddah Corniche Circuit" ;
-    ex:trackLength 6.174 .
-
 ex:NyckDeVries a ex:Driver ;
     ex:competesInSeason ex:Season2022,
         ex:Season2023 ;
@@ -2735,6 +2971,26 @@ ex:NyckDeVries a ex:Driver ;
         ex:YukiTsunoda ;
     ex:wikidataId "Q771382" ;
     owl:sameAs wd:Q771382 .
+
+ex:RB a ex:Team ;
+    ex:name "RB" ;
+    ex:participatedInSeason ex:Season2024 ;
+    ex:wikidataId "Q60752400" ;
+    owl:sameAs wd:Q60752400 .
+
+ex:AlfaRomeo a ex:Team ;
+    ex:name "Alfa Romeo" ;
+    ex:participatedInSeason ex:Season2022,
+        ex:Season2023 ;
+    ex:wikidataId "Q26921" ;
+    owl:sameAs wd:Q26921 .
+
+ex:HaasF1Team a ex:Team ;
+    ex:name "Haas F1 Team" ;
+    ex:participatedInSeason ex:Season2025,
+        ex:Season2026 ;
+    ex:wikidataId "Q16300222" ;
+    owl:sameAs wd:Q16300222 .
 
 ex:LanceStroll a ex:Driver ;
     ex:competesInSeason ex:Season2022,
@@ -2851,16 +3107,6 @@ ex:LanceStroll a ex:Driver ;
         ex:SebastianVettel ;
     ex:wikidataId "Q16238921" ;
     owl:sameAs wd:Q16238921 .
-
-ex:AstonMartin a ex:Team ;
-    ex:name "Aston Martin" ;
-    ex:participatedInSeason ex:Season2022,
-        ex:Season2023,
-        ex:Season2024,
-        ex:Season2025,
-        ex:Season2026 ;
-    ex:wikidataId "Q63049904" ;
-    owl:sameAs wd:Q63049904 .
 
 ex:EstebanOcon a ex:Driver ;
     ex:competesInSeason ex:Season2022,
@@ -3076,98 +3322,6 @@ ex:LiamLawson a ex:Driver ;
     ex:wikidataId "Q59180330" ;
     owl:sameAs wd:Q59180330 .
 
-ex:OscarPiastri a ex:Driver ;
-    ex:competesInSeason ex:Season2023,
-        ex:Season2024,
-        ex:Season2025,
-        ex:Season2026 ;
-    ex:drivesFor ex:McLaren ;
-    ex:fromCountry ex:Australia ;
-    ex:hasStanding ex:Standing_2023_OscarPiastri,
-        ex:Standing_2024_OscarPiastri,
-        ex:Standing_2025_OscarPiastri,
-        ex:Standing_2026_OscarPiastri ;
-    ex:hasWon ex:GP_2024_Azerbaijan,
-        ex:GP_2024_Hungary ;
-    ex:name "Oscar Piastri" ;
-    ex:nationality "AUS" ;
-    ex:participatedIn ex:GP_2023_AbuDhabi,
-        ex:GP_2023_Australia,
-        ex:GP_2023_Austria,
-        ex:GP_2023_Azerbaijan,
-        ex:GP_2023_Bahrain,
-        ex:GP_2023_Belgium,
-        ex:GP_2023_Brazil,
-        ex:GP_2023_Canada,
-        ex:GP_2023_GreatBritain,
-        ex:GP_2023_Hungary,
-        ex:GP_2023_Italy,
-        ex:GP_2023_Japan,
-        ex:GP_2023_LasVegas,
-        ex:GP_2023_Mexico,
-        ex:GP_2023_Miami,
-        ex:GP_2023_Monaco,
-        ex:GP_2023_Netherlands,
-        ex:GP_2023_Qatar,
-        ex:GP_2023_SaudiArabia,
-        ex:GP_2023_Singapore,
-        ex:GP_2023_Spain,
-        ex:GP_2023_UnitedStates,
-        ex:GP_2024_AbuDhabi,
-        ex:GP_2024_Australia,
-        ex:GP_2024_Austria,
-        ex:GP_2024_Azerbaijan,
-        ex:GP_2024_Bahrain,
-        ex:GP_2024_Belgium,
-        ex:GP_2024_Brazil,
-        ex:GP_2024_Canada,
-        ex:GP_2024_China,
-        ex:GP_2024_EmiliaRomagna,
-        ex:GP_2024_GreatBritain,
-        ex:GP_2024_Hungary,
-        ex:GP_2024_Italy,
-        ex:GP_2024_Japan,
-        ex:GP_2024_LasVegas,
-        ex:GP_2024_Mexico,
-        ex:GP_2024_Miami,
-        ex:GP_2024_Monaco,
-        ex:GP_2024_Netherlands,
-        ex:GP_2024_Qatar,
-        ex:GP_2024_SaudiArabia,
-        ex:GP_2024_Singapore,
-        ex:GP_2024_Spain,
-        ex:GP_2024_UnitedStates,
-        ex:GP_2025_AbuDhabi,
-        ex:GP_2025_Australia,
-        ex:GP_2025_Austria,
-        ex:GP_2025_Azerbaijan,
-        ex:GP_2025_Bahrain,
-        ex:GP_2025_Belgium,
-        ex:GP_2025_Brazil,
-        ex:GP_2025_Canada,
-        ex:GP_2025_China,
-        ex:GP_2025_EmiliaRomagna,
-        ex:GP_2025_GreatBritain,
-        ex:GP_2025_Hungary,
-        ex:GP_2025_Italy,
-        ex:GP_2025_Japan,
-        ex:GP_2025_LasVegas,
-        ex:GP_2025_Mexico,
-        ex:GP_2025_Miami,
-        ex:GP_2025_Monaco,
-        ex:GP_2025_Netherlands,
-        ex:GP_2025_Qatar,
-        ex:GP_2025_SaudiArabia,
-        ex:GP_2025_Singapore,
-        ex:GP_2025_Spain,
-        ex:GP_2025_UnitedStates,
-        ex:GP_2026_Australia,
-        ex:GP_2026_China,
-        ex:GP_2026_Japan ;
-    ex:teammateOf ex:LandoNorris ;
-    ex:wikidataId "Q28741262" ;
-    owl:sameAs wd:Q28741262 .
-
 ex:PierreGasly a ex:Driver ;
     ex:competesInSeason ex:Season2022,
         ex:Season2023,
@@ -3285,6 +3439,13 @@ ex:PierreGasly a ex:Driver ;
         ex:YukiTsunoda ;
     ex:wikidataId "Q11816647" ;
     owl:sameAs wd:Q11816647 .
+
+ex:RacingBulls a ex:Team ;
+    ex:name "Racing Bulls" ;
+    ex:participatedInSeason ex:Season2025,
+        ex:Season2026 ;
+    ex:wikidataId "Q124350606" ;
+    owl:sameAs wd:Q124350606 .
 
 ex:Season a owl:Class ;
     rdfs:label "Season"@en ;
@@ -3523,15 +3684,12 @@ ex:AlexanderAlbon a ex:Driver ;
     ex:wikidataId "Q16149172" ;
     owl:sameAs wd:Q16149172 .
 
-ex:Alpine a ex:Team ;
-    ex:name "Alpine" ;
-    ex:participatedInSeason ex:Season2022,
-        ex:Season2023,
-        ex:Season2024,
-        ex:Season2025,
-        ex:Season2026 ;
-    ex:wikidataId "Q661540" ;
-    owl:sameAs wd:Q661540 .
+ex:KickSauber a ex:Team ;
+    ex:name "Kick Sauber" ;
+    ex:participatedInSeason ex:Season2024,
+        ex:Season2025 ;
+    ex:wikidataId "Q171335" ;
+    owl:sameAs wd:Q171335 .
 
 ex:NicoHulkenberg a ex:Driver ;
     ex:competesInSeason ex:Season2022,
@@ -3654,15 +3812,12 @@ ex:NicoHulkenberg a ex:Driver ;
     ex:wikidataId "Q76547" ;
     owl:sameAs wd:Q76547 .
 
-ex:Williams a ex:Team ;
-    ex:name "Williams" ;
+ex:AlphaTauri a ex:Team ;
+    ex:name "AlphaTauri" ;
     ex:participatedInSeason ex:Season2022,
-        ex:Season2023,
-        ex:Season2024,
-        ex:Season2025,
-        ex:Season2026 ;
-    ex:wikidataId "Q1688722" ;
-    owl:sameAs wd:Q1688722 .
+        ex:Season2023 ;
+    ex:wikidataId "Q60752400" ;
+    owl:sameAs wd:Q60752400 .
 
 ex:LewisHamilton a ex:Driver ;
     ex:competesInSeason ex:Season2022,
@@ -3783,6 +3938,14 @@ ex:LewisHamilton a ex:Driver ;
     ex:wikidataId "Q9673" ;
     owl:sameAs wd:Q9673 .
 
+ex:Haas a ex:Team ;
+    ex:name "Haas" ;
+    ex:participatedInSeason ex:Season2022,
+        ex:Season2023,
+        ex:Season2024 ;
+    ex:wikidataId "Q368894" ;
+    owl:sameAs wd:Q368894 .
+
 ex:GeorgeRussell a ex:Driver ;
     ex:competesInSeason ex:Season2022,
         ex:Season2023,
@@ -3902,125 +4065,6 @@ ex:GeorgeRussell a ex:Driver ;
     ex:wikidataId "Q17319645" ;
     owl:sameAs wd:Q17319645 .
 
-ex:LandoNorris a ex:Driver ;
-    ex:competesInSeason ex:Season2022,
-        ex:Season2023,
-        ex:Season2024,
-        ex:Season2025,
-        ex:Season2026 ;
-    ex:drivesFor ex:McLaren ;
-    ex:fromCountry ex:UnitedKingdom ;
-    ex:hasStanding ex:Standing_2022_LandoNorris,
-        ex:Standing_2023_LandoNorris,
-        ex:Standing_2024_LandoNorris,
-        ex:Standing_2025_LandoNorris,
-        ex:Standing_2026_LandoNorris ;
-    ex:hasWon ex:GP_2024_AbuDhabi,
-        ex:GP_2024_Miami,
-        ex:GP_2024_Netherlands,
-        ex:GP_2024_Singapore ;
-    ex:name "Lando Norris" ;
-    ex:nationality "GBR" ;
-    ex:participatedIn ex:GP_2022_AbuDhabi,
-        ex:GP_2022_Australia,
-        ex:GP_2022_Austria,
-        ex:GP_2022_Azerbaijan,
-        ex:GP_2022_Bahrain,
-        ex:GP_2022_Belgium,
-        ex:GP_2022_Brazil,
-        ex:GP_2022_Canada,
-        ex:GP_2022_EmiliaRomagna,
-        ex:GP_2022_France,
-        ex:GP_2022_GreatBritain,
-        ex:GP_2022_Hungary,
-        ex:GP_2022_Italy,
-        ex:GP_2022_Japan,
-        ex:GP_2022_Mexico,
-        ex:GP_2022_Miami,
-        ex:GP_2022_Monaco,
-        ex:GP_2022_Netherlands,
-        ex:GP_2022_SaudiArabia,
-        ex:GP_2022_Singapore,
-        ex:GP_2022_Spain,
-        ex:GP_2022_UnitedStates,
-        ex:GP_2023_AbuDhabi,
-        ex:GP_2023_Australia,
-        ex:GP_2023_Austria,
-        ex:GP_2023_Azerbaijan,
-        ex:GP_2023_Bahrain,
-        ex:GP_2023_Belgium,
-        ex:GP_2023_Brazil,
-        ex:GP_2023_Canada,
-        ex:GP_2023_GreatBritain,
-        ex:GP_2023_Hungary,
-        ex:GP_2023_Italy,
-        ex:GP_2023_Japan,
-        ex:GP_2023_LasVegas,
-        ex:GP_2023_Mexico,
-        ex:GP_2023_Miami,
-        ex:GP_2023_Monaco,
-        ex:GP_2023_Netherlands,
-        ex:GP_2023_Qatar,
-        ex:GP_2023_SaudiArabia,
-        ex:GP_2023_Singapore,
-        ex:GP_2023_Spain,
-        ex:GP_2023_UnitedStates,
-        ex:GP_2024_AbuDhabi,
-        ex:GP_2024_Australia,
-        ex:GP_2024_Austria,
-        ex:GP_2024_Azerbaijan,
-        ex:GP_2024_Bahrain,
-        ex:GP_2024_Belgium,
-        ex:GP_2024_Brazil,
-        ex:GP_2024_Canada,
-        ex:GP_2024_China,
-        ex:GP_2024_EmiliaRomagna,
-        ex:GP_2024_GreatBritain,
-        ex:GP_2024_Hungary,
-        ex:GP_2024_Italy,
-        ex:GP_2024_Japan,
-        ex:GP_2024_LasVegas,
-        ex:GP_2024_Mexico,
-        ex:GP_2024_Miami,
-        ex:GP_2024_Monaco,
-        ex:GP_2024_Netherlands,
-        ex:GP_2024_Qatar,
-        ex:GP_2024_SaudiArabia,
-        ex:GP_2024_Singapore,
-        ex:GP_2024_Spain,
-        ex:GP_2024_UnitedStates,
-        ex:GP_2025_AbuDhabi,
-        ex:GP_2025_Australia,
-        ex:GP_2025_Austria,
-        ex:GP_2025_Azerbaijan,
-        ex:GP_2025_Bahrain,
-        ex:GP_2025_Belgium,
-        ex:GP_2025_Brazil,
-        ex:GP_2025_Canada,
-        ex:GP_2025_China,
-        ex:GP_2025_EmiliaRomagna,
-        ex:GP_2025_GreatBritain,
-        ex:GP_2025_Hungary,
-        ex:GP_2025_Italy,
-        ex:GP_2025_Japan,
-        ex:GP_2025_LasVegas,
-        ex:GP_2025_Mexico,
-        ex:GP_2025_Miami,
-        ex:GP_2025_Monaco,
-        ex:GP_2025_Netherlands,
-        ex:GP_2025_Qatar,
-        ex:GP_2025_SaudiArabia,
-        ex:GP_2025_Singapore,
-        ex:GP_2025_Spain,
-        ex:GP_2025_UnitedStates,
-        ex:GP_2026_Australia,
-        ex:GP_2026_China,
-        ex:GP_2026_Japan ;
-    ex:teammateOf ex:DanielRicciardo,
-        ex:OscarPiastri ;
-    ex:wikidataId "Q22007193" ;
-    owl:sameAs wd:Q22007193 .
-
 ex:SergioPerez a ex:Driver ;
     ex:competesInSeason ex:Season2022,
         ex:Season2023,
@@ -4116,6 +4160,20 @@ ex:SergioPerez a ex:Driver ;
     ex:wikidataId "Q82805" ;
     owl:sameAs wd:Q82805 .
 
+ex:Team a owl:Class ;
+    rdfs:label "Team"@en ;
+    rdfs:comment "A Formula 1 constructor / team."@en .
+
+ex:AstonMartin a ex:Team ;
+    ex:name "Aston Martin" ;
+    ex:participatedInSeason ex:Season2022,
+        ex:Season2023,
+        ex:Season2024,
+        ex:Season2025,
+        ex:Season2026 ;
+    ex:wikidataId "Q63049904" ;
+    owl:sameAs wd:Q63049904 .
+
 ex:CarlosSainz a ex:Driver ;
     ex:competesInSeason ex:Season2022,
         ex:Season2023,
@@ -4134,7 +4192,9 @@ ex:CarlosSainz a ex:Driver ;
         ex:GP_2023_Singapore,
         ex:GP_2024_Australia,
         ex:GP_2024_LasVegas,
-        ex:GP_2024_Mexico ;
+        ex:GP_2024_Mexico,
+        ex:GP_2025_LasVegas,
+        ex:GP_2025_Mexico ;
     ex:name "Carlos Sainz" ;
     ex:nationality "ESP" ;
     ex:participatedIn ex:GP_2022_AbuDhabi,
@@ -4237,303 +4297,213 @@ ex:CarlosSainz a ex:Driver ;
     ex:wikidataId "Q544856" ;
     owl:sameAs wd:Q544856 .
 
-ex:Team a owl:Class ;
-    rdfs:label "Team"@en ;
-    rdfs:comment "A Formula 1 constructor / team."@en .
-
-ex:McLaren a ex:Team ;
-    ex:name "McLaren" ;
+ex:Alpine a ex:Team ;
+    ex:name "Alpine" ;
     ex:participatedInSeason ex:Season2022,
         ex:Season2023,
         ex:Season2024,
         ex:Season2025,
         ex:Season2026 ;
-    ex:wikidataId "Q21484852" ;
-    ex:wonConstructorsTitleIn ex:Season2024 ;
-    owl:sameAs wd:Q21484852 .
-
-ex:GP_2025_AbuDhabi a ex:GrandPrix ;
-    ex:heldAtCircuit ex:YasMarinaCircuit ;
-    ex:name "2025 Abu Dhabi Grand Prix" ;
-    ex:partOfSeason ex:Season2025 ;
-    ex:raceDate "2025-12-07"^^xsd:date .
-
-ex:GP_2025_Australia a ex:GrandPrix ;
-    ex:heldAtCircuit ex:AlbertParkCircuit ;
-    ex:name "2025 Australian Grand Prix" ;
-    ex:partOfSeason ex:Season2025 ;
-    ex:raceDate "2025-03-16"^^xsd:date .
-
-ex:GP_2025_Austria a ex:GrandPrix ;
-    ex:heldAtCircuit ex:RedBullRingCircuit ;
-    ex:name "2025 Austrian Grand Prix" ;
-    ex:partOfSeason ex:Season2025 ;
-    ex:raceDate "2025-06-29"^^xsd:date .
-
-ex:GP_2025_Azerbaijan a ex:GrandPrix ;
-    ex:heldAtCircuit ex:JeddahCornicheCircuit ;
-    ex:name "2025 Azerbaijan Grand Prix" ;
-    ex:partOfSeason ex:Season2025 ;
-    ex:raceDate "2025-09-21"^^xsd:date .
-
-ex:GP_2025_Bahrain a ex:GrandPrix ;
-    ex:heldAtCircuit ex:BahrainInternationalCircuit ;
-    ex:name "2025 Bahrain Grand Prix" ;
-    ex:partOfSeason ex:Season2025 ;
-    ex:raceDate "2025-04-13"^^xsd:date .
-
-ex:GP_2025_Belgium a ex:GrandPrix ;
-    ex:heldAtCircuit ex:CircuitDeSpaFrancorchamps ;
-    ex:name "2025 Belgian Grand Prix" ;
-    ex:partOfSeason ex:Season2025 ;
-    ex:raceDate "2025-07-27"^^xsd:date .
-
-ex:GP_2025_Brazil a ex:GrandPrix ;
-    ex:heldAtCircuit ex:AutodromoJoseCarlosPace ;
-    ex:name "2025 Brazilian Grand Prix" ;
-    ex:partOfSeason ex:Season2025 ;
-    ex:raceDate "2025-11-09"^^xsd:date .
-
-ex:GP_2025_Canada a ex:GrandPrix ;
-    ex:heldAtCircuit ex:CircuitGillesVilleneuve ;
-    ex:name "2025 Canadian Grand Prix" ;
-    ex:partOfSeason ex:Season2025 ;
-    ex:raceDate "2025-06-15"^^xsd:date .
-
-ex:GP_2025_China a ex:GrandPrix ;
-    ex:heldAtCircuit ex:ShanghaiInternationalCircuit ;
-    ex:name "2025 Chinese Grand Prix" ;
-    ex:partOfSeason ex:Season2025 ;
-    ex:raceDate "2025-03-23"^^xsd:date .
-
-ex:GP_2025_EmiliaRomagna a ex:GrandPrix ;
-    ex:heldAtCircuit ex:AutodromoEnzoDinoFerrari ;
-    ex:name "2025 Emilia Romagna Grand Prix" ;
-    ex:partOfSeason ex:Season2025 ;
-    ex:raceDate "2025-05-18"^^xsd:date .
-
-ex:GP_2025_GreatBritain a ex:GrandPrix ;
-    ex:heldAtCircuit ex:SilverstoneCircuit ;
-    ex:name "2025 British Grand Prix" ;
-    ex:partOfSeason ex:Season2025 ;
-    ex:raceDate "2025-07-06"^^xsd:date .
-
-ex:GP_2025_Hungary a ex:GrandPrix ;
-    ex:heldAtCircuit ex:Hungaroring ;
-    ex:name "2025 Hungarian Grand Prix" ;
-    ex:partOfSeason ex:Season2025 ;
-    ex:raceDate "2025-08-03"^^xsd:date .
-
-ex:GP_2025_Italy a ex:GrandPrix ;
-    ex:heldAtCircuit ex:AutodromoNazionaleDiMonza ;
-    ex:name "2025 Italian Grand Prix" ;
-    ex:partOfSeason ex:Season2025 ;
-    ex:raceDate "2025-09-07"^^xsd:date .
-
-ex:GP_2025_Japan a ex:GrandPrix ;
-    ex:heldAtCircuit ex:SuzukaInternationalRacingCourse ;
-    ex:name "2025 Japanese Grand Prix" ;
-    ex:partOfSeason ex:Season2025 ;
-    ex:raceDate "2025-04-06"^^xsd:date .
-
-ex:GP_2025_LasVegas a ex:GrandPrix ;
-    ex:heldAtCircuit ex:LasVegasStripCircuit ;
-    ex:name "2025 Las Vegas Grand Prix" ;
-    ex:partOfSeason ex:Season2025 ;
-    ex:raceDate "2025-11-22"^^xsd:date .
-
-ex:GP_2025_Mexico a ex:GrandPrix ;
-    ex:heldAtCircuit ex:AutodromoHermanosRodriguez ;
-    ex:name "2025 Mexico City Grand Prix" ;
-    ex:partOfSeason ex:Season2025 ;
-    ex:raceDate "2025-10-26"^^xsd:date .
-
-ex:GP_2025_Miami a ex:GrandPrix ;
-    ex:heldAtCircuit ex:MiamiInternationalAutodrome ;
-    ex:name "2025 Miami Grand Prix" ;
-    ex:partOfSeason ex:Season2025 ;
-    ex:raceDate "2025-05-04"^^xsd:date .
-
-ex:GP_2025_Monaco a ex:GrandPrix ;
-    ex:heldAtCircuit ex:CircuitDeMonaco ;
-    ex:name "2025 Monaco Grand Prix" ;
-    ex:partOfSeason ex:Season2025 ;
-    ex:raceDate "2025-05-25"^^xsd:date .
-
-ex:GP_2025_Netherlands a ex:GrandPrix ;
-    ex:heldAtCircuit ex:CircuitParkZandvoort ;
-    ex:name "2025 Dutch Grand Prix" ;
-    ex:partOfSeason ex:Season2025 ;
-    ex:raceDate "2025-08-31"^^xsd:date .
-
-ex:GP_2025_Qatar a ex:GrandPrix ;
-    ex:heldAtCircuit ex:LosailInternationalCircuit ;
-    ex:name "2025 Qatar Grand Prix" ;
-    ex:partOfSeason ex:Season2025 ;
-    ex:raceDate "2025-11-30"^^xsd:date .
-
-ex:GP_2025_SaudiArabia a ex:GrandPrix ;
-    ex:heldAtCircuit ex:JeddahCornicheCircuit ;
-    ex:name "2025 Saudi Arabian Grand Prix" ;
-    ex:partOfSeason ex:Season2025 ;
-    ex:raceDate "2025-04-20"^^xsd:date .
-
-ex:GP_2025_Singapore a ex:GrandPrix ;
-    ex:heldAtCircuit ex:MarinaBayStreetCircuit ;
-    ex:name "2025 Singapore Grand Prix" ;
-    ex:partOfSeason ex:Season2025 ;
-    ex:raceDate "2025-10-05"^^xsd:date .
-
-ex:GP_2025_Spain a ex:GrandPrix ;
-    ex:heldAtCircuit ex:CircuitDeCatalunya ;
-    ex:name "2025 Spanish Grand Prix" ;
-    ex:partOfSeason ex:Season2025 ;
-    ex:raceDate "2025-06-01"^^xsd:date .
-
-ex:GP_2025_UnitedStates a ex:GrandPrix ;
-    ex:heldAtCircuit ex:CircuitOfTheAmericas ;
-    ex:name "2025 United States Grand Prix" ;
-    ex:partOfSeason ex:Season2025 ;
-    ex:raceDate "2025-10-19"^^xsd:date .
-
-ex:Mercedes a ex:Team ;
-    ex:name "Mercedes" ;
-    ex:participatedInSeason ex:Season2022,
-        ex:Season2023,
-        ex:Season2024,
-        ex:Season2025,
-        ex:Season2026 ;
-    ex:wikidataId "Q255209" ;
-    owl:sameAs wd:Q255209 .
-
-ex:CharlesLeclerc a ex:Driver ;
-    ex:competesInSeason ex:Season2022,
-        ex:Season2023,
-        ex:Season2024,
-        ex:Season2025,
-        ex:Season2026 ;
-    ex:drivesFor ex:Ferrari ;
-    ex:fromCountry ex:Monaco ;
-    ex:hasStanding ex:Standing_2022_CharlesLeclerc,
-        ex:Standing_2023_CharlesLeclerc,
-        ex:Standing_2024_CharlesLeclerc,
-        ex:Standing_2025_CharlesLeclerc,
-        ex:Standing_2026_CharlesLeclerc ;
-    ex:hasWon ex:GP_2022_Australia,
-        ex:GP_2022_Austria,
-        ex:GP_2022_Bahrain,
-        ex:GP_2022_SaudiArabia,
-        ex:GP_2023_UnitedStates,
-        ex:GP_2024_Italy,
-        ex:GP_2024_Monaco,
-        ex:GP_2024_UnitedStates ;
-    ex:name "Charles Leclerc" ;
-    ex:nationality "MON" ;
-    ex:participatedIn ex:GP_2022_AbuDhabi,
-        ex:GP_2022_Australia,
-        ex:GP_2022_Austria,
-        ex:GP_2022_Azerbaijan,
-        ex:GP_2022_Bahrain,
-        ex:GP_2022_Belgium,
-        ex:GP_2022_Brazil,
-        ex:GP_2022_Canada,
-        ex:GP_2022_EmiliaRomagna,
-        ex:GP_2022_France,
-        ex:GP_2022_GreatBritain,
-        ex:GP_2022_Hungary,
-        ex:GP_2022_Italy,
-        ex:GP_2022_Japan,
-        ex:GP_2022_Mexico,
-        ex:GP_2022_Miami,
-        ex:GP_2022_Monaco,
-        ex:GP_2022_Netherlands,
-        ex:GP_2022_SaudiArabia,
-        ex:GP_2022_Singapore,
-        ex:GP_2022_Spain,
-        ex:GP_2022_UnitedStates,
-        ex:GP_2023_AbuDhabi,
-        ex:GP_2023_Australia,
-        ex:GP_2023_Austria,
-        ex:GP_2023_Azerbaijan,
-        ex:GP_2023_Bahrain,
-        ex:GP_2023_Belgium,
-        ex:GP_2023_Brazil,
-        ex:GP_2023_Canada,
-        ex:GP_2023_GreatBritain,
-        ex:GP_2023_Hungary,
-        ex:GP_2023_Italy,
-        ex:GP_2023_Japan,
-        ex:GP_2023_LasVegas,
-        ex:GP_2023_Mexico,
-        ex:GP_2023_Miami,
-        ex:GP_2023_Monaco,
-        ex:GP_2023_Netherlands,
-        ex:GP_2023_Qatar,
-        ex:GP_2023_SaudiArabia,
-        ex:GP_2023_Singapore,
-        ex:GP_2023_Spain,
-        ex:GP_2023_UnitedStates,
-        ex:GP_2024_AbuDhabi,
-        ex:GP_2024_Australia,
-        ex:GP_2024_Austria,
-        ex:GP_2024_Azerbaijan,
-        ex:GP_2024_Bahrain,
-        ex:GP_2024_Belgium,
-        ex:GP_2024_Brazil,
-        ex:GP_2024_Canada,
-        ex:GP_2024_China,
-        ex:GP_2024_EmiliaRomagna,
-        ex:GP_2024_GreatBritain,
-        ex:GP_2024_Hungary,
-        ex:GP_2024_Italy,
-        ex:GP_2024_Japan,
-        ex:GP_2024_LasVegas,
-        ex:GP_2024_Mexico,
-        ex:GP_2024_Miami,
-        ex:GP_2024_Monaco,
-        ex:GP_2024_Netherlands,
-        ex:GP_2024_Qatar,
-        ex:GP_2024_SaudiArabia,
-        ex:GP_2024_Singapore,
-        ex:GP_2024_Spain,
-        ex:GP_2024_UnitedStates,
-        ex:GP_2025_AbuDhabi,
-        ex:GP_2025_Australia,
-        ex:GP_2025_Austria,
-        ex:GP_2025_Azerbaijan,
-        ex:GP_2025_Bahrain,
-        ex:GP_2025_Belgium,
-        ex:GP_2025_Brazil,
-        ex:GP_2025_Canada,
-        ex:GP_2025_China,
-        ex:GP_2025_EmiliaRomagna,
-        ex:GP_2025_GreatBritain,
-        ex:GP_2025_Hungary,
-        ex:GP_2025_Italy,
-        ex:GP_2025_Japan,
-        ex:GP_2025_LasVegas,
-        ex:GP_2025_Mexico,
-        ex:GP_2025_Miami,
-        ex:GP_2025_Monaco,
-        ex:GP_2025_Netherlands,
-        ex:GP_2025_Qatar,
-        ex:GP_2025_SaudiArabia,
-        ex:GP_2025_Singapore,
-        ex:GP_2025_Spain,
-        ex:GP_2025_UnitedStates,
-        ex:GP_2026_Australia,
-        ex:GP_2026_China,
-        ex:GP_2026_Japan ;
-    ex:teammateOf ex:CarlosSainz,
-        ex:LewisHamilton ;
-    ex:wikidataId "Q17541912" ;
-    owl:sameAs wd:Q17541912 .
+    ex:wikidataId "Q661540" ;
+    owl:sameAs wd:Q661540 .
 
 ex:GP_2026_Japan a ex:GrandPrix ;
     ex:heldAtCircuit ex:SuzukaInternationalRacingCourse ;
     ex:name "2026 Japanese Grand Prix" ;
     ex:partOfSeason ex:Season2026 ;
     ex:raceDate "2026-03-29"^^xsd:date .
+
+ex:GP_2025_AbuDhabi a ex:GrandPrix ;
+    ex:heldAtCircuit ex:YasMarinaCircuit ;
+    ex:name "2025 Abu Dhabi Grand Prix" ;
+    ex:partOfSeason ex:Season2025 ;
+    ex:raceDate "2025-12-07"^^xsd:date ;
+    ex:winner ex:OscarPiastri ;
+    ex:winningTeam ex:McLaren .
+
+ex:GP_2025_Australia a ex:GrandPrix ;
+    ex:heldAtCircuit ex:AlbertParkCircuit ;
+    ex:name "2025 Australian Grand Prix" ;
+    ex:partOfSeason ex:Season2025 ;
+    ex:raceDate "2025-03-16"^^xsd:date ;
+    ex:winner ex:LandoNorris ;
+    ex:winningTeam ex:McLaren .
+
+ex:GP_2025_Austria a ex:GrandPrix ;
+    ex:heldAtCircuit ex:RedBullRingCircuit ;
+    ex:name "2025 Austrian Grand Prix" ;
+    ex:partOfSeason ex:Season2025 ;
+    ex:raceDate "2025-06-29"^^xsd:date ;
+    ex:winner ex:OscarPiastri ;
+    ex:winningTeam ex:McLaren .
+
+ex:GP_2025_Azerbaijan a ex:GrandPrix ;
+    ex:heldAtCircuit ex:BakuCityCircuit ;
+    ex:name "2025 Azerbaijan Grand Prix" ;
+    ex:partOfSeason ex:Season2025 ;
+    ex:raceDate "2025-09-21"^^xsd:date ;
+    ex:winner ex:OscarPiastri ;
+    ex:winningTeam ex:McLaren .
+
+ex:GP_2025_Bahrain a ex:GrandPrix ;
+    ex:heldAtCircuit ex:BahrainInternationalCircuit ;
+    ex:name "2025 Bahrain Grand Prix" ;
+    ex:partOfSeason ex:Season2025 ;
+    ex:raceDate "2025-04-13"^^xsd:date ;
+    ex:winner ex:MaxVerstappen ;
+    ex:winningTeam ex:RedBullRacing .
+
+ex:GP_2025_Belgium a ex:GrandPrix ;
+    ex:heldAtCircuit ex:CircuitDeSpaFrancorchamps ;
+    ex:name "2025 Belgian Grand Prix" ;
+    ex:partOfSeason ex:Season2025 ;
+    ex:raceDate "2025-07-27"^^xsd:date ;
+    ex:winner ex:LandoNorris ;
+    ex:winningTeam ex:McLaren .
+
+ex:GP_2025_Brazil a ex:GrandPrix ;
+    ex:heldAtCircuit ex:AutodromoJoseCarlosPace ;
+    ex:name "2025 Brazilian Grand Prix" ;
+    ex:partOfSeason ex:Season2025 ;
+    ex:raceDate "2025-11-09"^^xsd:date ;
+    ex:winner ex:MaxVerstappen ;
+    ex:winningTeam ex:RedBullRacing .
+
+ex:GP_2025_Canada a ex:GrandPrix ;
+    ex:heldAtCircuit ex:CircuitGillesVilleneuve ;
+    ex:name "2025 Canadian Grand Prix" ;
+    ex:partOfSeason ex:Season2025 ;
+    ex:raceDate "2025-06-15"^^xsd:date ;
+    ex:winner ex:MaxVerstappen ;
+    ex:winningTeam ex:RedBullRacing .
+
+ex:GP_2025_China a ex:GrandPrix ;
+    ex:heldAtCircuit ex:ShanghaiInternationalCircuit ;
+    ex:name "2025 Chinese Grand Prix" ;
+    ex:partOfSeason ex:Season2025 ;
+    ex:raceDate "2025-03-23"^^xsd:date ;
+    ex:winner ex:OscarPiastri ;
+    ex:winningTeam ex:McLaren .
+
+ex:GP_2025_EmiliaRomagna a ex:GrandPrix ;
+    ex:heldAtCircuit ex:AutodromoEnzoDinoFerrari ;
+    ex:name "2025 Emilia Romagna Grand Prix" ;
+    ex:partOfSeason ex:Season2025 ;
+    ex:raceDate "2025-05-18"^^xsd:date ;
+    ex:winner ex:MaxVerstappen ;
+    ex:winningTeam ex:RedBullRacing .
+
+ex:GP_2025_GreatBritain a ex:GrandPrix ;
+    ex:heldAtCircuit ex:SilverstoneCircuit ;
+    ex:name "2025 British Grand Prix" ;
+    ex:partOfSeason ex:Season2025 ;
+    ex:raceDate "2025-07-06"^^xsd:date ;
+    ex:winner ex:LandoNorris ;
+    ex:winningTeam ex:McLaren .
+
+ex:GP_2025_Hungary a ex:GrandPrix ;
+    ex:heldAtCircuit ex:Hungaroring ;
+    ex:name "2025 Hungarian Grand Prix" ;
+    ex:partOfSeason ex:Season2025 ;
+    ex:raceDate "2025-08-03"^^xsd:date ;
+    ex:winner ex:OscarPiastri ;
+    ex:winningTeam ex:McLaren .
+
+ex:GP_2025_Italy a ex:GrandPrix ;
+    ex:heldAtCircuit ex:AutodromoNazionaleDiMonza ;
+    ex:name "2025 Italian Grand Prix" ;
+    ex:partOfSeason ex:Season2025 ;
+    ex:raceDate "2025-09-07"^^xsd:date ;
+    ex:winner ex:CharlesLeclerc ;
+    ex:winningTeam ex:Ferrari .
+
+ex:GP_2025_Japan a ex:GrandPrix ;
+    ex:heldAtCircuit ex:SuzukaInternationalRacingCourse ;
+    ex:name "2025 Japanese Grand Prix" ;
+    ex:partOfSeason ex:Season2025 ;
+    ex:raceDate "2025-04-06"^^xsd:date ;
+    ex:winner ex:MaxVerstappen ;
+    ex:winningTeam ex:RedBullRacing .
+
+ex:GP_2025_LasVegas a ex:GrandPrix ;
+    ex:heldAtCircuit ex:LasVegasStripCircuit ;
+    ex:name "2025 Las Vegas Grand Prix" ;
+    ex:partOfSeason ex:Season2025 ;
+    ex:raceDate "2025-11-22"^^xsd:date ;
+    ex:winner ex:CarlosSainz ;
+    ex:winningTeam ex:Williams .
+
+ex:GP_2025_Mexico a ex:GrandPrix ;
+    ex:heldAtCircuit ex:AutodromoHermanosRodriguez ;
+    ex:name "2025 Mexico City Grand Prix" ;
+    ex:partOfSeason ex:Season2025 ;
+    ex:raceDate "2025-10-26"^^xsd:date ;
+    ex:winner ex:CarlosSainz ;
+    ex:winningTeam ex:Williams .
+
+ex:GP_2025_Miami a ex:GrandPrix ;
+    ex:heldAtCircuit ex:MiamiInternationalAutodrome ;
+    ex:name "2025 Miami Grand Prix" ;
+    ex:partOfSeason ex:Season2025 ;
+    ex:raceDate "2025-05-04"^^xsd:date ;
+    ex:winner ex:MaxVerstappen ;
+    ex:winningTeam ex:RedBullRacing .
+
+ex:GP_2025_Monaco a ex:GrandPrix ;
+    ex:heldAtCircuit ex:CircuitDeMonaco ;
+    ex:name "2025 Monaco Grand Prix" ;
+    ex:partOfSeason ex:Season2025 ;
+    ex:raceDate "2025-05-25"^^xsd:date ;
+    ex:winner ex:CharlesLeclerc ;
+    ex:winningTeam ex:Ferrari .
+
+ex:GP_2025_Netherlands a ex:GrandPrix ;
+    ex:heldAtCircuit ex:CircuitParkZandvoort ;
+    ex:name "2025 Dutch Grand Prix" ;
+    ex:partOfSeason ex:Season2025 ;
+    ex:raceDate "2025-08-31"^^xsd:date ;
+    ex:winner ex:LandoNorris ;
+    ex:winningTeam ex:McLaren .
+
+ex:GP_2025_Qatar a ex:GrandPrix ;
+    ex:heldAtCircuit ex:LosailInternationalCircuit ;
+    ex:name "2025 Qatar Grand Prix" ;
+    ex:partOfSeason ex:Season2025 ;
+    ex:raceDate "2025-11-30"^^xsd:date ;
+    ex:winner ex:OscarPiastri ;
+    ex:winningTeam ex:McLaren .
+
+ex:GP_2025_SaudiArabia a ex:GrandPrix ;
+    ex:heldAtCircuit ex:JeddahCornicheCircuit ;
+    ex:name "2025 Saudi Arabian Grand Prix" ;
+    ex:partOfSeason ex:Season2025 ;
+    ex:raceDate "2025-04-20"^^xsd:date ;
+    ex:winner ex:OscarPiastri ;
+    ex:winningTeam ex:McLaren .
+
+ex:GP_2025_Singapore a ex:GrandPrix ;
+    ex:heldAtCircuit ex:MarinaBayStreetCircuit ;
+    ex:name "2025 Singapore Grand Prix" ;
+    ex:partOfSeason ex:Season2025 ;
+    ex:raceDate "2025-10-05"^^xsd:date ;
+    ex:winner ex:LandoNorris ;
+    ex:winningTeam ex:McLaren .
+
+ex:GP_2025_Spain a ex:GrandPrix ;
+    ex:heldAtCircuit ex:CircuitDeCatalunya ;
+    ex:name "2025 Spanish Grand Prix" ;
+    ex:partOfSeason ex:Season2025 ;
+    ex:raceDate "2025-06-01"^^xsd:date ;
+    ex:winner ex:OscarPiastri ;
+    ex:winningTeam ex:McLaren .
+
+ex:GP_2025_UnitedStates a ex:GrandPrix ;
+    ex:heldAtCircuit ex:CircuitOfTheAmericas ;
+    ex:name "2025 United States Grand Prix" ;
+    ex:partOfSeason ex:Season2025 ;
+    ex:raceDate "2025-10-19"^^xsd:date ;
+    ex:winner ex:LandoNorris ;
+    ex:winningTeam ex:McLaren .
 
 ex:Circuit a owl:Class ;
     rdfs:label "Circuit"@en ;
@@ -4564,7 +4534,7 @@ ex:GP_2022_Austria a ex:GrandPrix ;
     ex:winningTeam ex:Ferrari .
 
 ex:GP_2022_Azerbaijan a ex:GrandPrix ;
-    ex:heldAtCircuit ex:BahrainInternationalCircuit ;
+    ex:heldAtCircuit ex:BakuCityCircuit ;
     ex:name "2022 Azerbaijan Grand Prix" ;
     ex:partOfSeason ex:Season2022 ;
     ex:raceDate "2022-06-12"^^xsd:date ;
@@ -4740,7 +4710,7 @@ ex:GP_2023_Austria a ex:GrandPrix ;
     ex:winningTeam ex:RedBullRacing .
 
 ex:GP_2023_Azerbaijan a ex:GrandPrix ;
-    ex:heldAtCircuit ex:JeddahCornicheCircuit ;
+    ex:heldAtCircuit ex:BakuCityCircuit ;
     ex:name "2023 Azerbaijan Grand Prix" ;
     ex:partOfSeason ex:Season2023 ;
     ex:raceDate "2023-04-30"^^xsd:date ;
@@ -4907,6 +4877,232 @@ ex:GP_2026_China a ex:GrandPrix ;
     ex:winner ex:GeorgeRussell ;
     ex:winningTeam ex:Mercedes .
 
+ex:OscarPiastri a ex:Driver ;
+    ex:competesInSeason ex:Season2023,
+        ex:Season2024,
+        ex:Season2025,
+        ex:Season2026 ;
+    ex:drivesFor ex:McLaren ;
+    ex:fromCountry ex:Australia ;
+    ex:hasStanding ex:Standing_2023_OscarPiastri,
+        ex:Standing_2024_OscarPiastri,
+        ex:Standing_2025_OscarPiastri,
+        ex:Standing_2026_OscarPiastri ;
+    ex:hasWon ex:GP_2024_Azerbaijan,
+        ex:GP_2024_Hungary,
+        ex:GP_2025_AbuDhabi,
+        ex:GP_2025_Austria,
+        ex:GP_2025_Azerbaijan,
+        ex:GP_2025_China,
+        ex:GP_2025_Hungary,
+        ex:GP_2025_Qatar,
+        ex:GP_2025_SaudiArabia,
+        ex:GP_2025_Spain ;
+    ex:name "Oscar Piastri" ;
+    ex:nationality "AUS" ;
+    ex:participatedIn ex:GP_2023_AbuDhabi,
+        ex:GP_2023_Australia,
+        ex:GP_2023_Austria,
+        ex:GP_2023_Azerbaijan,
+        ex:GP_2023_Bahrain,
+        ex:GP_2023_Belgium,
+        ex:GP_2023_Brazil,
+        ex:GP_2023_Canada,
+        ex:GP_2023_GreatBritain,
+        ex:GP_2023_Hungary,
+        ex:GP_2023_Italy,
+        ex:GP_2023_Japan,
+        ex:GP_2023_LasVegas,
+        ex:GP_2023_Mexico,
+        ex:GP_2023_Miami,
+        ex:GP_2023_Monaco,
+        ex:GP_2023_Netherlands,
+        ex:GP_2023_Qatar,
+        ex:GP_2023_SaudiArabia,
+        ex:GP_2023_Singapore,
+        ex:GP_2023_Spain,
+        ex:GP_2023_UnitedStates,
+        ex:GP_2024_AbuDhabi,
+        ex:GP_2024_Australia,
+        ex:GP_2024_Austria,
+        ex:GP_2024_Azerbaijan,
+        ex:GP_2024_Bahrain,
+        ex:GP_2024_Belgium,
+        ex:GP_2024_Brazil,
+        ex:GP_2024_Canada,
+        ex:GP_2024_China,
+        ex:GP_2024_EmiliaRomagna,
+        ex:GP_2024_GreatBritain,
+        ex:GP_2024_Hungary,
+        ex:GP_2024_Italy,
+        ex:GP_2024_Japan,
+        ex:GP_2024_LasVegas,
+        ex:GP_2024_Mexico,
+        ex:GP_2024_Miami,
+        ex:GP_2024_Monaco,
+        ex:GP_2024_Netherlands,
+        ex:GP_2024_Qatar,
+        ex:GP_2024_SaudiArabia,
+        ex:GP_2024_Singapore,
+        ex:GP_2024_Spain,
+        ex:GP_2024_UnitedStates,
+        ex:GP_2025_AbuDhabi,
+        ex:GP_2025_Australia,
+        ex:GP_2025_Austria,
+        ex:GP_2025_Azerbaijan,
+        ex:GP_2025_Bahrain,
+        ex:GP_2025_Belgium,
+        ex:GP_2025_Brazil,
+        ex:GP_2025_Canada,
+        ex:GP_2025_China,
+        ex:GP_2025_EmiliaRomagna,
+        ex:GP_2025_GreatBritain,
+        ex:GP_2025_Hungary,
+        ex:GP_2025_Italy,
+        ex:GP_2025_Japan,
+        ex:GP_2025_LasVegas,
+        ex:GP_2025_Mexico,
+        ex:GP_2025_Miami,
+        ex:GP_2025_Monaco,
+        ex:GP_2025_Netherlands,
+        ex:GP_2025_Qatar,
+        ex:GP_2025_SaudiArabia,
+        ex:GP_2025_Singapore,
+        ex:GP_2025_Spain,
+        ex:GP_2025_UnitedStates,
+        ex:GP_2026_Australia,
+        ex:GP_2026_China,
+        ex:GP_2026_Japan ;
+    ex:teammateOf ex:LandoNorris ;
+    ex:wikidataId "Q28741262" ;
+    ex:wonChampionshipIn ex:Season2025 ;
+    owl:sameAs wd:Q28741262 .
+
+ex:CharlesLeclerc a ex:Driver ;
+    ex:competesInSeason ex:Season2022,
+        ex:Season2023,
+        ex:Season2024,
+        ex:Season2025,
+        ex:Season2026 ;
+    ex:drivesFor ex:Ferrari ;
+    ex:fromCountry ex:Monaco ;
+    ex:hasStanding ex:Standing_2022_CharlesLeclerc,
+        ex:Standing_2023_CharlesLeclerc,
+        ex:Standing_2024_CharlesLeclerc,
+        ex:Standing_2025_CharlesLeclerc,
+        ex:Standing_2026_CharlesLeclerc ;
+    ex:hasWon ex:GP_2022_Australia,
+        ex:GP_2022_Austria,
+        ex:GP_2022_Bahrain,
+        ex:GP_2022_SaudiArabia,
+        ex:GP_2023_UnitedStates,
+        ex:GP_2024_Italy,
+        ex:GP_2024_Monaco,
+        ex:GP_2024_UnitedStates,
+        ex:GP_2025_Italy,
+        ex:GP_2025_Monaco ;
+    ex:name "Charles Leclerc" ;
+    ex:nationality "MON" ;
+    ex:participatedIn ex:GP_2022_AbuDhabi,
+        ex:GP_2022_Australia,
+        ex:GP_2022_Austria,
+        ex:GP_2022_Azerbaijan,
+        ex:GP_2022_Bahrain,
+        ex:GP_2022_Belgium,
+        ex:GP_2022_Brazil,
+        ex:GP_2022_Canada,
+        ex:GP_2022_EmiliaRomagna,
+        ex:GP_2022_France,
+        ex:GP_2022_GreatBritain,
+        ex:GP_2022_Hungary,
+        ex:GP_2022_Italy,
+        ex:GP_2022_Japan,
+        ex:GP_2022_Mexico,
+        ex:GP_2022_Miami,
+        ex:GP_2022_Monaco,
+        ex:GP_2022_Netherlands,
+        ex:GP_2022_SaudiArabia,
+        ex:GP_2022_Singapore,
+        ex:GP_2022_Spain,
+        ex:GP_2022_UnitedStates,
+        ex:GP_2023_AbuDhabi,
+        ex:GP_2023_Australia,
+        ex:GP_2023_Austria,
+        ex:GP_2023_Azerbaijan,
+        ex:GP_2023_Bahrain,
+        ex:GP_2023_Belgium,
+        ex:GP_2023_Brazil,
+        ex:GP_2023_Canada,
+        ex:GP_2023_GreatBritain,
+        ex:GP_2023_Hungary,
+        ex:GP_2023_Italy,
+        ex:GP_2023_Japan,
+        ex:GP_2023_LasVegas,
+        ex:GP_2023_Mexico,
+        ex:GP_2023_Miami,
+        ex:GP_2023_Monaco,
+        ex:GP_2023_Netherlands,
+        ex:GP_2023_Qatar,
+        ex:GP_2023_SaudiArabia,
+        ex:GP_2023_Singapore,
+        ex:GP_2023_Spain,
+        ex:GP_2023_UnitedStates,
+        ex:GP_2024_AbuDhabi,
+        ex:GP_2024_Australia,
+        ex:GP_2024_Austria,
+        ex:GP_2024_Azerbaijan,
+        ex:GP_2024_Bahrain,
+        ex:GP_2024_Belgium,
+        ex:GP_2024_Brazil,
+        ex:GP_2024_Canada,
+        ex:GP_2024_China,
+        ex:GP_2024_EmiliaRomagna,
+        ex:GP_2024_GreatBritain,
+        ex:GP_2024_Hungary,
+        ex:GP_2024_Italy,
+        ex:GP_2024_Japan,
+        ex:GP_2024_LasVegas,
+        ex:GP_2024_Mexico,
+        ex:GP_2024_Miami,
+        ex:GP_2024_Monaco,
+        ex:GP_2024_Netherlands,
+        ex:GP_2024_Qatar,
+        ex:GP_2024_SaudiArabia,
+        ex:GP_2024_Singapore,
+        ex:GP_2024_Spain,
+        ex:GP_2024_UnitedStates,
+        ex:GP_2025_AbuDhabi,
+        ex:GP_2025_Australia,
+        ex:GP_2025_Austria,
+        ex:GP_2025_Azerbaijan,
+        ex:GP_2025_Bahrain,
+        ex:GP_2025_Belgium,
+        ex:GP_2025_Brazil,
+        ex:GP_2025_Canada,
+        ex:GP_2025_China,
+        ex:GP_2025_EmiliaRomagna,
+        ex:GP_2025_GreatBritain,
+        ex:GP_2025_Hungary,
+        ex:GP_2025_Italy,
+        ex:GP_2025_Japan,
+        ex:GP_2025_LasVegas,
+        ex:GP_2025_Mexico,
+        ex:GP_2025_Miami,
+        ex:GP_2025_Monaco,
+        ex:GP_2025_Netherlands,
+        ex:GP_2025_Qatar,
+        ex:GP_2025_SaudiArabia,
+        ex:GP_2025_Singapore,
+        ex:GP_2025_Spain,
+        ex:GP_2025_UnitedStates,
+        ex:GP_2026_Australia,
+        ex:GP_2026_China,
+        ex:GP_2026_Japan ;
+    ex:teammateOf ex:CarlosSainz,
+        ex:LewisHamilton ;
+    ex:wikidataId "Q17541912" ;
+    owl:sameAs wd:Q17541912 .
+
 ex:GP_2024_AbuDhabi a ex:GrandPrix ;
     ex:heldAtCircuit ex:YasMarinaCircuit ;
     ex:name "2024 Abu Dhabi Grand Prix" ;
@@ -4932,7 +5128,7 @@ ex:GP_2024_Austria a ex:GrandPrix ;
     ex:winningTeam ex:Mercedes .
 
 ex:GP_2024_Azerbaijan a ex:GrandPrix ;
-    ex:heldAtCircuit ex:JeddahCornicheCircuit ;
+    ex:heldAtCircuit ex:BakuCityCircuit ;
     ex:name "2024 Azerbaijan Grand Prix" ;
     ex:partOfSeason ex:Season2024 ;
     ex:raceDate "2024-09-15"^^xsd:date ;
@@ -5099,53 +5295,100 @@ ex:GP_2024_UnitedStates a ex:GrandPrix ;
     ex:winner ex:CharlesLeclerc ;
     ex:winningTeam ex:Ferrari .
 
-ex:Ferrari a ex:Team ;
-    ex:name "Ferrari" ;
-    ex:participatedInSeason ex:Season2022,
+ex:LandoNorris a ex:Driver ;
+    ex:competesInSeason ex:Season2022,
         ex:Season2023,
         ex:Season2024,
         ex:Season2025,
         ex:Season2026 ;
-    ex:wikidataId "Q1407594" ;
-    owl:sameAs wd:Q1407594 .
-
-ex:Driver a owl:Class ;
-    rdfs:label "Driver"@en ;
-    rdfs:comment "A Formula 1 racing driver."@en .
-
-ex:Season2026 a ex:Season ;
-    ex:hasParticipant ex:Alpine,
-        ex:AstonMartin,
-        ex:Audi,
-        ex:Cadillac,
-        ex:Ferrari,
-        ex:HaasF1Team,
-        ex:McLaren,
-        ex:Mercedes,
-        ex:RacingBulls,
-        ex:RedBullRacing,
-        ex:Williams ;
-    ex:hasRace ex:GP_2026_Australia,
-        ex:GP_2026_China,
-        ex:GP_2026_Japan ;
-    ex:seasonYear "2026"^^xsd:int .
-
-ex:RaceResult a owl:Class ;
-    rdfs:label "Race Result"@en ;
-    rdfs:comment "The result of one driver in one Grand Prix."@en .
-
-ex:Season2025 a ex:Season ;
-    ex:hasParticipant ex:Alpine,
-        ex:AstonMartin,
-        ex:Ferrari,
-        ex:HaasF1Team,
-        ex:KickSauber,
-        ex:McLaren,
-        ex:Mercedes,
-        ex:RacingBulls,
-        ex:RedBullRacing,
-        ex:Williams ;
-    ex:hasRace ex:GP_2025_AbuDhabi,
+    ex:drivesFor ex:McLaren ;
+    ex:fromCountry ex:UnitedKingdom ;
+    ex:hasStanding ex:Standing_2022_LandoNorris,
+        ex:Standing_2023_LandoNorris,
+        ex:Standing_2024_LandoNorris,
+        ex:Standing_2025_LandoNorris,
+        ex:Standing_2026_LandoNorris ;
+    ex:hasWon ex:GP_2024_AbuDhabi,
+        ex:GP_2024_Miami,
+        ex:GP_2024_Netherlands,
+        ex:GP_2024_Singapore,
+        ex:GP_2025_Australia,
+        ex:GP_2025_Belgium,
+        ex:GP_2025_GreatBritain,
+        ex:GP_2025_Netherlands,
+        ex:GP_2025_Singapore,
+        ex:GP_2025_UnitedStates ;
+    ex:name "Lando Norris" ;
+    ex:nationality "GBR" ;
+    ex:participatedIn ex:GP_2022_AbuDhabi,
+        ex:GP_2022_Australia,
+        ex:GP_2022_Austria,
+        ex:GP_2022_Azerbaijan,
+        ex:GP_2022_Bahrain,
+        ex:GP_2022_Belgium,
+        ex:GP_2022_Brazil,
+        ex:GP_2022_Canada,
+        ex:GP_2022_EmiliaRomagna,
+        ex:GP_2022_France,
+        ex:GP_2022_GreatBritain,
+        ex:GP_2022_Hungary,
+        ex:GP_2022_Italy,
+        ex:GP_2022_Japan,
+        ex:GP_2022_Mexico,
+        ex:GP_2022_Miami,
+        ex:GP_2022_Monaco,
+        ex:GP_2022_Netherlands,
+        ex:GP_2022_SaudiArabia,
+        ex:GP_2022_Singapore,
+        ex:GP_2022_Spain,
+        ex:GP_2022_UnitedStates,
+        ex:GP_2023_AbuDhabi,
+        ex:GP_2023_Australia,
+        ex:GP_2023_Austria,
+        ex:GP_2023_Azerbaijan,
+        ex:GP_2023_Bahrain,
+        ex:GP_2023_Belgium,
+        ex:GP_2023_Brazil,
+        ex:GP_2023_Canada,
+        ex:GP_2023_GreatBritain,
+        ex:GP_2023_Hungary,
+        ex:GP_2023_Italy,
+        ex:GP_2023_Japan,
+        ex:GP_2023_LasVegas,
+        ex:GP_2023_Mexico,
+        ex:GP_2023_Miami,
+        ex:GP_2023_Monaco,
+        ex:GP_2023_Netherlands,
+        ex:GP_2023_Qatar,
+        ex:GP_2023_SaudiArabia,
+        ex:GP_2023_Singapore,
+        ex:GP_2023_Spain,
+        ex:GP_2023_UnitedStates,
+        ex:GP_2024_AbuDhabi,
+        ex:GP_2024_Australia,
+        ex:GP_2024_Austria,
+        ex:GP_2024_Azerbaijan,
+        ex:GP_2024_Bahrain,
+        ex:GP_2024_Belgium,
+        ex:GP_2024_Brazil,
+        ex:GP_2024_Canada,
+        ex:GP_2024_China,
+        ex:GP_2024_EmiliaRomagna,
+        ex:GP_2024_GreatBritain,
+        ex:GP_2024_Hungary,
+        ex:GP_2024_Italy,
+        ex:GP_2024_Japan,
+        ex:GP_2024_LasVegas,
+        ex:GP_2024_Mexico,
+        ex:GP_2024_Miami,
+        ex:GP_2024_Monaco,
+        ex:GP_2024_Netherlands,
+        ex:GP_2024_Qatar,
+        ex:GP_2024_SaudiArabia,
+        ex:GP_2024_Singapore,
+        ex:GP_2024_Spain,
+        ex:GP_2024_UnitedStates,
+        ex:GP_2025_AbuDhabi,
         ex:GP_2025_Australia,
         ex:GP_2025_Austria,
         ex:GP_2025_Azerbaijan,
@@ -5168,8 +5411,77 @@ ex:Season2025 a ex:Season ;
         ex:GP_2025_SaudiArabia,
         ex:GP_2025_Singapore,
         ex:GP_2025_Spain,
-        ex:GP_2025_UnitedStates ;
-    ex:seasonYear "2025"^^xsd:int .
+        ex:GP_2025_UnitedStates,
+        ex:GP_2026_Australia,
+        ex:GP_2026_China,
+        ex:GP_2026_Japan ;
+    ex:teammateOf ex:DanielRicciardo,
+        ex:OscarPiastri ;
+    ex:wikidataId "Q22007193" ;
+    owl:sameAs wd:Q22007193 .
+
+ex:Williams a ex:Team ;
+    ex:name "Williams" ;
+    ex:participatedInSeason ex:Season2022,
+        ex:Season2023,
+        ex:Season2024,
+        ex:Season2025,
+        ex:Season2026 ;
+    ex:wikidataId "Q1688722" ;
+    owl:sameAs wd:Q1688722 .
+
+ex:Mercedes a ex:Team ;
+    ex:name "Mercedes" ;
+    ex:participatedInSeason ex:Season2022,
+        ex:Season2023,
+        ex:Season2024,
+        ex:Season2025,
+        ex:Season2026 ;
+    ex:wikidataId "Q255209" ;
+    owl:sameAs wd:Q255209 .
+
+ex:Driver a owl:Class ;
+    rdfs:label "Driver"@en ;
+    rdfs:comment "A Formula 1 racing driver."@en .
+
+ex:Ferrari a ex:Team ;
+    ex:name "Ferrari" ;
+    ex:participatedInSeason ex:Season2022,
+        ex:Season2023,
+        ex:Season2024,
+        ex:Season2025,
+        ex:Season2026 ;
+    ex:wikidataId "Q1407594" ;
+    owl:sameAs wd:Q1407594 .
+
+ex:Season2026 a ex:Season ;
+    ex:hasParticipant ex:Alpine,
+        ex:AstonMartin,
+        ex:Audi,
+        ex:Cadillac,
+        ex:Ferrari,
+        ex:HaasF1Team,
+        ex:McLaren,
+        ex:Mercedes,
+        ex:RacingBulls,
+        ex:RedBullRacing,
+        ex:Williams ;
+    ex:hasRace ex:GP_2026_Australia,
+        ex:GP_2026_China,
+        ex:GP_2026_Japan ;
+    ex:seasonYear "2026"^^xsd:int .
+
+ex:McLaren a ex:Team ;
+    ex:name "McLaren" ;
+    ex:participatedInSeason ex:Season2022,
+        ex:Season2023,
+        ex:Season2024,
+        ex:Season2025,
+        ex:Season2026 ;
+    ex:wikidataId "Q21484852" ;
+    ex:wonConstructorsTitleIn ex:Season2024,
+        ex:Season2025 ;
+    owl:sameAs wd:Q21484852 .
 
 ex:Season2022 a ex:Season ;
     ex:hasParticipant ex:AlfaRomeo,
@@ -5245,6 +5557,45 @@ ex:Season2023 a ex:Season ;
     ex:worldConstructorsChampion ex:RedBullRacing ;
     ex:worldDriversChampion ex:MaxVerstappen .
 
+ex:Season2025 a ex:Season ;
+    ex:hasParticipant ex:Alpine,
+        ex:AstonMartin,
+        ex:Ferrari,
+        ex:HaasF1Team,
+        ex:KickSauber,
+        ex:McLaren,
+        ex:Mercedes,
+        ex:RacingBulls,
+        ex:RedBullRacing,
+        ex:Williams ;
+    ex:hasRace ex:GP_2025_AbuDhabi,
+        ex:GP_2025_Australia,
+        ex:GP_2025_Austria,
+        ex:GP_2025_Azerbaijan,
+        ex:GP_2025_Bahrain,
+        ex:GP_2025_Belgium,
+        ex:GP_2025_Brazil,
+        ex:GP_2025_Canada,
+        ex:GP_2025_China,
+        ex:GP_2025_EmiliaRomagna,
+        ex:GP_2025_GreatBritain,
+        ex:GP_2025_Hungary,
+        ex:GP_2025_Italy,
+        ex:GP_2025_Japan,
+        ex:GP_2025_LasVegas,
+        ex:GP_2025_Mexico,
+        ex:GP_2025_Miami,
+        ex:GP_2025_Monaco,
+        ex:GP_2025_Netherlands,
+        ex:GP_2025_Qatar,
+        ex:GP_2025_SaudiArabia,
+        ex:GP_2025_Singapore,
+        ex:GP_2025_Spain,
+        ex:GP_2025_UnitedStates ;
+    ex:seasonYear "2025"^^xsd:int ;
+    ex:worldConstructorsChampion ex:McLaren ;
+    ex:worldDriversChampion ex:OscarPiastri .
+
 ex:Season2024 a ex:Season ;
     ex:hasParticipant ex:Alpine,
         ex:AstonMartin,
@@ -5283,6 +5634,14 @@ ex:Season2024 a ex:Season ;
     ex:seasonYear "2024"^^xsd:int ;
     ex:worldConstructorsChampion ex:McLaren ;
     ex:worldDriversChampion ex:MaxVerstappen .
+
+ex:GrandPrix a owl:Class ;
+    rdfs:label "Grand Prix"@en ;
+    rdfs:comment "A single Formula 1 race weekend."@en .
+
+ex:RaceResult a owl:Class ;
+    rdfs:label "Race Result"@en ;
+    rdfs:comment "The result of one driver in one Grand Prix."@en .
 
 ex:MaxVerstappen a ex:Driver ;
     ex:competesInSeason ex:Season2022,
@@ -5335,7 +5694,13 @@ ex:MaxVerstappen a ex:Driver ;
         ex:GP_2024_Japan,
         ex:GP_2024_Qatar,
         ex:GP_2024_SaudiArabia,
-        ex:GP_2024_Spain ;
+        ex:GP_2024_Spain,
+        ex:GP_2025_Bahrain,
+        ex:GP_2025_Brazil,
+        ex:GP_2025_Canada,
+        ex:GP_2025_EmiliaRomagna,
+        ex:GP_2025_Japan,
+        ex:GP_2025_Miami ;
     ex:name "Max Verstappen" ;
     ex:nationality "NED" ;
     ex:participatedIn ex:GP_2022_AbuDhabi,
@@ -5442,9 +5807,9 @@ ex:MaxVerstappen a ex:Driver ;
         ex:Season2024 ;
     owl:sameAs wd:Q2239218 .
 
-ex:GrandPrix a owl:Class ;
-    rdfs:label "Grand Prix"@en ;
-    rdfs:comment "A single Formula 1 race weekend."@en .
+ex:DriverStanding a owl:Class ;
+    rdfs:label "Driver Standing"@en ;
+    rdfs:comment "A driver's championship standing at the end of a season."@en .
 
 ex:RedBullRacing a ex:Team ;
     ex:name "Red Bull Racing" ;
@@ -5458,8 +5823,3 @@ ex:RedBullRacing a ex:Team ;
         ex:Season2023 ;
     owl:sameAs wd:Q173663 .
 
-ex:DriverStanding a owl:Class ;
-    rdfs:label "Driver Standing"@en ;
-    rdfs:comment "A driver's championship standing at the end of a season."@en .
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     

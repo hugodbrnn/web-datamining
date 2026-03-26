@@ -41,7 +41,7 @@ SELECT ?driverName WHERE {
             ex:name ?driverName .
 }""",
     "Which team does Lando Norris drive for?": """PREFIX ex: <http://example.org/f1#>
-SELECT ?teamName WHERE {
+SELECT DISTINCT ?teamName WHERE {
     ?driver ex:name "Lando Norris" ;
             ex:drivesFor ?team .
     ?team ex:name ?teamName .
@@ -147,7 +147,7 @@ def demo():
         results.append({
             "question": question,
             "sparql":   sparql,
-            "rows":     rows[:10],
+            "rows":     rows[:50],
             "error":    error,
         })
     return jsonify(results)

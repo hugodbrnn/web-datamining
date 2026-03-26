@@ -46,7 +46,7 @@ PREFIX ex: <http://example.org/f1#>
 - ex:TeamStanding  : A team's season-end constructor standing
 
 ## Object properties
-- ex:drivesFor       : Driver → Team          (current team)
+- ex:drivesFor       : Driver → Team          (use DIRECTLY on the driver — NEVER go through ex:teammateOf to find a driver's team)
 - ex:competesInSeason: Driver → Season
 - ex:teammateOf      : Driver ↔ Driver        (symmetric, across all seasons)
 - ex:hasStanding     : Driver → DriverStanding
@@ -83,15 +83,18 @@ PREFIX ex: <http://example.org/f1#>
 - Drivers  : ex:FirstnameLastname  e.g. ex:MaxVerstappen, ex:LewisHamilton, ex:LandoNorris
 - Teams    : ex:TeamName  e.g. ex:RedBullRacing, ex:Mercedes, ex:Ferrari, ex:McLaren
 
-## To find who won a specific race: filter by GP name keyword
+## CRITICAL — GP names always include the year prefix
+    # STORED AS: "2023 Italian Grand Prix", "2024 Monaco Grand Prix", "2023 British Grand Prix"
+    # NEVER use exact match: ex:name "Italian Grand Prix"  ← WRONG (missing year, will return nothing)
+    # ALWAYS use a variable + FILTER:
     ?gp ex:partOfSeason ex:Season2023 ;
         ex:name ?gpName ;
         ex:winner ?driver .
     ?driver ex:name ?driverName .
     FILTER(CONTAINS(LCASE(?gpName), "italian"))
-    # GP name examples: "2023 Italian Grand Prix", "2024 Monaco Grand Prix", "2023 British Grand Prix"
-    # Circuit → GP name: Monza=Italian, Monaco=Monaco, Silverstone=British, Spa=Belgian
-    # NEVER use STRINGS() — use CONTAINS(LCASE(?var), "keyword") for string matching
+    # Keywords: italian, monaco, british, belgian, dutch, japanese, bahrain, spanish, canadian...
+    # NEVER apply FILTER(CONTAINS()) to ?driver, ?gp, ?circuit, ?team — only to ?*Name variables
+    # Circuit → GP name keyword: Monza=italian, Monaco=monaco, Silverstone=british, Spa=belgian
 
 ## To find season-specific teammates: use DriverStanding with forTeam
     ?s1 a ex:DriverStanding ; ex:forSeason ex:Season2024 ; ex:forDriver ?driver1 ; ex:forTeam ?team .
@@ -104,14 +107,6 @@ PREFIX ex: <http://example.org/f1#>
 # ─────────────────────────────────────────────────────────────────────────────
 
 EXAMPLE_QUERIES = [
-    {
-        "question": "Who won the 2024 F1 championship?",
-        "sparql": """PREFIX ex: <http://example.org/f1#>
-SELECT ?driverName WHERE {
-    ?driver ex:isChampionOf ex:Season2024 ;
-            ex:name ?driverName .
-}""",
-    },
     {
         "question": "Who won the 2023 Italian Grand Prix at Monza?",
         "sparql": """PREFIX ex: <http://example.org/f1#>
@@ -126,9 +121,17 @@ SELECT ?driverName ?teamName WHERE {
 }""",
     },
     {
+        "question": "Who won the 2024 F1 championship?",
+        "sparql": """PREFIX ex: <http://example.org/f1#>
+SELECT ?driverName WHERE {
+    ?driver ex:isChampionOf ex:Season2024 ;
+            ex:name ?driverName .
+}""",
+    },
+    {
         "question": "Which team does Lando Norris drive for?",
         "sparql": """PREFIX ex: <http://example.org/f1#>
-SELECT ?teamName WHERE {
+SELECT DISTINCT ?teamName WHERE {
     ?driver ex:name "Lando Norris" ;
             ex:drivesFor ?team .
     ?team ex:name ?teamName .

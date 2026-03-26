@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /c/Users/marti/Desktop/\"Etudes Sup\"/A4/\"Semestre 2\"/DIA/\"Web datamining & semantics\"/PROJET/web-datamining -type f -o -type d)",
+      "Bash(find \"c:\\\\Users\\\\marti\\\\Desktop\\\\Etudes Sup\\\\A4\\\\Semestre 2\\\\DIA\\\\Web datamining & semantics\\\\PROJET\\\\web-datamining\" -type f -o -type d)",
+      "Bash(ls -la \"/c/Users/marti/Desktop/Etudes Sup/A4/Semestre 2/DIA/Web datamining & semantics/PROJET/web-datamining\")",
+      "Bash(find \"/c/Users/marti/Desktop/Etudes Sup/A4/Semestre 2/DIA/Web datamining & semantics/PROJET/web-datamining/src\" -type f)",
+      "Bash(ls -la \"/c/Users/marti/Desktop/Etudes Sup/A4/Semestre 2/DIA/Web datamining & semantics/PROJET/web-datamining/ontology\")",
+      "Bash(ls -la \"/c/Users/marti/Desktop/Etudes Sup/A4/Semestre 2/DIA/Web datamining & semantics/PROJET/web-datamining/kg_artifacts\")",
+      "Bash(ls -la \"/c/Users/marti/Desktop/Etudes Sup/A4/Semestre 2/DIA/Web datamining & semantics/PROJET/web-datamining/src\")"
+    ]
+  }
+}
