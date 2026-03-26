@@ -41,9 +41,29 @@ Your task: given a natural-language question, output ONE valid SPARQL SELECT que
 Rules:
 - Use only PREFIX ex: <http://example.org/f1#>
 - Use only classes and properties defined in the schema below
-- Return ONLY the SPARQL query, no explanation, no markdown fences
+- Return ONLY the SPARQL query, starting with PREFIX — no explanation, no markdown fences
 - Entity names in the KB use CamelCase with no spaces (e.g. ex:MaxVerstappen, ex:Season2024)
 - Use OPTIONAL for properties that may not be present
+
+CRITICAL — triple pattern syntax (SPARQL does NOT use AND/OR between triples):
+  WRONG: ?driver ex:name ?n AND ex:drivesFor ?team
+  WRONG: ?driver ex:name ?n OR ex:drivesFor ?team
+  RIGHT: ?driver ex:name ?n ; ex:drivesFor ?team .
+  Use semicolons (;) to chain properties of the same subject, periods (.) between different subjects.
+
+CRITICAL — to find who won a race:
+  WRONG: SELECT ?winner WHERE {{ ?gp ex:name ?gpName . FILTER ... }}
+  RIGHT: SELECT ?driverName WHERE {{
+             ?gp ex:partOfSeason ex:SeasonYYYY ;
+                 ex:name ?gpName ;
+                 ex:winner ?driver .
+             ?driver ex:name ?driverName .
+             FILTER(CONTAINS(LCASE(?gpName), "keyword")) }}
+
+CRITICAL — string matching: use FILTER(CONTAINS(LCASE(?var), "text"))
+  WRONG: FILTER REGEX(STR(?x), "text")
+  WRONG: FILTER(STRINGS(?x) CONTAINS("text"))
+  RIGHT: FILTER(CONTAINS(LCASE(?x), "text"))
 
 {schema}
 """
@@ -141,6 +161,24 @@ class SPARQLGenerator:
         )
         # Remaining STRINGS( → STR(
         sparql = re.sub(r'\bSTRINGS\s*\(', 'STR(', sparql, flags=re.IGNORECASE)
+        # FILTER REGEX(?x, "y") without "i" flag → CONTAINS(LCASE(?x), "y")
+        sparql = re.sub(
+            r'FILTER\s+REGEX\s*\(\s*(\?\w+)\s*,\s*(["\'][^"\']*["\'])\s*\)',
+            lambda m: f'FILTER(CONTAINS(LCASE({m.group(1)}), {m.group(2).lower()}))',
+            sparql, flags=re.IGNORECASE
+        )
+        # FILTER REGEX(STR(?x), "y") → FILTER(CONTAINS(LCASE(STR(?x)), "y"))
+        sparql = re.sub(
+            r'FILTER\s+REGEX\s*\(\s*(STR\s*\(\s*\?\w+\s*\))\s*,\s*(["\'][^"\']*["\'])\s*\)',
+            lambda m: f'FILTER(CONTAINS(LCASE({m.group(1)}), {m.group(2).lower()}))',
+            sparql, flags=re.IGNORECASE
+        )
+        # AND/OR between triple patterns → semicolon (SPARQL uses ; not AND)
+        sparql = re.sub(r'\s+AND\s+', ' ;\n    ', sparql, flags=re.IGNORECASE)
+        sparql = re.sub(r'\s+OR\s+(?=\?)', ' UNION { ', sparql, flags=re.IGNORECASE)
+        # Ensure PREFIX ex: is present
+        if 'ex:' in sparql and 'PREFIX ex:' not in sparql:
+            sparql = 'PREFIX ex: <http://example.org/f1#>\n' + sparql
         return sparql
 
     @staticmethod
@@ -148,6 +186,10 @@ class SPARQLGenerator:
         """Extract the SPARQL query from LLM output, strip fences, sanitize."""
         fenced = re.search(r"```(?:sparql)?\s*(.*?)```", raw, re.DOTALL | re.IGNORECASE)
         sparql = fenced.group(1).strip() if fenced else raw.strip()
+        # Strip any preamble text before PREFIX or SELECT (LLM sometimes adds "Here is the query:")
+        m = re.search(r'(PREFIX\b|SELECT\b)', sparql, re.IGNORECASE)
+        if m:
+            sparql = sparql[m.start():]
         return SPARQLGenerator._sanitize_sparql(sparql)
 
     def generate(self, question: str) -> str:

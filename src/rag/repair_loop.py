@@ -27,7 +27,13 @@ logger = logging.getLogger(__name__)
 
 MAX_ATTEMPTS = 3
 
-REPAIR_PROMPT_TEMPLATE = """The following SPARQL query for the F1 Knowledge Graph failed.
+REPAIR_PROMPT_TEMPLATE = """The following SPARQL query for the F1 Knowledge Graph failed with a syntax error.
+
+Common mistakes:
+- Using AND between triple patterns: ?d ex:name ?n AND ex:drivesFor ?t  →  use semicolon: ?d ex:name ?n ; ex:drivesFor ?t .
+- Missing PREFIX: always start with PREFIX ex: <http://example.org/f1#>
+- Using STRINGS() or FILTER REGEX: use FILTER(CONTAINS(LCASE(?var), "text")) instead
+- Selecting ?winner without binding it: must have ex:winner ?driver . ?driver ex:name ?driverName .
 
 Question: {question}
 
@@ -36,8 +42,8 @@ Bad SPARQL:
 
 Error: {error}
 
-Please write a corrected SPARQL SELECT query that answers the question.
-Return ONLY the SPARQL query, no explanation.
+Write a corrected SPARQL SELECT query starting with PREFIX ex: <http://example.org/f1#>
+Return ONLY the SPARQL query, no explanation, no markdown.
 """
 
 EMPTY_REPAIR_TEMPLATE = """The following SPARQL query returned no results.
