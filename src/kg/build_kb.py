@@ -79,6 +79,7 @@ def main():
             add_if_not_exists(g, standing_uri, RDF.type, EX.DriverStanding)
             add_if_not_exists(g, standing_uri, EX.forDriver, driver_uri)
             add_if_not_exists(g, standing_uri, EX.forSeason, season_uri)
+            add_if_not_exists(g, standing_uri, EX.forTeam,   team_uri)
 
             if position is not None:
                 add_if_not_exists(

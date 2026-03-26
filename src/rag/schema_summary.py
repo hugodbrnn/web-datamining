@@ -48,10 +48,10 @@ PREFIX ex: <http://example.org/f1#>
 ## Object properties
 - ex:drivesFor       : Driver → Team          (current team)
 - ex:competesInSeason: Driver → Season
-- ex:teammateOf      : Driver ↔ Driver        (symmetric)
+- ex:teammateOf      : Driver ↔ Driver        (symmetric, across all seasons)
 - ex:hasStanding     : Driver → DriverStanding
 - ex:forDriver       : DriverStanding/RaceResult → Driver
-- ex:forTeam         : TeamStanding → Team
+- ex:forTeam         : DriverStanding/TeamStanding/RaceResult → Team
 - ex:forSeason       : DriverStanding/TeamStanding → Season
 - ex:hasRace         : Season → GrandPrix
 - ex:heldAtCircuit   : GrandPrix → Circuit
@@ -76,6 +76,27 @@ PREFIX ex: <http://example.org/f1#>
 - ex:points          : RaceResult → xsd:decimal
 - ex:raceDate        : GrandPrix → xsd:date
 - ex:trackLength     : Circuit → xsd:decimal  (km)
+
+## URI naming conventions (IMPORTANT — use these exact formats)
+- Seasons  : ex:Season2022, ex:Season2023, ex:Season2024, ex:Season2025
+- Races    : ex:GP_YYYY_Country  e.g. ex:GP_2023_Italy, ex:GP_2024_Monaco, ex:GP_2023_GreatBritain, ex:GP_2024_Bahrain
+- Drivers  : ex:FirstnameLastname  e.g. ex:MaxVerstappen, ex:LewisHamilton, ex:LandoNorris
+- Teams    : ex:TeamName  e.g. ex:RedBullRacing, ex:Mercedes, ex:Ferrari, ex:McLaren
+
+## To find who won a specific race: filter by GP name keyword
+    ?gp ex:partOfSeason ex:Season2023 ;
+        ex:name ?gpName ;
+        ex:winner ?driver .
+    ?driver ex:name ?driverName .
+    FILTER(CONTAINS(LCASE(?gpName), "italian"))
+    # GP name examples: "2023 Italian Grand Prix", "2024 Monaco Grand Prix", "2023 British Grand Prix"
+    # Circuit → GP name: Monza=Italian, Monaco=Monaco, Silverstone=British, Spa=Belgian
+    # NEVER use STRINGS() — use CONTAINS(LCASE(?var), "keyword") for string matching
+
+## To find season-specific teammates: use DriverStanding with forTeam
+    ?s1 a ex:DriverStanding ; ex:forSeason ex:Season2024 ; ex:forDriver ?driver1 ; ex:forTeam ?team .
+    ?s2 a ex:DriverStanding ; ex:forSeason ex:Season2024 ; ex:forDriver ?driver2 ; ex:forTeam ?team .
+    FILTER(?driver1 != ?driver2)
 """.strip()
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -92,12 +113,38 @@ SELECT ?driverName WHERE {
 }""",
     },
     {
+        "question": "Who won the 2023 Italian Grand Prix at Monza?",
+        "sparql": """PREFIX ex: <http://example.org/f1#>
+SELECT ?driverName ?teamName WHERE {
+    ?gp ex:partOfSeason ex:Season2023 ;
+        ex:name ?gpName ;
+        ex:winner ?driver ;
+        ex:winningTeam ?team .
+    ?driver ex:name ?driverName .
+    ?team   ex:name ?teamName .
+    FILTER(CONTAINS(LCASE(?gpName), "italian"))
+}""",
+    },
+    {
         "question": "Which team does Lando Norris drive for?",
         "sparql": """PREFIX ex: <http://example.org/f1#>
 SELECT ?teamName WHERE {
     ?driver ex:name "Lando Norris" ;
             ex:drivesFor ?team .
     ?team ex:name ?teamName .
+}""",
+    },
+    {
+        "question": "Who were the teammates of Lewis Hamilton in 2024?",
+        "sparql": """PREFIX ex: <http://example.org/f1#>
+SELECT DISTINCT ?mateName WHERE {
+    ?hamilton ex:name "Lewis Hamilton" .
+    ?s1 a ex:DriverStanding ; ex:forSeason ex:Season2024 ;
+        ex:forDriver ?hamilton ; ex:forTeam ?team .
+    ?s2 a ex:DriverStanding ; ex:forSeason ex:Season2024 ;
+        ex:forDriver ?mate   ; ex:forTeam ?team .
+    ?mate ex:name ?mateName .
+    FILTER(?hamilton != ?mate)
 }""",
     },
     {
@@ -108,28 +155,6 @@ SELECT (COUNT(?gp) AS ?wins) WHERE {
             ex:hasWon ?gp .
     ?gp ex:partOfSeason ex:Season2023 .
 }""",
-    },
-    {
-        "question": "Who were the teammates of Lewis Hamilton in 2024?",
-        "sparql": """PREFIX ex: <http://example.org/f1#>
-SELECT ?mateName WHERE {
-    ?hamilton ex:name "Lewis Hamilton" ;
-              ex:teammateOf ?mate .
-    ?mate ex:name ?mateName .
-    ?hamilton ex:competesInSeason ex:Season2024 .
-    ?mate     ex:competesInSeason ex:Season2024 .
-}""",
-    },
-    {
-        "question": "List all circuits in the 2025 season with their country.",
-        "sparql": """PREFIX ex: <http://example.org/f1#>
-SELECT DISTINCT ?circuitName ?country WHERE {
-    ex:Season2025 ex:hasRace ?gp .
-    ?gp ex:heldAtCircuit ?circuit .
-    ?circuit ex:name ?circuitName .
-    OPTIONAL { ?circuit ex:locatedIn ?c . ?c ex:name ?country . }
-}
-ORDER BY ?circuitName""",
     },
     {
         "question": "What are the standings for the 2022 season?",

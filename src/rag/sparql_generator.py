@@ -33,7 +33,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 DEFAULT_KB   = PROJECT_ROOT / "kg_artifacts" / "reasoned_kb.ttl"
 
 OLLAMA_URL    = "http://localhost:11434"
-DEFAULT_MODEL = "mistral"   # works well for SPARQL generation; llama3 also fine
+DEFAULT_MODEL = "llama3.2:1b"   # small, fast; alternatives: gemma:2b, deepseek-r1:1.5b
 
 SYSTEM_PROMPT_TEMPLATE = """You are a SPARQL expert for a Formula 1 Knowledge Graph.
 Your task: given a natural-language question, output ONE valid SPARQL SELECT query — nothing else.

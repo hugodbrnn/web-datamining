@@ -72,12 +72,14 @@ SELECT DISTINCT ?circuitName WHERE {
     ?circuit ex:name ?circuitName .
 } ORDER BY ?circuitName""",
     "Who were the teammates of Lewis Hamilton in 2024?": """PREFIX ex: <http://example.org/f1#>
-SELECT ?mateName WHERE {
-    ?hamilton ex:name "Lewis Hamilton" ;
-              ex:teammateOf ?mate .
+SELECT DISTINCT ?mateName WHERE {
+    ?hamilton ex:name "Lewis Hamilton" .
+    ?s1 a ex:DriverStanding ; ex:forSeason ex:Season2024 ;
+        ex:forDriver ?hamilton ; ex:forTeam ?team .
+    ?s2 a ex:DriverStanding ; ex:forSeason ex:Season2024 ;
+        ex:forDriver ?mate   ; ex:forTeam ?team .
     ?mate ex:name ?mateName .
-    ?hamilton ex:competesInSeason ex:Season2024 .
-    ?mate     ex:competesInSeason ex:Season2024 .
+    FILTER(?hamilton != ?mate)
 }""",
 }
 
@@ -166,7 +168,7 @@ def main():
     parser.add_argument("-q", "--question", help="Single question to answer")
     parser.add_argument("--demo",   action="store_true", help="Run offline demo")
     parser.add_argument("--schema", action="store_true", help="Print KB schema and exit")
-    parser.add_argument("--model",  default="mistral",   help="Ollama model name")
+    parser.add_argument("--model",  default="llama3.2:1b", help="Ollama model name")
     parser.add_argument("--ollama", default="http://localhost:11434", help="Ollama URL")
     parser.add_argument("--verbose", action="store_true", help="Show generated SPARQL")
     args = parser.parse_args()

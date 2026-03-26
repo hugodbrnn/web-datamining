@@ -27,8 +27,11 @@ torch>=2.1.0
 pykeen>=1.10.0
 
 # ─────────────────────────────────────────────────────────────────────────────
-# RAG pipeline
+# RAG pipeline + web interface
 # ─────────────────────────────────────────────────────────────────────────────
+
+# Local web demo (http://localhost:5000)
+flask>=3.0.0
 
 # Ollama Python client (optional — main_rag.py uses urllib directly)
 # ollama>=0.1.0

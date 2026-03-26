@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>F1 Knowledge Graph — RAG Demo</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    :root { --f1: #E8002D; }
+    body  { background: #f5f5f5; }
+
+    .navbar        { background: var(--f1) !important; }
+    .navbar-brand  { font-size: 1.1rem; letter-spacing: .02em; }
+
+    .nav-tabs .nav-link.active   { border-top: 3px solid var(--f1); color: var(--f1); font-weight: 600; }
+    .nav-tabs .nav-link:hover    { color: var(--f1); }
+
+    .btn-f1 { background: var(--f1); color: #fff; border: none; }
+    .btn-f1:hover { background: #c5001d; color: #fff; }
+
+    .answer-box    { border-left: 4px solid var(--f1); background: #fff8f8; padding: .75rem 1rem; border-radius: 0 6px 6px 0; }
+    .sparql-block  { font-family: 'Courier New', monospace; font-size: .8em;
+                     background: #1e1e1e; color: #d4d4d4; padding: 1rem;
+                     border-radius: 6px; white-space: pre-wrap; word-break: break-all; }
+
+    .card-stat { border-top: 3px solid var(--f1); }
+
+    .onto-node { border: 2px solid var(--f1); border-radius: 8px; padding: 4px 12px;
+                 background: #fff; font-size: .8em; font-weight: 600; display: inline-block; }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark py-3 mb-4">
+  <div class="container">
+    <span class="navbar-brand fw-bold">🏎 F1 Knowledge Graph &mdash; RAG Demo</span>
+    <span class="text-white opacity-75 small d-none d-md-inline">Web Datamining &amp; Semantics</span>
+  </div>
+</nav>
+
+<div class="container pb-5">
+
+  <!-- Tabs -->
+  <ul class="nav nav-tabs bg-white rounded-top px-3 pt-2 shadow-sm mb-0" id="mainTabs">
+    <li class="nav-item">
+      <a class="nav-link active" data-bs-toggle="tab" href="#tab-chat">
+        <i class="bi bi-chat-dots me-1"></i>Chat (RAG)
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="tab" href="#tab-demo" id="demo-tab-link">
+        <i class="bi bi-play-circle me-1"></i>Demo
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="tab" href="#tab-schema" id="schema-tab-link">
+        <i class="bi bi-diagram-3 me-1"></i>Ontology &amp; Stats
+      </a>
+    </li>
+  </ul>
+
+  <div class="tab-content bg-white shadow-sm rounded-bottom p-4">
+
+    <!-- TAB 1: CHAT -->
+    <div class="tab-pane fade show active" id="tab-chat">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+          <p class="text-muted small mb-3">
+            <i class="bi bi-info-circle me-1"></i>
+            Ask a question in natural language — the system generates a SPARQL query, executes it on the F1 KB, and returns the answer.
+            Requires <strong>Ollama</strong> running locally (<code>ollama pull llama3.2:1b</code>).
+            No Ollama? Use the <a href="#" onclick="switchTab('demo-tab-link');return false;">Demo tab</a> instead.
+          </p>
+
+          <div class="input-group mb-3">
+            <input type="text" id="question-input" class="form-control form-control-lg"
+                   placeholder="e.g. Who won the 2024 F1 championship?"
+                   onkeydown="if(event.key==='Enter') askQuestion()">
+            <button class="btn btn-f1 px-4 fw-semibold" onclick="askQuestion()">
+              <i class="bi bi-send me-1"></i>Ask
+            </button>
+          </div>
+
+          <!-- Quick suggestions -->
+          <div class="mb-4">
+            <span class="text-muted small me-2">Suggestions:</span>
+            <button class="btn btn-sm btn-outline-secondary me-1 mb-1"
+                    onclick="setQ('Who won the 2024 F1 championship?')">Champion 2024</button>
+            <button class="btn btn-sm btn-outline-secondary me-1 mb-1"
+                    onclick="setQ('Which team does Lando Norris drive for?')">Norris team</button>
+            <button class="btn btn-sm btn-outline-secondary me-1 mb-1"
+                    onclick="setQ('Who won the Italian Grand Prix in 2023?')">Italian GP 2023</button>
+            <button class="btn btn-sm btn-outline-secondary me-1 mb-1"
+                    onclick="setQ('Who were the teammates of Lewis Hamilton in 2024?')">Hamilton teammates</button>
+          </div>
+
+          <!-- Loading spinner -->
+          <div id="loading" class="text-center py-4" style="display:none">
+            <div class="spinner-border text-danger" role="status"></div>
+            <p class="text-muted mt-2 small">Generating SPARQL query…</p>
+          </div>
+
+          <!-- Result -->
+          <div id="result-box" style="display:none">
+            <div class="card shadow-sm mb-3">
+              <div class="card-body">
+                <p class="text-muted small mb-2">
+                  <i class="bi bi-check-circle-fill text-success me-1"></i>Answer
+                </p>
+                <div id="answer-content" class="answer-box"></div>
+              </div>
+            </div>
+            <div class="card shadow-sm mb-3">
+              <div class="card-body py-2">
+                <a class="text-decoration-none text-muted small"
+                   data-bs-toggle="collapse" href="#sparql-collapse">
+                  <i class="bi bi-code-square me-1"></i>View generated SPARQL query
+                  <i class="bi bi-chevron-down ms-1"></i>
+                </a>
+                <div class="collapse mt-2" id="sparql-collapse">
+                  <pre class="sparql-block" id="sparql-content"></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Error -->
+          <div id="error-box" class="alert alert-warning" style="display:none">
+            <i class="bi bi-exclamation-triangle me-1"></i>
+            <span id="error-content"></span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: DEMO -->
+    <div class="tab-pane fade" id="tab-demo">
+
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+          <h5 class="mb-0">Demo — 5 pre-built questions</h5>
+          <p class="text-muted small mb-0">SPARQL executed directly against the KB — no LLM required.</p>
+        </div>
+        <button class="btn btn-f1 fw-semibold" id="run-demo-btn" onclick="runDemo()">
+          <i class="bi bi-play-fill me-1"></i>Run Demo
+        </button>
+      </div>
+
+      <div id="demo-results">
+        <p class="text-muted text-center py-4">
+          <i class="bi bi-arrow-up-circle me-1"></i>Click "Run Demo" to execute the queries.
+        </p>
+      </div>
+    </div>
+
+    <!-- TAB 3: ONTOLOGY & STATS -->
+    <div class="tab-pane fade" id="tab-schema">
+
+      <div id="schema-loading" class="text-center py-4">
+        <div class="spinner-border text-danger" role="status"></div>
+        <p class="text-muted mt-2">Loading KB statistics…</p>
+      </div>
+
+      <div id="schema-content" style="display:none">
+
+        <!-- Stats cards -->
+        <h5 class="mb-3">Knowledge Base Statistics</h5>
+        <div class="row g-3 mb-4" id="stats-cards"></div>
+
+        <div class="row g-4 mb-4">
+
+          <!-- Classes -->
+          <div class="col-md-5">
+            <div class="card shadow-sm h-100">
+              <div class="card-header bg-white fw-semibold">
+                <i class="bi bi-box text-danger me-1"></i>OWL Classes
+              </div>
+              <div class="card-body p-0">
+                <table class="table table-sm table-hover mb-0" id="classes-table">
+                  <thead class="table-light">
+                    <tr><th>Class</th><th class="text-end">Instances</th></tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Properties -->
+          <div class="col-md-7">
+            <div class="card shadow-sm h-100">
+              <div class="card-header bg-white fw-semibold">
+                <i class="bi bi-arrow-left-right text-danger me-1"></i>Properties (top 15 by usage)
+              </div>
+              <div class="card-body p-0">
+                <table class="table table-sm table-hover mb-0" id="props-table">
+                  <thead class="table-light">
+                    <tr><th>Property</th><th class="text-end">Triples</th></tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ontology diagram -->
+        <div class="card shadow-sm mb-4">
+          <div class="card-header bg-white fw-semibold">
+            <i class="bi bi-diagram-3 text-danger me-1"></i>Ontology Diagram
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered table-sm text-center mb-0" style="font-size:.82em">
+                <thead class="table-dark">
+                  <tr>
+                    <th>Class</th><th>Description</th><th>Key Properties</th><th>Links to</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="onto-node">Driver</span></td>
+                    <td>F1 racing driver</td>
+                    <td><code>name</code>, <code>nationality</code></td>
+                    <td>Team, Season, GrandPrix, Country</td>
+                  </tr>
+                  <tr>
+                    <td><span class="onto-node">Team</span></td>
+                    <td>Constructor / team</td>
+                    <td><code>name</code></td>
+                    <td>Driver, Season</td>
+                  </tr>
+                  <tr>
+                    <td><span class="onto-node">Season</span></td>
+                    <td>Championship season</td>
+                    <td><code>seasonYear</code></td>
+                    <td>GrandPrix, Driver, Team</td>
+                  </tr>
+                  <tr>
+                    <td><span class="onto-node">GrandPrix</span></td>
+                    <td>Race weekend</td>
+                    <td><code>raceDate</code>, <code>name</code></td>
+                    <td>Circuit, Season, Driver</td>
+                  </tr>
+                  <tr>
+                    <td><span class="onto-node">Circuit</span></td>
+                    <td>Racing circuit</td>
+                    <td><code>name</code>, <code>trackLength</code></td>
+                    <td>Country</td>
+                  </tr>
+                  <tr>
+                    <td><span class="onto-node">DriverStanding</span></td>
+                    <td>Driver's end-of-season ranking</td>
+                    <td><code>standingPosition</code>, <code>standingPoints</code></td>
+                    <td>Driver, Team, Season</td>
+                  </tr>
+                  <tr>
+                    <td><span class="onto-node">RaceResult</span></td>
+                    <td>Driver result in one race</td>
+                    <td><code>finishPosition</code>, <code>points</code></td>
+                    <td>Driver, GrandPrix</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="text-muted small mt-2 mb-0">
+              Namespace: <code>ex: &lt;http://example.org/f1#&gt;</code> &nbsp;|&nbsp;
+              SWRL-inferred properties: <code>isChampionOf</code>, <code>hasWon</code>, <code>teammateOf</code> (symmetry)
+            </p>
+          </div>
+        </div>
+
+        <!-- KGE Results -->
+        <div class="card shadow-sm mb-4">
+          <div class="card-header bg-white fw-semibold">
+            <i class="bi bi-bar-chart text-danger me-1"></i>Knowledge Graph Embeddings — Evaluation Results
+          </div>
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col-md-6">
+                <table class="table table-bordered table-sm text-center">
+                  <thead class="table-dark">
+                    <tr><th>Model</th><th>MRR</th><th>Hits@1</th><th>Hits@3</th><th>Hits@10</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>TransE</strong></td>
+                      <td class="text-success fw-bold">0.576</td>
+                      <td>0.456</td><td>0.656</td><td>0.796</td>
+                    </tr>
+                    <tr>
+                      <td><strong>ComplEx</strong></td>
+                      <td>0.248</td>
+                      <td>0.155</td><td>0.263</td><td>0.442</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-6 text-muted small">
+                <p class="mb-1"><strong>TransE</strong> outperforms on this KB: its additive embeddings capture hierarchical relations well (standings, rankings).</p>
+                <p class="mb-0"><strong>ComplEx</strong> (complex-valued embeddings) is better suited for antisymmetric relations — its advantage becomes visible on larger KBs (&gt;50k triples).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Schema text -->
+        <div class="card shadow-sm">
+          <div class="card-header bg-white fw-semibold d-flex justify-content-between">
+            <span><i class="bi bi-file-code text-danger me-1"></i>Full schema (prefixes &amp; properties)</span>
+            <a class="text-muted small text-decoration-none"
+               data-bs-toggle="collapse" href="#schema-text-collapse">Show ▼</a>
+          </div>
+          <div class="collapse" id="schema-text-collapse">
+            <div class="card-body p-3">
+              <pre id="schema-text" style="font-size:.78em; max-height:400px; overflow-y:auto; margin:0"></pre>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /schema-content -->
+    </div>
+
+  </div><!-- /tab-content -->
+</div><!-- /container -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+
+// Helpers
+
+function setQ(text) {
+  document.getElementById('question-input').value = text;
+  document.getElementById('question-input').focus();
+}
+
+function switchTab(tabId) {
+  document.getElementById(tabId).click();
+}
+
+function rowsToTable(rows) {
+  if (!rows || rows.length === 0) return '<em class="text-muted">No results.</em>';
+  const cols = Object.keys(rows[0]);
+  let html = '<table class="table table-sm table-borderless mb-0"><tbody>';
+  for (const row of rows) {
+    html += '<tr>' + cols.map(c => `<td>${row[c] ?? ''}</td>`).join('') + '</tr>';
+  }
+  return html + '</tbody></table>';
+}
+
+// Chat
+
+async function askQuestion() {
+  const input    = document.getElementById('question-input');
+  const question = input.value.trim();
+  if (!question) return;
+
+  document.getElementById('result-box').style.display  = 'none';
+  document.getElementById('error-box').style.display   = 'none';
+  document.getElementById('loading').style.display     = 'block';
+
+  try {
+    const res  = await fetch('/api/ask', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ question }),
+    });
+    const data = await res.json();
+    document.getElementById('loading').style.display = 'none';
+
+    if (data.error) {
+      document.getElementById('error-content').textContent = data.error;
+      document.getElementById('error-box').style.display   = 'block';
+      if (data.sparql) {
+        document.getElementById('sparql-content').textContent = data.sparql;
+        document.getElementById('answer-content').innerHTML   = '<em class="text-muted">No results returned.</em>';
+        document.getElementById('result-box').style.display   = 'block';
+      }
+    } else {
+      let answerHtml = rowsToTable(data.rows);
+      if (data.count > 20) {
+        answerHtml += `<p class="text-muted small mt-1">Showing 20 of ${data.count} results.</p>`;
+      }
+      document.getElementById('answer-content').innerHTML   = answerHtml;
+      document.getElementById('sparql-content').textContent = data.sparql || '';
+      document.getElementById('result-box').style.display   = 'block';
+    }
+  } catch (e) {
+    document.getElementById('loading').style.display    = 'none';
+    document.getElementById('error-content').textContent = 'Server error: ' + e.message;
+    document.getElementById('error-box').style.display   = 'block';
+  }
+}
+
+// Demo
+
+async function runDemo() {
+  const btn = document.getElementById('run-demo-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span>Running…';
+  document.getElementById('demo-results').innerHTML = '';
+
+  try {
+    const res  = await fetch('/api/demo');
+    const data = await res.json();
+
+    if (data.error) {
+      document.getElementById('demo-results').innerHTML =
+        `<div class="alert alert-danger"><i class="bi bi-exclamation-triangle me-1"></i>${data.error}</div>`;
+      return;
+    }
+
+    let html = '';
+    data.forEach((item, i) => {
+      const answerHtml = item.error
+        ? `<span class="text-danger small">${item.error}</span>`
+        : rowsToTable(item.rows);
+
+      html += `
+        <div class="card mb-3 shadow-sm">
+          <div class="card-body">
+            <h6 class="card-title mb-2">
+              <span class="badge bg-danger me-2">Q${i + 1}</span>${item.question}
+            </h6>
+            <div class="answer-box mb-2">${answerHtml}</div>
+            <a class="text-muted small text-decoration-none"
+               data-bs-toggle="collapse" href="#demo-sparql-${i}">
+              <i class="bi bi-code-square me-1"></i>View SPARQL
+            </a>
+            <div class="collapse mt-2" id="demo-sparql-${i}">
+              <pre class="sparql-block">${item.sparql}</pre>
+            </div>
+          </div>
+        </div>`;
+    });
+
+    document.getElementById('demo-results').innerHTML = html;
+  } catch (e) {
+    document.getElementById('demo-results').innerHTML =
+      `<div class="alert alert-danger">Error: ${e.message}</div>`;
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '<i class="bi bi-play-fill me-1"></i>Run Demo';
+  }
+}
+
+// Schema
+
+document.getElementById('schema-tab-link').addEventListener('show.bs.tab', loadSchema);
+
+let schemaLoaded = false;
+async function loadSchema() {
+  if (schemaLoaded) return;
+  try {
+    const res  = await fetch('/api/schema');
+    const data = await res.json();
+
+    if (data.error) {
+      document.getElementById('schema-loading').innerHTML =
+        `<div class="alert alert-danger"><i class="bi bi-exclamation-triangle me-1"></i>${data.error}</div>`;
+      return;
+    }
+
+    const s = data.stats || {};
+    const items = [
+      { label: 'Triples',     value: (s.total_triples ?? '—').toLocaleString?.() ?? s.total_triples, icon: 'bi-database-fill' },
+      { label: 'Drivers',     value: s.drivers    ?? '—', icon: 'bi-person-fill'   },
+      { label: 'Teams',       value: s.teams      ?? '—', icon: 'bi-flag-fill'     },
+      { label: 'Grand Prix',  value: s.grand_prix ?? '—', icon: 'bi-trophy-fill'   },
+      { label: 'Seasons',     value: s.seasons    ?? '—', icon: 'bi-calendar3'     },
+      { label: 'Circuits',    value: s.circuits   ?? '—', icon: 'bi-map-fill'      },
+    ];
+    document.getElementById('stats-cards').innerHTML = items.map(it => `
+      <div class="col-6 col-sm-4 col-md-2">
+        <div class="card card-stat text-center shadow-sm h-100">
+          <div class="card-body py-3 px-1">
+            <i class="bi ${it.icon} text-danger fs-3"></i>
+            <div class="fw-bold fs-5 mt-1">${it.value}</div>
+            <div class="text-muted small">${it.label}</div>
+          </div>
+        </div>
+      </div>`).join('');
+
+    document.querySelector('#classes-table tbody').innerHTML =
+      (data.classes || []).map(r => {
+        const name = (r.cls || '').split('#').pop();
+        return `<tr><td><code>${name}</code></td><td class="text-end">${r.count}</td></tr>`;
+      }).join('');
+
+    document.querySelector('#props-table tbody').innerHTML =
+      (data.properties || []).slice(0, 15).map(r => {
+        const name = (r.p || '').split('#').pop();
+        return `<tr><td><code>${name}</code></td><td class="text-end">${r.count}</td></tr>`;
+      }).join('');
+
+    document.getElementById('schema-text').textContent = data.schema_text || '';
+
+    document.getElementById('schema-loading').style.display = 'none';
+    document.getElementById('schema-content').style.display = 'block';
+    schemaLoaded = true;
+
+  } catch (e) {
+    document.getElementById('schema-loading').innerHTML =
+      `<div class="alert alert-danger">Failed to load schema: ${e.message}</div>`;
+  }
+}
+
+</script>
+</body>
+</html>
