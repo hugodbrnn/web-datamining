@@ -1,26 +1,24 @@
 """
-build_local_expansion.py — Local KB expansion using curated F1 data.
+build_local_expansion.py — Initial KB enrichment from curated F1 data.
 
-Context
--------
-This script generates expanded_kb.ttl from locally available data only,
-without requiring external internet access.  It serves two purposes:
+Role in the pipeline
+--------------------
+This script is a PREPROCESSING step that enriches the private KB
+(auto_kg.ttl) with locally curated data before the Wikidata expansion.
+It must be run BEFORE expand_kb.py.
 
-  1. Demonstration / CI — produces a structurally valid expanded KB that
-     can be used to test downstream modules (reasoning, KGE, RAG).
-
-  2. Fallback — if the Wikidata SPARQL endpoint is unavailable, this
-     script provides a meaningful (though smaller) KB.
-
-For the full 50,000 – 200,000 triple expansion run:
-    python src/kg/expand_kb.py          (requires internet access)
-
-Data used here
+Pipeline order
 --------------
+  1. python src/kg/build_kb.py              (build private KB)
+  2. python src/kg/build_local_expansion.py (enrich with curated data)
+  3. python src/kg/expand_kb.py             (full Wikidata expansion → 50k–200k triples)
+  4. python src/reason/apply_rules.py       (SWRL materialisation)
+
+Data added here
+---------------
   • Extracted driver/team standings  (data/extracted/)
   • Curated F1 circuits (2022-2026 calendar circuits)
   • Curated race calendars  2022 – 2026
-  • Race winners    2022 – 2025  (publicly known, fully verifiable)
   • Driver personal data derived from alignment TSV
   • Teammate relationships inferred from standings
   • Season-level championship results
@@ -86,10 +84,58 @@ CIRCUITS = [
     ("BakuCityCircuit",              "Baku City Circuit",               "Azerbaijan",   "Baku",             6.003),
     ("LasVegasStripCircuit",         "Las Vegas Strip Circuit",         "USA",          "Las Vegas",        6.201),
     ("YasMarinaCircuit",             "Yas Marina Circuit",              "UAE",          "Abu Dhabi",        5.281),
+    # Additional circuits for 2015–2016 seasons
+    ("SepangInternationalCircuit",   "Sepang International Circuit",    "Malaysia",     "Kuala Lumpur",     5.543),
+    ("SochiAutodrom",                "Sochi Autodrom",                  "Russia",       "Sochi",            5.848),
+    ("HockenheimringCircuit",        "Hockenheimring",                  "Germany",      "Hockenheim",       4.574),
 ]
 
 # Race calendar: season → list of (race_key, gp_name, circuit_key, date)
 CALENDAR = {
+    2015: [
+        ("GP_2015_Australia",      "2015 Australian Grand Prix",         "AlbertParkCircuit",              "2015-03-15"),
+        ("GP_2015_Malaysia",       "2015 Malaysian Grand Prix",          "SepangInternationalCircuit",     "2015-03-29"),
+        ("GP_2015_China",          "2015 Chinese Grand Prix",            "ShanghaiInternationalCircuit",   "2015-04-12"),
+        ("GP_2015_Bahrain",        "2015 Bahrain Grand Prix",            "BahrainInternationalCircuit",    "2015-04-19"),
+        ("GP_2015_Spain",          "2015 Spanish Grand Prix",            "CircuitDeCatalunya",             "2015-05-10"),
+        ("GP_2015_Monaco",         "2015 Monaco Grand Prix",             "CircuitDeMonaco",                "2015-05-24"),
+        ("GP_2015_Canada",         "2015 Canadian Grand Prix",           "CircuitGillesVilleneuve",        "2015-06-07"),
+        ("GP_2015_Austria",        "2015 Austrian Grand Prix",           "RedBullRingCircuit",             "2015-06-21"),
+        ("GP_2015_GreatBritain",   "2015 British Grand Prix",            "SilverstoneCircuit",             "2015-07-05"),
+        ("GP_2015_Hungary",        "2015 Hungarian Grand Prix",          "Hungaroring",                    "2015-07-26"),
+        ("GP_2015_Belgium",        "2015 Belgian Grand Prix",            "CircuitDeSpaFrancorchamps",      "2015-08-23"),
+        ("GP_2015_Italy",          "2015 Italian Grand Prix",            "AutodromoNazionaleDiMonza",      "2015-09-06"),
+        ("GP_2015_Singapore",      "2015 Singapore Grand Prix",          "MarinaBayStreetCircuit",         "2015-09-20"),
+        ("GP_2015_Japan",          "2015 Japanese Grand Prix",           "SuzukaInternationalRacingCourse","2015-09-27"),
+        ("GP_2015_Russia",         "2015 Russian Grand Prix",            "SochiAutodrom",                  "2015-10-11"),
+        ("GP_2015_UnitedStates",   "2015 United States Grand Prix",      "CircuitOfTheAmericas",           "2015-10-25"),
+        ("GP_2015_Mexico",         "2015 Mexico City Grand Prix",        "AutodromoHermanosRodriguez",     "2015-11-01"),
+        ("GP_2015_Brazil",         "2015 Brazilian Grand Prix",          "AutodromoJoseCarlosPace",        "2015-11-15"),
+        ("GP_2015_AbuDhabi",       "2015 Abu Dhabi Grand Prix",          "YasMarinaCircuit",               "2015-11-29"),
+    ],
+    2016: [
+        ("GP_2016_Australia",      "2016 Australian Grand Prix",         "AlbertParkCircuit",              "2016-03-20"),
+        ("GP_2016_Bahrain",        "2016 Bahrain Grand Prix",            "BahrainInternationalCircuit",    "2016-04-03"),
+        ("GP_2016_China",          "2016 Chinese Grand Prix",            "ShanghaiInternationalCircuit",   "2016-04-17"),
+        ("GP_2016_Russia",         "2016 Russian Grand Prix",            "SochiAutodrom",                  "2016-05-01"),
+        ("GP_2016_Spain",          "2016 Spanish Grand Prix",            "CircuitDeCatalunya",             "2016-05-15"),
+        ("GP_2016_Monaco",         "2016 Monaco Grand Prix",             "CircuitDeMonaco",                "2016-05-29"),
+        ("GP_2016_Canada",         "2016 Canadian Grand Prix",           "CircuitGillesVilleneuve",        "2016-06-12"),
+        ("GP_2016_Azerbaijan",     "2016 Azerbaijan Grand Prix",         "BakuCityCircuit",                "2016-06-19"),
+        ("GP_2016_Austria",        "2016 Austrian Grand Prix",           "RedBullRingCircuit",             "2016-07-03"),
+        ("GP_2016_GreatBritain",   "2016 British Grand Prix",            "SilverstoneCircuit",             "2016-07-10"),
+        ("GP_2016_Hungary",        "2016 Hungarian Grand Prix",          "Hungaroring",                    "2016-07-24"),
+        ("GP_2016_Germany",        "2016 German Grand Prix",             "HockenheimringCircuit",          "2016-07-31"),
+        ("GP_2016_Belgium",        "2016 Belgian Grand Prix",            "CircuitDeSpaFrancorchamps",      "2016-08-28"),
+        ("GP_2016_Italy",          "2016 Italian Grand Prix",            "AutodromoNazionaleDiMonza",      "2016-09-04"),
+        ("GP_2016_Singapore",      "2016 Singapore Grand Prix",          "MarinaBayStreetCircuit",         "2016-09-18"),
+        ("GP_2016_Malaysia",       "2016 Malaysian Grand Prix",          "SepangInternationalCircuit",     "2016-10-02"),
+        ("GP_2016_Japan",          "2016 Japanese Grand Prix",           "SuzukaInternationalRacingCourse","2016-10-09"),
+        ("GP_2016_UnitedStates",   "2016 United States Grand Prix",      "CircuitOfTheAmericas",           "2016-10-23"),
+        ("GP_2016_Mexico",         "2016 Mexico City Grand Prix",        "AutodromoHermanosRodriguez",     "2016-10-30"),
+        ("GP_2016_Brazil",         "2016 Brazilian Grand Prix",          "AutodromoJoseCarlosPace",        "2016-11-13"),
+        ("GP_2016_AbuDhabi",       "2016 Abu Dhabi Grand Prix",          "YasMarinaCircuit",               "2016-11-27"),
+    ],
     2022: [
         ("GP_2022_Bahrain",        "2022 Bahrain Grand Prix",            "BahrainInternationalCircuit",    "2022-03-20"),
         ("GP_2022_SaudiArabia",    "2022 Saudi Arabian Grand Prix",      "JeddahCornicheCircuit",          "2022-03-27"),
@@ -197,110 +243,6 @@ CALENDAR = {
     ],
 }
 
-# Race winners: race_key → (driver_clean_name, team_clean_name)
-# Source: official F1 race results (publicly verifiable)
-WINNERS = {
-    # 2022
-    "GP_2022_Bahrain":       ("CharlesLeclerc",       "Ferrari"),
-    "GP_2022_SaudiArabia":   ("CharlesLeclerc",       "Ferrari"),
-    "GP_2022_Australia":     ("CharlesLeclerc",       "Ferrari"),
-    "GP_2022_EmiliaRomagna": ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2022_Miami":         ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2022_Spain":         ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2022_Monaco":        ("SergioPerez",           "RedBullRacing"),
-    "GP_2022_Azerbaijan":    ("SergioPerez",           "RedBullRacing"),
-    "GP_2022_Canada":        ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2022_GreatBritain":  ("CarlosSainz",           "Ferrari"),
-    "GP_2022_Austria":       ("CharlesLeclerc",        "Ferrari"),
-    "GP_2022_France":        ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2022_Hungary":       ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2022_Belgium":       ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2022_Netherlands":   ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2022_Italy":         ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2022_Singapore":     ("SergioPerez",           "RedBullRacing"),
-    "GP_2022_Japan":         ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2022_UnitedStates":  ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2022_Mexico":        ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2022_Brazil":        ("GeorgeRussell",         "Mercedes"),
-    "GP_2022_AbuDhabi":      ("MaxVerstappen",         "RedBullRacing"),
-    # 2023
-    "GP_2023_Bahrain":       ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2023_SaudiArabia":   ("SergioPerez",           "RedBullRacing"),
-    "GP_2023_Australia":     ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2023_Azerbaijan":    ("SergioPerez",           "RedBullRacing"),
-    "GP_2023_Miami":         ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2023_Monaco":        ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2023_Spain":         ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2023_Canada":        ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2023_Austria":       ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2023_GreatBritain":  ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2023_Hungary":       ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2023_Belgium":       ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2023_Netherlands":   ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2023_Italy":         ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2023_Singapore":     ("CarlosSainz",           "Ferrari"),
-    "GP_2023_Japan":         ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2023_Qatar":         ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2023_UnitedStates":  ("CharlesLeclerc",        "Ferrari"),
-    "GP_2023_Mexico":        ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2023_Brazil":        ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2023_LasVegas":      ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2023_AbuDhabi":      ("MaxVerstappen",         "RedBullRacing"),
-    # 2024
-    "GP_2024_Bahrain":       ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2024_SaudiArabia":   ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2024_Australia":     ("CarlosSainz",           "Ferrari"),
-    "GP_2024_Japan":         ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2024_China":         ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2024_Miami":         ("LandoNorris",           "McLaren"),
-    "GP_2024_EmiliaRomagna": ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2024_Monaco":        ("CharlesLeclerc",        "Ferrari"),
-    "GP_2024_Canada":        ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2024_Spain":         ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2024_Austria":       ("GeorgeRussell",         "Mercedes"),
-    "GP_2024_GreatBritain":  ("LewisHamilton",         "Mercedes"),
-    "GP_2024_Hungary":       ("OscarPiastri",          "McLaren"),
-    "GP_2024_Belgium":       ("LewisHamilton",         "Mercedes"),
-    "GP_2024_Netherlands":   ("LandoNorris",           "McLaren"),
-    "GP_2024_Italy":         ("CharlesLeclerc",        "Ferrari"),
-    "GP_2024_Azerbaijan":    ("OscarPiastri",          "McLaren"),
-    "GP_2024_Singapore":     ("LandoNorris",           "McLaren"),
-    "GP_2024_UnitedStates":  ("CharlesLeclerc",        "Ferrari"),
-    "GP_2024_Mexico":        ("CarlosSainz",           "Ferrari"),
-    "GP_2024_Brazil":        ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2024_LasVegas":      ("CarlosSainz",           "Ferrari"),
-    "GP_2024_Qatar":         ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2024_AbuDhabi":      ("LandoNorris",           "McLaren"),
-    # 2025
-    "GP_2025_Australia":     ("LandoNorris",           "McLaren"),
-    "GP_2025_China":         ("OscarPiastri",          "McLaren"),
-    "GP_2025_Japan":         ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2025_Bahrain":       ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2025_SaudiArabia":   ("OscarPiastri",          "McLaren"),
-    "GP_2025_Miami":         ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2025_EmiliaRomagna": ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2025_Monaco":        ("CharlesLeclerc",        "Ferrari"),
-    "GP_2025_Spain":         ("OscarPiastri",          "McLaren"),
-    "GP_2025_Canada":        ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2025_Austria":       ("OscarPiastri",          "McLaren"),
-    "GP_2025_GreatBritain":  ("LandoNorris",           "McLaren"),
-    "GP_2025_Belgium":       ("LandoNorris",           "McLaren"),
-    "GP_2025_Hungary":       ("OscarPiastri",          "McLaren"),
-    "GP_2025_Netherlands":   ("LandoNorris",           "McLaren"),
-    "GP_2025_Italy":         ("CharlesLeclerc",        "Ferrari"),
-    "GP_2025_Azerbaijan":    ("OscarPiastri",          "McLaren"),
-    "GP_2025_Singapore":     ("LandoNorris",           "McLaren"),
-    "GP_2025_UnitedStates":  ("LandoNorris",           "McLaren"),
-    "GP_2025_Mexico":        ("CarlosSainz",           "Williams"),
-    "GP_2025_Brazil":        ("MaxVerstappen",         "RedBullRacing"),
-    "GP_2025_LasVegas":      ("CarlosSainz",           "Williams"),
-    "GP_2025_Qatar":         ("OscarPiastri",          "McLaren"),
-    "GP_2025_AbuDhabi":      ("OscarPiastri",          "McLaren"),
-    # 2026 (races completed so far)
-    "GP_2026_Australia":     ("GeorgeRussell",         "Mercedes"),
-    "GP_2026_China":         ("GeorgeRussell",         "Mercedes"),
-}
-
 # Season champions: year → (wdc_driver_key, wcc_team_key)
 CHAMPIONS = {
     2022: ("MaxVerstappen",  "RedBullRacing"),
@@ -396,24 +338,6 @@ def add_race_calendars(g: Graph) -> int:
             add(g, season_uri, EX.hasRace,     gp_uri)
     return len(g) - before
 
-def add_race_winners(g: Graph) -> int:
-    before = len(g)
-    for race_key, (driver_key, team_key) in WINNERS.items():
-        gp_uri     = EX[race_key]
-        driver_uri = EX[driver_key]
-        team_uri   = EX[team_key]
-        result_uri = EX[f"Result_{race_key}_Winner"]
-        add(g, result_uri, RDF.type,           EX.RaceResult)
-        add(g, result_uri, EX.forGrandPrix,    gp_uri)
-        add(g, result_uri, EX.forDriver,       driver_uri)
-        add(g, result_uri, EX.forTeam,         team_uri)
-        add(g, result_uri, EX.finishPosition,  Literal(1, datatype=XSD.int))
-        add(g, result_uri, EX.points,          Literal(25, datatype=XSD.decimal))
-        add(g, gp_uri,     EX.winner,          driver_uri)
-        add(g, gp_uri,     EX.winningTeam,     team_uri)
-        add(g, driver_uri, EX.hasWon,          gp_uri)
-    return len(g) - before
-
 def add_champions(g: Graph) -> int:
     before = len(g)
     for year, (driver_key, team_key) in CHAMPIONS.items():
@@ -429,7 +353,7 @@ def add_champions(g: Graph) -> int:
 def add_teammate_relationships(g: Graph) -> int:
     """Infer teammate pairs from extracted standings."""
     before = len(g)
-    for year in range(2022, 2027):
+    for year in range(2015, 2027):
         drv_file = EXTRACTED_DIR / f"drivers_{year}.json"
         if not drv_file.exists():
             continue
@@ -451,7 +375,7 @@ def add_teammate_relationships(g: Graph) -> int:
 def add_driver_country_links(g: Graph) -> int:
     """Link driver nationality codes to country entities."""
     before = len(g)
-    for year in range(2022, 2027):
+    for year in range(2015, 2027):
         drv_file = EXTRACTED_DIR / f"drivers_{year}.json"
         if not drv_file.exists():
             continue
@@ -511,7 +435,7 @@ def add_season_participation_triples(g: Graph) -> int:
 def add_team_season_triples(g: Graph) -> int:
     """Add team participation in each season with circuit country context."""
     before = len(g)
-    for year in range(2022, 2027):
+    for year in range(2015, 2027):
         team_file = EXTRACTED_DIR / f"teams_{year}.json"
         if not team_file.exists():
             continue
@@ -563,13 +487,12 @@ def write_stats(g: Graph, path: Path) -> None:
         "2. F1 circuits — 23 circuits with country, city, length",
         "3. Country entities — 19 nationalities with continent + owl:sameAs",
         "4. Race calendars — all races 2022-2026 linked to circuits + seasons",
-        "5. Race winners — 2022-2025 winners + 2026 races so far",
-        "6. Season champions — WDC + WCC 2022-2024",
-        "7. Teammate relationships — symmetric pairs per team per season",
-        "8. Driver–country links — nationality + fromCountry",
-        "9. Wikidata alignment — owl:sameAs + labels from TSV files",
-        "10. Season participation — driver ↔ GP participation links",
-        "11. Team season participation — team ↔ season links",
+        "5. Season champions — WDC + WCC 2022-2024",
+        "6. Teammate relationships — symmetric pairs per team per season",
+        "7. Driver–country links — nationality + fromCountry",
+        "8. Wikidata alignment — owl:sameAs + labels from TSV files",
+        "9. Season participation — driver ↔ GP participation links",
+        "10. Team season participation — team ↔ season links",
         "",
         "## Source files",
         "",
@@ -603,7 +526,6 @@ def main() -> None:
         ("Circuits",              add_circuits),
         ("Countries",             add_countries),
         ("Race calendars",        add_race_calendars),
-        ("Race winners",          add_race_winners),
         ("Season champions",      add_champions),
         ("Teammate pairs",        add_teammate_relationships),
         ("Driver–country links",  add_driver_country_links),

@@ -159,10 +159,18 @@ def main():
     stats_path = write_stats(OUT_DIR, triples, train, valid, test, kb_path)
     print(f"    Stats: {stats_path}")
 
+    # Also write to kge_data/ as .txt files (project submission requirement)
+    kge_data_dir = PROJECT_ROOT / "kge_data"
+    kge_data_dir.mkdir(parents=True, exist_ok=True)
+    write_tsv(kge_data_dir / "train.txt", train)
+    write_tsv(kge_data_dir / "valid.txt", valid)
+    write_tsv(kge_data_dir / "test.txt",  test)
+    print(f"    kge_data/ copies: train.txt  valid.txt  test.txt")
+
     print("\n" + "=" * 60)
     print("SPLITS READY")
-    print(f"  Output directory: {OUT_DIR}")
-    print("  Files: triples.tsv  train.tsv  valid.tsv  test.tsv  splits_stats.md")
+    print(f"  kg_artifacts/kge/ : triples.tsv  train.tsv  valid.tsv  test.tsv")
+    print(f"  kge_data/         : train.txt  valid.txt  test.txt")
     print("=" * 60)
 
 

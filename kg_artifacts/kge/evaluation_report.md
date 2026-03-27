@@ -4,8 +4,8 @@
 
 | Model | MRR | Hits@1 | Hits@3 | Hits@10 |
 |---|---|---|---|---|
-| TransE | 0.5438 | 0.4243 | 0.6189 | 0.7757 |
-| ComplEx | 0.2021 | 0.1068 | 0.2216 | 0.3946 |
+| TransE | 0.0926 | 0.0273 | 0.1017 | 0.2149 |
+| ComplEx | 0.1073 | 0.0628 | 0.1128 | 0.194 |
 
 **Metrics:** filtered rank-based evaluation on test split (10%).
 MRR = Mean Reciprocal Rank; Hits@k = fraction of test triples where true entity ranked ≤ k.

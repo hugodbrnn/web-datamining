@@ -101,6 +101,13 @@ ex:teammateOf a owl:ObjectProperty,
     rdfs:domain ex:Driver ;
     rdfs:range ex:Driver .
 
+ex:AlexanderRossi a ex:Driver ;
+    ex:competesInSeason ex:Season2015 ;
+    ex:drivesFor ex:Marussia ;
+    ex:hasStanding ex:Standing_2015_AlexanderRossi ;
+    ex:name "Alexander Rossi" ;
+    ex:nationality "USA" .
+
 ex:ArvidLindblad a ex:Driver ;
     ex:competesInSeason ex:Season2026 ;
     ex:drivesFor ex:RacingBulls ;
@@ -112,26 +119,950 @@ ex:Circuit a owl:Class ;
     rdfs:label "Circuit"@en ;
     rdfs:comment "A racing circuit that hosts a Grand Prix."@en .
 
-ex:MickSchumacher a ex:Driver ;
-    ex:competesInSeason ex:Season2022 ;
+ex:EstebanGutierrez a ex:Driver ;
+    ex:competesInSeason ex:Season2016 ;
     ex:drivesFor ex:Haas ;
-    ex:hasStanding ex:Standing_2022_MickSchumacher ;
-    ex:name "Mick Schumacher" ;
-    ex:nationality "GER" .
+    ex:hasStanding ex:Standing_2016_EstebanGutierrez ;
+    ex:name "Esteban Gutierrez" ;
+    ex:nationality "MEX" .
 
-ex:NicholasLatifi a ex:Driver ;
-    ex:competesInSeason ex:Season2022 ;
+ex:JackAitken a ex:Driver ;
+    ex:competesInSeason ex:Season2020 ;
     ex:drivesFor ex:Williams ;
-    ex:hasStanding ex:Standing_2022_NicholasLatifi ;
-    ex:name "Nicholas Latifi" ;
-    ex:nationality "CAN" .
+    ex:hasStanding ex:Standing_2020_JackAitken ;
+    ex:name "Jack Aitken" ;
+    ex:nationality "GBR" .
 
-ex:SebastianVettel a ex:Driver ;
-    ex:competesInSeason ex:Season2022 ;
-    ex:drivesFor ex:AstonMartin ;
-    ex:hasStanding ex:Standing_2022_SebastianVettel ;
-    ex:name "Sebastian Vettel" ;
-    ex:nationality "GER" .
+ex:PietroFittipaldi a ex:Driver ;
+    ex:competesInSeason ex:Season2020 ;
+    ex:drivesFor ex:Haas ;
+    ex:hasStanding ex:Standing_2020_PietroFittipaldi ;
+    ex:name "Pietro Fittipaldi" ;
+    ex:nationality "BRA" .
+
+ex:RobertoMerhi a ex:Driver ;
+    ex:competesInSeason ex:Season2015 ;
+    ex:drivesFor ex:Marussia ;
+    ex:hasStanding ex:Standing_2015_RobertoMerhi ;
+    ex:name "Roberto Merhi" ;
+    ex:nationality "ESP" .
+
+ex:Standing_2015_AlexanderRossi a ex:DriverStanding ;
+    ex:forDriver ex:AlexanderRossi ;
+    ex:forSeason ex:Season2015 ;
+    ex:forTeam ex:Marussia ;
+    ex:standingPoints 0.0 ;
+    ex:standingPosition "20"^^xsd:int .
+
+ex:Standing_2015_CarlosSainz a ex:DriverStanding ;
+    ex:forDriver ex:CarlosSainz ;
+    ex:forSeason ex:Season2015 ;
+    ex:forTeam ex:STR ;
+    ex:standingPoints 18.0 ;
+    ex:standingPosition "15"^^xsd:int .
+
+ex:Standing_2015_DanielRicciardo a ex:DriverStanding ;
+    ex:forDriver ex:DanielRicciardo ;
+    ex:forSeason ex:Season2015 ;
+    ex:forTeam ex:RedBullRacing ;
+    ex:standingPoints 92.0 ;
+    ex:standingPosition "8"^^xsd:int .
+
+ex:Standing_2015_FelipeMassa a ex:DriverStanding ;
+    ex:forDriver ex:FelipeMassa ;
+    ex:forSeason ex:Season2015 ;
+    ex:forTeam ex:Williams ;
+    ex:standingPoints 121.0 ;
+    ex:standingPosition "6"^^xsd:int .
+
+ex:Standing_2015_FelipeNasr a ex:DriverStanding ;
+    ex:forDriver ex:FelipeNasr ;
+    ex:forSeason ex:Season2015 ;
+    ex:forTeam ex:Sauber ;
+    ex:standingPoints 27.0 ;
+    ex:standingPosition "13"^^xsd:int .
+
+ex:Standing_2015_FernandoAlonso a ex:DriverStanding ;
+    ex:forDriver ex:FernandoAlonso ;
+    ex:forSeason ex:Season2015 ;
+    ex:forTeam ex:McLaren ;
+    ex:standingPoints 11.0 ;
+    ex:standingPosition "17"^^xsd:int .
+
+ex:Standing_2015_JensonButton a ex:DriverStanding ;
+    ex:forDriver ex:JensonButton ;
+    ex:forSeason ex:Season2015 ;
+    ex:forTeam ex:McLaren ;
+    ex:standingPoints 16.0 ;
+    ex:standingPosition "16"^^xsd:int .
+
+ex:Standing_2015_KimiRäikkönen a ex:DriverStanding ;
+    ex:forDriver ex:KimiRäikkönen ;
+    ex:forSeason ex:Season2015 ;
+    ex:forTeam ex:Ferrari ;
+    ex:standingPoints 150.0 ;
+    ex:standingPosition "4"^^xsd:int .
+
+ex:Standing_2015_LewisHamilton a ex:DriverStanding ;
+    ex:forDriver ex:LewisHamilton ;
+    ex:forSeason ex:Season2015 ;
+    ex:forTeam ex:Mercedes ;
+    ex:standingPoints 381.0 ;
+    ex:standingPosition "1"^^xsd:int .
+
+ex:Standing_2015_MaxVerstappen a ex:DriverStanding ;
+    ex:forDriver ex:MaxVerstappen ;
+    ex:forSeason ex:Season2015 ;
+    ex:forTeam ex:STR ;
+    ex:standingPoints 49.0 ;
+    ex:standingPosition "12"^^xsd:int .
+
+ex:Standing_2015_NicoHulkenberg a ex:DriverStanding ;
+    ex:forDriver ex:NicoHulkenberg ;
+    ex:forSeason ex:Season2015 ;
+    ex:forTeam ex:ForceIndia ;
+    ex:standingPoints 58.0 ;
+    ex:standingPosition "10"^^xsd:int .
+
+ex:Standing_2015_NicoRosberg a ex:DriverStanding ;
+    ex:forDriver ex:NicoRosberg ;
+    ex:forSeason ex:Season2015 ;
+    ex:forTeam ex:Mercedes ;
+    ex:standingPoints 322.0 ;
+    ex:standingPosition "2"^^xsd:int .
+
+ex:Standing_2015_RobertoMerhi a ex:DriverStanding ;
+    ex:forDriver ex:RobertoMerhi ;
+    ex:forSeason ex:Season2015 ;
+    ex:forTeam ex:Marussia ;
+    ex:standingPoints 0.0 ;
+    ex:standingPosition "19"^^xsd:int .
+
+ex:Standing_2015_RomainGrosjean a ex:DriverStanding ;
+    ex:forDriver ex:RomainGrosjean ;
+    ex:forSeason ex:Season2015 ;
+    ex:forTeam ex:Lotus ;
+    ex:standingPoints 51.0 ;
+    ex:standingPosition "11"^^xsd:int .
+
+ex:Standing_2015_SebastianVettel a ex:DriverStanding ;
+    ex:forDriver ex:SebastianVettel ;
+    ex:forSeason ex:Season2015 ;
+    ex:forTeam ex:Ferrari ;
+    ex:standingPoints 278.0 ;
+    ex:standingPosition "3"^^xsd:int .
+
+ex:Standing_2015_SergioPerez a ex:DriverStanding ;
+    ex:forDriver ex:SergioPerez ;
+    ex:forSeason ex:Season2015 ;
+    ex:forTeam ex:ForceIndia ;
+    ex:standingPoints 78.0 ;
+    ex:standingPosition "9"^^xsd:int .
+
+ex:Standing_2015_ValtteriBottas a ex:DriverStanding ;
+    ex:forDriver ex:ValtteriBottas ;
+    ex:forSeason ex:Season2015 ;
+    ex:forTeam ex:Williams ;
+    ex:standingPoints 136.0 ;
+    ex:standingPosition "5"^^xsd:int .
+
+ex:Standing_2015_WillStevens a ex:DriverStanding ;
+    ex:forDriver ex:WillStevens ;
+    ex:forSeason ex:Season2015 ;
+    ex:forTeam ex:Marussia ;
+    ex:standingPoints 0.0 ;
+    ex:standingPosition "21"^^xsd:int .
+
+ex:Standing_2016_CarlosSainz a ex:DriverStanding ;
+    ex:forDriver ex:CarlosSainz ;
+    ex:forSeason ex:Season2016 ;
+    ex:forTeam ex:ToroRosso ;
+    ex:standingPoints 46.0 ;
+    ex:standingPosition "12"^^xsd:int .
+
+ex:Standing_2016_DanielRicciardo a ex:DriverStanding ;
+    ex:forDriver ex:DanielRicciardo ;
+    ex:forSeason ex:Season2016 ;
+    ex:forTeam ex:RedBullRacing ;
+    ex:standingPoints 256.0 ;
+    ex:standingPosition "3"^^xsd:int .
+
+ex:Standing_2016_EstebanGutierrez a ex:DriverStanding ;
+    ex:forDriver ex:EstebanGutierrez ;
+    ex:forSeason ex:Season2016 ;
+    ex:forTeam ex:Haas ;
+    ex:standingPoints 0.0 ;
+    ex:standingPosition "21"^^xsd:int .
+
+ex:Standing_2016_EstebanOcon a ex:DriverStanding ;
+    ex:forDriver ex:EstebanOcon ;
+    ex:forSeason ex:Season2016 ;
+    ex:forTeam ex:MRT ;
+    ex:standingPoints 0.0 ;
+    ex:standingPosition "23"^^xsd:int .
+
+ex:Standing_2016_FelipeMassa a ex:DriverStanding ;
+    ex:forDriver ex:FelipeMassa ;
+    ex:forSeason ex:Season2016 ;
+    ex:forTeam ex:Williams ;
+    ex:standingPoints 53.0 ;
+    ex:standingPosition "11"^^xsd:int .
+
+ex:Standing_2016_FelipeNasr a ex:DriverStanding ;
+    ex:forDriver ex:FelipeNasr ;
+    ex:forSeason ex:Season2016 ;
+    ex:forTeam ex:Sauber ;
+    ex:standingPoints 2.0 ;
+    ex:standingPosition "17"^^xsd:int .
+
+ex:Standing_2016_FernandoAlonso a ex:DriverStanding ;
+    ex:forDriver ex:FernandoAlonso ;
+    ex:forSeason ex:Season2016 ;
+    ex:forTeam ex:McLaren ;
+    ex:standingPoints 54.0 ;
+    ex:standingPosition "10"^^xsd:int .
+
+ex:Standing_2016_JensonButton a ex:DriverStanding ;
+    ex:forDriver ex:JensonButton ;
+    ex:forSeason ex:Season2016 ;
+    ex:forTeam ex:McLaren ;
+    ex:standingPoints 21.0 ;
+    ex:standingPosition "15"^^xsd:int .
+
+ex:Standing_2016_JolyonPalmer a ex:DriverStanding ;
+    ex:forDriver ex:JolyonPalmer ;
+    ex:forSeason ex:Season2016 ;
+    ex:forTeam ex: ;
+    ex:standingPoints 1.0 ;
+    ex:standingPosition "18"^^xsd:int .
+
+ex:Standing_2016_KevinMagnussen a ex:DriverStanding ;
+    ex:forDriver ex:KevinMagnussen ;
+    ex:forSeason ex:Season2016 ;
+    ex:forTeam ex: ;
+    ex:standingPoints 7.0 ;
+    ex:standingPosition "16"^^xsd:int .
+
+ex:Standing_2016_KimiRäikkönen a ex:DriverStanding ;
+    ex:forDriver ex:KimiRäikkönen ;
+    ex:forSeason ex:Season2016 ;
+    ex:forTeam ex:Ferrari ;
+    ex:standingPoints 186.0 ;
+    ex:standingPosition "6"^^xsd:int .
+
+ex:Standing_2016_LewisHamilton a ex:DriverStanding ;
+    ex:forDriver ex:LewisHamilton ;
+    ex:forSeason ex:Season2016 ;
+    ex:forTeam ex:Mercedes ;
+    ex:standingPoints 380.0 ;
+    ex:standingPosition "2"^^xsd:int .
+
+ex:Standing_2016_MaxVerstappen a ex:DriverStanding ;
+    ex:forDriver ex:MaxVerstappen ;
+    ex:forSeason ex:Season2016 ;
+    ex:forTeam ex:RedBullRacing ;
+    ex:standingPoints 204.0 ;
+    ex:standingPosition "5"^^xsd:int .
+
+ex:Standing_2016_NicoHulkenberg a ex:DriverStanding ;
+    ex:forDriver ex:NicoHulkenberg ;
+    ex:forSeason ex:Season2016 ;
+    ex:forTeam ex:ForceIndia ;
+    ex:standingPoints 72.0 ;
+    ex:standingPosition "9"^^xsd:int .
+
+ex:Standing_2016_NicoRosberg a ex:DriverStanding ;
+    ex:forDriver ex:NicoRosberg ;
+    ex:forSeason ex:Season2016 ;
+    ex:forTeam ex:Mercedes ;
+    ex:standingPoints 385.0 ;
+    ex:standingPosition "1"^^xsd:int .
+
+ex:Standing_2016_PascalWehrlein a ex:DriverStanding ;
+    ex:forDriver ex:PascalWehrlein ;
+    ex:forSeason ex:Season2016 ;
+    ex:forTeam ex:MRT ;
+    ex:standingPoints 1.0 ;
+    ex:standingPosition "19"^^xsd:int .
+
+ex:Standing_2016_RomainGrosjean a ex:DriverStanding ;
+    ex:forDriver ex:RomainGrosjean ;
+    ex:forSeason ex:Season2016 ;
+    ex:forTeam ex:Haas ;
+    ex:standingPoints 29.0 ;
+    ex:standingPosition "13"^^xsd:int .
+
+ex:Standing_2016_SebastianVettel a ex:DriverStanding ;
+    ex:forDriver ex:SebastianVettel ;
+    ex:forSeason ex:Season2016 ;
+    ex:forTeam ex:Ferrari ;
+    ex:standingPoints 212.0 ;
+    ex:standingPosition "4"^^xsd:int .
+
+ex:Standing_2016_SergioPerez a ex:DriverStanding ;
+    ex:forDriver ex:SergioPerez ;
+    ex:forSeason ex:Season2016 ;
+    ex:forTeam ex:ForceIndia ;
+    ex:standingPoints 101.0 ;
+    ex:standingPosition "7"^^xsd:int .
+
+ex:Standing_2016_ValtteriBottas a ex:DriverStanding ;
+    ex:forDriver ex:ValtteriBottas ;
+    ex:forSeason ex:Season2016 ;
+    ex:forTeam ex:Williams ;
+    ex:standingPoints 85.0 ;
+    ex:standingPosition "8"^^xsd:int .
+
+ex:Standing_2017_AntonioGiovinazzi a ex:DriverStanding ;
+    ex:forDriver ex:AntonioGiovinazzi ;
+    ex:forSeason ex:Season2017 ;
+    ex:forTeam ex:Sauber ;
+    ex:standingPoints 0.0 ;
+    ex:standingPosition "22"^^xsd:int .
+
+ex:Standing_2017_BrendonHartley a ex:DriverStanding ;
+    ex:forDriver ex:BrendonHartley ;
+    ex:forSeason ex:Season2017 ;
+    ex:forTeam ex:ToroRosso ;
+    ex:standingPoints 0.0 ;
+    ex:standingPosition "23"^^xsd:int .
+
+ex:Standing_2017_CarlosSainz a ex:DriverStanding ;
+    ex:forDriver ex:CarlosSainz ;
+    ex:forSeason ex:Season2017 ;
+    ex:forTeam ex: ;
+    ex:standingPoints 54.0 ;
+    ex:standingPosition "9"^^xsd:int .
+
+ex:Standing_2017_DanielRicciardo a ex:DriverStanding ;
+    ex:forDriver ex:DanielRicciardo ;
+    ex:forSeason ex:Season2017 ;
+    ex:forTeam ex:RedBullRacing ;
+    ex:standingPoints 200.0 ;
+    ex:standingPosition "5"^^xsd:int .
+
+ex:Standing_2017_EstebanOcon a ex:DriverStanding ;
+    ex:forDriver ex:EstebanOcon ;
+    ex:forSeason ex:Season2017 ;
+    ex:forTeam ex:ForceIndia ;
+    ex:standingPoints 87.0 ;
+    ex:standingPosition "8"^^xsd:int .
+
+ex:Standing_2017_FelipeMassa a ex:DriverStanding ;
+    ex:forDriver ex:FelipeMassa ;
+    ex:forSeason ex:Season2017 ;
+    ex:forTeam ex:Williams ;
+    ex:standingPoints 43.0 ;
+    ex:standingPosition "11"^^xsd:int .
+
+ex:Standing_2017_FernandoAlonso a ex:DriverStanding ;
+    ex:forDriver ex:FernandoAlonso ;
+    ex:forSeason ex:Season2017 ;
+    ex:forTeam ex:McLaren ;
+    ex:standingPoints 17.0 ;
+    ex:standingPosition "15"^^xsd:int .
+
+ex:Standing_2017_JolyonPalmer a ex:DriverStanding ;
+    ex:forDriver ex:JolyonPalmer ;
+    ex:forSeason ex:Season2017 ;
+    ex:forTeam ex: ;
+    ex:standingPoints 8.0 ;
+    ex:standingPosition "17"^^xsd:int .
+
+ex:Standing_2017_KevinMagnussen a ex:DriverStanding ;
+    ex:forDriver ex:KevinMagnussen ;
+    ex:forSeason ex:Season2017 ;
+    ex:forTeam ex:Haas ;
+    ex:standingPoints 19.0 ;
+    ex:standingPosition "14"^^xsd:int .
+
+ex:Standing_2017_KimiRäikkönen a ex:DriverStanding ;
+    ex:forDriver ex:KimiRäikkönen ;
+    ex:forSeason ex:Season2017 ;
+    ex:forTeam ex:Ferrari ;
+    ex:standingPoints 205.0 ;
+    ex:standingPosition "4"^^xsd:int .
+
+ex:Standing_2017_LanceStroll a ex:DriverStanding ;
+    ex:forDriver ex:LanceStroll ;
+    ex:forSeason ex:Season2017 ;
+    ex:forTeam ex:Williams ;
+    ex:standingPoints 40.0 ;
+    ex:standingPosition "12"^^xsd:int .
+
+ex:Standing_2017_LewisHamilton a ex:DriverStanding ;
+    ex:forDriver ex:LewisHamilton ;
+    ex:forSeason ex:Season2017 ;
+    ex:forTeam ex:Mercedes ;
+    ex:standingPoints 363.0 ;
+    ex:standingPosition "1"^^xsd:int .
+
+ex:Standing_2017_MaxVerstappen a ex:DriverStanding ;
+    ex:forDriver ex:MaxVerstappen ;
+    ex:forSeason ex:Season2017 ;
+    ex:forTeam ex:RedBullRacing ;
+    ex:standingPoints 168.0 ;
+    ex:standingPosition "6"^^xsd:int .
+
+ex:Standing_2017_NicoHulkenberg a ex:DriverStanding ;
+    ex:forDriver ex:NicoHulkenberg ;
+    ex:forSeason ex:Season2017 ;
+    ex:forTeam ex: ;
+    ex:standingPoints 43.0 ;
+    ex:standingPosition "10"^^xsd:int .
+
+ex:Standing_2017_PascalWehrlein a ex:DriverStanding ;
+    ex:forDriver ex:PascalWehrlein ;
+    ex:forSeason ex:Season2017 ;
+    ex:forTeam ex:Sauber ;
+    ex:standingPoints 5.0 ;
+    ex:standingPosition "18"^^xsd:int .
+
+ex:Standing_2017_PierreGasly a ex:DriverStanding ;
+    ex:forDriver ex:PierreGasly ;
+    ex:forSeason ex:Season2017 ;
+    ex:forTeam ex:ToroRosso ;
+    ex:standingPoints 0.0 ;
+    ex:standingPosition "21"^^xsd:int .
+
+ex:Standing_2017_RomainGrosjean a ex:DriverStanding ;
+    ex:forDriver ex:RomainGrosjean ;
+    ex:forSeason ex:Season2017 ;
+    ex:forTeam ex:Haas ;
+    ex:standingPoints 28.0 ;
+    ex:standingPosition "13"^^xsd:int .
+
+ex:Standing_2017_SebastianVettel a ex:DriverStanding ;
+    ex:forDriver ex:SebastianVettel ;
+    ex:forSeason ex:Season2017 ;
+    ex:forTeam ex:Ferrari ;
+    ex:standingPoints 317.0 ;
+    ex:standingPosition "2"^^xsd:int .
+
+ex:Standing_2017_SergioPerez a ex:DriverStanding ;
+    ex:forDriver ex:SergioPerez ;
+    ex:forSeason ex:Season2017 ;
+    ex:forTeam ex:ForceIndia ;
+    ex:standingPoints 100.0 ;
+    ex:standingPosition "7"^^xsd:int .
+
+ex:Standing_2017_ValtteriBottas a ex:DriverStanding ;
+    ex:forDriver ex:ValtteriBottas ;
+    ex:forSeason ex:Season2017 ;
+    ex:forTeam ex:Mercedes ;
+    ex:standingPoints 305.0 ;
+    ex:standingPosition "3"^^xsd:int .
+
+ex:Standing_2018_BrendonHartley a ex:DriverStanding ;
+    ex:forDriver ex:BrendonHartley ;
+    ex:forSeason ex:Season2018 ;
+    ex:forTeam ex:ScuderiaToroRosso ;
+    ex:standingPoints 4.0 ;
+    ex:standingPosition "19"^^xsd:int .
+
+ex:Standing_2018_CarlosSainz a ex:DriverStanding ;
+    ex:forDriver ex:CarlosSainz ;
+    ex:forSeason ex:Season2018 ;
+    ex:forTeam ex: ;
+    ex:standingPoints 53.0 ;
+    ex:standingPosition "10"^^xsd:int .
+
+ex:Standing_2018_CharlesLeclerc a ex:DriverStanding ;
+    ex:forDriver ex:CharlesLeclerc ;
+    ex:forSeason ex:Season2018 ;
+    ex:forTeam ex:Sauber ;
+    ex:standingPoints 39.0 ;
+    ex:standingPosition "13"^^xsd:int .
+
+ex:Standing_2018_DanielRicciardo a ex:DriverStanding ;
+    ex:forDriver ex:DanielRicciardo ;
+    ex:forSeason ex:Season2018 ;
+    ex:forTeam ex:RedBullRacing ;
+    ex:standingPoints 170.0 ;
+    ex:standingPosition "6"^^xsd:int .
+
+ex:Standing_2018_EstebanOcon a ex:DriverStanding ;
+    ex:forDriver ex:EstebanOcon ;
+    ex:forSeason ex:Season2018 ;
+    ex:forTeam ex:ForceIndia ;
+    ex:standingPoints 49.0 ;
+    ex:standingPosition "12"^^xsd:int .
+
+ex:Standing_2018_FernandoAlonso a ex:DriverStanding ;
+    ex:forDriver ex:FernandoAlonso ;
+    ex:forSeason ex:Season2018 ;
+    ex:forTeam ex:McLaren ;
+    ex:standingPoints 50.0 ;
+    ex:standingPosition "11"^^xsd:int .
+
+ex:Standing_2018_KevinMagnussen a ex:DriverStanding ;
+    ex:forDriver ex:KevinMagnussen ;
+    ex:forSeason ex:Season2018 ;
+    ex:forTeam ex:Haas ;
+    ex:standingPoints 56.0 ;
+    ex:standingPosition "9"^^xsd:int .
+
+ex:Standing_2018_KimiRäikkönen a ex:DriverStanding ;
+    ex:forDriver ex:KimiRäikkönen ;
+    ex:forSeason ex:Season2018 ;
+    ex:forTeam ex:Ferrari ;
+    ex:standingPoints 251.0 ;
+    ex:standingPosition "3"^^xsd:int .
+
+ex:Standing_2018_LanceStroll a ex:DriverStanding ;
+    ex:forDriver ex:LanceStroll ;
+    ex:forSeason ex:Season2018 ;
+    ex:forTeam ex:Williams ;
+    ex:standingPoints 6.0 ;
+    ex:standingPosition "18"^^xsd:int .
+
+ex:Standing_2018_LewisHamilton a ex:DriverStanding ;
+    ex:forDriver ex:LewisHamilton ;
+    ex:forSeason ex:Season2018 ;
+    ex:forTeam ex:Mercedes ;
+    ex:standingPoints 408.0 ;
+    ex:standingPosition "1"^^xsd:int .
+
+ex:Standing_2018_MaxVerstappen a ex:DriverStanding ;
+    ex:forDriver ex:MaxVerstappen ;
+    ex:forSeason ex:Season2018 ;
+    ex:forTeam ex:RedBullRacing ;
+    ex:standingPoints 249.0 ;
+    ex:standingPosition "4"^^xsd:int .
+
+ex:Standing_2018_NicoHulkenberg a ex:DriverStanding ;
+    ex:forDriver ex:NicoHulkenberg ;
+    ex:forSeason ex:Season2018 ;
+    ex:forTeam ex: ;
+    ex:standingPoints 69.0 ;
+    ex:standingPosition "7"^^xsd:int .
+
+ex:Standing_2018_PierreGasly a ex:DriverStanding ;
+    ex:forDriver ex:PierreGasly ;
+    ex:forSeason ex:Season2018 ;
+    ex:forTeam ex:ScuderiaToroRosso ;
+    ex:standingPoints 29.0 ;
+    ex:standingPosition "15"^^xsd:int .
+
+ex:Standing_2018_RomainGrosjean a ex:DriverStanding ;
+    ex:forDriver ex:RomainGrosjean ;
+    ex:forSeason ex:Season2018 ;
+    ex:forTeam ex:Haas ;
+    ex:standingPoints 37.0 ;
+    ex:standingPosition "14"^^xsd:int .
+
+ex:Standing_2018_SebastianVettel a ex:DriverStanding ;
+    ex:forDriver ex:SebastianVettel ;
+    ex:forSeason ex:Season2018 ;
+    ex:forTeam ex:Ferrari ;
+    ex:standingPoints 320.0 ;
+    ex:standingPosition "2"^^xsd:int .
+
+ex:Standing_2018_SergioPerez a ex:DriverStanding ;
+    ex:forDriver ex:SergioPerez ;
+    ex:forSeason ex:Season2018 ;
+    ex:forTeam ex:ForceIndia ;
+    ex:standingPoints 62.0 ;
+    ex:standingPosition "8"^^xsd:int .
+
+ex:Standing_2018_ValtteriBottas a ex:DriverStanding ;
+    ex:forDriver ex:ValtteriBottas ;
+    ex:forSeason ex:Season2018 ;
+    ex:forTeam ex:Mercedes ;
+    ex:standingPoints 247.0 ;
+    ex:standingPosition "5"^^xsd:int .
+
+ex:Standing_2019_AlexanderAlbon a ex:DriverStanding ;
+    ex:forDriver ex:AlexanderAlbon ;
+    ex:forSeason ex:Season2019 ;
+    ex:forTeam ex:RedBullRacing ;
+    ex:standingPoints 92.0 ;
+    ex:standingPosition "8"^^xsd:int .
+
+ex:Standing_2019_AntonioGiovinazzi a ex:DriverStanding ;
+    ex:forDriver ex:AntonioGiovinazzi ;
+    ex:forSeason ex:Season2019 ;
+    ex:forTeam ex:AlfaRomeoRacing ;
+    ex:standingPoints 14.0 ;
+    ex:standingPosition "17"^^xsd:int .
+
+ex:Standing_2019_CarlosSainz a ex:DriverStanding ;
+    ex:forDriver ex:CarlosSainz ;
+    ex:forSeason ex:Season2019 ;
+    ex:forTeam ex:McLaren ;
+    ex:standingPoints 96.0 ;
+    ex:standingPosition "6"^^xsd:int .
+
+ex:Standing_2019_CharlesLeclerc a ex:DriverStanding ;
+    ex:forDriver ex:CharlesLeclerc ;
+    ex:forSeason ex:Season2019 ;
+    ex:forTeam ex:Ferrari ;
+    ex:standingPoints 264.0 ;
+    ex:standingPosition "4"^^xsd:int .
+
+ex:Standing_2019_DanielRicciardo a ex:DriverStanding ;
+    ex:forDriver ex:DanielRicciardo ;
+    ex:forSeason ex:Season2019 ;
+    ex:forTeam ex: ;
+    ex:standingPoints 54.0 ;
+    ex:standingPosition "9"^^xsd:int .
+
+ex:Standing_2019_GeorgeRussell a ex:DriverStanding ;
+    ex:forDriver ex:GeorgeRussell ;
+    ex:forSeason ex:Season2019 ;
+    ex:forTeam ex:Williams ;
+    ex:standingPoints 0.0 ;
+    ex:standingPosition "20"^^xsd:int .
+
+ex:Standing_2019_KevinMagnussen a ex:DriverStanding ;
+    ex:forDriver ex:KevinMagnussen ;
+    ex:forSeason ex:Season2019 ;
+    ex:forTeam ex:Haas ;
+    ex:standingPoints 20.0 ;
+    ex:standingPosition "16"^^xsd:int .
+
+ex:Standing_2019_KimiRäikkönen a ex:DriverStanding ;
+    ex:forDriver ex:KimiRäikkönen ;
+    ex:forSeason ex:Season2019 ;
+    ex:forTeam ex:AlfaRomeoRacing ;
+    ex:standingPoints 43.0 ;
+    ex:standingPosition "12"^^xsd:int .
+
+ex:Standing_2019_LanceStroll a ex:DriverStanding ;
+    ex:forDriver ex:LanceStroll ;
+    ex:forSeason ex:Season2019 ;
+    ex:forTeam ex:RacingPointBWT ;
+    ex:standingPoints 21.0 ;
+    ex:standingPosition "15"^^xsd:int .
+
+ex:Standing_2019_LandoNorris a ex:DriverStanding ;
+    ex:forDriver ex:LandoNorris ;
+    ex:forSeason ex:Season2019 ;
+    ex:forTeam ex:McLaren ;
+    ex:standingPoints 49.0 ;
+    ex:standingPosition "11"^^xsd:int .
+
+ex:Standing_2019_LewisHamilton a ex:DriverStanding ;
+    ex:forDriver ex:LewisHamilton ;
+    ex:forSeason ex:Season2019 ;
+    ex:forTeam ex:Mercedes ;
+    ex:standingPoints 413.0 ;
+    ex:standingPosition "1"^^xsd:int .
+
+ex:Standing_2019_MaxVerstappen a ex:DriverStanding ;
+    ex:forDriver ex:MaxVerstappen ;
+    ex:forSeason ex:Season2019 ;
+    ex:forTeam ex:RedBullRacing ;
+    ex:standingPoints 278.0 ;
+    ex:standingPosition "3"^^xsd:int .
+
+ex:Standing_2019_NicoHulkenberg a ex:DriverStanding ;
+    ex:forDriver ex:NicoHulkenberg ;
+    ex:forSeason ex:Season2019 ;
+    ex:forTeam ex: ;
+    ex:standingPoints 37.0 ;
+    ex:standingPosition "14"^^xsd:int .
+
+ex:Standing_2019_PierreGasly a ex:DriverStanding ;
+    ex:forDriver ex:PierreGasly ;
+    ex:forSeason ex:Season2019 ;
+    ex:forTeam ex:ScuderiaToroRosso ;
+    ex:standingPoints 95.0 ;
+    ex:standingPosition "7"^^xsd:int .
+
+ex:Standing_2019_RomainGrosjean a ex:DriverStanding ;
+    ex:forDriver ex:RomainGrosjean ;
+    ex:forSeason ex:Season2019 ;
+    ex:forTeam ex:Haas ;
+    ex:standingPoints 8.0 ;
+    ex:standingPosition "18"^^xsd:int .
+
+ex:Standing_2019_SebastianVettel a ex:DriverStanding ;
+    ex:forDriver ex:SebastianVettel ;
+    ex:forSeason ex:Season2019 ;
+    ex:forTeam ex:Ferrari ;
+    ex:standingPoints 240.0 ;
+    ex:standingPosition "5"^^xsd:int .
+
+ex:Standing_2019_SergioPerez a ex:DriverStanding ;
+    ex:forDriver ex:SergioPerez ;
+    ex:forSeason ex:Season2019 ;
+    ex:forTeam ex:RacingPointBWT ;
+    ex:standingPoints 52.0 ;
+    ex:standingPosition "10"^^xsd:int .
+
+ex:Standing_2019_ValtteriBottas a ex:DriverStanding ;
+    ex:forDriver ex:ValtteriBottas ;
+    ex:forSeason ex:Season2019 ;
+    ex:forTeam ex:Mercedes ;
+    ex:standingPoints 326.0 ;
+    ex:standingPosition "2"^^xsd:int .
+
+ex:Standing_2020_AlexanderAlbon a ex:DriverStanding ;
+    ex:forDriver ex:AlexanderAlbon ;
+    ex:forSeason ex:Season2020 ;
+    ex:forTeam ex:RedBullRacing ;
+    ex:standingPoints 105.0 ;
+    ex:standingPosition "7"^^xsd:int .
+
+ex:Standing_2020_AntonioGiovinazzi a ex:DriverStanding ;
+    ex:forDriver ex:AntonioGiovinazzi ;
+    ex:forSeason ex:Season2020 ;
+    ex:forTeam ex:AlfaRomeoRacing ;
+    ex:standingPoints 4.0 ;
+    ex:standingPosition "17"^^xsd:int .
+
+ex:Standing_2020_CarlosSainz a ex:DriverStanding ;
+    ex:forDriver ex:CarlosSainz ;
+    ex:forSeason ex:Season2020 ;
+    ex:forTeam ex:McLaren ;
+    ex:standingPoints 105.0 ;
+    ex:standingPosition "6"^^xsd:int .
+
+ex:Standing_2020_CharlesLeclerc a ex:DriverStanding ;
+    ex:forDriver ex:CharlesLeclerc ;
+    ex:forSeason ex:Season2020 ;
+    ex:forTeam ex:Ferrari ;
+    ex:standingPoints 98.0 ;
+    ex:standingPosition "8"^^xsd:int .
+
+ex:Standing_2020_DanielRicciardo a ex:DriverStanding ;
+    ex:forDriver ex:DanielRicciardo ;
+    ex:forSeason ex:Season2020 ;
+    ex:forTeam ex: ;
+    ex:standingPoints 119.0 ;
+    ex:standingPosition "5"^^xsd:int .
+
+ex:Standing_2020_EstebanOcon a ex:DriverStanding ;
+    ex:forDriver ex:EstebanOcon ;
+    ex:forSeason ex:Season2020 ;
+    ex:forTeam ex: ;
+    ex:standingPoints 62.0 ;
+    ex:standingPosition "12"^^xsd:int .
+
+ex:Standing_2020_GeorgeRussell a ex:DriverStanding ;
+    ex:forDriver ex:GeorgeRussell ;
+    ex:forSeason ex:Season2020 ;
+    ex:forTeam ex:Williams ;
+    ex:standingPoints 3.0 ;
+    ex:standingPosition "18"^^xsd:int .
+
+ex:Standing_2020_JackAitken a ex:DriverStanding ;
+    ex:forDriver ex:JackAitken ;
+    ex:forSeason ex:Season2020 ;
+    ex:forTeam ex:Williams ;
+    ex:standingPoints 0.0 ;
+    ex:standingPosition "22"^^xsd:int .
+
+ex:Standing_2020_KevinMagnussen a ex:DriverStanding ;
+    ex:forDriver ex:KevinMagnussen ;
+    ex:forSeason ex:Season2020 ;
+    ex:forTeam ex:Haas ;
+    ex:standingPoints 1.0 ;
+    ex:standingPosition "20"^^xsd:int .
+
+ex:Standing_2020_KimiRäikkönen a ex:DriverStanding ;
+    ex:forDriver ex:KimiRäikkönen ;
+    ex:forSeason ex:Season2020 ;
+    ex:forTeam ex:AlfaRomeoRacing ;
+    ex:standingPoints 4.0 ;
+    ex:standingPosition "16"^^xsd:int .
+
+ex:Standing_2020_LanceStroll a ex:DriverStanding ;
+    ex:forDriver ex:LanceStroll ;
+    ex:forSeason ex:Season2020 ;
+    ex:forTeam ex:RacingPointBWT ;
+    ex:standingPoints 75.0 ;
+    ex:standingPosition "11"^^xsd:int .
+
+ex:Standing_2020_LandoNorris a ex:DriverStanding ;
+    ex:forDriver ex:LandoNorris ;
+    ex:forSeason ex:Season2020 ;
+    ex:forTeam ex:McLaren ;
+    ex:standingPoints 97.0 ;
+    ex:standingPosition "9"^^xsd:int .
+
+ex:Standing_2020_LewisHamilton a ex:DriverStanding ;
+    ex:forDriver ex:LewisHamilton ;
+    ex:forSeason ex:Season2020 ;
+    ex:forTeam ex:Mercedes ;
+    ex:standingPoints 347.0 ;
+    ex:standingPosition "1"^^xsd:int .
+
+ex:Standing_2020_MaxVerstappen a ex:DriverStanding ;
+    ex:forDriver ex:MaxVerstappen ;
+    ex:forSeason ex:Season2020 ;
+    ex:forTeam ex:RedBullRacing ;
+    ex:standingPoints 214.0 ;
+    ex:standingPosition "3"^^xsd:int .
+
+ex:Standing_2020_NicholasLatifi a ex:DriverStanding ;
+    ex:forDriver ex:NicholasLatifi ;
+    ex:forSeason ex:Season2020 ;
+    ex:forTeam ex:Williams ;
+    ex:standingPoints 0.0 ;
+    ex:standingPosition "21"^^xsd:int .
+
+ex:Standing_2020_NicoHulkenberg a ex:DriverStanding ;
+    ex:forDriver ex:NicoHulkenberg ;
+    ex:forSeason ex:Season2020 ;
+    ex:forTeam ex:RacingPointBWT ;
+    ex:standingPoints 10.0 ;
+    ex:standingPosition "15"^^xsd:int .
+
+ex:Standing_2020_PierreGasly a ex:DriverStanding ;
+    ex:forDriver ex:PierreGasly ;
+    ex:forSeason ex:Season2020 ;
+    ex:forTeam ex:AlphaTauri ;
+    ex:standingPoints 75.0 ;
+    ex:standingPosition "10"^^xsd:int .
+
+ex:Standing_2020_PietroFittipaldi a ex:DriverStanding ;
+    ex:forDriver ex:PietroFittipaldi ;
+    ex:forSeason ex:Season2020 ;
+    ex:forTeam ex:Haas ;
+    ex:standingPoints 0.0 ;
+    ex:standingPosition "23"^^xsd:int .
+
+ex:Standing_2020_RomainGrosjean a ex:DriverStanding ;
+    ex:forDriver ex:RomainGrosjean ;
+    ex:forSeason ex:Season2020 ;
+    ex:forTeam ex:Haas ;
+    ex:standingPoints 2.0 ;
+    ex:standingPosition "19"^^xsd:int .
+
+ex:Standing_2020_SebastianVettel a ex:DriverStanding ;
+    ex:forDriver ex:SebastianVettel ;
+    ex:forSeason ex:Season2020 ;
+    ex:forTeam ex:Ferrari ;
+    ex:standingPoints 33.0 ;
+    ex:standingPosition "13"^^xsd:int .
+
+ex:Standing_2020_SergioPerez a ex:DriverStanding ;
+    ex:forDriver ex:SergioPerez ;
+    ex:forSeason ex:Season2020 ;
+    ex:forTeam ex:RacingPointBWT ;
+    ex:standingPoints 125.0 ;
+    ex:standingPosition "4"^^xsd:int .
+
+ex:Standing_2020_ValtteriBottas a ex:DriverStanding ;
+    ex:forDriver ex:ValtteriBottas ;
+    ex:forSeason ex:Season2020 ;
+    ex:forTeam ex:Mercedes ;
+    ex:standingPoints 223.0 ;
+    ex:standingPosition "2"^^xsd:int .
+
+ex:Standing_2021_AntonioGiovinazzi a ex:DriverStanding ;
+    ex:forDriver ex:AntonioGiovinazzi ;
+    ex:forSeason ex:Season2021 ;
+    ex:forTeam ex:AlfaRomeoRacing ;
+    ex:standingPoints 3.0 ;
+    ex:standingPosition "18"^^xsd:int .
+
+ex:Standing_2021_CharlesLeclerc a ex:DriverStanding ;
+    ex:forDriver ex:CharlesLeclerc ;
+    ex:forSeason ex:Season2021 ;
+    ex:forTeam ex:Ferrari ;
+    ex:standingPoints 159.0 ;
+    ex:standingPosition "7"^^xsd:int .
+
+ex:Standing_2021_DanielRicciardo a ex:DriverStanding ;
+    ex:forDriver ex:DanielRicciardo ;
+    ex:forSeason ex:Season2021 ;
+    ex:forTeam ex:McLaren ;
+    ex:standingPoints 115.0 ;
+    ex:standingPosition "8"^^xsd:int .
+
+ex:Standing_2021_EstebanOcon a ex:DriverStanding ;
+    ex:forDriver ex:EstebanOcon ;
+    ex:forSeason ex:Season2021 ;
+    ex:forTeam ex:Alpine ;
+    ex:standingPoints 74.0 ;
+    ex:standingPosition "11"^^xsd:int .
+
+ex:Standing_2021_FernandoAlonso a ex:DriverStanding ;
+    ex:forDriver ex:FernandoAlonso ;
+    ex:forSeason ex:Season2021 ;
+    ex:forTeam ex:Alpine ;
+    ex:standingPoints 81.0 ;
+    ex:standingPosition "10"^^xsd:int .
+
+ex:Standing_2021_GeorgeRussell a ex:DriverStanding ;
+    ex:forDriver ex:GeorgeRussell ;
+    ex:forSeason ex:Season2021 ;
+    ex:forTeam ex:Williams ;
+    ex:standingPoints 16.0 ;
+    ex:standingPosition "15"^^xsd:int .
+
+ex:Standing_2021_KimiRäikkönen a ex:DriverStanding ;
+    ex:forDriver ex:KimiRäikkönen ;
+    ex:forSeason ex:Season2021 ;
+    ex:forTeam ex:AlfaRomeoRacing ;
+    ex:standingPoints 10.0 ;
+    ex:standingPosition "16"^^xsd:int .
+
+ex:Standing_2021_LanceStroll a ex:DriverStanding ;
+    ex:forDriver ex:LanceStroll ;
+    ex:forSeason ex:Season2021 ;
+    ex:forTeam ex:AstonMartin ;
+    ex:standingPoints 34.0 ;
+    ex:standingPosition "13"^^xsd:int .
+
+ex:Standing_2021_LandoNorris a ex:DriverStanding ;
+    ex:forDriver ex:LandoNorris ;
+    ex:forSeason ex:Season2021 ;
+    ex:forTeam ex:McLaren ;
+    ex:standingPoints 160.0 ;
+    ex:standingPosition "6"^^xsd:int .
+
+ex:Standing_2021_MickSchumacher a ex:DriverStanding ;
+    ex:forDriver ex:MickSchumacher ;
+    ex:forSeason ex:Season2021 ;
+    ex:forTeam ex:Haas ;
+    ex:standingPoints 0.0 ;
+    ex:standingPosition "19"^^xsd:int .
+
+ex:Standing_2021_NicholasLatifi a ex:DriverStanding ;
+    ex:forDriver ex:NicholasLatifi ;
+    ex:forSeason ex:Season2021 ;
+    ex:forTeam ex:Williams ;
+    ex:standingPoints 7.0 ;
+    ex:standingPosition "17"^^xsd:int .
+
+ex:Standing_2021_PierreGasly a ex:DriverStanding ;
+    ex:forDriver ex:PierreGasly ;
+    ex:forSeason ex:Season2021 ;
+    ex:forTeam ex:AlphaTauri ;
+    ex:standingPoints 110.0 ;
+    ex:standingPosition "9"^^xsd:int .
+
+ex:Standing_2021_SebastianVettel a ex:DriverStanding ;
+    ex:forDriver ex:SebastianVettel ;
+    ex:forSeason ex:Season2021 ;
+    ex:forTeam ex:AstonMartin ;
+    ex:standingPoints 43.0 ;
+    ex:standingPosition "12"^^xsd:int .
+
+ex:Standing_2021_SergioPerez a ex:DriverStanding ;
+    ex:forDriver ex:SergioPerez ;
+    ex:forSeason ex:Season2021 ;
+    ex:forTeam ex:RedBullRacing ;
+    ex:standingPoints 190.0 ;
+    ex:standingPosition "4"^^xsd:int .
+
+ex:Standing_2021_ValtteriBottas a ex:DriverStanding ;
+    ex:forDriver ex:ValtteriBottas ;
+    ex:forSeason ex:Season2021 ;
+    ex:forTeam ex:Mercedes ;
+    ex:standingPoints 226.0 ;
+    ex:standingPosition "3"^^xsd:int .
+
+ex:Standing_2021_YukiTsunoda a ex:DriverStanding ;
+    ex:forDriver ex:YukiTsunoda ;
+    ex:forSeason ex:Season2021 ;
+    ex:forTeam ex:AlphaTauri ;
+    ex:standingPoints 32.0 ;
+    ex:standingPosition "14"^^xsd:int .
 
 ex:Standing_2022_AlexanderAlbon a ex:DriverStanding ;
     ex:forDriver ex:AlexanderAlbon ;
@@ -910,6 +1841,32 @@ ex:Standing_2026_ValtteriBottas a ex:DriverStanding ;
     ex:standingPoints 0.0 ;
     ex:standingPosition "19"^^xsd:int .
 
+ex:WillStevens a ex:Driver ;
+    ex:competesInSeason ex:Season2015 ;
+    ex:drivesFor ex:Marussia ;
+    ex:hasStanding ex:Standing_2015_WillStevens ;
+    ex:name "Will Stevens" ;
+    ex:nationality "GBR" .
+
+ex:BrendonHartley a ex:Driver ;
+    ex:competesInSeason ex:Season2017,
+        ex:Season2018 ;
+    ex:drivesFor ex:ScuderiaToroRosso,
+        ex:ToroRosso ;
+    ex:hasStanding ex:Standing_2017_BrendonHartley,
+        ex:Standing_2018_BrendonHartley ;
+    ex:name "Brendon Hartley" ;
+    ex:nationality "NZL" .
+
+ex:FelipeNasr a ex:Driver ;
+    ex:competesInSeason ex:Season2015,
+        ex:Season2016 ;
+    ex:drivesFor ex:Sauber ;
+    ex:hasStanding ex:Standing_2015_FelipeNasr,
+        ex:Standing_2016_FelipeNasr ;
+    ex:name "Felipe Nasr" ;
+    ex:nationality "BRA" .
+
 ex:GabrielBortoleto a ex:Driver ;
     ex:competesInSeason ex:Season2025,
         ex:Season2026 ;
@@ -939,6 +1896,24 @@ ex:JackDoohan a ex:Driver ;
     ex:name "Jack Doohan" ;
     ex:nationality "AUS" .
 
+ex:JensonButton a ex:Driver ;
+    ex:competesInSeason ex:Season2015,
+        ex:Season2016 ;
+    ex:drivesFor ex:McLaren ;
+    ex:hasStanding ex:Standing_2015_JensonButton,
+        ex:Standing_2016_JensonButton ;
+    ex:name "Jenson Button" ;
+    ex:nationality "GBR" .
+
+ex:JolyonPalmer a ex:Driver ;
+    ex:competesInSeason ex:Season2016,
+        ex:Season2017 ;
+    ex:drivesFor ex: ;
+    ex:hasStanding ex:Standing_2016_JolyonPalmer,
+        ex:Standing_2017_JolyonPalmer ;
+    ex:name "Jolyon Palmer" ;
+    ex:nationality "GBR" .
+
 ex:KimiAntonelli a ex:Driver ;
     ex:competesInSeason ex:Season2025,
         ex:Season2026 ;
@@ -957,6 +1932,27 @@ ex:LoganSargeant a ex:Driver ;
     ex:name "Logan Sargeant" ;
     ex:nationality "USA" .
 
+ex:Lotus a ex:Team ;
+    ex:name "Lotus" .
+
+ex:MickSchumacher a ex:Driver ;
+    ex:competesInSeason ex:Season2021,
+        ex:Season2022 ;
+    ex:drivesFor ex:Haas ;
+    ex:hasStanding ex:Standing_2021_MickSchumacher,
+        ex:Standing_2022_MickSchumacher ;
+    ex:name "Mick Schumacher" ;
+    ex:nationality "GER" .
+
+ex:NicoRosberg a ex:Driver ;
+    ex:competesInSeason ex:Season2015,
+        ex:Season2016 ;
+    ex:drivesFor ex:Mercedes ;
+    ex:hasStanding ex:Standing_2015_NicoRosberg,
+        ex:Standing_2016_NicoRosberg ;
+    ex:name "Nico Rosberg" ;
+    ex:nationality "GER" .
+
 ex:NyckDeVries a ex:Driver ;
     ex:competesInSeason ex:Season2022,
         ex:Season2023 ;
@@ -967,18 +1963,26 @@ ex:NyckDeVries a ex:Driver ;
     ex:name "Nyck De Vries" ;
     ex:nationality "NED" .
 
-ex:DanielRicciardo a ex:Driver ;
-    ex:competesInSeason ex:Season2022,
-        ex:Season2023,
-        ex:Season2024 ;
-    ex:drivesFor ex:AlphaTauri,
-        ex:McLaren,
-        ex:RB ;
-    ex:hasStanding ex:Standing_2022_DanielRicciardo,
-        ex:Standing_2023_DanielRicciardo,
-        ex:Standing_2024_DanielRicciardo ;
-    ex:name "Daniel Ricciardo" ;
-    ex:nationality "AUS" .
+ex:PascalWehrlein a ex:Driver ;
+    ex:competesInSeason ex:Season2016,
+        ex:Season2017 ;
+    ex:drivesFor ex:MRT,
+        ex:Sauber ;
+    ex:hasStanding ex:Standing_2016_PascalWehrlein,
+        ex:Standing_2017_PascalWehrlein ;
+    ex:name "Pascal Wehrlein" ;
+    ex:nationality "GER" .
+
+ex:FelipeMassa a ex:Driver ;
+    ex:competesInSeason ex:Season2015,
+        ex:Season2016,
+        ex:Season2017 ;
+    ex:drivesFor ex:Williams ;
+    ex:hasStanding ex:Standing_2015_FelipeMassa,
+        ex:Standing_2016_FelipeMassa,
+        ex:Standing_2017_FelipeMassa ;
+    ex:name "Felipe Massa" ;
+    ex:nationality "BRA" .
 
 ex:FrancoColapinto a ex:Driver ;
     ex:competesInSeason ex:Season2024,
@@ -992,16 +1996,16 @@ ex:FrancoColapinto a ex:Driver ;
     ex:name "Franco Colapinto" ;
     ex:nationality "ARG" .
 
-ex:KevinMagnussen a ex:Driver ;
-    ex:competesInSeason ex:Season2022,
-        ex:Season2023,
-        ex:Season2024 ;
-    ex:drivesFor ex:Haas ;
-    ex:hasStanding ex:Standing_2022_KevinMagnussen,
-        ex:Standing_2023_KevinMagnussen,
-        ex:Standing_2024_KevinMagnussen ;
-    ex:name "Kevin Magnussen" ;
-    ex:nationality "DEN" .
+ex:NicholasLatifi a ex:Driver ;
+    ex:competesInSeason ex:Season2020,
+        ex:Season2021,
+        ex:Season2022 ;
+    ex:drivesFor ex:Williams ;
+    ex:hasStanding ex:Standing_2020_NicholasLatifi,
+        ex:Standing_2021_NicholasLatifi,
+        ex:Standing_2022_NicholasLatifi ;
+    ex:name "Nicholas Latifi" ;
+    ex:nationality "CAN" .
 
 ex:OliverBearman a ex:Driver ;
     ex:competesInSeason ex:Season2024,
@@ -1026,6 +2030,20 @@ ex:ZhouGuanyu a ex:Driver ;
         ex:Standing_2024_ZhouGuanyu ;
     ex:name "Zhou Guanyu" ;
     ex:nationality "CHN" .
+
+ex:AntonioGiovinazzi a ex:Driver ;
+    ex:competesInSeason ex:Season2017,
+        ex:Season2019,
+        ex:Season2020,
+        ex:Season2021 ;
+    ex:drivesFor ex:AlfaRomeoRacing,
+        ex:Sauber ;
+    ex:hasStanding ex:Standing_2017_AntonioGiovinazzi,
+        ex:Standing_2019_AntonioGiovinazzi,
+        ex:Standing_2020_AntonioGiovinazzi,
+        ex:Standing_2021_AntonioGiovinazzi ;
+    ex:name "Antonio Giovinazzi" ;
+    ex:nationality "ITA" .
 
 ex:Audi a ex:Team ;
     ex:name "Audi" .
@@ -1052,6 +2070,9 @@ ex:LiamLawson a ex:Driver ;
     ex:name "Liam Lawson" ;
     ex:nationality "NZL" .
 
+ex:MRT a ex:Team ;
+    ex:name "MRT" .
+
 ex:OscarPiastri a ex:Driver ;
     ex:competesInSeason ex:Season2023,
         ex:Season2024,
@@ -1065,62 +2086,83 @@ ex:OscarPiastri a ex:Driver ;
     ex:name "Oscar Piastri" ;
     ex:nationality "AUS" .
 
-ex:SergioPerez a ex:Driver ;
-    ex:competesInSeason ex:Season2022,
-        ex:Season2023,
-        ex:Season2024,
-        ex:Season2026 ;
-    ex:drivesFor ex:Cadillac,
-        ex:RedBullRacing ;
-    ex:hasStanding ex:Standing_2022_SergioPerez,
-        ex:Standing_2023_SergioPerez,
-        ex:Standing_2024_SergioPerez,
-        ex:Standing_2026_SergioPerez ;
-    ex:name "Sergio Perez" ;
-    ex:nationality "MEX" .
+ex:STR a ex:Team ;
+    ex:name "STR" .
 
 ex:TeamStanding a owl:Class ;
     rdfs:label "Team Standing"@en ;
     rdfs:comment "A team's (constructor) championship standing at the end of a season."@en .
 
-ex:ValtteriBottas a ex:Driver ;
-    ex:competesInSeason ex:Season2022,
-        ex:Season2023,
-        ex:Season2024,
-        ex:Season2026 ;
-    ex:drivesFor ex:AlfaRomeo,
-        ex:Cadillac,
-        ex:KickSauber ;
-    ex:hasStanding ex:Standing_2022_ValtteriBottas,
-        ex:Standing_2023_ValtteriBottas,
-        ex:Standing_2024_ValtteriBottas,
-        ex:Standing_2026_ValtteriBottas ;
-    ex:name "Valtteri Bottas" ;
-    ex:nationality "FIN" .
+ex:RaceResult a owl:Class ;
+    rdfs:label "Race Result"@en ;
+    rdfs:comment "The result of one driver in one Grand Prix."@en .
+
+ex:ScuderiaToroRosso a ex:Team ;
+    ex:name "Scuderia Toro Rosso" .
 
 ex:YukiTsunoda a ex:Driver ;
-    ex:competesInSeason ex:Season2022,
+    ex:competesInSeason ex:Season2021,
+        ex:Season2022,
         ex:Season2023,
         ex:Season2024,
         ex:Season2025 ;
     ex:drivesFor ex:AlphaTauri,
         ex:RB,
         ex:RedBullRacing ;
-    ex:hasStanding ex:Standing_2022_YukiTsunoda,
+    ex:hasStanding ex:Standing_2021_YukiTsunoda,
+        ex:Standing_2022_YukiTsunoda,
         ex:Standing_2023_YukiTsunoda,
         ex:Standing_2024_YukiTsunoda,
         ex:Standing_2025_YukiTsunoda ;
     ex:name "Yuki Tsunoda" ;
     ex:nationality "JPN" .
 
+ex:AlfaRomeo a ex:Team ;
+    ex:name "Alfa Romeo" .
+
+ex:HaasF1Team a ex:Team ;
+    ex:name "Haas F1 Team" .
+
+ex:Marussia a ex:Team ;
+    ex:name "Marussia" .
+
+ex:RB a ex:Team ;
+    ex:name "RB" .
+
+ex:RomainGrosjean a ex:Driver ;
+    ex:competesInSeason ex:Season2015,
+        ex:Season2016,
+        ex:Season2017,
+        ex:Season2018,
+        ex:Season2019,
+        ex:Season2020 ;
+    ex:drivesFor ex:Haas,
+        ex:Lotus ;
+    ex:hasStanding ex:Standing_2015_RomainGrosjean,
+        ex:Standing_2016_RomainGrosjean,
+        ex:Standing_2017_RomainGrosjean,
+        ex:Standing_2018_RomainGrosjean,
+        ex:Standing_2019_RomainGrosjean,
+        ex:Standing_2020_RomainGrosjean ;
+    ex:name "Romain Grosjean" ;
+    ex:nationality "FRA" .
+
+ex:ToroRosso a ex:Team ;
+    ex:name "Toro Rosso" .
+
 ex:AlexanderAlbon a ex:Driver ;
-    ex:competesInSeason ex:Season2022,
+    ex:competesInSeason ex:Season2019,
+        ex:Season2020,
+        ex:Season2022,
         ex:Season2023,
         ex:Season2024,
         ex:Season2025,
         ex:Season2026 ;
-    ex:drivesFor ex:Williams ;
-    ex:hasStanding ex:Standing_2022_AlexanderAlbon,
+    ex:drivesFor ex:RedBullRacing,
+        ex:Williams ;
+    ex:hasStanding ex:Standing_2019_AlexanderAlbon,
+        ex:Standing_2020_AlexanderAlbon,
+        ex:Standing_2022_AlexanderAlbon,
         ex:Standing_2023_AlexanderAlbon,
         ex:Standing_2024_AlexanderAlbon,
         ex:Standing_2025_AlexanderAlbon,
@@ -1128,30 +2170,142 @@ ex:AlexanderAlbon a ex:Driver ;
     ex:name "Alexander Albon" ;
     ex:nationality "THA" .
 
-ex:CarlosSainz a ex:Driver ;
-    ex:competesInSeason ex:Season2022,
+ex:KimiRäikkönen a ex:Driver ;
+    ex:competesInSeason ex:Season2015,
+        ex:Season2016,
+        ex:Season2017,
+        ex:Season2018,
+        ex:Season2019,
+        ex:Season2020,
+        ex:Season2021 ;
+    ex:drivesFor ex:AlfaRomeoRacing,
+        ex:Ferrari ;
+    ex:hasStanding ex:Standing_2015_KimiRäikkönen,
+        ex:Standing_2016_KimiRäikkönen,
+        ex:Standing_2017_KimiRäikkönen,
+        ex:Standing_2018_KimiRäikkönen,
+        ex:Standing_2019_KimiRäikkönen,
+        ex:Standing_2020_KimiRäikkönen,
+        ex:Standing_2021_KimiRäikkönen ;
+    ex:name "Kimi Räikkönen" ;
+    ex:nationality "FIN" .
+
+ex:RacingBulls a ex:Team ;
+    ex:name "Racing Bulls" .
+
+ex:AlfaRomeoRacing a ex:Team ;
+    ex:name "Alfa Romeo Racing" .
+
+ex:GeorgeRussell a ex:Driver ;
+    ex:competesInSeason ex:Season2019,
+        ex:Season2020,
+        ex:Season2021,
+        ex:Season2022,
+        ex:Season2023,
+        ex:Season2024,
+        ex:Season2025,
+        ex:Season2026 ;
+    ex:drivesFor ex:Mercedes,
+        ex:Williams ;
+    ex:hasStanding ex:Standing_2019_GeorgeRussell,
+        ex:Standing_2020_GeorgeRussell,
+        ex:Standing_2021_GeorgeRussell,
+        ex:Standing_2022_GeorgeRussell,
+        ex:Standing_2023_GeorgeRussell,
+        ex:Standing_2024_GeorgeRussell,
+        ex:Standing_2025_GeorgeRussell,
+        ex:Standing_2026_GeorgeRussell ;
+    ex:name "George Russell" ;
+    ex:nationality "GBR" .
+
+ex:KevinMagnussen a ex:Driver ;
+    ex:competesInSeason ex:Season2016,
+        ex:Season2017,
+        ex:Season2018,
+        ex:Season2019,
+        ex:Season2020,
+        ex:Season2022,
+        ex:Season2023,
+        ex:Season2024 ;
+    ex:drivesFor ex:,
+        ex:Haas ;
+    ex:hasStanding ex:Standing_2016_KevinMagnussen,
+        ex:Standing_2017_KevinMagnussen,
+        ex:Standing_2018_KevinMagnussen,
+        ex:Standing_2019_KevinMagnussen,
+        ex:Standing_2020_KevinMagnussen,
+        ex:Standing_2022_KevinMagnussen,
+        ex:Standing_2023_KevinMagnussen,
+        ex:Standing_2024_KevinMagnussen ;
+    ex:name "Kevin Magnussen" ;
+    ex:nationality "DEN" .
+
+ex:KickSauber a ex:Team ;
+    ex:name "Kick Sauber" .
+
+ex:LandoNorris a ex:Driver ;
+    ex:competesInSeason ex:Season2019,
+        ex:Season2020,
+        ex:Season2021,
+        ex:Season2022,
+        ex:Season2023,
+        ex:Season2024,
+        ex:Season2025,
+        ex:Season2026 ;
+    ex:drivesFor ex:McLaren ;
+    ex:hasStanding ex:Standing_2019_LandoNorris,
+        ex:Standing_2020_LandoNorris,
+        ex:Standing_2021_LandoNorris,
+        ex:Standing_2022_LandoNorris,
+        ex:Standing_2023_LandoNorris,
+        ex:Standing_2024_LandoNorris,
+        ex:Standing_2025_LandoNorris,
+        ex:Standing_2026_LandoNorris ;
+    ex:name "Lando Norris" ;
+    ex:nationality "GBR" .
+
+ex:RacingPointBWT a ex:Team ;
+    ex:name "Racing Point BWT" .
+
+ex:SebastianVettel a ex:Driver ;
+    ex:competesInSeason ex:Season2015,
+        ex:Season2016,
+        ex:Season2017,
+        ex:Season2018,
+        ex:Season2019,
+        ex:Season2020,
+        ex:Season2021,
+        ex:Season2022 ;
+    ex:drivesFor ex:AstonMartin,
+        ex:Ferrari ;
+    ex:hasStanding ex:Standing_2015_SebastianVettel,
+        ex:Standing_2016_SebastianVettel,
+        ex:Standing_2017_SebastianVettel,
+        ex:Standing_2018_SebastianVettel,
+        ex:Standing_2019_SebastianVettel,
+        ex:Standing_2020_SebastianVettel,
+        ex:Standing_2021_SebastianVettel,
+        ex:Standing_2022_SebastianVettel ;
+    ex:name "Sebastian Vettel" ;
+    ex:nationality "GER" .
+
+ex:CharlesLeclerc a ex:Driver ;
+    ex:competesInSeason ex:Season2018,
+        ex:Season2019,
+        ex:Season2020,
+        ex:Season2021,
+        ex:Season2022,
         ex:Season2023,
         ex:Season2024,
         ex:Season2025,
         ex:Season2026 ;
     ex:drivesFor ex:Ferrari,
-        ex:Williams ;
-    ex:hasStanding ex:Standing_2022_CarlosSainz,
-        ex:Standing_2023_CarlosSainz,
-        ex:Standing_2024_CarlosSainz,
-        ex:Standing_2025_CarlosSainz,
-        ex:Standing_2026_CarlosSainz ;
-    ex:name "Carlos Sainz" ;
-    ex:nationality "ESP" .
-
-ex:CharlesLeclerc a ex:Driver ;
-    ex:competesInSeason ex:Season2022,
-        ex:Season2023,
-        ex:Season2024,
-        ex:Season2025,
-        ex:Season2026 ;
-    ex:drivesFor ex:Ferrari ;
-    ex:hasStanding ex:Standing_2022_CharlesLeclerc,
+        ex:Sauber ;
+    ex:hasStanding ex:Standing_2018_CharlesLeclerc,
+        ex:Standing_2019_CharlesLeclerc,
+        ex:Standing_2020_CharlesLeclerc,
+        ex:Standing_2021_CharlesLeclerc,
+        ex:Standing_2022_CharlesLeclerc,
         ex:Standing_2023_CharlesLeclerc,
         ex:Standing_2024_CharlesLeclerc,
         ex:Standing_2025_CharlesLeclerc,
@@ -1159,15 +2313,60 @@ ex:CharlesLeclerc a ex:Driver ;
     ex:name "Charles Leclerc" ;
     ex:nationality "MON" .
 
+ex:Sauber a ex:Team ;
+    ex:name "Sauber" .
+
+ex:DanielRicciardo a ex:Driver ;
+    ex:competesInSeason ex:Season2015,
+        ex:Season2016,
+        ex:Season2017,
+        ex:Season2018,
+        ex:Season2019,
+        ex:Season2020,
+        ex:Season2021,
+        ex:Season2022,
+        ex:Season2023,
+        ex:Season2024 ;
+    ex:drivesFor ex:,
+        ex:AlphaTauri,
+        ex:McLaren,
+        ex:RB,
+        ex:RedBullRacing ;
+    ex:hasStanding ex:Standing_2015_DanielRicciardo,
+        ex:Standing_2016_DanielRicciardo,
+        ex:Standing_2017_DanielRicciardo,
+        ex:Standing_2018_DanielRicciardo,
+        ex:Standing_2019_DanielRicciardo,
+        ex:Standing_2020_DanielRicciardo,
+        ex:Standing_2021_DanielRicciardo,
+        ex:Standing_2022_DanielRicciardo,
+        ex:Standing_2023_DanielRicciardo,
+        ex:Standing_2024_DanielRicciardo ;
+    ex:name "Daniel Ricciardo" ;
+    ex:nationality "AUS" .
+
 ex:EstebanOcon a ex:Driver ;
-    ex:competesInSeason ex:Season2022,
+    ex:competesInSeason ex:Season2016,
+        ex:Season2017,
+        ex:Season2018,
+        ex:Season2020,
+        ex:Season2021,
+        ex:Season2022,
         ex:Season2023,
         ex:Season2024,
         ex:Season2025,
         ex:Season2026 ;
-    ex:drivesFor ex:Alpine,
-        ex:HaasF1Team ;
-    ex:hasStanding ex:Standing_2022_EstebanOcon,
+    ex:drivesFor ex:,
+        ex:Alpine,
+        ex:ForceIndia,
+        ex:HaasF1Team,
+        ex:MRT ;
+    ex:hasStanding ex:Standing_2016_EstebanOcon,
+        ex:Standing_2017_EstebanOcon,
+        ex:Standing_2018_EstebanOcon,
+        ex:Standing_2020_EstebanOcon,
+        ex:Standing_2021_EstebanOcon,
+        ex:Standing_2022_EstebanOcon,
         ex:Standing_2023_EstebanOcon,
         ex:Standing_2024_EstebanOcon,
         ex:Standing_2025_EstebanOcon,
@@ -1176,14 +2375,25 @@ ex:EstebanOcon a ex:Driver ;
     ex:nationality "FRA" .
 
 ex:FernandoAlonso a ex:Driver ;
-    ex:competesInSeason ex:Season2022,
+    ex:competesInSeason ex:Season2015,
+        ex:Season2016,
+        ex:Season2017,
+        ex:Season2018,
+        ex:Season2021,
+        ex:Season2022,
         ex:Season2023,
         ex:Season2024,
         ex:Season2025,
         ex:Season2026 ;
     ex:drivesFor ex:Alpine,
-        ex:AstonMartin ;
-    ex:hasStanding ex:Standing_2022_FernandoAlonso,
+        ex:AstonMartin,
+        ex:McLaren ;
+    ex:hasStanding ex:Standing_2015_FernandoAlonso,
+        ex:Standing_2016_FernandoAlonso,
+        ex:Standing_2017_FernandoAlonso,
+        ex:Standing_2018_FernandoAlonso,
+        ex:Standing_2021_FernandoAlonso,
+        ex:Standing_2022_FernandoAlonso,
         ex:Standing_2023_FernandoAlonso,
         ex:Standing_2024_FernandoAlonso,
         ex:Standing_2025_FernandoAlonso,
@@ -1191,29 +2401,26 @@ ex:FernandoAlonso a ex:Driver ;
     ex:name "Fernando Alonso" ;
     ex:nationality "ESP" .
 
-ex:GeorgeRussell a ex:Driver ;
-    ex:competesInSeason ex:Season2022,
-        ex:Season2023,
-        ex:Season2024,
-        ex:Season2025,
-        ex:Season2026 ;
-    ex:drivesFor ex:Mercedes ;
-    ex:hasStanding ex:Standing_2022_GeorgeRussell,
-        ex:Standing_2023_GeorgeRussell,
-        ex:Standing_2024_GeorgeRussell,
-        ex:Standing_2025_GeorgeRussell,
-        ex:Standing_2026_GeorgeRussell ;
-    ex:name "George Russell" ;
-    ex:nationality "GBR" .
-
 ex:LanceStroll a ex:Driver ;
-    ex:competesInSeason ex:Season2022,
+    ex:competesInSeason ex:Season2017,
+        ex:Season2018,
+        ex:Season2019,
+        ex:Season2020,
+        ex:Season2021,
+        ex:Season2022,
         ex:Season2023,
         ex:Season2024,
         ex:Season2025,
         ex:Season2026 ;
-    ex:drivesFor ex:AstonMartin ;
-    ex:hasStanding ex:Standing_2022_LanceStroll,
+    ex:drivesFor ex:AstonMartin,
+        ex:RacingPointBWT,
+        ex:Williams ;
+    ex:hasStanding ex:Standing_2017_LanceStroll,
+        ex:Standing_2018_LanceStroll,
+        ex:Standing_2019_LanceStroll,
+        ex:Standing_2020_LanceStroll,
+        ex:Standing_2021_LanceStroll,
+        ex:Standing_2022_LanceStroll,
         ex:Standing_2023_LanceStroll,
         ex:Standing_2024_LanceStroll,
         ex:Standing_2025_LanceStroll,
@@ -1221,30 +2428,90 @@ ex:LanceStroll a ex:Driver ;
     ex:name "Lance Stroll" ;
     ex:nationality "CAN" .
 
-ex:LandoNorris a ex:Driver ;
-    ex:competesInSeason ex:Season2022,
+ex:PierreGasly a ex:Driver ;
+    ex:competesInSeason ex:Season2017,
+        ex:Season2018,
+        ex:Season2019,
+        ex:Season2020,
+        ex:Season2021,
+        ex:Season2022,
         ex:Season2023,
         ex:Season2024,
         ex:Season2025,
         ex:Season2026 ;
-    ex:drivesFor ex:McLaren ;
-    ex:hasStanding ex:Standing_2022_LandoNorris,
-        ex:Standing_2023_LandoNorris,
-        ex:Standing_2024_LandoNorris,
-        ex:Standing_2025_LandoNorris,
-        ex:Standing_2026_LandoNorris ;
-    ex:name "Lando Norris" ;
-    ex:nationality "GBR" .
+    ex:drivesFor ex:AlphaTauri,
+        ex:Alpine,
+        ex:ScuderiaToroRosso,
+        ex:ToroRosso ;
+    ex:hasStanding ex:Standing_2017_PierreGasly,
+        ex:Standing_2018_PierreGasly,
+        ex:Standing_2019_PierreGasly,
+        ex:Standing_2020_PierreGasly,
+        ex:Standing_2021_PierreGasly,
+        ex:Standing_2022_PierreGasly,
+        ex:Standing_2023_PierreGasly,
+        ex:Standing_2024_PierreGasly,
+        ex:Standing_2025_PierreGasly,
+        ex:Standing_2026_PierreGasly ;
+    ex:name "Pierre Gasly" ;
+    ex:nationality "FRA" .
+
+ex:CarlosSainz a ex:Driver ;
+    ex:competesInSeason ex:Season2015,
+        ex:Season2016,
+        ex:Season2017,
+        ex:Season2018,
+        ex:Season2019,
+        ex:Season2020,
+        ex:Season2022,
+        ex:Season2023,
+        ex:Season2024,
+        ex:Season2025,
+        ex:Season2026 ;
+    ex:drivesFor ex:,
+        ex:Ferrari,
+        ex:McLaren,
+        ex:STR,
+        ex:ToroRosso,
+        ex:Williams ;
+    ex:hasStanding ex:Standing_2015_CarlosSainz,
+        ex:Standing_2016_CarlosSainz,
+        ex:Standing_2017_CarlosSainz,
+        ex:Standing_2018_CarlosSainz,
+        ex:Standing_2019_CarlosSainz,
+        ex:Standing_2020_CarlosSainz,
+        ex:Standing_2022_CarlosSainz,
+        ex:Standing_2023_CarlosSainz,
+        ex:Standing_2024_CarlosSainz,
+        ex:Standing_2025_CarlosSainz,
+        ex:Standing_2026_CarlosSainz ;
+    ex:name "Carlos Sainz" ;
+    ex:nationality "ESP" .
+
+ex:ForceIndia a ex:Team ;
+    ex:name "Force India" .
 
 ex:LewisHamilton a ex:Driver ;
-    ex:competesInSeason ex:Season2022,
+    ex:competesInSeason ex:Season2015,
+        ex:Season2016,
+        ex:Season2017,
+        ex:Season2018,
+        ex:Season2019,
+        ex:Season2020,
+        ex:Season2022,
         ex:Season2023,
         ex:Season2024,
         ex:Season2025,
         ex:Season2026 ;
     ex:drivesFor ex:Ferrari,
         ex:Mercedes ;
-    ex:hasStanding ex:Standing_2022_LewisHamilton,
+    ex:hasStanding ex:Standing_2015_LewisHamilton,
+        ex:Standing_2016_LewisHamilton,
+        ex:Standing_2017_LewisHamilton,
+        ex:Standing_2018_LewisHamilton,
+        ex:Standing_2019_LewisHamilton,
+        ex:Standing_2020_LewisHamilton,
+        ex:Standing_2022_LewisHamilton,
         ex:Standing_2023_LewisHamilton,
         ex:Standing_2024_LewisHamilton,
         ex:Standing_2025_LewisHamilton,
@@ -1253,13 +2520,26 @@ ex:LewisHamilton a ex:Driver ;
     ex:nationality "GBR" .
 
 ex:MaxVerstappen a ex:Driver ;
-    ex:competesInSeason ex:Season2022,
+    ex:competesInSeason ex:Season2015,
+        ex:Season2016,
+        ex:Season2017,
+        ex:Season2018,
+        ex:Season2019,
+        ex:Season2020,
+        ex:Season2022,
         ex:Season2023,
         ex:Season2024,
         ex:Season2025,
         ex:Season2026 ;
-    ex:drivesFor ex:RedBullRacing ;
-    ex:hasStanding ex:Standing_2022_MaxVerstappen,
+    ex:drivesFor ex:RedBullRacing,
+        ex:STR ;
+    ex:hasStanding ex:Standing_2015_MaxVerstappen,
+        ex:Standing_2016_MaxVerstappen,
+        ex:Standing_2017_MaxVerstappen,
+        ex:Standing_2018_MaxVerstappen,
+        ex:Standing_2019_MaxVerstappen,
+        ex:Standing_2020_MaxVerstappen,
+        ex:Standing_2022_MaxVerstappen,
         ex:Standing_2023_MaxVerstappen,
         ex:Standing_2024_MaxVerstappen,
         ex:Standing_2025_MaxVerstappen,
@@ -1268,16 +2548,31 @@ ex:MaxVerstappen a ex:Driver ;
     ex:nationality "NED" .
 
 ex:NicoHulkenberg a ex:Driver ;
-    ex:competesInSeason ex:Season2022,
+    ex:competesInSeason ex:Season2015,
+        ex:Season2016,
+        ex:Season2017,
+        ex:Season2018,
+        ex:Season2019,
+        ex:Season2020,
+        ex:Season2022,
         ex:Season2023,
         ex:Season2024,
         ex:Season2025,
         ex:Season2026 ;
-    ex:drivesFor ex:AstonMartin,
+    ex:drivesFor ex:,
+        ex:AstonMartin,
         ex:Audi,
+        ex:ForceIndia,
         ex:Haas,
-        ex:KickSauber ;
-    ex:hasStanding ex:Standing_2022_NicoHulkenberg,
+        ex:KickSauber,
+        ex:RacingPointBWT ;
+    ex:hasStanding ex:Standing_2015_NicoHulkenberg,
+        ex:Standing_2016_NicoHulkenberg,
+        ex:Standing_2017_NicoHulkenberg,
+        ex:Standing_2018_NicoHulkenberg,
+        ex:Standing_2019_NicoHulkenberg,
+        ex:Standing_2020_NicoHulkenberg,
+        ex:Standing_2022_NicoHulkenberg,
         ex:Standing_2023_NicoHulkenberg,
         ex:Standing_2024_NicoHulkenberg,
         ex:Standing_2025_NicoHulkenberg,
@@ -1285,47 +2580,82 @@ ex:NicoHulkenberg a ex:Driver ;
     ex:name "Nico Hulkenberg" ;
     ex:nationality "GER" .
 
-ex:PierreGasly a ex:Driver ;
-    ex:competesInSeason ex:Season2022,
+ex:SergioPerez a ex:Driver ;
+    ex:competesInSeason ex:Season2015,
+        ex:Season2016,
+        ex:Season2017,
+        ex:Season2018,
+        ex:Season2019,
+        ex:Season2020,
+        ex:Season2021,
+        ex:Season2022,
         ex:Season2023,
         ex:Season2024,
-        ex:Season2025,
         ex:Season2026 ;
-    ex:drivesFor ex:AlphaTauri,
-        ex:Alpine ;
-    ex:hasStanding ex:Standing_2022_PierreGasly,
-        ex:Standing_2023_PierreGasly,
-        ex:Standing_2024_PierreGasly,
-        ex:Standing_2025_PierreGasly,
-        ex:Standing_2026_PierreGasly ;
-    ex:name "Pierre Gasly" ;
-    ex:nationality "FRA" .
+    ex:drivesFor ex:Cadillac,
+        ex:ForceIndia,
+        ex:RacingPointBWT,
+        ex:RedBullRacing ;
+    ex:hasStanding ex:Standing_2015_SergioPerez,
+        ex:Standing_2016_SergioPerez,
+        ex:Standing_2017_SergioPerez,
+        ex:Standing_2018_SergioPerez,
+        ex:Standing_2019_SergioPerez,
+        ex:Standing_2020_SergioPerez,
+        ex:Standing_2021_SergioPerez,
+        ex:Standing_2022_SergioPerez,
+        ex:Standing_2023_SergioPerez,
+        ex:Standing_2024_SergioPerez,
+        ex:Standing_2026_SergioPerez ;
+    ex:name "Sergio Perez" ;
+    ex:nationality "MEX" .
 
-ex:RaceResult a owl:Class ;
-    rdfs:label "Race Result"@en ;
-    rdfs:comment "The result of one driver in one Grand Prix."@en .
+ex:ValtteriBottas a ex:Driver ;
+    ex:competesInSeason ex:Season2015,
+        ex:Season2016,
+        ex:Season2017,
+        ex:Season2018,
+        ex:Season2019,
+        ex:Season2020,
+        ex:Season2021,
+        ex:Season2022,
+        ex:Season2023,
+        ex:Season2024,
+        ex:Season2026 ;
+    ex:drivesFor ex:AlfaRomeo,
+        ex:Cadillac,
+        ex:KickSauber,
+        ex:Mercedes,
+        ex:Williams ;
+    ex:hasStanding ex:Standing_2015_ValtteriBottas,
+        ex:Standing_2016_ValtteriBottas,
+        ex:Standing_2017_ValtteriBottas,
+        ex:Standing_2018_ValtteriBottas,
+        ex:Standing_2019_ValtteriBottas,
+        ex:Standing_2020_ValtteriBottas,
+        ex:Standing_2021_ValtteriBottas,
+        ex:Standing_2022_ValtteriBottas,
+        ex:Standing_2023_ValtteriBottas,
+        ex:Standing_2024_ValtteriBottas,
+        ex:Standing_2026_ValtteriBottas ;
+    ex:name "Valtteri Bottas" ;
+    ex:nationality "FIN" .
 
-ex:AlfaRomeo a ex:Team ;
-    ex:name "Alfa Romeo" .
-
-ex:HaasF1Team a ex:Team ;
-    ex:name "Haas F1 Team" .
-
-ex:RB a ex:Team ;
-    ex:name "RB" .
-
-ex:RacingBulls a ex:Team ;
-    ex:name "Racing Bulls" .
-
-ex:KickSauber a ex:Team ;
-    ex:name "Kick Sauber" .
+ex:AlphaTauri a ex:Team ;
+    ex:name "AlphaTauri" .
 
 ex:Season a owl:Class ;
     rdfs:label "Season"@en ;
     rdfs:comment "A Formula 1 championship season."@en .
 
-ex:AlphaTauri a ex:Team ;
-    ex:name "AlphaTauri" .
+ex: a ex:Team ;
+    ex:name "" .
+
+ex:AstonMartin a ex:Team ;
+    ex:name "Aston Martin" .
+
+ex:Alpine a ex:Team ;
+    ex:name "Alpine" .
 
 ex:Haas a ex:Team ;
     ex:name "Haas" .
@@ -1342,25 +2672,36 @@ ex:Mercedes a ex:Team ;
 ex:RedBullRacing a ex:Team ;
     ex:name "Red Bull Racing" .
 
-ex:AstonMartin a ex:Team ;
-    ex:name "Aston Martin" .
-
-ex:Alpine a ex:Team ;
-    ex:name "Alpine" .
-
 ex:Team a owl:Class ;
     rdfs:label "Team"@en ;
     rdfs:comment "A Formula 1 constructor / team."@en .
 
+ex:Season2021 a ex:Season ;
+    ex:seasonYear "2021"^^xsd:int .
+
+ex:Season2018 a ex:Season ;
+    ex:seasonYear "2018"^^xsd:int .
+
+ex:Season2015 a ex:Season ;
+    ex:seasonYear "2015"^^xsd:int .
+
+ex:Season2019 a ex:Season ;
+    ex:seasonYear "2019"^^xsd:int .
+
 ex:Williams a ex:Team ;
     ex:name "Williams" .
 
-ex:Driver a owl:Class ;
-    rdfs:label "Driver"@en ;
-    rdfs:comment "A Formula 1 racing driver."@en .
+ex:Season2016 a ex:Season ;
+    ex:seasonYear "2016"^^xsd:int .
+
+ex:Season2017 a ex:Season ;
+    ex:seasonYear "2017"^^xsd:int .
 
 ex:Season2025 a ex:Season ;
     ex:seasonYear "2025"^^xsd:int .
+
+ex:Season2020 a ex:Season ;
+    ex:seasonYear "2020"^^xsd:int .
 
 ex:Season2022 a ex:Season ;
     ex:seasonYear "2022"^^xsd:int .
@@ -1373,6 +2714,10 @@ ex:Season2026 a ex:Season ;
 
 ex:Season2024 a ex:Season ;
     ex:seasonYear "2024"^^xsd:int .
+
+ex:Driver a owl:Class ;
+    rdfs:label "Driver"@en ;
+    rdfs:comment "A Formula 1 racing driver."@en .
 
 ex:DriverStanding a owl:Class ;
     rdfs:label "Driver Standing"@en ;

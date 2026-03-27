@@ -59,8 +59,8 @@ async def collect_races(page, year: int) -> dict:
         text = f"ERROR: {str(e)}"
     return {"season": year, "source": url, "raw_text": text}
 
-async def main():
-    years = season_window(keep=5)
+async def main(keep: int = 10):
+    years = season_window(keep=keep)
     ensure_dirs(years)
     purge_old_seasons(years)
 
@@ -93,4 +93,9 @@ async def main():
         await browser.close()
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--keep", type=int, default=10,
+                        help="Number of seasons to crawl (default: 10)")
+    args = parser.parse_args()
+    asyncio.run(main(keep=args.keep))

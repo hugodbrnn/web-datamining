@@ -4,62 +4,62 @@
 
 | Metric | Value |
 |---|---|
-| Total triples | 5,368 |
-| Unique subjects (entities) | 470 |
-| Unique predicates (relations) | 46 |
+| Total triples | 51,019 |
+| Unique subjects (entities) | 6,462 |
+| Unique predicates (relations) | 52 |
 
 ## Top-20 predicates by frequency
 
 | Predicate | Count |
 |---|---|
-| `participatedIn` | 2,114 |
-| `type` | 426 |
-| `forTeam` | 205 |
-| `forDriver` | 205 |
-| `name` | 186 |
-| `standingPosition` | 111 |
-| `forSeason` | 111 |
-| `competesInSeason` | 111 |
-| `standingPoints` | 111 |
-| `hasStanding` | 111 |
-| `partOfSeason` | 95 |
-| `raceDate` | 95 |
-| `hasRace` | 95 |
-| `heldAtCircuit` | 95 |
-| `points` | 94 |
-| `hasWon` | 94 |
-| `finishPosition` | 94 |
-| `winningTeam` | 94 |
-| `forGrandPrix` | 94 |
-| `winner` | 94 |
+| `type` | 6,293 |
+| `participatedIn` | 4,700 |
+| `forDriver` | 4,091 |
+| `forTeam` | 4,091 |
+| `pointsScored` | 3,849 |
+| `lapsCompleted` | 3,849 |
+| `finishPosition` | 3,849 |
+| `forRace` | 3,849 |
+| `hasWon` | 2,330 |
+| `winner` | 2,330 |
+| `name` | 2,048 |
+| `heldAtCircuit` | 2,044 |
+| `circuitName` | 1,908 |
+| `raceDate` | 1,170 |
+| `partOfSeason` | 1,165 |
+| `nationality` | 281 |
+| `standingPosition` | 242 |
+| `forSeason` | 242 |
+| `competesInSeason` | 242 |
+| `standingPoints` | 242 |
 
-## Expansion strategy (local)
+## Expansion strategy (15 phases — Wikidata)
 
-This `expanded_kb.ttl` was generated locally from curated F1 data.
-For the full Wikidata SPARQL expansion (target: 50,000 – 200,000 triples), run:
-```
-python src/kg/expand_kb.py
-```
-(Requires internet access to query.wikidata.org)
-
-### Local expansion phases
-1. Initial private KB (Formula1.com standings 2022-2026)
-2. F1 circuits — 23 circuits with country, city, length
-3. Country entities — 19 nationalities with continent + owl:sameAs
-4. Race calendars — all races 2022-2026 linked to circuits + seasons
-5. Race winners — 2022-2025 winners + 2026 races so far
-6. Season champions — WDC + WCC 2022-2024
-7. Teammate relationships — symmetric pairs per team per season
-8. Driver–country links — nationality + fromCountry
-9. Wikidata alignment — owl:sameAs + labels from TSV files
-10. Season participation — driver ↔ GP participation links
-11. Team season participation — team ↔ season links
+| Phase | Content | Key predicate |
+|---|---|---|
+| 1  | F1 races: name, date, season, circuit label | `ex:partOfSeason` |
+| 2  | F1 seasons: name, year, WDC | `ex:isChampionOf` |
+| 3  | F1 drivers: name, nationality, birth year | `ex:nationality` |
+| 4  | F1 constructors: name, country | `rdf:type ex:Team` |
+| 5  | Race winners via wdt:P1346 | `ex:winner` / `ex:hasWon` |
+| 6  | Podium 2nd & 3rd via qualified stmts | `ex:secondPlace` / `ex:thirdPlace` |
+| 7  | Race participation — direct wdt:P710 + F1 driver filter | `ex:participatedIn` |
+| 7b | Race participation — driver-centric wdt:P1344 | `ex:participatedIn` |
+| 8  | Driver career team memberships | `ex:drivesFor` |
+| 9  | Season standings: position + points | `ex:standingPosition` |
+| 10 | F1 circuits: name, country, city | `ex:city` |
+| 11 | Race → circuit URI links | `ex:heldAtCircuit` |
+| 12 | Pole positions per race (wdt:P1347) | `ex:polePosition` / `ex:hasPole` |
+| 13 | Fastest lap holders per race (wdt:P1351) | `ex:fastestLapBy` / `ex:hasFastestLap` |
+| 14 | Driver career stats: wins, poles, FL, titles | `ex:careerWins` |
+| 15 | Constructor championship winners per season | `ex:constructorsChampion` |
 
 ## Source files
 
 | File | Description |
 |---|---|
-| `auto_kg.ttl` | Private KB (Formula1.com) + ontology + Wikidata alignments |
-| `expanded_kb.ttl` | This expanded KB (local expansion) |
-| `alignment_drivers.tsv` | Driver alignment to Wikidata |
-| `alignment_teams.tsv` | Team alignment to Wikidata |
+| `auto_kg.ttl` | Private KB (Formula1.com scraped data) |
+| `expanded_kb.ttl` | Full expanded KB (this file, Turtle) |
+| `expanded_kb.nt` | Full expanded KB (N-Triples, for KGE) |
+| `alignment_drivers.tsv` | Driver → Wikidata alignment |
+| `alignment_teams.tsv` | Team → Wikidata alignment |
