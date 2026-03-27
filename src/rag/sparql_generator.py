@@ -279,13 +279,16 @@ class SPARQLGenerator:
         # Ensure PREFIX ex: is present
         if 'ex:' in sparql and 'PREFIX ex:' not in sparql:
             sparql = 'PREFIX ex: <http://example.org/f1#>\n' + sparql
-        # If the query has no SELECT/ASK/CONSTRUCT keyword at all, it's bare triple
-        # patterns — wrap in SELECT * WHERE { } so rdflib returns a parse error that
-        # the repair loop can catch, rather than a cryptic "found '?'" message.
+        # If the query has no SELECT/ASK/CONSTRUCT keyword at all, wrap it.
         if not re.search(r'\b(SELECT|ASK|CONSTRUCT|DESCRIBE)\b', sparql, re.IGNORECASE):
             sparql = re.sub(r'^(PREFIX[^\n]*\n)', r'\1SELECT * WHERE {\n', sparql,
                             flags=re.IGNORECASE)
             sparql = sparql.rstrip() + '\n}'
+        # If there's WHERE but no SELECT (e.g. tinyllama outputs "WHERE { FILTER(...) }")
+        elif re.search(r'\bWHERE\b', sparql, re.IGNORECASE) and \
+             not re.search(r'\b(SELECT|ASK|CONSTRUCT|DESCRIBE)\b', sparql[:sparql.lower().find('where')], re.IGNORECASE):
+            sparql = re.sub(r'(PREFIX[^\n]*\n)', r'\1', sparql, flags=re.IGNORECASE)
+            sparql = re.sub(r'(\bWHERE\b)', r'SELECT * WHERE', sparql, count=1, flags=re.IGNORECASE)
         return sparql
 
     @staticmethod

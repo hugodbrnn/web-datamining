@@ -14,6 +14,7 @@ Modes
   Interactive REPL  : python src/rag/main_rag.py
   Single question   : python src/rag/main_rag.py -q "Who won in 2024?"
   Demo mode         : python src/rag/main_rag.py --demo  (offline, no Ollama)
+  Evaluation table  : python src/rag/main_rag.py --evaluate  (baseline vs RAG)
   Schema inspect    : python src/rag/main_rag.py --schema
 
 Requirements
@@ -45,6 +46,20 @@ DEMO_QUESTIONS = [
     "How many races did Max Verstappen win in 2023?",
     "List all circuits in the 2025 season.",
     "Who were the teammates of Lewis Hamilton in 2024?",
+]
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Evaluation questions — chosen to highlight RAG advantage over direct LLM
+# ─────────────────────────────────────────────────────────────────────────────
+
+EVAL_QUESTIONS = [
+    "Who won the 2025 F1 World Championship?",
+    "How many races did Max Verstappen win in 2023?",
+    "Who won the 2026 F1 World Championship?",
+    "Which team does Carlos Sainz drive for in 2025?",
+    "What was Lando Norris's standing position in the 2024 championship?",
+    "Who were Oscar Piastri's teammates in 2024?",
+    "Which driver won the most races in 2024?",
 ]
 
 DEMO_SPARQLS = {
@@ -107,6 +122,66 @@ def run_demo(executor):
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# Evaluate mode — Baseline (LLM direct) vs RAG comparison
+# ─────────────────────────────────────────────────────────────────────────────
+
+def baseline_answer(question: str, generator) -> str:
+    """Ask the LLM directly without any KB context (pure parametric knowledge)."""
+    prompt = (
+        "Answer this Formula 1 question as accurately and concisely as possible "
+        "(1-2 sentences max):\n\n" + question
+    )
+    raw = generator._call_ollama([{"role": "user", "content": prompt}])
+    if raw is None:
+        return "(Ollama unavailable)"
+    # Truncate to first 2 sentences for table display
+    sentences = raw.replace("\n", " ").strip().split(". ")
+    return ". ".join(sentences[:2]).strip().rstrip(".")[:200]
+
+
+def run_evaluate(loop, executor, generator):
+    """Run baseline vs RAG on EVAL_QUESTIONS and print a markdown comparison table."""
+    print("\n" + "=" * 72)
+    print("RAG EVALUATION — Baseline (LLM direct) vs RAG (NL → SPARQL → KB)")
+    print(f"Model : {generator.model}")
+    print(f"KB    : {executor.kb_path.name}  ({executor.triple_count():,} triples)")
+    print("=" * 72)
+
+    rows_out = []
+    for i, question in enumerate(EVAL_QUESTIONS, 1):
+        print(f"\n[{i}/{len(EVAL_QUESTIONS)}] {question}")
+
+        base = baseline_answer(question, generator)
+        print(f"  Baseline : {base}")
+
+        kb_rows, final_query, error = loop.run(question)
+        if error:
+            rag_ans = f"ERROR: {error}"
+        elif not kb_rows:
+            rag_ans = "(no results)"
+        else:
+            rag_ans = executor.format_results(kb_rows, max_rows=5)
+        # First line only for table display
+        rag_short = rag_ans.split("\n")[0]
+        print(f"  RAG      : {rag_short}")
+
+        rows_out.append((question, base, rag_short))
+
+    # ── Markdown table ──────────────────────────────────────────────────────
+    print("\n\n" + "─" * 72)
+    print("MARKDOWN TABLE (copy into report)\n")
+    header = "| # | Question | Baseline (LLM, no KB) | RAG answer | RAG correct? |"
+    sep    = "|---|---|---|---|---|"
+    print(header)
+    print(sep)
+    for i, (q, b, r) in enumerate(rows_out, 1):
+        b_col = (b[:90] + "…") if len(b) > 90 else b
+        r_col = (r[:90] + "…") if len(r) > 90 else r
+        print(f"| {i} | {q} | {b_col} | {r_col} | ✅ / ❌ |")
+    print()
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # Live pipeline
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -166,17 +241,34 @@ def interactive_mode(loop, executor, verbose: bool):
 def main():
     parser = argparse.ArgumentParser(description="F1 KG RAG pipeline")
     parser.add_argument("-q", "--question", help="Single question to answer")
-    parser.add_argument("--demo",   action="store_true", help="Run offline demo")
-    parser.add_argument("--schema", action="store_true", help="Print KB schema and exit")
-    parser.add_argument("--model",  default="llama3.2:1b", help="Ollama model name")
-    parser.add_argument("--ollama", default="http://localhost:11434", help="Ollama URL")
-    parser.add_argument("--verbose", action="store_true", help="Show generated SPARQL")
+    parser.add_argument("--demo",     action="store_true", help="Run offline demo")
+    parser.add_argument("--evaluate", action="store_true", help="Baseline vs RAG comparison table")
+    parser.add_argument("--schema",   action="store_true", help="Print KB schema and exit")
+    parser.add_argument("--model",    default="llama3.2:1b", help="Ollama model name")
+    parser.add_argument("--ollama",   default="http://localhost:11434", help="Ollama URL")
+    parser.add_argument("--verbose",  action="store_true", help="Show generated SPARQL")
     args = parser.parse_args()
 
     # Schema inspection
     if args.schema:
         from src.rag.schema_summary import get_schema_summary
         print(get_schema_summary())
+        return
+
+    # Evaluate mode (Baseline vs RAG)
+    if args.evaluate:
+        executor, generator, loop = build_pipeline(args.model, args.ollama)
+        models = generator.list_models()
+        if not models:
+            print(
+                f"[ERROR] Cannot reach Ollama at {args.ollama}\n"
+                "  Start Ollama then run: python src/rag/main_rag.py --evaluate\n"
+            )
+            return
+        try:
+            run_evaluate(loop, executor, generator)
+        except FileNotFoundError as e:
+            print(f"[ERROR] {e}")
         return
 
     # Demo mode (no Ollama)

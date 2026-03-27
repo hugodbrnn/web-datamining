@@ -1,4 +1,24 @@
 local_entity	local_name	season	candidate_wikidata_id	candidate_label	confidence	status
+Mercedes	Mercedes	2015	Q255209	Mercedes	1.0	auto
+Ferrari	Ferrari	2015	Q1407594	Ferrari	1.0	auto
+Williams	Williams	2015	Q1688722	Williams	1.0	auto
+RedBullRacing	Red Bull Racing	2015	Q173663	Red Bull Racing	1.0	auto
+ForceIndia	Force India	2015	Q138933	Force India	1.0	auto
+Lotus	Lotus	2015	Q3645698	Lotus	1.0	auto
+STR	STR	2015	Q265193	microsatellite	0.8	auto
+Sauber	Sauber	2015	Q171335	Sauber Motorsport	0.8	auto
+McLaren	McLaren	2015	Q21484852	McLaren	1.0	auto
+Marussia	Marussia	2015	Q173179	Marussia F1	0.8	auto
+Mercedes	Mercedes	2016	Q255209	Mercedes	1.0	auto
+RedBullRacing	Red Bull Racing	2016	Q173663	Red Bull Racing	1.0	auto
+Ferrari	Ferrari	2016	Q1407594	Ferrari	1.0	auto
+ForceIndia	Force India	2016	Q138933	Force India	1.0	auto
+Williams	Williams	2016	Q1688722	Williams	1.0	auto
+McLaren	McLaren	2016	Q21484852	McLaren	1.0	auto
+ToroRosso	Toro Rosso	2016	Q141818	Scuderia Toro Rosso	0.8	auto
+Haas	Haas	2016	Q368894	Haas	1.0	auto
+Sauber	Sauber	2016	Q171335	Sauber Motorsport	0.8	auto
+MRT	MRT	2016	Q1025	Mauritania	0.8	auto
 Mercedes	Mercedes	2017	Q255209	Mercedes	1.0	auto
 Ferrari	Ferrari	2017	Q1407594	Ferrari	1.0	auto
 RedBullRacing	Red Bull Racing	2017	Q173663	Red Bull Racing	1.0	auto

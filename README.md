@@ -2,9 +2,9 @@
 
 Formula 1 knowledge graph pipeline: web crawling → information extraction → RDF KB → OWL reasoning → Knowledge Graph Embeddings → RAG Q&A.
 
-**Domain:** Formula 1 (seasons 2022–2026 + historical data via Wikidata)
+**Domain:** Formula 1 (seasons 2015–2027)
 **Namespace:** `ex: <http://example.org/f1#>`
-**Target KB size:** 50,000–200,000 triples
+**KB size:** 51,019 triples
 
 ---
 
@@ -23,20 +23,27 @@ playwright install chromium
 ### Step 1 — Crawl standings (formula1.com)
 
 ```bash
-python src/crawl/crawl_formula1.py            # last 10 seasons (default)
-python src/crawl/crawl_formula1.py --keep 5   # or limit to 5 seasons
+python src/crawl/crawl_formula1.py            # last 12 seasons (default)
 ```
 
 Produces `data/raw/formula1/{year}/{drivers,teams,races}.json`.
 
-### Step 2 — Extract standings
+### Step 2 — Extract standings + NER
 
 ```bash
 python src/ie/extract_drivers.py
 python src/ie/extract_teams.py
+python src/ie/ner.py                  # NER annotation layer (requires spaCy)
 ```
 
-Produces `data/extracted/drivers_{year}.json`, `teams_{year}.json`.
+Produces `data/extracted/drivers_{year}.json`, `teams_{year}.json`,
+and `data/extracted/ner_examples.json` (20 annotated sentences, 3 ambiguity cases).
+
+> **spaCy model (first run only):**
+> ```bash
+> pip install spacy
+> python -m spacy download en_core_web_sm
+> ```
 
 ### Step 3 — Crawl individual race results (formula1.com)
 
@@ -87,11 +94,15 @@ Queries Wikidata for F1 races, drivers, teams, podiums, standings, circuits.
 ### Step 8 — SWRL reasoning
 
 ```bash
-python src/reason/apply_rules.py
+python src/reason/reason_family.py   # warm-up: OldPerson rule on family.owl
+python src/reason/apply_rules.py     # F1 KB: 4 materialisation rules
 ```
 
-Materialises 4 rules: champion inference, race wins, teammate symmetry,
-season membership. Writes `kg_artifacts/reasoned_kb.ttl`.
+`reason_family.py` validates the SWRL engine on a 9-person toy ontology
+(`data/family.owl`) — infers `OldPerson` for individuals with `age > 60`.
+
+`apply_rules.py` materialises 4 rules: champion inference, race wins,
+teammate symmetry, season membership. Writes `kg_artifacts/reasoned_kb.ttl`.
 
 ### Step 9 — KGE data preparation
 
@@ -113,8 +124,8 @@ python src/kge/evaluate_kge.py
 ```bash
 # Install Ollama: https://ollama.com
 ollama pull llama3.2:1b
-python src/rag/app.py
-# Open http://localhost:5000
+python src/rag/app.py          # Web UI  → http://localhost:5000
+python src/rag/main_rag.py --evaluate   # Baseline vs RAG comparison table (7 questions)
 ```
 
 > **No Ollama?** The **Demo tab** runs 5 pre-built SPARQL queries directly — no LLM needed.
@@ -128,7 +139,6 @@ src/
 ├── crawl/
 │   ├── crawl_formula1.py       — Season standings (drivers, teams, races)
 │   ├── crawl_race_results.py   — Individual race result pages
-│   ├── collect_news.py         — News headlines (formula1.com + L'Équipe)
 │   └── seasons.py              — Rolling season window helper
 ├── ie/
 │   ├── extract_drivers.py      — Parse driver standings → JSON
@@ -138,7 +148,7 @@ src/
 │   ├── build_kb.py             — Standings → RDF (auto_kg.ttl)
 │   ├── build_teams.py          — Team standings → RDF
 │   ├── build_local_expansion.py — Circuits, calendars, winners → RDF
-│   ├── build_race_results_kg.py — Race results → RDF (+~21k triples)
+│   ├── build_race_results_kg.py — Race results → RDF (+~43k triples)
 │   └── expand_kb.py            — Wikidata SPARQL expansion (→ 50k–200k)
 ├── alignment/
 │   ├── align_drivers.py        — Driver → Wikidata entity linking
@@ -186,7 +196,7 @@ The KB uses two entity spaces that are intentionally kept separate:
 
 | Namespace | Source | Coverage |
 |---|---|---|
-| `ex: <http://example.org/f1#>` | formula1.com (private scrape) | Seasons 2017–2026 — standings, race results, circuits |
+| `ex: <http://example.org/f1#>` | formula1.com (private scrape) | Seasons 2015–2027 — standings, race results, circuits |
 | `wd: <http://www.wikidata.org/entity/>` | Wikidata SPARQL | Full F1 history — races, drivers, teams, podiums |
 
 These are bridged via `owl:sameAs` links produced by `src/alignment/`. A single real-world driver has both `ex:MaxVerstappen` (private data) and `wd:Q9256` (Wikidata entity) — this is **not a duplicate**: the two nodes carry different properties from different sources.
@@ -204,11 +214,9 @@ These are bridged via `owl:sameAs` links produced by `src/alignment/`. A single 
 | Source | Expected triples |
 |---|---|
 | Private KB (standings, circuits, local winners) | ~5,200 |
-| Race results 2017–2026 (crawl_race_results + build_race_results_kg) | ~43,000 |
-| Wikidata: races, seasons, drivers, teams | ~15,000 |
-| Wikidata: participation (Phase 7 + 7b) | ~16,000 |
-| Wikidata: standings, careers, circuits (Phases 8–11) | ~8,000 |
-| **Total (after deduplication)** | **~80,000–100,000** |
+| Race results 2015–2027 (crawl_race_results + build_race_results_kg) | ~43,000 |
+| Wikidata expansion (15 phases) | ~2,800 |
+| **Total (after deduplication)** | **51,019** |
 
 ---
 

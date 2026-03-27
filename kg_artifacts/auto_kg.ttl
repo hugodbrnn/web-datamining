@@ -2,6 +2,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 ex:F1Ontology a owl:Ontology ;
@@ -106,14 +107,16 @@ ex:AlexanderRossi a ex:Driver ;
     ex:drivesFor ex:Marussia ;
     ex:hasStanding ex:Standing_2015_AlexanderRossi ;
     ex:name "Alexander Rossi" ;
-    ex:nationality "USA" .
+    ex:nationality "USA" ;
+    owl:sameAs wd:Q559962 .
 
 ex:ArvidLindblad a ex:Driver ;
     ex:competesInSeason ex:Season2026 ;
     ex:drivesFor ex:RacingBulls ;
     ex:hasStanding ex:Standing_2026_ArvidLindblad ;
     ex:name "Arvid Lindblad" ;
-    ex:nationality "GBR" .
+    ex:nationality "GBR" ;
+    owl:sameAs wd:Q117035650 .
 
 ex:Circuit a owl:Class ;
     rdfs:label "Circuit"@en ;
@@ -124,28 +127,32 @@ ex:EstebanGutierrez a ex:Driver ;
     ex:drivesFor ex:Haas ;
     ex:hasStanding ex:Standing_2016_EstebanGutierrez ;
     ex:name "Esteban Gutierrez" ;
-    ex:nationality "MEX" .
+    ex:nationality "MEX" ;
+    owl:sameAs wd:Q114238727 .
 
 ex:JackAitken a ex:Driver ;
     ex:competesInSeason ex:Season2020 ;
     ex:drivesFor ex:Williams ;
     ex:hasStanding ex:Standing_2020_JackAitken ;
     ex:name "Jack Aitken" ;
-    ex:nationality "GBR" .
+    ex:nationality "GBR" ;
+    owl:sameAs wd:Q120635903 .
 
 ex:PietroFittipaldi a ex:Driver ;
     ex:competesInSeason ex:Season2020 ;
     ex:drivesFor ex:Haas ;
     ex:hasStanding ex:Standing_2020_PietroFittipaldi ;
     ex:name "Pietro Fittipaldi" ;
-    ex:nationality "BRA" .
+    ex:nationality "BRA" ;
+    owl:sameAs wd:Q10349696 .
 
 ex:RobertoMerhi a ex:Driver ;
     ex:competesInSeason ex:Season2015 ;
     ex:drivesFor ex:Marussia ;
     ex:hasStanding ex:Standing_2015_RobertoMerhi ;
     ex:name "Roberto Merhi" ;
-    ex:nationality "ESP" .
+    ex:nationality "ESP" ;
+    owl:sameAs wd:Q977386 .
 
 ex:Standing_2015_AlexanderRossi a ex:DriverStanding ;
     ex:forDriver ex:AlexanderRossi ;
@@ -1846,7 +1853,8 @@ ex:WillStevens a ex:Driver ;
     ex:drivesFor ex:Marussia ;
     ex:hasStanding ex:Standing_2015_WillStevens ;
     ex:name "Will Stevens" ;
-    ex:nationality "GBR" .
+    ex:nationality "GBR" ;
+    owl:sameAs wd:Q538467 .
 
 ex:BrendonHartley a ex:Driver ;
     ex:competesInSeason ex:Season2017,
@@ -1856,7 +1864,8 @@ ex:BrendonHartley a ex:Driver ;
     ex:hasStanding ex:Standing_2017_BrendonHartley,
         ex:Standing_2018_BrendonHartley ;
     ex:name "Brendon Hartley" ;
-    ex:nationality "NZL" .
+    ex:nationality "NZL" ;
+    owl:sameAs wd:Q361113 .
 
 ex:FelipeNasr a ex:Driver ;
     ex:competesInSeason ex:Season2015,
@@ -1865,7 +1874,8 @@ ex:FelipeNasr a ex:Driver ;
     ex:hasStanding ex:Standing_2015_FelipeNasr,
         ex:Standing_2016_FelipeNasr ;
     ex:name "Felipe Nasr" ;
-    ex:nationality "BRA" .
+    ex:nationality "BRA" ;
+    owl:sameAs wd:Q777319 .
 
 ex:GabrielBortoleto a ex:Driver ;
     ex:competesInSeason ex:Season2025,
@@ -1875,7 +1885,8 @@ ex:GabrielBortoleto a ex:Driver ;
     ex:hasStanding ex:Standing_2025_GabrielBortoleto,
         ex:Standing_2026_GabrielBortoleto ;
     ex:name "Gabriel Bortoleto" ;
-    ex:nationality "BRA" .
+    ex:nationality "BRA" ;
+    owl:sameAs wd:Q106641273 .
 
 ex:IsackHadjar a ex:Driver ;
     ex:competesInSeason ex:Season2025,
@@ -1885,7 +1896,8 @@ ex:IsackHadjar a ex:Driver ;
     ex:hasStanding ex:Standing_2025_IsackHadjar,
         ex:Standing_2026_IsackHadjar ;
     ex:name "Isack Hadjar" ;
-    ex:nationality "FRA" .
+    ex:nationality "FRA" ;
+    owl:sameAs wd:Q105071364 .
 
 ex:JackDoohan a ex:Driver ;
     ex:competesInSeason ex:Season2024,
@@ -1894,7 +1906,8 @@ ex:JackDoohan a ex:Driver ;
     ex:hasStanding ex:Standing_2024_JackDoohan,
         ex:Standing_2025_JackDoohan ;
     ex:name "Jack Doohan" ;
-    ex:nationality "AUS" .
+    ex:nationality "AUS" ;
+    owl:sameAs wd:Q81453998 .
 
 ex:JensonButton a ex:Driver ;
     ex:competesInSeason ex:Season2015,
@@ -1903,7 +1916,8 @@ ex:JensonButton a ex:Driver ;
     ex:hasStanding ex:Standing_2015_JensonButton,
         ex:Standing_2016_JensonButton ;
     ex:name "Jenson Button" ;
-    ex:nationality "GBR" .
+    ex:nationality "GBR" ;
+    owl:sameAs wd:Q10510 .
 
 ex:JolyonPalmer a ex:Driver ;
     ex:competesInSeason ex:Season2016,
@@ -1912,7 +1926,8 @@ ex:JolyonPalmer a ex:Driver ;
     ex:hasStanding ex:Standing_2016_JolyonPalmer,
         ex:Standing_2017_JolyonPalmer ;
     ex:name "Jolyon Palmer" ;
-    ex:nationality "GBR" .
+    ex:nationality "GBR" ;
+    owl:sameAs wd:Q714365 .
 
 ex:KimiAntonelli a ex:Driver ;
     ex:competesInSeason ex:Season2025,
@@ -1921,7 +1936,8 @@ ex:KimiAntonelli a ex:Driver ;
     ex:hasStanding ex:Standing_2025_KimiAntonelli,
         ex:Standing_2026_KimiAntonelli ;
     ex:name "Kimi Antonelli" ;
-    ex:nationality "ITA" .
+    ex:nationality "ITA" ;
+    owl:sameAs wd:Q112073790 .
 
 ex:LoganSargeant a ex:Driver ;
     ex:competesInSeason ex:Season2023,
@@ -1930,10 +1946,12 @@ ex:LoganSargeant a ex:Driver ;
     ex:hasStanding ex:Standing_2023_LoganSargeant,
         ex:Standing_2024_LoganSargeant ;
     ex:name "Logan Sargeant" ;
-    ex:nationality "USA" .
+    ex:nationality "USA" ;
+    owl:sameAs wd:Q28037494 .
 
 ex:Lotus a ex:Team ;
-    ex:name "Lotus" .
+    ex:name "Lotus" ;
+    owl:sameAs wd:Q3645698 .
 
 ex:MickSchumacher a ex:Driver ;
     ex:competesInSeason ex:Season2021,
@@ -1942,7 +1960,8 @@ ex:MickSchumacher a ex:Driver ;
     ex:hasStanding ex:Standing_2021_MickSchumacher,
         ex:Standing_2022_MickSchumacher ;
     ex:name "Mick Schumacher" ;
-    ex:nationality "GER" .
+    ex:nationality "GER" ;
+    owl:sameAs wd:Q18119599 .
 
 ex:NicoRosberg a ex:Driver ;
     ex:competesInSeason ex:Season2015,
@@ -1951,7 +1970,8 @@ ex:NicoRosberg a ex:Driver ;
     ex:hasStanding ex:Standing_2015_NicoRosberg,
         ex:Standing_2016_NicoRosberg ;
     ex:name "Nico Rosberg" ;
-    ex:nationality "GER" .
+    ex:nationality "GER" ;
+    owl:sameAs wd:Q75820 .
 
 ex:NyckDeVries a ex:Driver ;
     ex:competesInSeason ex:Season2022,
@@ -1961,7 +1981,8 @@ ex:NyckDeVries a ex:Driver ;
     ex:hasStanding ex:Standing_2022_NyckDeVries,
         ex:Standing_2023_NyckDeVries ;
     ex:name "Nyck De Vries" ;
-    ex:nationality "NED" .
+    ex:nationality "NED" ;
+    owl:sameAs wd:Q771382 .
 
 ex:PascalWehrlein a ex:Driver ;
     ex:competesInSeason ex:Season2016,
@@ -1971,7 +1992,8 @@ ex:PascalWehrlein a ex:Driver ;
     ex:hasStanding ex:Standing_2016_PascalWehrlein,
         ex:Standing_2017_PascalWehrlein ;
     ex:name "Pascal Wehrlein" ;
-    ex:nationality "GER" .
+    ex:nationality "GER" ;
+    owl:sameAs wd:Q85762 .
 
 ex:FelipeMassa a ex:Driver ;
     ex:competesInSeason ex:Season2015,
@@ -1982,7 +2004,8 @@ ex:FelipeMassa a ex:Driver ;
         ex:Standing_2016_FelipeMassa,
         ex:Standing_2017_FelipeMassa ;
     ex:name "Felipe Massa" ;
-    ex:nationality "BRA" .
+    ex:nationality "BRA" ;
+    owl:sameAs wd:Q82652 .
 
 ex:FrancoColapinto a ex:Driver ;
     ex:competesInSeason ex:Season2024,
@@ -1994,7 +2017,8 @@ ex:FrancoColapinto a ex:Driver ;
         ex:Standing_2025_FrancoColapinto,
         ex:Standing_2026_FrancoColapinto ;
     ex:name "Franco Colapinto" ;
-    ex:nationality "ARG" .
+    ex:nationality "ARG" ;
+    owl:sameAs wd:Q88463514 .
 
 ex:NicholasLatifi a ex:Driver ;
     ex:competesInSeason ex:Season2020,
@@ -2005,7 +2029,8 @@ ex:NicholasLatifi a ex:Driver ;
         ex:Standing_2021_NicholasLatifi,
         ex:Standing_2022_NicholasLatifi ;
     ex:name "Nicholas Latifi" ;
-    ex:nationality "CAN" .
+    ex:nationality "CAN" ;
+    owl:sameAs wd:Q8898994 .
 
 ex:OliverBearman a ex:Driver ;
     ex:competesInSeason ex:Season2024,
@@ -2017,7 +2042,8 @@ ex:OliverBearman a ex:Driver ;
         ex:Standing_2025_OliverBearman,
         ex:Standing_2026_OliverBearman ;
     ex:name "Oliver Bearman" ;
-    ex:nationality "GBR" .
+    ex:nationality "GBR" ;
+    owl:sameAs wd:Q107023292 .
 
 ex:ZhouGuanyu a ex:Driver ;
     ex:competesInSeason ex:Season2022,
@@ -2029,7 +2055,8 @@ ex:ZhouGuanyu a ex:Driver ;
         ex:Standing_2023_ZhouGuanyu,
         ex:Standing_2024_ZhouGuanyu ;
     ex:name "Zhou Guanyu" ;
-    ex:nationality "CHN" .
+    ex:nationality "CHN" ;
+    owl:sameAs wd:Q17327107 .
 
 ex:AntonioGiovinazzi a ex:Driver ;
     ex:competesInSeason ex:Season2017,
@@ -2043,13 +2070,16 @@ ex:AntonioGiovinazzi a ex:Driver ;
         ex:Standing_2020_AntonioGiovinazzi,
         ex:Standing_2021_AntonioGiovinazzi ;
     ex:name "Antonio Giovinazzi" ;
-    ex:nationality "ITA" .
+    ex:nationality "ITA" ;
+    owl:sameAs wd:Q7084843 .
 
 ex:Audi a ex:Team ;
-    ex:name "Audi" .
+    ex:name "Audi" ;
+    owl:sameAs wd:Q482994 .
 
 ex:Cadillac a ex:Team ;
-    ex:name "Cadillac" .
+    ex:name "Cadillac" ;
+    owl:sameAs wd:Q27436 .
 
 ex:GrandPrix a owl:Class ;
     rdfs:label "Grand Prix"@en ;
@@ -2068,10 +2098,12 @@ ex:LiamLawson a ex:Driver ;
         ex:Standing_2025_LiamLawson,
         ex:Standing_2026_LiamLawson ;
     ex:name "Liam Lawson" ;
-    ex:nationality "NZL" .
+    ex:nationality "NZL" ;
+    owl:sameAs wd:Q59180330 .
 
 ex:MRT a ex:Team ;
-    ex:name "MRT" .
+    ex:name "MRT" ;
+    owl:sameAs wd:Q1025 .
 
 ex:OscarPiastri a ex:Driver ;
     ex:competesInSeason ex:Season2023,
@@ -2084,10 +2116,12 @@ ex:OscarPiastri a ex:Driver ;
         ex:Standing_2025_OscarPiastri,
         ex:Standing_2026_OscarPiastri ;
     ex:name "Oscar Piastri" ;
-    ex:nationality "AUS" .
+    ex:nationality "AUS" ;
+    owl:sameAs wd:Q28741262 .
 
 ex:STR a ex:Team ;
-    ex:name "STR" .
+    ex:name "STR" ;
+    owl:sameAs wd:Q265193 .
 
 ex:TeamStanding a owl:Class ;
     rdfs:label "Team Standing"@en ;
@@ -2098,7 +2132,8 @@ ex:RaceResult a owl:Class ;
     rdfs:comment "The result of one driver in one Grand Prix."@en .
 
 ex:ScuderiaToroRosso a ex:Team ;
-    ex:name "Scuderia Toro Rosso" .
+    ex:name "Scuderia Toro Rosso" ;
+    owl:sameAs wd:Q141818 .
 
 ex:YukiTsunoda a ex:Driver ;
     ex:competesInSeason ex:Season2021,
@@ -2115,19 +2150,24 @@ ex:YukiTsunoda a ex:Driver ;
         ex:Standing_2024_YukiTsunoda,
         ex:Standing_2025_YukiTsunoda ;
     ex:name "Yuki Tsunoda" ;
-    ex:nationality "JPN" .
+    ex:nationality "JPN" ;
+    owl:sameAs wd:Q59209579 .
 
 ex:AlfaRomeo a ex:Team ;
-    ex:name "Alfa Romeo" .
+    ex:name "Alfa Romeo" ;
+    owl:sameAs wd:Q26921 .
 
 ex:HaasF1Team a ex:Team ;
-    ex:name "Haas F1 Team" .
+    ex:name "Haas F1 Team" ;
+    owl:sameAs wd:Q16300222 .
 
 ex:Marussia a ex:Team ;
-    ex:name "Marussia" .
+    ex:name "Marussia" ;
+    owl:sameAs wd:Q173179 .
 
 ex:RB a ex:Team ;
-    ex:name "RB" .
+    ex:name "RB" ;
+    owl:sameAs wd:Q895 .
 
 ex:RomainGrosjean a ex:Driver ;
     ex:competesInSeason ex:Season2015,
@@ -2145,10 +2185,12 @@ ex:RomainGrosjean a ex:Driver ;
         ex:Standing_2019_RomainGrosjean,
         ex:Standing_2020_RomainGrosjean ;
     ex:name "Romain Grosjean" ;
-    ex:nationality "FRA" .
+    ex:nationality "FRA" ;
+    owl:sameAs wd:Q82742 .
 
 ex:ToroRosso a ex:Team ;
-    ex:name "Toro Rosso" .
+    ex:name "Toro Rosso" ;
+    owl:sameAs wd:Q141818 .
 
 ex:AlexanderAlbon a ex:Driver ;
     ex:competesInSeason ex:Season2019,
@@ -2168,7 +2210,8 @@ ex:AlexanderAlbon a ex:Driver ;
         ex:Standing_2025_AlexanderAlbon,
         ex:Standing_2026_AlexanderAlbon ;
     ex:name "Alexander Albon" ;
-    ex:nationality "THA" .
+    ex:nationality "THA" ;
+    owl:sameAs wd:Q16149172 .
 
 ex:KimiRäikkönen a ex:Driver ;
     ex:competesInSeason ex:Season2015,
@@ -2188,13 +2231,16 @@ ex:KimiRäikkönen a ex:Driver ;
         ex:Standing_2020_KimiRäikkönen,
         ex:Standing_2021_KimiRäikkönen ;
     ex:name "Kimi Räikkönen" ;
-    ex:nationality "FIN" .
+    ex:nationality "FIN" ;
+    owl:sameAs wd:Q11192 .
 
 ex:RacingBulls a ex:Team ;
-    ex:name "Racing Bulls" .
+    ex:name "Racing Bulls" ;
+    owl:sameAs wd:Q124350606 .
 
 ex:AlfaRomeoRacing a ex:Team ;
-    ex:name "Alfa Romeo Racing" .
+    ex:name "Alfa Romeo Racing" ;
+    owl:sameAs wd:Q622489 .
 
 ex:GeorgeRussell a ex:Driver ;
     ex:competesInSeason ex:Season2019,
@@ -2216,7 +2262,8 @@ ex:GeorgeRussell a ex:Driver ;
         ex:Standing_2025_GeorgeRussell,
         ex:Standing_2026_GeorgeRussell ;
     ex:name "George Russell" ;
-    ex:nationality "GBR" .
+    ex:nationality "GBR" ;
+    owl:sameAs wd:Q17319645 .
 
 ex:KevinMagnussen a ex:Driver ;
     ex:competesInSeason ex:Season2016,
@@ -2238,10 +2285,12 @@ ex:KevinMagnussen a ex:Driver ;
         ex:Standing_2023_KevinMagnussen,
         ex:Standing_2024_KevinMagnussen ;
     ex:name "Kevin Magnussen" ;
-    ex:nationality "DEN" .
+    ex:nationality "DEN" ;
+    owl:sameAs wd:Q1740212 .
 
 ex:KickSauber a ex:Team ;
-    ex:name "Kick Sauber" .
+    ex:name "Kick Sauber" ;
+    owl:sameAs wd:Q171335 .
 
 ex:LandoNorris a ex:Driver ;
     ex:competesInSeason ex:Season2019,
@@ -2262,7 +2311,8 @@ ex:LandoNorris a ex:Driver ;
         ex:Standing_2025_LandoNorris,
         ex:Standing_2026_LandoNorris ;
     ex:name "Lando Norris" ;
-    ex:nationality "GBR" .
+    ex:nationality "GBR" ;
+    owl:sameAs wd:Q22007193 .
 
 ex:RacingPointBWT a ex:Team ;
     ex:name "Racing Point BWT" .
@@ -2287,7 +2337,8 @@ ex:SebastianVettel a ex:Driver ;
         ex:Standing_2021_SebastianVettel,
         ex:Standing_2022_SebastianVettel ;
     ex:name "Sebastian Vettel" ;
-    ex:nationality "GER" .
+    ex:nationality "GER" ;
+    owl:sameAs wd:Q42311 .
 
 ex:CharlesLeclerc a ex:Driver ;
     ex:competesInSeason ex:Season2018,
@@ -2311,10 +2362,12 @@ ex:CharlesLeclerc a ex:Driver ;
         ex:Standing_2025_CharlesLeclerc,
         ex:Standing_2026_CharlesLeclerc ;
     ex:name "Charles Leclerc" ;
-    ex:nationality "MON" .
+    ex:nationality "MON" ;
+    owl:sameAs wd:Q17541912 .
 
 ex:Sauber a ex:Team ;
-    ex:name "Sauber" .
+    ex:name "Sauber" ;
+    owl:sameAs wd:Q171335 .
 
 ex:DanielRicciardo a ex:Driver ;
     ex:competesInSeason ex:Season2015,
@@ -2343,7 +2396,8 @@ ex:DanielRicciardo a ex:Driver ;
         ex:Standing_2023_DanielRicciardo,
         ex:Standing_2024_DanielRicciardo ;
     ex:name "Daniel Ricciardo" ;
-    ex:nationality "AUS" .
+    ex:nationality "AUS" ;
+    owl:sameAs wd:Q82816 .
 
 ex:EstebanOcon a ex:Driver ;
     ex:competesInSeason ex:Season2016,
@@ -2372,7 +2426,8 @@ ex:EstebanOcon a ex:Driver ;
         ex:Standing_2025_EstebanOcon,
         ex:Standing_2026_EstebanOcon ;
     ex:name "Esteban Ocon" ;
-    ex:nationality "FRA" .
+    ex:nationality "FRA" ;
+    owl:sameAs wd:Q15074165 .
 
 ex:FernandoAlonso a ex:Driver ;
     ex:competesInSeason ex:Season2015,
@@ -2399,7 +2454,8 @@ ex:FernandoAlonso a ex:Driver ;
         ex:Standing_2025_FernandoAlonso,
         ex:Standing_2026_FernandoAlonso ;
     ex:name "Fernando Alonso" ;
-    ex:nationality "ESP" .
+    ex:nationality "ESP" ;
+    owl:sameAs wd:Q10514 .
 
 ex:LanceStroll a ex:Driver ;
     ex:competesInSeason ex:Season2017,
@@ -2426,7 +2482,8 @@ ex:LanceStroll a ex:Driver ;
         ex:Standing_2025_LanceStroll,
         ex:Standing_2026_LanceStroll ;
     ex:name "Lance Stroll" ;
-    ex:nationality "CAN" .
+    ex:nationality "CAN" ;
+    owl:sameAs wd:Q16238921 .
 
 ex:PierreGasly a ex:Driver ;
     ex:competesInSeason ex:Season2017,
@@ -2454,7 +2511,8 @@ ex:PierreGasly a ex:Driver ;
         ex:Standing_2025_PierreGasly,
         ex:Standing_2026_PierreGasly ;
     ex:name "Pierre Gasly" ;
-    ex:nationality "FRA" .
+    ex:nationality "FRA" ;
+    owl:sameAs wd:Q11816647 .
 
 ex:CarlosSainz a ex:Driver ;
     ex:competesInSeason ex:Season2015,
@@ -2486,10 +2544,12 @@ ex:CarlosSainz a ex:Driver ;
         ex:Standing_2025_CarlosSainz,
         ex:Standing_2026_CarlosSainz ;
     ex:name "Carlos Sainz" ;
-    ex:nationality "ESP" .
+    ex:nationality "ESP" ;
+    owl:sameAs wd:Q544856 .
 
 ex:ForceIndia a ex:Team ;
-    ex:name "Force India" .
+    ex:name "Force India" ;
+    owl:sameAs wd:Q138933 .
 
 ex:LewisHamilton a ex:Driver ;
     ex:competesInSeason ex:Season2015,
@@ -2517,7 +2577,8 @@ ex:LewisHamilton a ex:Driver ;
         ex:Standing_2025_LewisHamilton,
         ex:Standing_2026_LewisHamilton ;
     ex:name "Lewis Hamilton" ;
-    ex:nationality "GBR" .
+    ex:nationality "GBR" ;
+    owl:sameAs wd:Q9673 .
 
 ex:MaxVerstappen a ex:Driver ;
     ex:competesInSeason ex:Season2015,
@@ -2545,7 +2606,8 @@ ex:MaxVerstappen a ex:Driver ;
         ex:Standing_2025_MaxVerstappen,
         ex:Standing_2026_MaxVerstappen ;
     ex:name "Max Verstappen" ;
-    ex:nationality "NED" .
+    ex:nationality "NED" ;
+    owl:sameAs wd:Q2239218 .
 
 ex:NicoHulkenberg a ex:Driver ;
     ex:competesInSeason ex:Season2015,
@@ -2578,7 +2640,8 @@ ex:NicoHulkenberg a ex:Driver ;
         ex:Standing_2025_NicoHulkenberg,
         ex:Standing_2026_NicoHulkenberg ;
     ex:name "Nico Hulkenberg" ;
-    ex:nationality "GER" .
+    ex:nationality "GER" ;
+    owl:sameAs wd:Q76547 .
 
 ex:SergioPerez a ex:Driver ;
     ex:competesInSeason ex:Season2015,
@@ -2608,7 +2671,8 @@ ex:SergioPerez a ex:Driver ;
         ex:Standing_2024_SergioPerez,
         ex:Standing_2026_SergioPerez ;
     ex:name "Sergio Perez" ;
-    ex:nationality "MEX" .
+    ex:nationality "MEX" ;
+    owl:sameAs wd:Q82805 .
 
 ex:ValtteriBottas a ex:Driver ;
     ex:competesInSeason ex:Season2015,
@@ -2639,10 +2703,12 @@ ex:ValtteriBottas a ex:Driver ;
         ex:Standing_2024_ValtteriBottas,
         ex:Standing_2026_ValtteriBottas ;
     ex:name "Valtteri Bottas" ;
-    ex:nationality "FIN" .
+    ex:nationality "FIN" ;
+    owl:sameAs wd:Q138745 .
 
 ex:AlphaTauri a ex:Team ;
-    ex:name "AlphaTauri" .
+    ex:name "AlphaTauri" ;
+    owl:sameAs wd:Q60752400 .
 
 ex:Season a owl:Class ;
     rdfs:label "Season"@en ;
@@ -2652,25 +2718,32 @@ ex: a ex:Team ;
     ex:name "" .
 
 ex:AstonMartin a ex:Team ;
-    ex:name "Aston Martin" .
+    ex:name "Aston Martin" ;
+    owl:sameAs wd:Q63049904 .
 
 ex:Alpine a ex:Team ;
-    ex:name "Alpine" .
+    ex:name "Alpine" ;
+    owl:sameAs wd:Q661540 .
 
 ex:Haas a ex:Team ;
-    ex:name "Haas" .
+    ex:name "Haas" ;
+    owl:sameAs wd:Q368894 .
 
 ex:Ferrari a ex:Team ;
-    ex:name "Ferrari" .
+    ex:name "Ferrari" ;
+    owl:sameAs wd:Q1407594 .
 
 ex:McLaren a ex:Team ;
-    ex:name "McLaren" .
+    ex:name "McLaren" ;
+    owl:sameAs wd:Q21484852 .
 
 ex:Mercedes a ex:Team ;
-    ex:name "Mercedes" .
+    ex:name "Mercedes" ;
+    owl:sameAs wd:Q255209 .
 
 ex:RedBullRacing a ex:Team ;
-    ex:name "Red Bull Racing" .
+    ex:name "Red Bull Racing" ;
+    owl:sameAs wd:Q173663 .
 
 ex:Team a owl:Class ;
     rdfs:label "Team"@en ;
@@ -2689,7 +2762,8 @@ ex:Season2019 a ex:Season ;
     ex:seasonYear "2019"^^xsd:int .
 
 ex:Williams a ex:Team ;
-    ex:name "Williams" .
+    ex:name "Williams" ;
+    owl:sameAs wd:Q1688722 .
 
 ex:Season2016 a ex:Season ;
     ex:seasonYear "2016"^^xsd:int .

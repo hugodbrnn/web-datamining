@@ -153,6 +153,68 @@ def demo():
     return jsonify(results)
 
 
+@app.route("/api/evaluate")
+def evaluate():
+    """
+    Stream baseline vs RAG results row by row using Server-Sent Events.
+    Each question emits one SSE event as soon as it completes — no waiting
+    for the full batch.
+    """
+    import json as _json
+    from flask import Response, stream_with_context
+    from src.rag.main_rag import EVAL_QUESTIONS, baseline_answer
+
+    def generate():
+        try:
+            executor, generator, loop = get_pipeline()
+        except FileNotFoundError as exc:
+            yield f"data: {_json.dumps({'error': str(exc)})}\n\n"
+            return
+
+        if not generator.list_models():
+            yield (
+                "data: " +
+                _json.dumps({"error": "Ollama not reachable. Start Ollama and run: ollama pull llama3.2:1b"}) +
+                "\n\n"
+            )
+            return
+
+        # Signal total count so the UI can show a progress bar
+        yield f"data: {_json.dumps({'total': len(EVAL_QUESTIONS)})}\n\n"
+
+        for idx, question in enumerate(EVAL_QUESTIONS):
+            base = baseline_answer(question, generator)
+
+            kb_rows, final_query, error = loop.run(question)
+            if error:
+                rag_ans = f"ERROR: {error}"
+            elif not kb_rows:
+                rag_ans = "(no results)"
+            else:
+                rag_ans = executor.format_results(kb_rows, max_rows=5).split("\n")[0]
+
+            row = {
+                "idx":      idx,
+                "question": question,
+                "baseline": base,
+                "rag":      rag_ans,
+                "sparql":   final_query or "",
+                "error":    error,
+            }
+            yield f"data: {_json.dumps(row)}\n\n"
+
+        yield "data: {\"done\": true}\n\n"
+
+    return Response(
+        stream_with_context(generate()),
+        mimetype="text/event-stream",
+        headers={
+            "Cache-Control":  "no-cache",
+            "X-Accel-Buffering": "no",   # disable Nginx buffering if proxied
+        },
+    )
+
+
 @app.route("/api/schema")
 def schema():
     """Return KB statistics + class/property breakdown for the Schema tab."""

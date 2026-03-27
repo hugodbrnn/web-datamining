@@ -51,5 +51,3 @@ models/
 *.log
 logs/
 
-# Local assistant config (never commit)
-.claude/

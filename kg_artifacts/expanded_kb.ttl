@@ -32416,13 +32416,6 @@ wd:Q963531 a ex:GrandPrix ;
 
 wd:Q975207 ex:careerWins "97"^^xsd:int .
 
-wd:Q977386 a ex:Driver ;
-    ex:birthYear "1991"^^xsd:int ;
-    ex:careerWins "13"^^xsd:int,
-        "17"^^xsd:int ;
-    ex:name "Roberto Merhi"@en ;
-    ex:nationality "Spain"@en .
-
 wd:Q981543 a ex:Driver ;
     ex:birthYear "1993"^^xsd:int ;
     ex:careerWins "12"^^xsd:int ;
@@ -35973,6 +35966,13 @@ wd:Q8898994 rdfs:label "Nicholas Latifi"@en ;
 
 wd:Q895 rdfs:label "rubidium"@en ;
     ex:alignmentConfidence 0.8 .
+
+wd:Q977386 a ex:Driver ;
+    ex:birthYear "1991"^^xsd:int ;
+    ex:careerWins "13"^^xsd:int,
+        "17"^^xsd:int ;
+    ex:name "Roberto Merhi"@en ;
+    ex:nationality "Spain"@en .
 
 wd:Q985 a ex:Circuit ;
     ex:city "Germany"@en ;
@@ -46531,7 +46531,8 @@ ex:AlexanderRossi a ex:Driver ;
         ex:GP_2015_Spain,
         ex:GP_2015_UnitedStates ;
     ex:teammateOf ex:RobertoMerhi,
-        ex:WillStevens .
+        ex:WillStevens ;
+    owl:sameAs wd:Q559962 .
 
 ex:CircuitDeCatalunya a ex:Circuit ;
     ex:circuitCity "Barcelona" ;
@@ -47512,7 +47513,8 @@ ex:RobertoMerhi a ex:Driver ;
         ex:GP_2015_Spain,
         ex:GP_2015_UnitedStates ;
     ex:teammateOf ex:AlexanderRossi,
-        ex:WillStevens .
+        ex:WillStevens ;
+    owl:sameAs wd:Q977386 .
 
 wd:Q17 a ex:Circuit ;
     ex:name "Japan"@en ;
@@ -47714,7 +47716,8 @@ ex:EstebanGutierrez a ex:Driver ;
         ex:GP_2016_Singapore,
         ex:GP_2016_Spain,
         ex:GP_2016_UnitedStates ;
-    ex:teammateOf ex:RomainGrosjean .
+    ex:teammateOf ex:RomainGrosjean ;
+    owl:sameAs wd:Q114238727 .
 
 ex:NyckDeVries a ex:Driver ;
     ex:competesInSeason ex:Season2022,
@@ -47824,25 +47827,8 @@ ex:WillStevens a ex:Driver ;
         ex:GP_2015_Spain,
         ex:GP_2015_UnitedStates ;
     ex:teammateOf ex:AlexanderRossi,
-        ex:RobertoMerhi .
-
-wd:Q10510 ex:hasWon wd:Q11914,
-        wd:Q15070,
-        wd:Q15071,
-        wd:Q15073,
-        wd:Q171361,
-        wd:Q172015,
-        wd:Q172908,
-        wd:Q172912,
-        wd:Q172950,
-        wd:Q17328,
-        wd:Q21009,
-        wd:Q305879,
-        wd:Q507730,
-        wd:Q54437,
-        wd:Q66103,
-        wd:Q665909 ;
-    ex:isChampionOf wd:Q69923 .
+        ex:RobertoMerhi ;
+    owl:sameAs wd:Q538467 .
 
 wd:Q171332 a ex:Circuit ;
     ex:city "Sakhir"@en ;
@@ -47861,6 +47847,24 @@ wd:Q171424 a ex:Circuit ;
 
 ex: a ex:Team ;
     ex:name "" .
+
+wd:Q10510 ex:hasWon wd:Q11914,
+        wd:Q15070,
+        wd:Q15071,
+        wd:Q15073,
+        wd:Q171361,
+        wd:Q172015,
+        wd:Q172908,
+        wd:Q172912,
+        wd:Q172950,
+        wd:Q17328,
+        wd:Q21009,
+        wd:Q305879,
+        wd:Q507730,
+        wd:Q54437,
+        wd:Q66103,
+        wd:Q665909 ;
+    ex:isChampionOf wd:Q69923 .
 
 wd:Q171992 ex:hasWon wd:Q171618,
         wd:Q171685,
@@ -48476,37 +48480,13 @@ wd:Q50195 a ex:Circuit ;
     ex:name "Imola"@en ;
     ex:nationality "Italy"@en .
 
-wd:Q75820 ex:hasWon wd:Q13411137,
-        wd:Q15298266,
-        wd:Q15978620,
-        wd:Q16185866,
-        wd:Q16912768,
-        wd:Q17195889,
-        wd:Q173011,
-        wd:Q19601896,
-        wd:Q19760257,
-        wd:Q19787973,
-        wd:Q19787992,
-        wd:Q19787995,
-        wd:Q19819282,
-        wd:Q21674869,
-        wd:Q22681246,
-        wd:Q23045045,
-        wd:Q23045058,
-        wd:Q23045137,
-        wd:Q23045146,
-        wd:Q23045163,
-        wd:Q23045179,
-        wd:Q23045185,
-        wd:Q6352450 ;
-    ex:isChampionOf wd:Q17455748 .
-
 ex:ERA a ex:Team ;
     ex:name "ERA" .
 
 ex:Lotus a ex:Team ;
     ex:name "Lotus" ;
-    ex:participatedInSeason ex:Season2015 .
+    ex:participatedInSeason ex:Season2015 ;
+    owl:sameAs wd:Q3645698 .
 
 ex:Maserati a ex:Team ;
     ex:name "Maserati" .
@@ -48542,6 +48522,31 @@ wd:Q171288 a ex:Circuit ;
     ex:city "City of Port Phillip"@en ;
     ex:name "Albert Park Circuit"@en ;
     ex:nationality "Australia"@en .
+
+wd:Q75820 ex:hasWon wd:Q13411137,
+        wd:Q15298266,
+        wd:Q15978620,
+        wd:Q16185866,
+        wd:Q16912768,
+        wd:Q17195889,
+        wd:Q173011,
+        wd:Q19601896,
+        wd:Q19760257,
+        wd:Q19787973,
+        wd:Q19787992,
+        wd:Q19787995,
+        wd:Q19819282,
+        wd:Q21674869,
+        wd:Q22681246,
+        wd:Q23045045,
+        wd:Q23045058,
+        wd:Q23045137,
+        wd:Q23045146,
+        wd:Q23045163,
+        wd:Q23045179,
+        wd:Q23045185,
+        wd:Q6352450 ;
+    ex:isChampionOf wd:Q17455748 .
 
 ex:GP_2017_Singapore a ex:GrandPrix ;
     ex:inSeason ex:Season2017 ;
@@ -48872,7 +48877,8 @@ ex:JensonButton a ex:Driver ;
         ex:GP_2016_Singapore,
         ex:GP_2016_Spain,
         ex:GP_2016_UnitedStates ;
-    ex:teammateOf ex:FernandoAlonso .
+    ex:teammateOf ex:FernandoAlonso ;
+    owl:sameAs wd:Q10510 .
 
 wd:Q9584 ex:hasWon wd:Q15042,
         wd:Q15587,
@@ -48982,7 +48988,8 @@ wd:Q171404 a ex:Circuit ;
 
 ex:STR a ex:Team ;
     ex:name "STR" ;
-    ex:participatedInSeason ex:Season2015 .
+    ex:participatedInSeason ex:Season2015 ;
+    owl:sameAs wd:Q265193 .
 
 ex:StoffelVandoorne a ex:Driver ;
     ex:name "Stoffel Vandoorne" ;
@@ -49378,7 +49385,8 @@ ex:FelipeNasr a ex:Driver ;
         ex:GP_2016_Russia,
         ex:GP_2016_Singapore,
         ex:GP_2016_Spain,
-        ex:GP_2016_UnitedStates .
+        ex:GP_2016_UnitedStates ;
+    owl:sameAs wd:Q777319 .
 
 ex:FrancoColapinto a ex:Driver ;
     ex:competesInSeason ex:Season2024,
@@ -49608,7 +49616,8 @@ ex:GP_2021_UnitedStates a ex:GrandPrix ;
 
 ex:Marussia a ex:Team ;
     ex:name "Marussia" ;
-    ex:participatedInSeason ex:Season2015 .
+    ex:participatedInSeason ex:Season2015 ;
+    owl:sameAs wd:Q173179 .
 
 ex:Team a owl:Class ;
     rdfs:label "Team"@en ;
@@ -49764,7 +49773,8 @@ ex:GP_2025_Australia a ex:GrandPrix ;
 
 ex:MRT a ex:Team ;
     ex:name "MRT" ;
-    ex:participatedInSeason ex:Season2016 .
+    ex:participatedInSeason ex:Season2016 ;
+    owl:sameAs wd:Q1025 .
 
 wd:Q152408 a ex:Circuit ;
     ex:city "Hockenheim"@en ;
@@ -51204,7 +51214,8 @@ ex:NicoRosberg a ex:Driver ;
         ex:GP_2016_Singapore,
         ex:GP_2016_Spain,
         ex:GP_2016_UnitedStates ;
-    ex:teammateOf ex:LewisHamilton .
+    ex:teammateOf ex:LewisHamilton ;
+    owl:sameAs wd:Q75820 .
 
 wd:Q10494 ex:hasWon wd:Q15039,
         wd:Q15042,

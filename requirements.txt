@@ -8,6 +8,10 @@ playwright>=1.40.0
 # Information extraction / data handling
 requests>=2.31.0
 
+# Named Entity Recognition (NER layer on top of regex extraction)
+spacy>=3.7.0
+# After install: python -m spacy download en_core_web_sm
+
 # Knowledge Graph — RDF/OWL
 rdflib>=7.0.0
 

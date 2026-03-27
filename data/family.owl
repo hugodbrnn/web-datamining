@@ -1,0 +1,126 @@
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix fam:  <http://example.org/family#> .
+
+<http://example.org/family>
+    a owl:Ontology ;
+    rdfs:comment "Minimal family ontology for SWRL reasoning exercise." .
+
+# ── Classes ───────────────────────────────────────────────────────────────────
+
+fam:Person
+    a owl:Class ;
+    rdfs:label "Person" .
+
+fam:OldPerson
+    a owl:Class ;
+    rdfs:subClassOf fam:Person ;
+    rdfs:label "Old Person" ;
+    rdfs:comment "A person strictly older than 60 years — inferred by SWRL rule." .
+
+fam:Male
+    a owl:Class ;
+    rdfs:subClassOf fam:Person ;
+    rdfs:label "Male" .
+
+fam:Female
+    a owl:Class ;
+    rdfs:subClassOf fam:Person ;
+    rdfs:label "Female" .
+
+# ── Datatype properties ───────────────────────────────────────────────────────
+
+fam:age
+    a owl:DatatypeProperty ;
+    rdfs:domain fam:Person ;
+    rdfs:range  xsd:integer ;
+    rdfs:label  "age" .
+
+fam:name
+    a owl:DatatypeProperty ;
+    rdfs:domain fam:Person ;
+    rdfs:range  xsd:string ;
+    rdfs:label  "name" .
+
+# ── Object properties ─────────────────────────────────────────────────────────
+
+fam:hasParent
+    a owl:ObjectProperty ;
+    rdfs:domain fam:Person ;
+    rdfs:range  fam:Person ;
+    rdfs:label  "has parent" .
+
+fam:hasChild
+    a owl:ObjectProperty ;
+    owl:inverseOf fam:hasParent ;
+    rdfs:domain fam:Person ;
+    rdfs:range  fam:Person ;
+    rdfs:label  "has child" .
+
+fam:hasSibling
+    a owl:ObjectProperty, owl:SymmetricProperty ;
+    rdfs:domain fam:Person ;
+    rdfs:range  fam:Person ;
+    rdfs:label  "has sibling" .
+
+# ── Individuals ───────────────────────────────────────────────────────────────
+# Expected OldPerson after reasoning: Alice(72), Charles(68), Edward(61), George(82)
+# Not OldPerson: Bob(45), Diana(35), Fiona(60 — not strictly >60), Hannah(22), Ivan(55)
+
+fam:Alice
+    a fam:Person, fam:Female ;
+    fam:name "Alice" ;
+    fam:age  72 ;
+    fam:hasParent fam:George ;
+    fam:hasSibling fam:Diana .
+
+fam:Bob
+    a fam:Person, fam:Male ;
+    fam:name "Bob" ;
+    fam:age  45 ;
+    fam:hasParent fam:Charles ;
+    fam:hasSibling fam:Hannah .
+
+fam:Charles
+    a fam:Person, fam:Male ;
+    fam:name "Charles" ;
+    fam:age  68 ;
+    fam:hasChild fam:Bob .
+
+fam:Diana
+    a fam:Person, fam:Female ;
+    fam:name "Diana" ;
+    fam:age  35 ;
+    fam:hasParent fam:George ;
+    fam:hasSibling fam:Alice .
+
+fam:Edward
+    a fam:Person, fam:Male ;
+    fam:name "Edward" ;
+    fam:age  61 .
+
+fam:Fiona
+    a fam:Person, fam:Female ;
+    fam:name "Fiona" ;
+    fam:age  60 .
+
+fam:George
+    a fam:Person, fam:Male ;
+    fam:name "George" ;
+    fam:age  82 ;
+    fam:hasChild fam:Alice ;
+    fam:hasChild fam:Diana .
+
+fam:Hannah
+    a fam:Person, fam:Female ;
+    fam:name "Hannah" ;
+    fam:age  22 ;
+    fam:hasParent fam:Charles ;
+    fam:hasSibling fam:Bob .
+
+fam:Ivan
+    a fam:Person, fam:Male ;
+    fam:name "Ivan" ;
+    fam:age  55 .

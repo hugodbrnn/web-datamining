@@ -1,4 +1,42 @@
 local_entity	local_name	season	candidate_wikidata_id	candidate_label	confidence	status
+LewisHamilton	Lewis Hamilton	2015	Q9673	Lewis Hamilton	1.0	auto
+NicoRosberg	Nico Rosberg	2015	Q75820	Nico Rosberg	1.0	auto
+SebastianVettel	Sebastian Vettel	2015	Q42311	Sebastian Vettel	1.0	auto
+KimiRäikkönen	Kimi Räikkönen	2015	Q11192	Kimi Räikkönen	1.0	auto
+ValtteriBottas	Valtteri Bottas	2015	Q138745	Valtteri Bottas	1.0	auto
+FelipeMassa	Felipe Massa	2015	Q82652	Felipe Massa	1.0	auto
+DanielRicciardo	Daniel Ricciardo	2015	Q82816	Daniel Ricciardo	1.0	auto
+SergioPerez	Sergio Perez	2015	Q82805	Sergio Pérez	0.8	auto
+NicoHulkenberg	Nico Hulkenberg	2015	Q76547	Nico Hülkenberg	0.8	auto
+RomainGrosjean	Romain Grosjean	2015	Q82742	Romain Grosjean	1.0	auto
+MaxVerstappen	Max Verstappen	2015	Q2239218	Max Verstappen	1.0	auto
+FelipeNasr	Felipe Nasr	2015	Q777319	Felipe Nasr	1.0	auto
+CarlosSainz	Carlos Sainz	2015	Q544856	Carlos Sainz Jr.	0.8	auto
+JensonButton	Jenson Button	2015	Q10510	Jenson Button	1.0	auto
+FernandoAlonso	Fernando Alonso	2015	Q10514	Fernando Alonso	1.0	auto
+RobertoMerhi	Roberto Merhi	2015	Q977386	Roberto Merhi	1.0	auto
+AlexanderRossi	Alexander Rossi	2015	Q559962	Alexander Rossi	1.0	auto
+WillStevens	Will Stevens	2015	Q538467	Will Stevens	1.0	auto
+NicoRosberg	Nico Rosberg	2016	Q75820	Nico Rosberg	1.0	auto
+LewisHamilton	Lewis Hamilton	2016	Q9673	Lewis Hamilton	1.0	auto
+DanielRicciardo	Daniel Ricciardo	2016	Q82816	Daniel Ricciardo	1.0	auto
+SebastianVettel	Sebastian Vettel	2016	Q42311	Sebastian Vettel	1.0	auto
+MaxVerstappen	Max Verstappen	2016	Q2239218	Max Verstappen	1.0	auto
+KimiRäikkönen	Kimi Räikkönen	2016	Q11192	Kimi Räikkönen	1.0	auto
+SergioPerez	Sergio Perez	2016	Q82805	Sergio Pérez	0.8	auto
+ValtteriBottas	Valtteri Bottas	2016	Q138745	Valtteri Bottas	1.0	auto
+NicoHulkenberg	Nico Hulkenberg	2016	Q76547	Nico Hülkenberg	0.8	auto
+FernandoAlonso	Fernando Alonso	2016	Q10514	Fernando Alonso	1.0	auto
+FelipeMassa	Felipe Massa	2016	Q82652	Felipe Massa	1.0	auto
+CarlosSainz	Carlos Sainz	2016	Q544856	Carlos Sainz Jr.	0.8	auto
+RomainGrosjean	Romain Grosjean	2016	Q82742	Romain Grosjean	1.0	auto
+JensonButton	Jenson Button	2016	Q10510	Jenson Button	1.0	auto
+KevinMagnussen	Kevin Magnussen	2016	Q1740212	Kevin Magnussen	1.0	auto
+FelipeNasr	Felipe Nasr	2016	Q777319	Felipe Nasr	1.0	auto
+JolyonPalmer	Jolyon Palmer	2016	Q714365	Jolyon Palmer	1.0	auto
+PascalWehrlein	Pascal Wehrlein	2016	Q85762	Pascal Wehrlein	1.0	auto
+EstebanGutierrez	Esteban Gutierrez	2016	Q114238727	Esteban Gutiérrez	0.8	auto
+EstebanOcon	Esteban Ocon	2016	Q15074165	Esteban Ocon	1.0	auto
 LewisHamilton	Lewis Hamilton	2017	Q9673	Lewis Hamilton	1.0	auto
 SebastianVettel	Sebastian Vettel	2017	Q42311	Sebastian Vettel	1.0	auto
 ValtteriBottas	Valtteri Bottas	2017	Q138745	Valtteri Bottas	1.0	auto

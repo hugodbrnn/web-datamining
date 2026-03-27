@@ -59,6 +59,11 @@
         <i class="bi bi-diagram-3 me-1"></i>Ontology &amp; Stats
       </a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="tab" href="#tab-eval" id="eval-tab-link">
+        <i class="bi bi-clipboard2-data me-1"></i>Evaluation
+      </a>
+    </li>
   </ul>
 
   <div class="tab-content bg-white shadow-sm rounded-bottom p-4">
@@ -372,6 +377,45 @@
       </div><!-- /schema-content -->
     </div>
 
+    <!-- TAB 4: EVALUATION -->
+    <div class="tab-pane fade" id="tab-eval">
+
+      <div class="d-flex justify-content-between align-items-start mb-3 flex-wrap gap-2">
+        <div>
+          <h5 class="mb-1">Baseline vs RAG — Evaluation</h5>
+          <p class="text-muted small mb-0">
+            Each question is asked twice: directly to the LLM (no KB) and through the full RAG pipeline.
+            Requires <strong>Ollama</strong> running locally.
+            <span class="badge bg-warning text-dark ms-1">~30–60 s</span>
+          </p>
+        </div>
+        <button class="btn btn-f1 fw-semibold" id="run-eval-btn" onclick="runEval()">
+          <i class="bi bi-play-fill me-1"></i>Run Evaluation
+        </button>
+      </div>
+
+      <!-- Legend -->
+      <div class="d-flex gap-3 mb-3 flex-wrap small text-muted">
+        <span><span class="badge bg-success me-1">RAG ✓</span> RAG answers correctly</span>
+        <span><span class="badge bg-warning text-dark me-1">Both ✓</span> Both answer correctly</span>
+        <span><span class="badge bg-danger me-1">Baseline ✗</span> Baseline fails / stale / vague</span>
+      </div>
+
+      <div id="eval-loading" class="text-center py-5" style="display:none">
+        <div class="spinner-border text-danger mb-3" role="status"></div>
+        <p class="text-muted">Running 7 questions through baseline + RAG pipeline…<br>
+          <small>This may take 30–60 seconds depending on your machine.</small>
+        </p>
+      </div>
+
+      <div id="eval-results">
+        <p class="text-muted text-center py-4">
+          <i class="bi bi-arrow-up-circle me-1"></i>Click "Run Evaluation" to start.
+        </p>
+      </div>
+
+    </div><!-- /tab-eval -->
+
   </div><!-- /tab-content -->
 </div><!-- /container -->
 
@@ -562,6 +606,135 @@ async function loadSchema() {
     document.getElementById('schema-loading').innerHTML =
       `<div class="alert alert-danger">Failed to load schema: ${e.message}</div>`;
   }
+}
+
+// Evaluation — SSE streaming (results appear row by row)
+
+function escHtml(s) {
+  return String(s ?? '')
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function evalRowHtml(row) {
+  const i          = row.idx;
+  const ragFailed  = !!row.error || row.rag === '(no results)';
+  const ragBadge   = ragFailed
+    ? '<span class="badge bg-danger">RAG ✗</span>'
+    : '<span class="badge bg-success">RAG ✓</span>';
+  const baseShort  = (row.baseline || '').length > 180
+    ? row.baseline.slice(0, 180) + '…' : row.baseline;
+  const sparqlBtn  = row.sparql
+    ? `<br><a class="text-muted" style="font-size:.8em" data-bs-toggle="collapse"
+         href="#eval-sparql-${i}"><i class="bi bi-code-square me-1"></i>SPARQL</a>
+       <div class="collapse mt-1" id="eval-sparql-${i}">
+         <pre class="sparql-block" style="font-size:.75em">${escHtml(row.sparql)}</pre>
+       </div>` : '';
+  return `
+    <tr id="eval-row-${i}">
+      <td class="text-center text-muted fw-semibold">${i + 1}</td>
+      <td class="fw-semibold">${escHtml(row.question)}</td>
+      <td class="text-muted fst-italic">${escHtml(baseShort)}</td>
+      <td>
+        <span class="${ragFailed ? 'text-danger' : 'text-success fw-semibold'}">${escHtml(row.rag)}</span>
+        ${sparqlBtn}
+      </td>
+      <td class="text-center">${ragBadge}</td>
+    </tr>`;
+}
+
+let _evalSource = null;
+
+function runEval() {
+  if (_evalSource) { _evalSource.close(); _evalSource = null; }
+
+  const btn = document.getElementById('run-eval-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span>Running…';
+
+  document.getElementById('eval-loading').style.display = 'none';
+  document.getElementById('eval-results').innerHTML = `
+    <div id="eval-progress-wrap" class="mb-3">
+      <div class="d-flex justify-content-between small text-muted mb-1">
+        <span id="eval-progress-label">Starting…</span>
+        <span id="eval-progress-count">0 / ?</span>
+      </div>
+      <div class="progress" style="height:6px">
+        <div id="eval-progress-bar" class="progress-bar bg-danger" style="width:0%"></div>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-bordered align-middle" style="font-size:.88em">
+        <thead class="table-dark">
+          <tr>
+            <th style="width:2.5em">#</th>
+            <th>Question</th>
+            <th>Baseline <small class="fw-normal text-muted">(LLM direct, no KB)</small></th>
+            <th>RAG answer <small class="fw-normal text-muted">(NL→SPARQL→KB)</small></th>
+            <th style="width:6em">Verdict</th>
+          </tr>
+        </thead>
+        <tbody id="eval-tbody"></tbody>
+      </table>
+    </div>`;
+
+  let total = 7, done = 0, ragOk = 0;
+
+  _evalSource = new EventSource('/api/evaluate');
+
+  _evalSource.onmessage = (e) => {
+    const msg = JSON.parse(e.data);
+
+    if (msg.error) {
+      document.getElementById('eval-results').innerHTML =
+        `<div class="alert alert-warning"><i class="bi bi-exclamation-triangle me-1"></i>${escHtml(msg.error)}</div>`;
+      _evalSource.close();
+      btn.disabled = false;
+      btn.innerHTML = '<i class="bi bi-play-fill me-1"></i>Run Evaluation';
+      return;
+    }
+
+    if (msg.total !== undefined) {
+      total = msg.total;
+      document.getElementById('eval-progress-count').textContent = `0 / ${total}`;
+      return;
+    }
+
+    if (msg.done) {
+      document.getElementById('eval-progress-wrap').innerHTML =
+        `<div class="d-flex gap-2 mb-2">
+           <span class="badge bg-secondary">${total} questions</span>
+           <span class="badge bg-success">${ragOk} / ${total} RAG answered</span>
+         </div>`;
+      _evalSource.close();
+      btn.disabled = false;
+      btn.innerHTML = '<i class="bi bi-arrow-clockwise me-1"></i>Re-run';
+      return;
+    }
+
+    // Normal row
+    done++;
+    if (!msg.error && msg.rag !== '(no results)') ragOk++;
+
+    document.getElementById('eval-tbody').insertAdjacentHTML('beforeend', evalRowHtml(msg));
+
+    const pct = Math.round((done / total) * 100);
+    document.getElementById('eval-progress-bar').style.width   = pct + '%';
+    document.getElementById('eval-progress-count').textContent = `${done} / ${total}`;
+    document.getElementById('eval-progress-label').textContent =
+      `Processing: "${msg.question.slice(0, 50)}…"`;
+  };
+
+  _evalSource.onerror = () => {
+    _evalSource.close();
+    if (done < total) {
+      const wrap = document.getElementById('eval-progress-wrap');
+      if (wrap) wrap.insertAdjacentHTML('afterend',
+        '<div class="alert alert-danger mt-2">Connection lost. Check that Flask is still running.</div>');
+    }
+    btn.disabled = false;
+    btn.innerHTML = '<i class="bi bi-play-fill me-1"></i>Run Evaluation';
+  };
 }
 
 </script>
