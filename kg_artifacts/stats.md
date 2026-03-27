@@ -16,12 +16,12 @@
 | `participatedIn` | 4,700 |
 | `forDriver` | 4,091 |
 | `forTeam` | 4,091 |
+| `forRace` | 3,849 |
 | `finishPosition` | 3,849 |
 | `pointsScored` | 3,849 |
-| `forRace` | 3,849 |
 | `lapsCompleted` | 3,849 |
-| `hasWon` | 2,330 |
 | `winner` | 2,330 |
+| `hasWon` | 2,330 |
 | `name` | 2,048 |
 | `heldAtCircuit` | 2,044 |
 | `circuitName` | 1,908 |
@@ -29,9 +29,9 @@
 | `partOfSeason` | 1,165 |
 | `nationality` | 281 |
 | `hasStanding` | 242 |
-| `standingPoints` | 242 |
 | `competesInSeason` | 242 |
 | `standingPosition` | 242 |
+| `standingPoints` | 242 |
 
 ## Expansion strategy (15 phases — Wikidata)
 

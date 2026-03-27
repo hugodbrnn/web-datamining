@@ -42,7 +42,7 @@ logger = logging.getLogger(__name__)
 
 DEMO_QUESTIONS = [
     "Who won the 2024 F1 championship?",
-    "Which team does Lando Norris drive for?",
+    "Which team does Pierre Gasly drive for?",
     "How many races did Max Verstappen win in 2023?",
     "List all circuits in the 2025 season.",
     "Who were the teammates of Lewis Hamilton in 2024?",
@@ -53,13 +53,12 @@ DEMO_QUESTIONS = [
 # ─────────────────────────────────────────────────────────────────────────────
 
 EVAL_QUESTIONS = [
-    "Who won the 2025 F1 World Championship?",
-    "How many races did Max Verstappen win in 2023?",
-    "Who won the 2026 F1 World Championship?",
+    "Who won the 2022 F1 World Championship?",
+    "From which country does Esteban Ocon come from?",
     "Which team does Carlos Sainz drive for in 2025?",
     "What was Lando Norris's standing position in the 2024 championship?",
-    "Who were Oscar Piastri's teammates in 2024?",
-    "Which driver won the most races in 2024?",
+    "Who were Fernando Alonso's teammates in 2023?",
+    "Which driver won the most races in 2017?",
 ]
 
 DEMO_SPARQLS = {
@@ -68,9 +67,9 @@ SELECT ?driverName WHERE {
     ?driver ex:isChampionOf ex:Season2024 ;
             ex:name ?driverName .
 }""",
-    "Which team does Lando Norris drive for?": """PREFIX ex: <http://example.org/f1#>
+    "Which team does Pierre Gasly drive for?": """PREFIX ex: <http://example.org/f1#>
 SELECT ?teamName WHERE {
-    ?driver ex:name "Lando Norris" ;
+    ?driver ex:name "Pierre Gasly" ;
             ex:drivesFor ?team .
     ?team ex:name ?teamName .
 }""",
@@ -160,7 +159,7 @@ def run_evaluate(loop, executor, generator):
         elif not kb_rows:
             rag_ans = "(no results)"
         else:
-            rag_ans = executor.format_results(kb_rows, max_rows=5)
+            rag_ans = executor.format_compact_results(kb_rows, max_rows=5)
         # First line only for table display
         rag_short = rag_ans.split("\n")[0]
         print(f"  RAG      : {rag_short}")
@@ -207,7 +206,7 @@ def answer_question(question: str, loop, executor, verbose: bool = False) -> str
         return f"⚠ Could not answer: {error}"
     if not rows:
         return "(no results found)"
-    return executor.format_results(rows)
+    return executor.format_compact_results(rows)
 
 
 def interactive_mode(loop, executor, verbose: bool):

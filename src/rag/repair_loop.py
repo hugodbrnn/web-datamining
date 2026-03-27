@@ -27,6 +27,28 @@ from typing import Optional
 logger = logging.getLogger(__name__)
 
 
+def _semantic_mismatch(question: str, sparql: str) -> str | None:
+    """
+    Return an error string if the query is structurally wrong for the question type.
+    Returns None if no mismatch detected.
+    """
+    q = question.lower()
+    # "how many" → must have COUNT aggregate
+    if re.search(r'\bhow many\b', q) and not re.search(r'\bCOUNT\b', sparql, re.IGNORECASE):
+        return (
+            "The question asks 'how many' but the query has no COUNT aggregate. "
+            "Use: SELECT (COUNT(?gp) AS ?wins) WHERE { ?gp ex:winner ex:DriverName ; ex:inSeason ex:SeasonYYYY . }"
+        )
+    # "teammates" → must return ?mateName
+    if re.search(r'\bteammates?\b', q) and not re.search(r'\?mateName\b', sparql, re.IGNORECASE):
+        return (
+            "The question asks for teammates but ?mateName is not selected. "
+            "Use two DriverStanding patterns sharing ?team, then ?mate ex:name ?mateName, "
+            "FILTER(ex:DriverName != ?mate)."
+        )
+    return None
+
+
 def _unbound_select_vars(sparql: str) -> list[str]:
     """Return SELECT variables that are never bound in the WHERE clause."""
     select_match = re.search(r'SELECT\b(.*?)WHERE\b', sparql, re.IGNORECASE | re.DOTALL)
@@ -116,6 +138,10 @@ class RepairLoop:
         query = self.generator.generate(question)
         logger.debug(f"[attempt 1] Generated SPARQL:\n{query}")
 
+        # Ollama was offline at generation time — fail fast, no repair possible
+        if query == "__OLLAMA_OFFLINE__":
+            return [], "", "Ollama is not running. Start Ollama and run: ollama pull llama3.2:1b"
+
         for attempt in range(1, self.max_attempts + 1):
             # Pre-check 1: detect missing SELECT/ASK keyword — bare triple patterns
             if not re.search(r'\b(SELECT|ASK|CONSTRUCT|DESCRIBE)\b', query, re.IGNORECASE):
@@ -128,6 +154,11 @@ class RepairLoop:
                 logger.info(f"[attempt {attempt}] Unbound SELECT vars {unbound} — forcing repair")
                 error = f"Unbound SELECT variables: {unbound}. Every variable in SELECT must appear in WHERE."
                 rows  = []
+            # Pre-check 3: semantic mismatch (how many → no COUNT, teammates → no ?mateName)
+            elif _semantic_mismatch(question, query):
+                error = _semantic_mismatch(question, query)
+                logger.info(f"[attempt {attempt}] Semantic mismatch — forcing repair: {error}")
+                rows  = []
             else:
                 rows, error = self.executor.run(query)
 
@@ -139,7 +170,7 @@ class RepairLoop:
                 # Query executed but empty result — try to relax
                 if attempt == self.max_attempts:
                     logger.warning(f"[attempt {attempt}] Empty results — giving up")
-                    return [], query, "Query returned no results"
+                    return [], query, "No data found in the knowledge base for this question."
                 logger.info(f"[attempt {attempt}] Empty results — requesting repair")
                 repair_prompt = EMPTY_REPAIR_TEMPLATE.format(
                     question=question, bad_query=query
@@ -162,7 +193,7 @@ class RepairLoop:
             ]
             raw = self.generator._call_ollama(messages)
             if raw is None:
-                return [], query, "Ollama offline during repair"
+                return [], query, "Ollama is not running. Start Ollama and run: ollama pull llama3.2:1b"
             query = self.generator._extract_sparql(raw)
             logger.debug(f"[attempt {attempt + 1}] Repaired SPARQL:\n{query}")
 

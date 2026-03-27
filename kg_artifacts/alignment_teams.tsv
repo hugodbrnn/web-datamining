@@ -5,7 +5,7 @@ Williams	Williams	2015	Q1688722	Williams	1.0	auto
 RedBullRacing	Red Bull Racing	2015	Q173663	Red Bull Racing	1.0	auto
 ForceIndia	Force India	2015	Q138933	Force India	1.0	auto
 Lotus	Lotus	2015	Q3645698	Lotus	1.0	auto
-STR	STR	2015	Q265193	microsatellite	0.8	auto
+STR	STR	2015	Q141818	Scuderia Toro Rosso	1.0	manual
 Sauber	Sauber	2015	Q171335	Sauber Motorsport	0.8	auto
 McLaren	McLaren	2015	Q21484852	McLaren	1.0	auto
 Marussia	Marussia	2015	Q173179	Marussia F1	0.8	auto
@@ -18,7 +18,7 @@ McLaren	McLaren	2016	Q21484852	McLaren	1.0	auto
 ToroRosso	Toro Rosso	2016	Q141818	Scuderia Toro Rosso	0.8	auto
 Haas	Haas	2016	Q368894	Haas	1.0	auto
 Sauber	Sauber	2016	Q171335	Sauber Motorsport	0.8	auto
-MRT	MRT	2016	Q1025	Mauritania	0.8	auto
+MRT	MRT	2016	Q2549918	Manor Racing Team	1.0	manual
 Mercedes	Mercedes	2017	Q255209	Mercedes	1.0	auto
 Ferrari	Ferrari	2017	Q1407594	Ferrari	1.0	auto
 RedBullRacing	Red Bull Racing	2017	Q173663	Red Bull Racing	1.0	auto
@@ -89,7 +89,7 @@ Mercedes	Mercedes	2024	Q255209	Mercedes	1.0	auto
 AstonMartin	Aston Martin	2024	Q63049904	Aston Martin	1.0	auto
 Alpine	Alpine	2024	Q661540	Alpine	1.0	auto
 Haas	Haas	2024	Q368894	Haas	1.0	auto
-RB	RB	2024	Q895	rubidium	0.8	auto
+RB	RB	2024	Q124350606	Racing Bulls	0.8	manual
 Williams	Williams	2024	Q1688722	Williams	1.0	auto
 KickSauber	Kick Sauber	2024	Q171335	Sauber Motorsport	0.8	auto
 McLaren	McLaren	2025	Q21484852	McLaren	1.0	auto
@@ -109,7 +109,7 @@ HaasF1Team	Haas F1 Team	2026	Q16300222	Haas F1 Team	1.0	auto
 RedBullRacing	Red Bull Racing	2026	Q173663	Red Bull Racing	1.0	auto
 RacingBulls	Racing Bulls	2026	Q124350606	Racing Bulls	1.0	auto
 Alpine	Alpine	2026	Q661540	Alpine	1.0	auto
-Audi	Audi	2026	Q482994	album	0.8	auto
+Audi	Audi	2026	Q23317	Audi	1.0	manual
 Williams	Williams	2026	Q1688722	Williams	1.0	auto
 Cadillac	Cadillac	2026	Q27436	Cadillac	1.0	auto
 AstonMartin	Aston Martin	2026	Q63049904	Aston Martin	1.0	auto

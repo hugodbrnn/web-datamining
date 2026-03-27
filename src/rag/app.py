@@ -28,7 +28,7 @@ logging.basicConfig(level=logging.WARNING)
 
 DEMO_QUESTIONS = [
     "Who won the 2024 F1 championship?",
-    "Which team does Lando Norris drive for?",
+    "Which team does Pierre Gasly drive for in 2021?",
     "How many races did Max Verstappen win in 2023?",
     "List all circuits in the 2025 season.",
     "Who were the teammates of Lewis Hamilton in 2024?",
@@ -40,10 +40,11 @@ SELECT ?driverName WHERE {
     ?driver ex:isChampionOf ex:Season2024 ;
             ex:name ?driverName .
 }""",
-    "Which team does Lando Norris drive for?": """PREFIX ex: <http://example.org/f1#>
+    "Which team does Pierre Gasly drive for in 2021?": """PREFIX ex: <http://example.org/f1#>
 SELECT DISTINCT ?teamName WHERE {
-    ?driver ex:name "Lando Norris" ;
-            ex:drivesFor ?team .
+    ?driver ex:name "Pierre Gasly" ; 
+            ex:drivesFor ?team ;
+            ex:partOfSeason ex:Season2021 .
     ?team ex:name ?teamName .
 }""",
     "How many races did Max Verstappen win in 2023?": """PREFIX ex: <http://example.org/f1#>
@@ -191,7 +192,7 @@ def evaluate():
             elif not kb_rows:
                 rag_ans = "(no results)"
             else:
-                rag_ans = executor.format_results(kb_rows, max_rows=5).split("\n")[0]
+                rag_ans = executor.format_compact_results(kb_rows, max_rows=5)
 
             row = {
                 "idx":      idx,

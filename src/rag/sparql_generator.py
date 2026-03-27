@@ -55,23 +55,23 @@ DECISION TREE — read before writing any query:
       ?driver ex:isChampionOf ex:SeasonYYYY ;
               ex:name ?driverName . }}
 
-② "Who won the [RACE NAME] Grand Prix in [YEAR]?" → USE ex:winner + FILTER on GP name
+② "Who won the [RACE NAME] Grand Prix in [YEAR]?" → USE ex:winner + ex:inSeason + FILTER on GP name
   SELECT ?driverName WHERE {{
-      ?gp ex:partOfSeason ex:SeasonYYYY ;
+      ?gp ex:inSeason ex:SeasonYYYY ;
           ex:name ?gpName ;
           ex:winner ?driver .
       ?driver ex:name ?driverName .
       FILTER(CONTAINS(LCASE(?gpName), "keyword")) }}
 
-③ "How many races did [DRIVER] win in [YEAR]?" → USE ex:hasWon + COUNT
+③ "How many races did [DRIVER] win in [YEAR]?" → USE ex:winner (GP→Driver) + COUNT + ex:inSeason
   SELECT (COUNT(?gp) AS ?wins) WHERE {{
-      ex:DriverName ex:hasWon ?gp .
-      ?gp ex:partOfSeason ex:SeasonYYYY . }}
+      ?gp ex:winner ex:DriverName ;
+          ex:inSeason ex:SeasonYYYY . }}
 
-④ "Did [DRIVER] win a race in [YEAR]? / Which races did [DRIVER] win?" → USE ex:hasWon
+④ "Did [DRIVER] win a race in [YEAR]? / Which races did [DRIVER] win?" → USE ex:winner + ex:inSeason
   SELECT ?gpName WHERE {{
-      ex:DriverName ex:hasWon ?gp .
-      ?gp ex:partOfSeason ex:SeasonYYYY ;
+      ?gp ex:winner ex:DriverName ;
+          ex:inSeason ex:SeasonYYYY ;
           ex:name ?gpName . }}
 
 ⑤ "Who were [DRIVER]'s teammates in [YEAR]?" → USE DriverStanding with forTeam
@@ -83,10 +83,12 @@ DECISION TREE — read before writing any query:
       ?mate ex:name ?mateName .
       FILTER(ex:DriverName != ?mate) }}
 
-⑥ "Which team does [DRIVER] drive for?" → USE ex:drivesFor with SELECT DISTINCT
+⑥ "Which team does [DRIVER] drive for in [YEAR]?" → USE DriverStanding with forTeam + forSeason
   SELECT DISTINCT ?teamName WHERE {{
-      ?driver ex:name "First Last" ;
-              ex:drivesFor ?team .
+      ?standing a ex:DriverStanding ;
+                ex:forSeason ex:SeasonYYYY ;
+                ex:forDriver ex:DriverName ;
+                ex:forTeam ?team .
       ?team ex:name ?teamName . }}
 
 ⑦ "What are the standings in [YEAR]?" → USE DriverStanding (NO FILTER unless asked)
@@ -99,15 +101,64 @@ DECISION TREE — read before writing any query:
       ?driver ex:name ?driverName .
   }} ORDER BY ?position
 
+⑧ "What was [DRIVER]'s standing position in [YEAR]?" → USE DriverStanding FILTER by driver URI
+  SELECT ?position ?points WHERE {{
+      ?standing a ex:DriverStanding ;
+                ex:forSeason ex:SeasonYYYY ;
+                ex:forDriver ex:DriverName ;
+                ex:standingPosition ?position ;
+                ex:standingPoints ?points . }}
+
+⑨ "From which country does [DRIVER] come from?" / "[DRIVER]'s nationality?" → USE ex:fromCountry or ex:nationality
+  SELECT ?countryName WHERE {{
+      ex:DriverName ex:fromCountry ?country .
+      ?country ex:name ?countryName . }}
+  — OR for nationality code —
+  SELECT ?nationality WHERE {{
+      ex:DriverName ex:nationality ?nationality . }}
+
+⑩ "Which driver won the most races in [YEAR]?" → USE ex:winner (GP→Driver) + COUNT + ex:inSeason
+  SELECT ?driverName (COUNT(?gp) AS ?wins) WHERE {{
+      ?gp ex:winner ?driver ;
+          ex:inSeason ex:SeasonYYYY .
+      ?driver ex:name ?driverName .
+  }} GROUP BY ?driverName ORDER BY DESC(?wins) LIMIT 1
+
+⑪ "Who finished [N]th in the [YEAR] championship?" → USE DriverStanding FILTER by position number
+  SELECT ?driverName ?points WHERE {{
+      ?standing a ex:DriverStanding ;
+                ex:forSeason ex:SeasonYYYY ;
+                ex:forDriver ?driver ;
+                ex:standingPosition ?pos ;
+                ex:standingPoints ?points .
+      ?driver ex:name ?driverName .
+      FILTER(?pos = N) }}
+
+⑫ "Which races were held in [YEAR]?" → USE ex:hasRace
+  SELECT ?gpName ?raceDate WHERE {{
+      ex:SeasonYYYY ex:hasRace ?gp .
+      ?gp ex:name ?gpName .
+      OPTIONAL {{ ?gp ex:raceDate ?raceDate . }}
+  }} ORDER BY ?raceDate
+
 ══════════════════════════════════════════════════
 CRITICAL RULES:
 ══════════════════════════════════════════════════
+- EVERY variable in SELECT must be bound in the WHERE clause — NEVER use a variable in SELECT that does not appear in WHERE
+- If the question contains a 4-digit year (for example 2017, 2024, 2025), you MUST use that year in the query
+- NEVER ignore a 4-digit year mentioned in the question
+- For GrandPrix objects: ALWAYS use ex:inSeason (NOT ex:partOfSeason) to link to a season
+- For DriverStanding: use ex:forSeason to link to a season
 - GP names include the year: "2023 Italian Grand Prix" → FILTER keyword: "italian"
+- To find race winner: use ?gp ex:winner ?driver (GP has the winner, not the driver)
+- NEVER use ex:hasWon — use ex:winner instead: ?gp ex:winner ex:DriverName ; ex:inSeason ex:SeasonYYYY
 - NEVER apply FILTER(CONTAINS()) to resource variables (?driver, ?gp, ?team, ?circuit)
 - NEVER use ex:teammateOf to find a team — use DriverStanding pattern (⑤)
-- NEVER confuse ex:isChampionOf (season title) with ex:winner (single race) with ex:hasWon (driver→GP)
+- NEVER confuse ex:isChampionOf (season title) with ex:winner (single race winner)
 - NEVER substitute a driver name: if question says "Gasly", write "Pierre Gasly", not "Max Verstappen"
+- For "which team does X drive for in YEAR" → use DriverStanding pattern (⑥), NOT ex:drivesFor
 - Triple patterns: use semicolons (;) to chain same subject, period (.) between different subjects
+- NEVER use string literal matching like ex:name "Max Verstappen" to find champion — use ex:isChampionOf
 
 {schema}
 """
@@ -127,7 +178,7 @@ class SPARQLGenerator:
         ollama_url: str = OLLAMA_URL,
         kb_path: Path = DEFAULT_KB,
         temperature: float = 0.0,
-        timeout: int = 300,
+        timeout: int = 180,
     ):
         self.model       = model
         self.ollama_url  = ollama_url.rstrip("/")
@@ -151,7 +202,7 @@ class SPARQLGenerator:
         system = SYSTEM_PROMPT_TEMPLATE.format(schema=self.schema)
 
         messages = [{"role": "system", "content": system}]
-        for ex in EXAMPLE_QUERIES[:6]:
+        for ex in EXAMPLE_QUERIES[:15]:
             messages.append({"role": "user",      "content": ex["question"]})
             messages.append({"role": "assistant", "content": ex["sparql"]})
 
@@ -228,6 +279,20 @@ class SPARQLGenerator:
         sparql = re.sub(r'\bex:totalPoints\b',   'ex:standingPoints',   sparql)
         sparql = re.sub(r'\bex:hasWins\b',       'ex:hasWon',           sparql)
         sparql = re.sub(r'\bex:wins\b',          'ex:hasWon',           sparql)
+        # KB uses ex:inSeason (not ex:partOfSeason) on local GP objects.
+        # Convert "?gp ex:partOfSeason" → "?gp ex:inSeason"
+        # BUT keep "ex:forSeason" unchanged (used on DriverStanding, not GP)
+        sparql = re.sub(r'(\?\w+\s+)ex:partOfSeason\b', r'\1ex:inSeason', sparql)
+        sparql = re.sub(r'ex:partOfSeason\b(\s+ex:Season)', r'ex:inSeason\1', sparql)
+        # Convert ex:DriverName ex:hasWon ?gp → ?gp ex:winner ex:DriverName
+        def _rewrite_has_won(m: re.Match) -> str:
+            driver_uri = m.group(1).strip()
+            gp_var     = m.group(2).strip()
+            return f'{gp_var} ex:winner {driver_uri} ;'
+        sparql = re.sub(
+            r'(ex:\w+)\s+ex:hasWon\s+(\?\w+)\s*[.;]',
+            _rewrite_has_won, sparql,
+        )
         # Fix bare year URI: ex:2023 → ex:Season2023
         sparql = re.sub(r'\bex:(\d{4})\b', r'ex:Season\1', sparql)
         # Fix CamelCase driver/team names inside string literals: "LandoNorris" → "Lando Norris"
@@ -276,6 +341,37 @@ class SPARQLGenerator:
             r'\s*,\s*[^)]+\)\s*\)',
             '', sparql, flags=re.IGNORECASE
         )
+        # Fix SELECT * → replace with actual variables bound in WHERE
+        if re.search(r'SELECT\s+\*', sparql, re.IGNORECASE):
+            where_m = re.search(r'\{(.*)\}', sparql, re.DOTALL)
+            if where_m:
+                bound_vars = list(dict.fromkeys(re.findall(r'\?(\w+)', where_m.group(1))))
+                # Exclude variables used only inside FILTER / aggregate subexpressions
+                filter_only = set(re.findall(r'FILTER\s*\([^)]*\?(\w+)', where_m.group(1), re.IGNORECASE))
+                select_vars = [v for v in bound_vars if v not in filter_only]
+                if select_vars:
+                    sparql = re.sub(
+                        r'SELECT\s+\*',
+                        'SELECT ' + ' '.join(f'?{v}' for v in select_vars),
+                        sparql, count=1, flags=re.IGNORECASE,
+                    )
+
+        # Fix ?position in SELECT when WHERE only binds ?pos (and vice-versa)
+        select_m = re.search(r'SELECT\b(.*?)WHERE\b', sparql, re.IGNORECASE | re.DOTALL)
+        if select_m:
+            where_block = sparql[select_m.end():]
+            sel_clause  = select_m.group(1)
+            where_vars  = set(re.findall(r'\?(\w+)', where_block))
+            # Common alias pairs the LLM mixes up
+            alias_pairs = [('position', 'pos'), ('points', 'pts'), ('name', 'n')]
+            for wanted, actual in alias_pairs:
+                if wanted in sel_clause and wanted not in where_vars and actual in where_vars:
+                    sparql = re.sub(
+                        r'(?<!\w)\?' + wanted + r'(?!\w)',
+                        '?' + actual,
+                        sparql, count=1,
+                    )
+
         # Ensure PREFIX ex: is present
         if 'ex:' in sparql and 'PREFIX ex:' not in sparql:
             sparql = 'PREFIX ex: <http://example.org/f1#>\n' + sparql
@@ -304,15 +400,15 @@ class SPARQLGenerator:
 
     def generate(self, question: str) -> str:
         """
-        Generate a SPARQL query for the given NL question.
+        Generate a SPARQL query for the given NL question via the Ollama LLM.
         Returns a SPARQL string (may be a fallback stub if Ollama is offline).
         """
         messages = self._build_messages(question)
         raw      = self._call_ollama(messages)
 
         if raw is None:
-            logger.warning("Ollama offline — returning fallback SPARQL stub")
-            return self._fallback_stub(question)
+            logger.warning("Ollama offline — cannot generate SPARQL")
+            return "__OLLAMA_OFFLINE__"
 
         return self._extract_sparql(raw)
 

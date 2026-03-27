@@ -98,6 +98,29 @@ class SPARQLExecutor:
             lines.append(f"… ({len(rows) - max_rows} more rows)")
         return "\n".join(lines)
 
+    def format_compact_results(self, rows: list[dict], max_rows: int = 5) -> str:
+        """
+        Format results for end-user answer display.
+
+        - Single cell  -> return the value directly
+        - Single col   -> return one value per line
+        - Multi-column -> fall back to table formatting
+        """
+        if not rows:
+            return "(no results)"
+
+        cols = list(rows[0].keys())
+        if len(cols) == 1:
+            values = [str(row.get(cols[0], "")) for row in rows[:max_rows]]
+            if len(values) == 1:
+                return values[0]
+            out = "\n".join(values)
+            if len(rows) > max_rows:
+                out += f"\n… ({len(rows) - max_rows} more rows)"
+            return out
+
+        return self.format_results(rows, max_rows=max_rows)
+
     def triple_count(self) -> int:
         """Return total triple count in the loaded graph."""
         return len(self.graph)

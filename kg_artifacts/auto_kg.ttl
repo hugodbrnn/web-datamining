@@ -2074,8 +2074,7 @@ ex:AntonioGiovinazzi a ex:Driver ;
     owl:sameAs wd:Q7084843 .
 
 ex:Audi a ex:Team ;
-    ex:name "Audi" ;
-    owl:sameAs wd:Q482994 .
+    ex:name "Audi" .
 
 ex:Cadillac a ex:Team ;
     ex:name "Cadillac" ;
@@ -2102,8 +2101,7 @@ ex:LiamLawson a ex:Driver ;
     owl:sameAs wd:Q59180330 .
 
 ex:MRT a ex:Team ;
-    ex:name "MRT" ;
-    owl:sameAs wd:Q1025 .
+    ex:name "MRT" .
 
 ex:OscarPiastri a ex:Driver ;
     ex:competesInSeason ex:Season2023,
@@ -2120,8 +2118,7 @@ ex:OscarPiastri a ex:Driver ;
     owl:sameAs wd:Q28741262 .
 
 ex:STR a ex:Team ;
-    ex:name "STR" ;
-    owl:sameAs wd:Q265193 .
+    ex:name "STR" .
 
 ex:TeamStanding a owl:Class ;
     rdfs:label "Team Standing"@en ;
@@ -2166,8 +2163,7 @@ ex:Marussia a ex:Team ;
     owl:sameAs wd:Q173179 .
 
 ex:RB a ex:Team ;
-    ex:name "RB" ;
-    owl:sameAs wd:Q895 .
+    ex:name "RB" .
 
 ex:RomainGrosjean a ex:Driver ;
     ex:competesInSeason ex:Season2015,
