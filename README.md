@@ -1,4 +1,4 @@
-# F1 Knowledge Graph — Web Datamining & Semantics
+# F1 Knowledge Graph — Web Datamining & Semantics - Martin Hasson and Hugo Deberne - DIA3
 
 Formula 1 knowledge graph pipeline: web crawling → information extraction → RDF KB → OWL reasoning → Knowledge Graph Embeddings → RAG Q&A.
 
