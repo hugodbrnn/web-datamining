@@ -629,7 +629,29 @@ def route(question: str) -> Optional[list[str]]:
 }} GROUP BY ?driverName ORDER BY DESC(?wins) LIMIT 1""",
         ]
 
-    # ── 10b. Season race calendar ─────────────────────────────────────────────
+    # ── 10b. Circuits in YEAR ────────────────────────────────────────────────
+    m = re.search(
+        r'(?:list|which|what)\s+(?:all\s+)?circuits?\s+(?:in|of|for)\s+(?:the\s+)?(\d{4})'
+        r'|circuits?\s+(?:in|of|for)\s+(?:the\s+)?(\d{4})\s*(?:season|f1)?'
+        r'|(\d{4})\s+(?:f1\s+|season\s+)?circuits?',
+        q,
+    )
+    if m:
+        year = m.group(1) or m.group(2) or m.group(3)
+        return [
+            PREFIX + f"""SELECT DISTINCT ?circuitName WHERE {{
+    ex:Season{year} ex:hasRace ?gp .
+    ?gp ex:heldAtCircuit ?circuit .
+    ?circuit ex:name ?circuitName .
+}} ORDER BY ?circuitName""",
+            PREFIX + f"""SELECT DISTINCT ?circuitName WHERE {{
+    ?gp ex:inSeason ex:Season{year} ;
+        ex:heldAtCircuit ?circuit .
+    ?circuit ex:name ?circuitName .
+}} ORDER BY ?circuitName""",
+        ]
+
+    # ── 10c. Season race calendar ─────────────────────────────────────────────
     m = re.search(
         r'(?:which|list|what)\s+races?\s+(?:were\s+(?:held|run)|(?:are\s+)?in|took\s+place)\s+in\s+(\d{4})'
         r'|(\d{4})\s+(?:f1\s+)?(?:race\s+)?calendar',

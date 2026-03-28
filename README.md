@@ -54,7 +54,6 @@ python src/crawl/crawl_race_results.py --year 2024 # single season
 ```
 
 Produces `data/raw/formula1/{year}/race_results/{race}.json`.
-*Polite crawl — ~1.5 s per page, ~3–5 min per season.*
 
 ### Step 4 — Extract race results
 
@@ -124,7 +123,7 @@ python src/kge/evaluate_kge.py
 ```bash
 # Install Ollama: https://ollama.com
 ollama pull llama3.2:1b
-python src/rag/app.py          # Web UI  → http://localhost:5000 (also includes the Baseline vs RAG comparison table on 6 questions
+python src/rag/app.py          # Web UI  → http://localhost:5000 (also includes the Baseline vs RAG comparison table on 6 questions)
 ```
 
 > **No Ollama?** The **Demo tab** runs 5 pre-built SPARQL queries directly — no LLM needed.
@@ -133,7 +132,10 @@ python src/rag/app.py          # Web UI  → http://localhost:5000 (also include
 
 ## Screenshot
 
-![RAG Web UI](docs/screenshot.png)
+![Demo](screenshots/Demo.png)
+![Evaluation](screenshots/Evaluation.png)
+![Stats](screenshots/Stats.png)
+![Chat RAG](screenshots/Chat_RAG.png)
 
 ---
 

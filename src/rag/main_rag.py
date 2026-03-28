@@ -75,9 +75,8 @@ SELECT ?teamName WHERE {
 }""",
     "How many races did Max Verstappen win in 2023?": """PREFIX ex: <http://example.org/f1#>
 SELECT (COUNT(?gp) AS ?wins) WHERE {
-    ?driver ex:name "Max Verstappen" ;
-            ex:hasWon ?gp .
-    ?gp ex:partOfSeason ex:Season2023 .
+    ex:MaxVerstappen ex:hasWon ?gp .
+    ?gp ex:inSeason ex:Season2023 .
 }""",
     "List all circuits in the 2025 season.": """PREFIX ex: <http://example.org/f1#>
 SELECT DISTINCT ?circuitName WHERE {

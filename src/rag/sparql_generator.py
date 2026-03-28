@@ -331,8 +331,18 @@ class SPARQLGenerator:
         # AND/OR between triple patterns → semicolon (SPARQL uses ; not AND)
         sparql = re.sub(r'\s+AND\s+', ' ;\n    ', sparql, flags=re.IGNORECASE)
         sparql = re.sub(r'\s+OR\s+(?=\?)', ' UNION { ', sparql, flags=re.IGNORECASE)
+        # Fix PREFIX ex: without URI — LLM sometimes outputs "PREFIX ex: " (no <...>)
+        # Must run before any other PREFIX check.
+        sparql = re.sub(
+            r'\bPREFIX\s+ex:\s*(?!<)',
+            'PREFIX ex: <http://example.org/f1#>\n',
+            sparql,
+        )
         # Remove Turtle-style semicolons after PREFIX declarations (LLM hallucination)
         sparql = re.sub(r'(PREFIX\s+\w+:\s+<[^>]+>)\s*;', r'\1', sparql)
+        # Remove orphan bare-URI lines emitted by LLM (e.g. " <http://example.org/f1#>;")
+        # These appear between PREFIX block and SELECT, causing parse errors.
+        sparql = re.sub(r'(?m)^\s*<[^>]+>\s*;?\s*$', '', sparql)
         # Remove FILTER(CONTAINS(...)) applied to resource variables (URIs, not strings)
         # e.g. FILTER(CONTAINS(LCASE(?driver), "italian")) makes no sense on a URI
         sparql = re.sub(
