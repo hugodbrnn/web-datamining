@@ -20,7 +20,7 @@ Wikidata alignments use `wd:` → `http://www.wikidata.org/entity/`
 |---|---|
 | `ex:Driver` | A Formula 1 racing driver |
 | `ex:Team` | A Formula 1 constructor / team |
-| `ex:Season` | A championship season (rolling 5-season window) |
+| `ex:Season` | A championship season (rolling 12-season window) |
 | `ex:GrandPrix` | A single race weekend |
 | `ex:Circuit` | A racing circuit |
 | `ex:RaceResult` | One driver's result in one race |

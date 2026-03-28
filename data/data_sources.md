@@ -25,4 +25,4 @@ Formula1.com provides structured factual data (standings, results).
 - A `User-Agent` header identifying the project is sent with every request.
 - A polite delay (`wait_for_timeout(2500 ms)`) is applied between page loads.
 - `robots.txt` is respected for both sources.
-- Raw data is stored locally and **not redistributed**.
+- Raw data crawled from publicly accessible pages is included in the repository for reproducibility purposes. No paywalled, login-protected, or personally identifiable data is collected or redistributed.

@@ -4,7 +4,7 @@ Formula 1 knowledge graph pipeline: web crawling → information extraction → 
 
 **Domain:** Formula 1 (seasons 2015–2027)
 **Namespace:** `ex: <http://example.org/f1#>`
-**KB size:** 51,019 triples
+**KB size:** 51,030 triples
 
 ---
 
@@ -124,11 +124,16 @@ python src/kge/evaluate_kge.py
 ```bash
 # Install Ollama: https://ollama.com
 ollama pull llama3.2:1b
-python src/rag/app.py          # Web UI  → http://localhost:5000
-python src/rag/main_rag.py --evaluate   # Baseline vs RAG comparison table (7 questions)
+python src/rag/app.py          # Web UI  → http://localhost:5000 (also includes the Baseline vs RAG comparison table on 6 questions
 ```
 
 > **No Ollama?** The **Demo tab** runs 5 pre-built SPARQL queries directly — no LLM needed.
+
+---
+
+## Screenshot
+
+![RAG Web UI](docs/screenshot.png)
 
 ---
 
@@ -159,13 +164,15 @@ src/
 ├── kge/
 │   ├── prepare_splits.py       — 80/10/10 split → kge_data/ + kg_artifacts/kge/
 │   ├── train_kge.py            — TransE + ComplEx via PyKEEN
-│   └── evaluate_kge.py         — MRR, Hits@1/3/10, size sensitivity
+│   ├── evaluate_kge.py         — MRR, Hits@1/3/10, size sensitivity
+│   └── analyze_embeddings.py   — Nearest-neighbor + t-SNE embedding analysis
 └── rag/
     ├── app.py                  — Flask web UI (http://localhost:5000)
     ├── main_rag.py             — CLI entry point
     ├── sparql_generator.py     — NL → SPARQL via Ollama
     ├── sparql_executor.py      — SPARQL execution on rdflib graph
     ├── schema_summary.py       — KB schema for LLM context
+    ├── query_router.py         — Deterministic regex router (bypasses LLM for common patterns)
     └── repair_loop.py          — Self-repair loop on SPARQL errors
 
 data/

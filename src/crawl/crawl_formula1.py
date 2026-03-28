@@ -66,7 +66,13 @@ async def main(keep: int = 10):
 
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
-        page = await browser.new_page()
+        context = await browser.new_context(
+            user_agent=(
+                "Mozilla/5.0 (compatible; f1-kg-project/3.0; "
+                "educational use; github.com)"
+            )
+        )
+        page = await context.new_page()
 
         for year in years:
             out_dir = RAW_DIR / str(year)
@@ -90,6 +96,7 @@ async def main(keep: int = 10):
 
             print(f"{year} OK")
 
+        await context.close()
         await browser.close()
 
 if __name__ == "__main__":

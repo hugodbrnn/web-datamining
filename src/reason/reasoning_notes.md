@@ -35,7 +35,7 @@ python src/reason/apply_rules.py
 Expected output:
 ```
 SWRL MATERIALISATION — F1 Knowledge Graph
-[0] Loading expanded_kb.ttl …     (≈5,200 triples)
+[0] Loading expanded_kb.ttl …     (≈51,000 triples)
 [1] OWLReady2 / Pellet pass …
 [2] Applying SWRL-style materialisation rules …
     Rule 1 (Champion inference)    : +N triples

@@ -398,6 +398,23 @@ class SPARQLGenerator:
             sparql = sparql[m.start():]
         return SPARQLGenerator._sanitize_sparql(sparql)
 
+    @staticmethod
+    def _year_correct(sparql: str, question: str) -> str:
+        """
+        If the question contains exactly one 4-digit year and the LLM used a
+        different year in the query, replace all Season URIs with the correct one.
+        This guards against the common hallucination where llama3.2:1b substitutes
+        the current/most-recent year for the one actually stated in the question.
+        """
+        years_in_q = re.findall(r'\b(20\d{2})\b', question)
+        if len(years_in_q) != 1:
+            return sparql  # ambiguous or no year — leave unchanged
+        correct = years_in_q[0]
+        years_in_sparql = set(re.findall(r'\bex:Season(\d{4})\b', sparql))
+        if not years_in_sparql or correct in years_in_sparql:
+            return sparql  # already correct or no Season URI present
+        return re.sub(r'\bex:Season\d{4}\b', f'ex:Season{correct}', sparql)
+
     def generate(self, question: str) -> str:
         """
         Generate a SPARQL query for the given NL question via the Ollama LLM.
@@ -410,7 +427,9 @@ class SPARQLGenerator:
             logger.warning("Ollama offline — cannot generate SPARQL")
             return "__OLLAMA_OFFLINE__"
 
-        return self._extract_sparql(raw)
+        sparql = self._extract_sparql(raw)
+        sparql = self._year_correct(sparql, question)
+        return sparql
 
     @staticmethod
     def _fallback_stub(question: str) -> str:

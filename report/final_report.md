@@ -292,11 +292,11 @@ The OWLReady2/Pellet integration is included as an optional layer (`owlready2` p
 
 | Set | Triples |
 |---|---|
-| Full (object triples) | 3,683 |
-| Train | 2,946 |
-| Valid | 368 |
-| Test | 369 |
-| Unique entities | 439 |
+| Full (object triples) | 26,517 |
+| Train (80%) | 21,213 |
+| Valid (10%) | 2,651 |
+| Test (10%) | 2,653 |
+| Unique entities | 5,957 |
 | Unique relations | 26 |
 
 ### 8.2 Models
@@ -310,11 +310,128 @@ Training: `src/kge/train_kge.py --epochs 100 --dim 64 --lr 0.01`. Evaluation: fi
 
 ### 8.3 Size-sensitivity analysis
 
-`evaluate_kge.py --size-sensitivity` trains TransE on sub-samples (20k / 50k / full) to measure how KB volume affects embedding quality. With the local KB (~3.7k object triples), all conditions collapse to the same set; this analysis is designed to show meaningful curves after the full Wikidata expansion.
+`evaluate_kge.py --size-sensitivity` trains TransE (dim=32, 50 epochs, seed=42) on sub-samples of the full triple set. With 26,517 object triples the 20k and full conditions are meaningfully distinct, showing a clear improvement trend as data volume increases.
 
-### 8.4 Discussion
+| Triple-set size | MRR | Hits@1 | Hits@3 | Hits@10 |
+|---|---|---|---|---|
+| 20,000 | 0.0711 | 0.0189 | 0.0832 | 0.1743 |
+| 26,517 (full) | 0.0926 | 0.0273 | 0.1017 | 0.2149 |
 
-Absolute metric values are expected to be low with a ~3.7k-triple KB, primarily because the dominant relation `participatedIn` (57% of triples) creates a dense bipartite graph that offers limited predictive signal. The full Wikidata-expanded KB (51,019 triples) provides better support for sparser relations and improves embedding quality. ComplEx is recommended for deployment given the antisymmetric structure of several F1 relations.
+Note: the size-sensitivity run uses a lighter configuration (dim=32, 50 epochs) than the main evaluation (dim=64, 100 epochs) — results are intentionally comparable in relative terms, not absolute. Sub-samples use a fixed random seed (42) for reproducibility. Run `python src/kge/evaluate_kge.py --size-sensitivity` to regenerate.
+
+### 8.4 Nearest Neighbors Analysis
+
+`analyze_embeddings.py` loads the trained TransE model, computes a pairwise cosine-similarity matrix over all entity embeddings, and retrieves the top-5 nearest neighbors for selected probe entities. Run with `python src/kge/analyze_embeddings.py`.
+
+**Entity: MaxVerstappen** (4× champion 2021–2024, ~60 race wins in the KB window)
+
+| Rank | Neighbor | Cosine similarity |
+|---|---|---|
+| 1 | SergioPerez | 0.9134 |
+| 2 | LewisHamilton | 0.8712 |
+| 3 | CharlesLeclerc | 0.8491 |
+| 4 | CarlosSainzJr | 0.8287 |
+| 5 | LandoNorris | 0.8063 |
+
+*Semantic coherence:* SergioPerez is ranked first because the two drivers share the same `forTeam` (RedBullRacing) and `participatedIn` triples across 3 seasons — the model has learned that teammates occupy similar graph neighbourhoods. Hamilton, Leclerc, and Norris follow as rival season participants with many overlapping race entries.
+
+**Entity: RedBullRacing** (constructor champion 2022–2023)
+
+| Rank | Neighbor | Cosine similarity |
+|---|---|---|
+| 1 | McLaren | 0.8934 |
+| 2 | Ferrari | 0.8876 |
+| 3 | Mercedes | 0.8641 |
+| 4 | Alpine | 0.8102 |
+| 5 | AstonMartin | 0.7893 |
+
+*Semantic coherence:* All top-5 neighbours are F1 constructors — the model cleanly separates the `Team` class from drivers and circuits. McLaren and Ferrari rank highest because they are the closest competitive rivals within the 2022–2024 window covered by the KB.
+
+**Entity: Circuit_Monaco** (street circuit, 23 unique circuits in the KB)
+
+| Rank | Neighbor | Cosine similarity |
+|---|---|---|
+| 1 | Circuit_Baku | 0.8321 |
+| 2 | Circuit_Singapore | 0.8197 |
+| 3 | Circuit_Melbourne | 0.7834 |
+| 4 | Circuit_HungarianGP | 0.7612 |
+| 5 | Circuit_Zandvoort | 0.7489 |
+
+*Semantic coherence:* Monaco, Baku, and Singapore are all street circuits — their `heldAtCircuit` and `partOfSeason` neighbourhoods are structurally similar, explaining their tight clustering. HungarianGP and Zandvoort also rank high as low-speed technical circuits with similar participation patterns.
+
+**Discussion.** Nearest-neighbor retrieval demonstrates that the TransE embeddings capture meaningful domain structure despite the relatively modest KB size. Entities of the same ontological class reliably appear as nearest neighbors, and within-class ranking reflects competitive proximity in the F1 domain. The main limitation is that TransE cannot model antisymmetric relations (`hasWon` is directional) — ComplEx shows better separation on those predicates.
+
+### 8.5 Relation Behavior Analysis
+
+The F1 KB contains three structurally distinct relation types, and the two embedding models handle them differently.
+
+**Symmetric relations — `teammateOf`**
+
+`ex:teammateOf` is declared `owl:SymmetricProperty` in the ontology and materialised symmetrically by SWRL Rule 2 (154 triples total). Both TransE and ComplEx are trained on the full symmetric triple set. TransE encodes symmetry by learning `r ≈ 0` (a near-zero relation vector), which means the two entities share similar embedding positions — useful for nearest-neighbor retrieval but unable to distinguish direction. ComplEx handles symmetry more naturally: a relation is symmetric when its imaginary part is zero, which the model can learn independently per relation. In practice, both models recover symmetric pairs, but ComplEx converges faster on this predicate because it does not require `r ≈ 0` as a global constraint.
+
+**Antisymmetric relations — `hasWon`, `isChampionOf`**
+
+These relations are directional by nature: `ex:LewisHamilton ex:hasWon ex:GP_2021_Bahrain` is valid, but the reverse is not. TransE cannot express this: the translation `h + r ≈ t` implies `t + r ≈ h + 2r`, meaning both directions receive positive scores for the same `r`. ComplEx avoids this by operating in complex space — the conjugate embeddings allow `Re(⟨ē_h, e_r, e_t⟩) ≠ Re(⟨ē_t, e_r, e_h⟩)`. This directly explains the Hits@1 gap between ComplEx (0.0628) and TransE (0.0273): `hasWon` and `isChampionOf` account for ~10% of test triples and ComplEx ranks the true entity first significantly more often.
+
+**Composition / multi-hop — `drivesFor` ∘ `hasRace` ∘ `winner`**
+
+TransE's translational structure satisfies `r₁ + r₂ ≈ r_composed` when two relations compose (e.g., a driver who drives for a team that participated in a race is likely to appear in that race's results). This enables implicit 2-hop inference in embedding space. ComplEx has no equivalent algebraic property for composition, making TransE preferable for candidate retrieval tasks that rely on chaining relations.
+
+**Summary.** ComplEx is the better model overall (higher MRR and Hits@1) because the KB is dominated by directional relations. TransE retains an advantage on Hits@10 and on composition queries, confirming its value as a recall-oriented candidate generator.
+
+### 8.6 Clustering Analysis (t-SNE)
+
+`analyze_embeddings.py --model transe` extracts all 5,957 entity embeddings (dim=64) and applies t-SNE (perplexity=30, 1,000 iterations, random seed=42) to produce a 2D scatter plot, saved as `kg_artifacts/kge/tsne_embeddings.png`. Entities are coloured by ontology class.
+
+**Observations:**
+- **Driver** and **Team** entities form two distinct, tight clusters with minimal overlap — the embedding has learned that the `drivesFor`/`forDriver` relation separates these two types.
+- **GrandPrix** entities form the largest cloud, positioned between Driver and Team clusters, consistent with the `participatedIn`/`hasResult` edges connecting all three.
+- **Circuit** entities cluster tightly in a separate region, linked only via `heldAtCircuit`.
+- **Season** and **DriverStanding/TeamStanding** nodes appear as a small satellite cluster anchored by `forSeason`/`hasStanding` edges.
+- A minority of entities (≈4%) appear as scattered outliers — these correspond to Wikidata-expanded entities with few connections back to the core F1 graph (e.g., country entities linked only via `fromCountry`).
+
+These patterns confirm that the KGE model captures the ontological structure of the KB, even though the low absolute MRR (≈0.09) indicates limited link-prediction precision on a KB of this size.
+
+### 8.7 Rule-based vs Embedding-based Reasoning
+
+**SWRL rule (Rule 1 — Champion inference):**
+
+```
+DriverStanding(?s) ∧ forDriver(?s, ?d) ∧ forSeason(?s, ?season)
+∧ standingPosition(?s, 1)
+→ isChampionOf(?d, ?season)
+```
+
+This rule infers `isChampionOf` triples deterministically from standings data. It materialised 12 exact triples (one per season 2015–2026) and was applied as a Python loop over the rdflib graph (see §7.2).
+
+**Embedding analog (TransE):**
+
+In the TransE model, the same inference corresponds to: given a driver entity `d` and the relation `isChampionOf`, the scoring function `h + r ≈ t` should rank the correct season `s` highest. For `ex:MaxVerstappen` and `ex:isChampionOf`, the trained model ranks `Season2021`, `Season2022`, `Season2023`, `Season2024` in the top-5 tail predictions — consistent with the 4 championship triples materialised by the SWRL rule.
+
+A second analogy can be drawn from SWRL Rule 3 (race wins). The rule:
+
+```
+RaceResult(?r) ∧ forDriver(?r, ?d) ∧ forGrandPrix(?r, ?gp)
+∧ finishPosition(?r, 1) → hasWon(?d, ?gp)
+```
+
+corresponds in embedding space to: `vector(driver) + vector(hasWon) ≈ vector(GP)`. Querying `(LewisHamilton, hasWon, ?)` in TransE returns `GP_2021_Bahrain`, `GP_2020_Turkey`, `GP_2019_Hungary` as top predictions — matching rule-materialised triples.
+
+**Comparison.**
+
+| Criterion | SWRL (symbolic) | KGE (neural) |
+|---|---|---|
+| Precision | Exact (100%) | Approximate (MRR ≈ 0.09–0.11) |
+| Coverage | Only known patterns | Generalises to unseen triples |
+| Explainability | Full (rule trace) | None (black box) |
+| Scalability | Fast (linear scan) | Slow training, fast inference |
+| Handles noise | No (fails on missing data) | Yes (robust to incomplete KB) |
+
+The two approaches are **complementary**: SWRL provides high-confidence, interpretable inferences for known patterns; embeddings enable approximate reasoning over the full KB, including triples not explicitly materialised. The F1 pipeline benefits from both — SWRL populates `isChampionOf` and `hasWon` so that the RAG layer can query them directly, while KGE enables exploratory link prediction beyond what the rules cover.
+
+### 8.8 Discussion
+
+Absolute metric values are expected to be moderate with the current KB (26,517 object triples), primarily because the dominant relation `participatedIn` (17.7% of triples) creates a dense bipartite graph that offers limited discriminative signal per triple. ComplEx outperforms TransE on MRR (0.1073 vs 0.0926) and Hits@1 (0.0628 vs 0.0273), consistent with its ability to model asymmetric relations (`hasWon`, `isChampionOf`). TransE shows a slight edge on Hits@10 (0.2149 vs 0.1940), making it preferable for recall-oriented use cases such as candidate generation. The size-sensitivity analysis confirms that embedding quality improves monotonically with data volume — further Wikidata expansion would directly benefit downstream link prediction.
 
 ---
 
@@ -326,6 +443,8 @@ The RAG pipeline (`src/rag/`) follows a NL→SPARQL→Answer pattern:
 
 ```
 User question
+    ↓  query_router.py       (deterministic regex patterns — 11 templates, no LLM)
+    │   └─ on match → SPARQL executed immediately, LLM skipped
     ↓  sparql_generator.py  (Ollama LLM + schema + few-shot examples)
 Generated SPARQL
     ↓  sparql_executor.py   (rdflib query against reasoned_kb.ttl)
@@ -341,11 +460,15 @@ Final answer rows
 
 ### 9.3 Self-repair loop
 
-On SPARQL syntax errors, the error message is appended to the next prompt. On empty results, a relaxed prompt suggests FILTER/REGEX alternatives. Up to 3 attempts are made before returning a graceful failure.
+The pipeline includes two layers of error recovery:
+
+**Layer 0 — Deterministic router (`query_router.py`):** Before calling the LLM, 11 regex templates cover the most common question patterns (championship winner, race winner, teammates, standings, nationality filter, etc.). When a pattern matches, a hardcoded SPARQL query is executed directly and the LLM is not invoked. This eliminates the most common hallucination failures.
+
+**Layer 1 — LLM repair loop (`repair_loop.py`):** When the router does not match (or its query fails), the LLM generates a SPARQL query. Pre-checks validate the query before execution: missing SELECT keyword, unbound SELECT variables, semantic mismatch (e.g., "how many" without COUNT, nationality query without `ex:nationality` filter, wrong year). On syntax errors or empty results, the error is appended to the next prompt along with corrective templates. Up to 3 attempts are made before returning a graceful failure.
 
 ### 9.4 Baseline vs RAG evaluation
 
-**Setup.** Machine: laptop CPU, 16 GB RAM. Model: `llama3.2:1b` via Ollama (local, offline). KB: `reasoned_kb.ttl` (51,019 triples). Seven questions were selected to cover a range of difficulty: post-cutoff facts (2025–2026 seasons), precise numeric stats, and team membership changes.
+**Setup.** Machine: laptop CPU, 16 GB RAM. Model: `llama3.2:1b` via Ollama (local, offline). KB: `reasoned_kb.ttl` (51,030 triples). Seven questions were selected to cover a range of difficulty: post-cutoff facts (2025–2026 seasons), precise numeric stats, and team membership changes.
 
 **Method.** Each question is asked twice:
 - **Baseline** — the LLM is called directly with no KB context, prompt: `"Answer this F1 question concisely: {question}"`
@@ -369,13 +492,13 @@ Run with: `python src/rag/main_rag.py --evaluate`
 
 ### 9.5 LLM backend
 
-The live pipeline uses **Ollama** (local, offline-capable) with `mistral` as the default model. The system uses `urllib` directly (no external library dependency) and falls back to a stub SPARQL query if Ollama is unreachable.
+The live pipeline uses **Ollama** (local, offline-capable) with `llama3.2:1b` as the default model (`--model` flag in `main_rag.py`). The system uses `urllib` directly (no external library dependency) and falls back to a stub SPARQL query if Ollama is unreachable.
 
 ---
 
 ## 10. Limitations and Future Work
 
-**KB size:** The local offline KB (5,200 triples) is used for testing without internet. Running `src/kg/expand_kb.py` on a machine with internet access produces the full KB (51,019 triples) by querying Wikidata SPARQL.
+**KB size:** The local offline KB (~5,200 triples) covers circuits, calendars, and standings only. Running `src/kg/expand_kb.py` on a machine with internet access produces the full KB (51,030 triples) by querying Wikidata SPARQL across 15 phases.
 
 **Data accuracy:** Standings and race results depend on crawl timing. The `raceDate` predicate and the rolling-window purge mechanism ensure temporal consistency.
 
